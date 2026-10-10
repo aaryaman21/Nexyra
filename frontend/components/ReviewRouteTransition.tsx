@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
@@ -78,8 +78,21 @@ export function ReviewRouteTransition() {
       readyRef.current = false;
       reducedRef.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       timingsRef.current = reducedRef.current ? { crack: 0.2, shatter: 0.6 } : { crack: 0.3, shatter: 0.92 };
+      setCurrentPhase("crack");
+      document.getElementById("agri-dashboard")?.classList.add("nexyra-dashboard-shatter");
+      await new Promise<void>(resolve => window.requestAnimationFrame(() => resolve()));
+      const snapshotPromise = captureScreen();
+      const navigateToReview = () => {
+        phaseRef.current = "waiting";
+        setPhase("waiting");
+        router.push("/review");
+        if (readyRef.current) {
+          phaseRef.current = "shatter";
+          setPhase("shatter");
+        }
+      };
       try {
-        const snapshot = await captureScreen();
+        const snapshot = await snapshotPromise;
         const cols = 9;
         const rows = 7;
         setScreenImage(snapshot.dataUrl);
@@ -101,10 +114,9 @@ export function ReviewRouteTransition() {
             delay: id / (cols * rows - 1) * (reducedRef.current ? 0.08 : 0.2), cut,
           };
         }));
-        setCurrentPhase("crack");
       } catch (error) {
         console.error("Could not create the dashboard shatter snapshot", error);
-        router.push("/review");
+        window.setTimeout(navigateToReview, reducedRef.current ? 280 : 480);
       }
     };
     const ready = () => {
@@ -122,15 +134,18 @@ export function ReviewRouteTransition() {
   if (phase === "idle" || typeof document === "undefined") return null;
   const crackDuration = timingsRef.current.crack;
   const shatterDuration = timingsRef.current.shatter;
+  const screenStyles = {
+    "--review-screen-image": `url("${screenImage}")`,
+    "--review-screen-size": `${window.innerWidth}px ${window.innerHeight}px`,
+  } as CSSProperties;
   return createPortal(
-    <div className="review-screen-shatter" data-phase={phase} aria-hidden="true">
+    <div className="review-screen-shatter" data-phase={phase} aria-hidden="true" style={screenStyles}>
       {fragments.map(fragment => (
         <motion.span
           key={fragment.id}
           className="review-screen-fragment"
           style={{
             left: fragment.x, top: fragment.y, width: fragment.width, height: fragment.height,
-            backgroundImage: `url("${screenImage}")`, backgroundSize: `${window.innerWidth}px ${window.innerHeight}px`,
             backgroundPosition: `-${fragment.x}px -${fragment.y}px`, clipPath: fragment.cut,
           }}
           initial={{ x: 0, y: 0, rotate: 0, scale: 1 }}
