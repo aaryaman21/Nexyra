@@ -1,0 +1,18 @@
+{
+  "backup_path": "C:\\Nexyra\\backups\\nexyra_pre_historical_20261009.db",
+  "source_path": "C:\\Nexyra\\nexyra.db",
+  "verified_at_utc": "2026-10-08T18:35:36.652814+00:00",
+  "backup_bytes": 749568,
+  "backup_sha256": "8091af9fbf85363b1cbf0c32e0d1a92fdda640d289805a4412f16b25d9fcdd5e",
+  "source": {
+    "integrity": "ok",
+    "canonical_rows": 291,
+    "canonical_fingerprint_sha256": "7476ac39c62b4f95d1f6017a661588675eb3fff00f9115209137bf5ccead53ca"
+  },
+  "backup": {
+    "integrity": "ok",
+    "canonical_rows": 291,
+    "canonical_fingerprint_sha256": "7476ac39c62b4f95d1f6017a661588675eb3fff00f9115209137bf5ccead53ca"
+  },
+  "verified": "SQLite backup API; integrity and all 291 canonical row values/fingerprint match"
+}

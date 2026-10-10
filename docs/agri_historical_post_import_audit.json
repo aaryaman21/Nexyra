@@ -1,0 +1,2709 @@
+{
+  "integrity_check": "ok",
+  "canonical_rows": 291,
+  "historical_rows": 21864,
+  "review_status_counts": {
+    "eligible_historical": 21851,
+    "quarantined_alias_candidate": 13
+  },
+  "rows_by_year_and_status": {
+    "2021|eligible_historical": 4675,
+    "2022|eligible_historical": 4260,
+    "2023|eligible_historical": 4573,
+    "2024|eligible_historical": 4420,
+    "2025|eligible_historical": 3923,
+    "2025|quarantined_alias_candidate": 13
+  },
+  "historical_date_range": [
+    "2021-01-01",
+    "2025-12-29"
+  ],
+  "exact_market_label_count": 38,
+  "series_count": 117,
+  "arrival_quantities_added": 0,
+  "verified_available_at_populated": 0,
+  "source_hashes_match_manifest": true,
+  "files": {
+    "2021.csv": {
+      "rows": 4675,
+      "sha256_matches_manifest": 1
+    },
+    "2022.csv": {
+      "rows": 4260,
+      "sha256_matches_manifest": 1
+    },
+    "2023.csv": {
+      "rows": 4573,
+      "sha256_matches_manifest": 1
+    },
+    "2024.csv": {
+      "rows": 4420,
+      "sha256_matches_manifest": 1
+    },
+    "2025.csv": {
+      "rows": 3936,
+      "sha256_matches_manifest": 1
+    }
+  },
+  "structural_series_counts_meeting_164": {
+    "1": 13,
+    "3": 11,
+    "7": 19
+  },
+  "series_meeting_164_all_horizons": 11,
+  "series": [
+    {
+      "market_original": "Chandvad",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 747,
+      "distinct_dates": 747,
+      "first_date": "2021-01-14",
+      "last_date": "2024-11-27",
+      "rows_by_year": {
+        "2021": 185,
+        "2022": 200,
+        "2023": 186,
+        "2024": 176
+      },
+      "structural_supervised_candidates": {
+        "1": 243,
+        "3": 199,
+        "7": 329
+      },
+      "non_observed_calendar_days_in_span": 667,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Chandvad",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 142,
+      "distinct_dates": 142,
+      "first_date": "2025-04-03",
+      "last_date": "2025-10-29",
+      "rows_by_year": {
+        "2025": 142
+      },
+      "structural_supervised_candidates": {
+        "1": 42,
+        "3": 44,
+        "7": 61
+      },
+      "non_observed_calendar_days_in_span": 68,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Chandvad",
+      "commodity": "Onion",
+      "variety": "Pole",
+      "grade": "FAQ",
+      "observations": 1,
+      "distinct_dates": 1,
+      "first_date": "2021-12-29",
+      "last_date": "2021-12-29",
+      "rows_by_year": {
+        "2021": 1
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 0,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Chandvad",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 430,
+      "distinct_dates": 430,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-24",
+      "rows_by_year": {
+        "2021": 95,
+        "2022": 97,
+        "2023": 108,
+        "2024": 111,
+        "2025": 19
+      },
+      "structural_supervised_candidates": {
+        "1": 118,
+        "3": 96,
+        "7": 157
+      },
+      "non_observed_calendar_days_in_span": 1055,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Chandvad",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 43,
+      "distinct_dates": 43,
+      "first_date": "2025-01-27",
+      "last_date": "2025-04-04",
+      "rows_by_year": {
+        "2025": 43
+      },
+      "structural_supervised_candidates": {
+        "1": 12,
+        "3": 5,
+        "7": 13
+      },
+      "non_observed_calendar_days_in_span": 25,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Chandvad APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 5,
+      "distinct_dates": 5,
+      "first_date": "2025-12-03",
+      "last_date": "2025-12-18",
+      "rows_by_year": {
+        "2025": 5
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 11,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Chandvad APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 6,
+      "distinct_dates": 6,
+      "first_date": "2025-12-03",
+      "last_date": "2025-12-22",
+      "rows_by_year": {
+        "2025": 6
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 14,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Devala",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 660,
+      "distinct_dates": 660,
+      "first_date": "2021-01-01",
+      "last_date": "2024-12-02",
+      "rows_by_year": {
+        "2021": 201,
+        "2022": 169,
+        "2023": 158,
+        "2024": 132
+      },
+      "structural_supervised_candidates": {
+        "1": 217,
+        "3": 119,
+        "7": 291
+      },
+      "non_observed_calendar_days_in_span": 772,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Devala",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 134,
+      "distinct_dates": 134,
+      "first_date": "2025-03-03",
+      "last_date": "2025-10-31",
+      "rows_by_year": {
+        "2025": 134
+      },
+      "structural_supervised_candidates": {
+        "1": 38,
+        "3": 24,
+        "7": 56
+      },
+      "non_observed_calendar_days_in_span": 109,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Devala",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 375,
+      "distinct_dates": 375,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-24",
+      "rows_by_year": {
+        "2021": 100,
+        "2022": 90,
+        "2023": 81,
+        "2024": 89,
+        "2025": 15
+      },
+      "structural_supervised_candidates": {
+        "1": 111,
+        "3": 58,
+        "7": 163
+      },
+      "non_observed_calendar_days_in_span": 1110,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Devala",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 37,
+      "distinct_dates": 37,
+      "first_date": "2025-01-27",
+      "last_date": "2025-03-27",
+      "rows_by_year": {
+        "2025": 37
+      },
+      "structural_supervised_candidates": {
+        "1": 6,
+        "3": 5,
+        "7": 11
+      },
+      "non_observed_calendar_days_in_span": 23,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Devala APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 6,
+      "distinct_dates": 6,
+      "first_date": "2025-12-12",
+      "last_date": "2025-12-24",
+      "rows_by_year": {
+        "2025": 6
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 7,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Devala APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 4,
+      "distinct_dates": 4,
+      "first_date": "2025-12-11",
+      "last_date": "2025-12-24",
+      "rows_by_year": {
+        "2025": 4
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 10,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Dindori",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 247,
+      "distinct_dates": 247,
+      "first_date": "2021-04-05",
+      "last_date": "2024-08-22",
+      "rows_by_year": {
+        "2021": 81,
+        "2022": 47,
+        "2023": 86,
+        "2024": 33
+      },
+      "structural_supervised_candidates": {
+        "1": 93,
+        "3": 63,
+        "7": 107
+      },
+      "non_observed_calendar_days_in_span": 989,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Dindori",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 111,
+      "distinct_dates": 111,
+      "first_date": "2025-04-01",
+      "last_date": "2025-10-09",
+      "rows_by_year": {
+        "2025": 111
+      },
+      "structural_supervised_candidates": {
+        "1": 18,
+        "3": 16,
+        "7": 33
+      },
+      "non_observed_calendar_days_in_span": 81,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Dindori",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 3,
+      "distinct_dates": 3,
+      "first_date": "2021-02-24",
+      "last_date": "2023-12-14",
+      "rows_by_year": {
+        "2021": 1,
+        "2023": 2
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 1021,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Dindori (Vani)",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 499,
+      "distinct_dates": 499,
+      "first_date": "2021-01-02",
+      "last_date": "2024-11-23",
+      "rows_by_year": {
+        "2021": 210,
+        "2022": 117,
+        "2023": 93,
+        "2024": 79
+      },
+      "structural_supervised_candidates": {
+        "1": 125,
+        "3": 100,
+        "7": 156
+      },
+      "non_observed_calendar_days_in_span": 923,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Dindori (Vani)",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 110,
+      "distinct_dates": 110,
+      "first_date": "2025-03-07",
+      "last_date": "2025-11-03",
+      "rows_by_year": {
+        "2025": 110
+      },
+      "structural_supervised_candidates": {
+        "1": 4,
+        "3": 6,
+        "7": 15
+      },
+      "non_observed_calendar_days_in_span": 132,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Dindori (Vani)",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 284,
+      "distinct_dates": 284,
+      "first_date": "2021-01-02",
+      "last_date": "2025-01-23",
+      "rows_by_year": {
+        "2021": 64,
+        "2022": 73,
+        "2023": 62,
+        "2024": 71,
+        "2025": 14
+      },
+      "structural_supervised_candidates": {
+        "1": 75,
+        "3": 50,
+        "7": 96
+      },
+      "non_observed_calendar_days_in_span": 1199,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Dindori (Vani)",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 19,
+      "distinct_dates": 19,
+      "first_date": "2025-01-25",
+      "last_date": "2025-03-10",
+      "rows_by_year": {
+        "2025": 19
+      },
+      "structural_supervised_candidates": {
+        "1": 1,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 26,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Kalvan",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 643,
+      "distinct_dates": 643,
+      "first_date": "2021-01-02",
+      "last_date": "2024-12-13",
+      "rows_by_year": {
+        "2021": 196,
+        "2022": 154,
+        "2023": 162,
+        "2024": 131
+      },
+      "structural_supervised_candidates": {
+        "1": 125,
+        "3": 89,
+        "7": 189
+      },
+      "non_observed_calendar_days_in_span": 799,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Kalvan",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 141,
+      "distinct_dates": 141,
+      "first_date": "2025-03-07",
+      "last_date": "2025-11-04",
+      "rows_by_year": {
+        "2025": 141
+      },
+      "structural_supervised_candidates": {
+        "1": 29,
+        "3": 34,
+        "7": 49
+      },
+      "non_observed_calendar_days_in_span": 102,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Kalvan",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 186,
+      "distinct_dates": 186,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-24",
+      "rows_by_year": {
+        "2021": 38,
+        "2022": 39,
+        "2023": 49,
+        "2024": 47,
+        "2025": 13
+      },
+      "structural_supervised_candidates": {
+        "1": 2,
+        "3": 21,
+        "7": 33
+      },
+      "non_observed_calendar_days_in_span": 1299,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Kalvan",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 19,
+      "distinct_dates": 19,
+      "first_date": "2025-01-27",
+      "last_date": "2025-03-04",
+      "rows_by_year": {
+        "2025": 19
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 3,
+        "7": 3
+      },
+      "non_observed_calendar_days_in_span": 18,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Kalvan APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 2,
+      "distinct_dates": 2,
+      "first_date": "2025-12-06",
+      "last_date": "2025-12-20",
+      "rows_by_year": {
+        "2025": 2
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 13,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Kalvan APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 2,
+      "distinct_dates": 2,
+      "first_date": "2025-12-25",
+      "last_date": "2025-12-29",
+      "rows_by_year": {
+        "2025": 2
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 3,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 850,
+      "distinct_dates": 850,
+      "first_date": "2021-01-01",
+      "last_date": "2024-12-17",
+      "rows_by_year": {
+        "2021": 215,
+        "2022": 234,
+        "2023": 205,
+        "2024": 196
+      },
+      "structural_supervised_candidates": {
+        "1": 362,
+        "3": 319,
+        "7": 444
+      },
+      "non_observed_calendar_days_in_span": 597,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 176,
+      "distinct_dates": 176,
+      "first_date": "2025-02-14",
+      "last_date": "2025-11-03",
+      "rows_by_year": {
+        "2025": 176
+      },
+      "structural_supervised_candidates": {
+        "1": 60,
+        "3": 62,
+        "7": 81
+      },
+      "non_observed_calendar_days_in_span": 87,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 527,
+      "distinct_dates": 527,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-25",
+      "rows_by_year": {
+        "2021": 138,
+        "2022": 116,
+        "2023": 126,
+        "2024": 126,
+        "2025": 21
+      },
+      "structural_supervised_candidates": {
+        "1": 203,
+        "3": 190,
+        "7": 252
+      },
+      "non_observed_calendar_days_in_span": 959,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 54,
+      "distinct_dates": 54,
+      "first_date": "2025-01-27",
+      "last_date": "2025-09-13",
+      "rows_by_year": {
+        "2025": 54
+      },
+      "structural_supervised_candidates": {
+        "1": 13,
+        "3": 11,
+        "7": 17
+      },
+      "non_observed_calendar_days_in_span": 176,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Niphad)",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 797,
+      "distinct_dates": 797,
+      "first_date": "2021-01-01",
+      "last_date": "2024-12-10",
+      "rows_by_year": {
+        "2021": 201,
+        "2022": 181,
+        "2023": 202,
+        "2024": 213
+      },
+      "structural_supervised_candidates": {
+        "1": 317,
+        "3": 289,
+        "7": 372
+      },
+      "non_observed_calendar_days_in_span": 643,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Niphad)",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 179,
+      "distinct_dates": 179,
+      "first_date": "2025-02-17",
+      "last_date": "2025-11-01",
+      "rows_by_year": {
+        "2025": 179
+      },
+      "structural_supervised_candidates": {
+        "1": 59,
+        "3": 63,
+        "7": 82
+      },
+      "non_observed_calendar_days_in_span": 79,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Niphad)",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 411,
+      "distinct_dates": 411,
+      "first_date": "2021-01-01",
+      "last_date": "2025-04-09",
+      "rows_by_year": {
+        "2021": 89,
+        "2022": 87,
+        "2023": 113,
+        "2024": 97,
+        "2025": 25
+      },
+      "structural_supervised_candidates": {
+        "1": 156,
+        "3": 148,
+        "7": 197
+      },
+      "non_observed_calendar_days_in_span": 1149,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Niphad)",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 55,
+      "distinct_dates": 55,
+      "first_date": "2025-01-27",
+      "last_date": "2025-04-15",
+      "rows_by_year": {
+        "2025": 55
+      },
+      "structural_supervised_candidates": {
+        "1": 19,
+        "3": 14,
+        "7": 23
+      },
+      "non_observed_calendar_days_in_span": 24,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Niphad) APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 7,
+      "distinct_dates": 7,
+      "first_date": "2025-12-05",
+      "last_date": "2025-12-27",
+      "rows_by_year": {
+        "2025": 7
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 16,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Niphad) APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 6,
+      "distinct_dates": 6,
+      "first_date": "2025-12-19",
+      "last_date": "2025-12-29",
+      "rows_by_year": {
+        "2025": 6
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 5,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Vinchur)",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 787,
+      "distinct_dates": 787,
+      "first_date": "2021-01-01",
+      "last_date": "2024-11-23",
+      "rows_by_year": {
+        "2021": 183,
+        "2022": 182,
+        "2023": 220,
+        "2024": 202
+      },
+      "structural_supervised_candidates": {
+        "1": 338,
+        "3": 304,
+        "7": 431
+      },
+      "non_observed_calendar_days_in_span": 636,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Vinchur)",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 168,
+      "distinct_dates": 168,
+      "first_date": "2025-02-18",
+      "last_date": "2025-11-01",
+      "rows_by_year": {
+        "2025": 168
+      },
+      "structural_supervised_candidates": {
+        "1": 56,
+        "3": 52,
+        "7": 81
+      },
+      "non_observed_calendar_days_in_span": 89,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Vinchur)",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 454,
+      "distinct_dates": 454,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-25",
+      "rows_by_year": {
+        "2021": 112,
+        "2022": 84,
+        "2023": 122,
+        "2024": 115,
+        "2025": 21
+      },
+      "structural_supervised_candidates": {
+        "1": 204,
+        "3": 199,
+        "7": 248
+      },
+      "non_observed_calendar_days_in_span": 1032,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Vinchur)",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 52,
+      "distinct_dates": 52,
+      "first_date": "2025-01-27",
+      "last_date": "2025-04-12",
+      "rows_by_year": {
+        "2025": 52
+      },
+      "structural_supervised_candidates": {
+        "1": 13,
+        "3": 10,
+        "7": 15
+      },
+      "non_observed_calendar_days_in_span": 24,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Vinchur) APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 9,
+      "distinct_dates": 9,
+      "first_date": "2025-12-04",
+      "last_date": "2025-12-27",
+      "rows_by_year": {
+        "2025": 9
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 15,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon (Vinchur) APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 6,
+      "distinct_dates": 6,
+      "first_date": "2025-12-10",
+      "last_date": "2025-12-27",
+      "rows_by_year": {
+        "2025": 6
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 12,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 4,
+      "distinct_dates": 4,
+      "first_date": "2025-12-03",
+      "last_date": "2025-12-13",
+      "rows_by_year": {
+        "2025": 4
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 7,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Lasalgaon APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 3,
+      "distinct_dates": 3,
+      "first_date": "2025-12-05",
+      "last_date": "2025-12-19",
+      "rows_by_year": {
+        "2025": 3
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 12,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Malharshree Farmers Producer Co Ltd",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 88,
+      "distinct_dates": 88,
+      "first_date": "2023-07-03",
+      "last_date": "2025-05-28",
+      "rows_by_year": {
+        "2023": 31,
+        "2024": 50,
+        "2025": 7
+      },
+      "structural_supervised_candidates": {
+        "1": 12,
+        "3": 7,
+        "7": 14
+      },
+      "non_observed_calendar_days_in_span": 608,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Malharshree Farmers Producer Co Ltd",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 19,
+      "distinct_dates": 19,
+      "first_date": "2025-06-10",
+      "last_date": "2025-10-16",
+      "rows_by_year": {
+        "2025": 19
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 1
+      },
+      "non_observed_calendar_days_in_span": 110,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Malharshree Farmers Producer Co Ltd",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 9,
+      "distinct_dates": 9,
+      "first_date": "2024-11-25",
+      "last_date": "2025-01-10",
+      "rows_by_year": {
+        "2024": 8,
+        "2025": 1
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 38,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Mankamneshwar Farmar Producer CoLtd Sanchalit Mank",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 121,
+      "distinct_dates": 121,
+      "first_date": "2023-06-08",
+      "last_date": "2025-05-27",
+      "rows_by_year": {
+        "2023": 26,
+        "2024": 56,
+        "2025": 39
+      },
+      "structural_supervised_candidates": {
+        "1": 26,
+        "3": 23,
+        "7": 30
+      },
+      "non_observed_calendar_days_in_span": 599,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Mankamneshwar Farmar Producer CoLtd Sanchalit Mank",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 12,
+      "distinct_dates": 12,
+      "first_date": "2025-06-06",
+      "last_date": "2025-06-21",
+      "rows_by_year": {
+        "2025": 12
+      },
+      "structural_supervised_candidates": {
+        "1": 2,
+        "3": 0,
+        "7": 1
+      },
+      "non_observed_calendar_days_in_span": 4,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Manmad",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 744,
+      "distinct_dates": 744,
+      "first_date": "2021-03-09",
+      "last_date": "2025-11-03",
+      "rows_by_year": {
+        "2021": 178,
+        "2022": 217,
+        "2023": 193,
+        "2024": 150,
+        "2025": 6
+      },
+      "structural_supervised_candidates": {
+        "1": 311,
+        "3": 287,
+        "7": 387
+      },
+      "non_observed_calendar_days_in_span": 957,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Manmad",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 172,
+      "distinct_dates": 172,
+      "first_date": "2025-03-01",
+      "last_date": "2025-10-31",
+      "rows_by_year": {
+        "2025": 172
+      },
+      "structural_supervised_candidates": {
+        "1": 59,
+        "3": 62,
+        "7": 87
+      },
+      "non_observed_calendar_days_in_span": 73,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Manmad",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 472,
+      "distinct_dates": 472,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-25",
+      "rows_by_year": {
+        "2021": 98,
+        "2022": 106,
+        "2023": 118,
+        "2024": 130,
+        "2025": 20
+      },
+      "structural_supervised_candidates": {
+        "1": 184,
+        "3": 161,
+        "7": 232
+      },
+      "non_observed_calendar_days_in_span": 1014,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Manmad",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 63,
+      "distinct_dates": 63,
+      "first_date": "2025-01-25",
+      "last_date": "2025-04-22",
+      "rows_by_year": {
+        "2025": 63
+      },
+      "structural_supervised_candidates": {
+        "1": 24,
+        "3": 14,
+        "7": 28
+      },
+      "non_observed_calendar_days_in_span": 25,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Manmad",
+      "commodity": "Onion",
+      "variety": "White",
+      "grade": "FAQ",
+      "observations": 44,
+      "distinct_dates": 44,
+      "first_date": "2021-12-16",
+      "last_date": "2025-01-24",
+      "rows_by_year": {
+        "2021": 4,
+        "2023": 1,
+        "2024": 22,
+        "2025": 17
+      },
+      "structural_supervised_candidates": {
+        "1": 7,
+        "3": 5,
+        "7": 9
+      },
+      "non_observed_calendar_days_in_span": 1092,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Manmad",
+      "commodity": "Onion",
+      "variety": "White",
+      "grade": "Local",
+      "observations": 24,
+      "distinct_dates": 24,
+      "first_date": "2025-01-25",
+      "last_date": "2025-02-28",
+      "rows_by_year": {
+        "2025": 24
+      },
+      "structural_supervised_candidates": {
+        "1": 4,
+        "3": 2,
+        "7": 5
+      },
+      "non_observed_calendar_days_in_span": 11,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Manmad APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 5,
+      "distinct_dates": 5,
+      "first_date": "2025-12-04",
+      "last_date": "2025-12-27",
+      "rows_by_year": {
+        "2025": 5
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 19,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Manmad APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 4,
+      "distinct_dates": 4,
+      "first_date": "2025-12-16",
+      "last_date": "2025-12-27",
+      "rows_by_year": {
+        "2025": 4
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 8,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nampur",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 492,
+      "distinct_dates": 492,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-16",
+      "rows_by_year": {
+        "2021": 138,
+        "2022": 132,
+        "2023": 101,
+        "2024": 120,
+        "2025": 1
+      },
+      "structural_supervised_candidates": {
+        "1": 113,
+        "3": 38,
+        "7": 160
+      },
+      "non_observed_calendar_days_in_span": 985,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nampur",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 119,
+      "distinct_dates": 119,
+      "first_date": "2025-01-29",
+      "last_date": "2025-10-30",
+      "rows_by_year": {
+        "2025": 119
+      },
+      "structural_supervised_candidates": {
+        "1": 18,
+        "3": 13,
+        "7": 38
+      },
+      "non_observed_calendar_days_in_span": 156,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nampur",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 227,
+      "distinct_dates": 227,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-24",
+      "rows_by_year": {
+        "2021": 25,
+        "2022": 71,
+        "2023": 47,
+        "2024": 69,
+        "2025": 15
+      },
+      "structural_supervised_candidates": {
+        "1": 35,
+        "3": 17,
+        "7": 51
+      },
+      "non_observed_calendar_days_in_span": 1258,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nampur",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 36,
+      "distinct_dates": 36,
+      "first_date": "2025-01-27",
+      "last_date": "2025-09-19",
+      "rows_by_year": {
+        "2025": 36
+      },
+      "structural_supervised_candidates": {
+        "1": 6,
+        "3": 3,
+        "7": 11
+      },
+      "non_observed_calendar_days_in_span": 200,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nandgaon",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 551,
+      "distinct_dates": 551,
+      "first_date": "2021-01-01",
+      "last_date": "2024-12-12",
+      "rows_by_year": {
+        "2021": 168,
+        "2022": 127,
+        "2023": 153,
+        "2024": 103
+      },
+      "structural_supervised_candidates": {
+        "1": 121,
+        "3": 50,
+        "7": 165
+      },
+      "non_observed_calendar_days_in_span": 891,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nandgaon",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 122,
+      "distinct_dates": 122,
+      "first_date": "2025-02-17",
+      "last_date": "2025-10-30",
+      "rows_by_year": {
+        "2025": 122
+      },
+      "structural_supervised_candidates": {
+        "1": 28,
+        "3": 0,
+        "7": 40
+      },
+      "non_observed_calendar_days_in_span": 134,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nandgaon",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 306,
+      "distinct_dates": 306,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-23",
+      "rows_by_year": {
+        "2021": 73,
+        "2022": 79,
+        "2023": 75,
+        "2024": 71,
+        "2025": 8
+      },
+      "structural_supervised_candidates": {
+        "1": 58,
+        "3": 34,
+        "7": 90
+      },
+      "non_observed_calendar_days_in_span": 1178,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nandgaon",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 39,
+      "distinct_dates": 39,
+      "first_date": "2025-01-27",
+      "last_date": "2025-04-16",
+      "rows_by_year": {
+        "2025": 39
+      },
+      "structural_supervised_candidates": {
+        "1": 5,
+        "3": 0,
+        "7": 8
+      },
+      "non_observed_calendar_days_in_span": 41,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nasik",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 745,
+      "distinct_dates": 745,
+      "first_date": "2021-02-11",
+      "last_date": "2024-11-23",
+      "rows_by_year": {
+        "2021": 185,
+        "2022": 162,
+        "2023": 207,
+        "2024": 191
+      },
+      "structural_supervised_candidates": {
+        "1": 267,
+        "3": 247,
+        "7": 347
+      },
+      "non_observed_calendar_days_in_span": 637,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nasik",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 158,
+      "distinct_dates": 158,
+      "first_date": "2025-01-31",
+      "last_date": "2025-10-29",
+      "rows_by_year": {
+        "2025": 158
+      },
+      "structural_supervised_candidates": {
+        "1": 47,
+        "3": 53,
+        "7": 73
+      },
+      "non_observed_calendar_days_in_span": 114,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nasik",
+      "commodity": "Onion",
+      "variety": "Pole",
+      "grade": "FAQ",
+      "observations": 431,
+      "distinct_dates": 431,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-24",
+      "rows_by_year": {
+        "2021": 105,
+        "2022": 94,
+        "2023": 90,
+        "2024": 121,
+        "2025": 21
+      },
+      "structural_supervised_candidates": {
+        "1": 117,
+        "3": 105,
+        "7": 167
+      },
+      "non_observed_calendar_days_in_span": 1054,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nasik",
+      "commodity": "Onion",
+      "variety": "Pole",
+      "grade": "Local",
+      "observations": 40,
+      "distinct_dates": 40,
+      "first_date": "2025-01-25",
+      "last_date": "2025-03-21",
+      "rows_by_year": {
+        "2025": 40
+      },
+      "structural_supervised_candidates": {
+        "1": 11,
+        "3": 11,
+        "7": 13
+      },
+      "non_observed_calendar_days_in_span": 16,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nasik APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 8,
+      "distinct_dates": 8,
+      "first_date": "2025-12-03",
+      "last_date": "2025-12-25",
+      "rows_by_year": {
+        "2025": 8
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 15,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Nasik APMC",
+      "commodity": "Onion",
+      "variety": "Pole",
+      "grade": "Local",
+      "observations": 8,
+      "distinct_dates": 8,
+      "first_date": "2025-12-11",
+      "last_date": "2025-12-25",
+      "rows_by_year": {
+        "2025": 8
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 7,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 890,
+      "distinct_dates": 890,
+      "first_date": "2021-01-01",
+      "last_date": "2024-12-12",
+      "rows_by_year": {
+        "2021": 246,
+        "2022": 229,
+        "2023": 221,
+        "2024": 194
+      },
+      "structural_supervised_candidates": {
+        "1": 399,
+        "3": 388,
+        "7": 494
+      },
+      "non_observed_calendar_days_in_span": 552,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 182,
+      "distinct_dates": 182,
+      "first_date": "2025-03-01",
+      "last_date": "2025-11-03",
+      "rows_by_year": {
+        "2025": 182
+      },
+      "structural_supervised_candidates": {
+        "1": 71,
+        "3": 83,
+        "7": 97
+      },
+      "non_observed_calendar_days_in_span": 66,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon",
+      "commodity": "Onion",
+      "variety": "Pole",
+      "grade": "FAQ",
+      "observations": 482,
+      "distinct_dates": 482,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-25",
+      "rows_by_year": {
+        "2021": 120,
+        "2022": 115,
+        "2023": 114,
+        "2024": 112,
+        "2025": 21
+      },
+      "structural_supervised_candidates": {
+        "1": 210,
+        "3": 192,
+        "7": 260
+      },
+      "non_observed_calendar_days_in_span": 1004,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon",
+      "commodity": "Onion",
+      "variety": "Pole",
+      "grade": "Local",
+      "observations": 60,
+      "distinct_dates": 60,
+      "first_date": "2025-01-25",
+      "last_date": "2025-04-15",
+      "rows_by_year": {
+        "2025": 60
+      },
+      "structural_supervised_candidates": {
+        "1": 17,
+        "3": 20,
+        "7": 23
+      },
+      "non_observed_calendar_days_in_span": 21,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 11,
+      "distinct_dates": 11,
+      "first_date": "2025-12-03",
+      "last_date": "2025-12-27",
+      "rows_by_year": {
+        "2025": 11
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 14,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon APMC",
+      "commodity": "Onion",
+      "variety": "Pole",
+      "grade": "Local",
+      "observations": 9,
+      "distinct_dates": 9,
+      "first_date": "2025-12-03",
+      "last_date": "2025-12-29",
+      "rows_by_year": {
+        "2025": 9
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 18,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon Baswant (Saykheda)",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 764,
+      "distinct_dates": 764,
+      "first_date": "2021-02-22",
+      "last_date": "2024-11-27",
+      "rows_by_year": {
+        "2021": 197,
+        "2022": 214,
+        "2023": 180,
+        "2024": 173
+      },
+      "structural_supervised_candidates": {
+        "1": 241,
+        "3": 270,
+        "7": 339
+      },
+      "non_observed_calendar_days_in_span": 611,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon Baswant (Saykheda)",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 173,
+      "distinct_dates": 173,
+      "first_date": "2025-03-04",
+      "last_date": "2025-11-04",
+      "rows_by_year": {
+        "2025": 173
+      },
+      "structural_supervised_candidates": {
+        "1": 66,
+        "3": 68,
+        "7": 93
+      },
+      "non_observed_calendar_days_in_span": 73,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon Baswant (Saykheda)",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 386,
+      "distinct_dates": 386,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-25",
+      "rows_by_year": {
+        "2021": 92,
+        "2022": 82,
+        "2023": 100,
+        "2024": 91,
+        "2025": 21
+      },
+      "structural_supervised_candidates": {
+        "1": 122,
+        "3": 109,
+        "7": 161
+      },
+      "non_observed_calendar_days_in_span": 1100,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon Baswant (Saykheda)",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 42,
+      "distinct_dates": 42,
+      "first_date": "2025-01-25",
+      "last_date": "2025-07-15",
+      "rows_by_year": {
+        "2025": 42
+      },
+      "structural_supervised_candidates": {
+        "1": 14,
+        "3": 14,
+        "7": 17
+      },
+      "non_observed_calendar_days_in_span": 130,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon Baswant (Saykheda) APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 2,
+      "distinct_dates": 2,
+      "first_date": "2025-12-05",
+      "last_date": "2025-12-17",
+      "rows_by_year": {
+        "2025": 2
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 11,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Pimpalgaon Baswant (Saykheda) APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 2,
+      "distinct_dates": 2,
+      "first_date": "2025-12-22",
+      "last_date": "2025-12-27",
+      "rows_by_year": {
+        "2025": 2
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 4,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Premium Krushi Utpanna Bazar",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 1,
+      "distinct_dates": 1,
+      "first_date": "2024-08-01",
+      "last_date": "2024-08-01",
+      "rows_by_year": {
+        "2024": 1
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 0,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Satana",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 550,
+      "distinct_dates": 550,
+      "first_date": "2021-01-01",
+      "last_date": "2024-12-19",
+      "rows_by_year": {
+        "2021": 171,
+        "2022": 115,
+        "2023": 145,
+        "2024": 119
+      },
+      "structural_supervised_candidates": {
+        "1": 106,
+        "3": 42,
+        "7": 158
+      },
+      "non_observed_calendar_days_in_span": 899,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Satana",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 108,
+      "distinct_dates": 108,
+      "first_date": "2025-03-03",
+      "last_date": "2025-11-04",
+      "rows_by_year": {
+        "2025": 108
+      },
+      "structural_supervised_candidates": {
+        "1": 16,
+        "3": 9,
+        "7": 26
+      },
+      "non_observed_calendar_days_in_span": 139,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Satana",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 271,
+      "distinct_dates": 271,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-24",
+      "rows_by_year": {
+        "2021": 80,
+        "2022": 55,
+        "2023": 67,
+        "2024": 59,
+        "2025": 10
+      },
+      "structural_supervised_candidates": {
+        "1": 45,
+        "3": 16,
+        "7": 60
+      },
+      "non_observed_calendar_days_in_span": 1214,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Satana",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 26,
+      "distinct_dates": 26,
+      "first_date": "2025-01-27",
+      "last_date": "2025-03-25",
+      "rows_by_year": {
+        "2025": 26
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 3
+      },
+      "non_observed_calendar_days_in_span": 32,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Satana APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 6,
+      "distinct_dates": 6,
+      "first_date": "2025-12-08",
+      "last_date": "2025-12-24",
+      "rows_by_year": {
+        "2025": 6
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 11,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Satana APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 3,
+      "distinct_dates": 3,
+      "first_date": "2025-12-17",
+      "last_date": "2025-12-29",
+      "rows_by_year": {
+        "2025": 3
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 10,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Shivsiddha Govind Producer Company Limited Sanchal",
+      "commodity": "Onion",
+      "variety": "Local",
+      "grade": "FAQ",
+      "observations": 153,
+      "distinct_dates": 153,
+      "first_date": "2023-07-06",
+      "last_date": "2024-10-28",
+      "rows_by_year": {
+        "2023": 65,
+        "2024": 88
+      },
+      "structural_supervised_candidates": {
+        "1": 19,
+        "3": 8,
+        "7": 32
+      },
+      "non_observed_calendar_days_in_span": 328,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Shivsiddha Govind Producer Company Limited Sanchal",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 54,
+      "distinct_dates": 54,
+      "first_date": "2024-11-06",
+      "last_date": "2025-06-04",
+      "rows_by_year": {
+        "2024": 16,
+        "2025": 38
+      },
+      "structural_supervised_candidates": {
+        "1": 1,
+        "3": 1,
+        "7": 2
+      },
+      "non_observed_calendar_days_in_span": 157,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Shivsiddha Govind Producer Company Limited Sanchal",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 68,
+      "distinct_dates": 68,
+      "first_date": "2025-06-05",
+      "last_date": "2025-11-01",
+      "rows_by_year": {
+        "2025": 68
+      },
+      "structural_supervised_candidates": {
+        "1": 14,
+        "3": 1,
+        "7": 23
+      },
+      "non_observed_calendar_days_in_span": 82,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Shivsiddha Govind Producer Company Limited Sanchal",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 21,
+      "distinct_dates": 21,
+      "first_date": "2024-05-07",
+      "last_date": "2025-02-05",
+      "rows_by_year": {
+        "2024": 1,
+        "2025": 20
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 1
+      },
+      "non_observed_calendar_days_in_span": 254,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Shree Rameshwar Krushi Market",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 145,
+      "distinct_dates": 145,
+      "first_date": "2023-07-03",
+      "last_date": "2025-06-02",
+      "rows_by_year": {
+        "2023": 55,
+        "2024": 76,
+        "2025": 14
+      },
+      "structural_supervised_candidates": {
+        "1": 19,
+        "3": 7,
+        "7": 27
+      },
+      "non_observed_calendar_days_in_span": 556,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Shree Rameshwar Krushi Market",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 25,
+      "distinct_dates": 25,
+      "first_date": "2025-06-06",
+      "last_date": "2025-10-03",
+      "rows_by_year": {
+        "2025": 25
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 1
+      },
+      "non_observed_calendar_days_in_span": 95,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Shree Rameshwar Krushi Market",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 53,
+      "distinct_dates": 53,
+      "first_date": "2023-10-24",
+      "last_date": "2025-05-16",
+      "rows_by_year": {
+        "2023": 16,
+        "2024": 20,
+        "2025": 17
+      },
+      "structural_supervised_candidates": {
+        "1": 1,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 518,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Shree Rameshwar Krushi Market",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 1,
+      "distinct_dates": 1,
+      "first_date": "2025-10-03",
+      "last_date": "2025-10-03",
+      "rows_by_year": {
+        "2025": 1
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 0,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Sinner",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 540,
+      "distinct_dates": 540,
+      "first_date": "2021-03-01",
+      "last_date": "2024-10-28",
+      "rows_by_year": {
+        "2021": 154,
+        "2022": 141,
+        "2023": 132,
+        "2024": 113
+      },
+      "structural_supervised_candidates": {
+        "1": 162,
+        "3": 77,
+        "7": 225
+      },
+      "non_observed_calendar_days_in_span": 798,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Sinner",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 114,
+      "distinct_dates": 114,
+      "first_date": "2025-04-03",
+      "last_date": "2025-11-04",
+      "rows_by_year": {
+        "2025": 114
+      },
+      "structural_supervised_candidates": {
+        "1": 34,
+        "3": 21,
+        "7": 48
+      },
+      "non_observed_calendar_days_in_span": 102,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Sinner",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 291,
+      "distinct_dates": 291,
+      "first_date": "2021-01-04",
+      "last_date": "2025-01-23",
+      "rows_by_year": {
+        "2021": 78,
+        "2022": 51,
+        "2023": 62,
+        "2024": 85,
+        "2025": 15
+      },
+      "structural_supervised_candidates": {
+        "1": 60,
+        "3": 46,
+        "7": 91
+      },
+      "non_observed_calendar_days_in_span": 1190,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Sinner",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 33,
+      "distinct_dates": 33,
+      "first_date": "2025-01-28",
+      "last_date": "2025-03-26",
+      "rows_by_year": {
+        "2025": 33
+      },
+      "structural_supervised_candidates": {
+        "1": 1,
+        "3": 5,
+        "7": 4
+      },
+      "non_observed_calendar_days_in_span": 25,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Sinner APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 6,
+      "distinct_dates": 6,
+      "first_date": "2025-12-09",
+      "last_date": "2025-12-19",
+      "rows_by_year": {
+        "2025": 6
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 5,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Sinner APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 1,
+      "distinct_dates": 1,
+      "first_date": "2025-12-23",
+      "last_date": "2025-12-23",
+      "rows_by_year": {
+        "2025": 1
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 0,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Suragana",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 1,
+      "distinct_dates": 1,
+      "first_date": "2023-06-18",
+      "last_date": "2023-06-18",
+      "rows_by_year": {
+        "2023": 1
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 0,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Umrane",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 416,
+      "distinct_dates": 416,
+      "first_date": "2021-01-04",
+      "last_date": "2024-12-05",
+      "rows_by_year": {
+        "2021": 148,
+        "2022": 94,
+        "2023": 106,
+        "2024": 68
+      },
+      "structural_supervised_candidates": {
+        "1": 51,
+        "3": 20,
+        "7": 72
+      },
+      "non_observed_calendar_days_in_span": 1016,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Umrane",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 87,
+      "distinct_dates": 87,
+      "first_date": "2025-04-02",
+      "last_date": "2025-10-30",
+      "rows_by_year": {
+        "2025": 87
+      },
+      "structural_supervised_candidates": {
+        "1": 10,
+        "3": 5,
+        "7": 12
+      },
+      "non_observed_calendar_days_in_span": 125,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Umrane",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 282,
+      "distinct_dates": 282,
+      "first_date": "2021-01-04",
+      "last_date": "2025-01-22",
+      "rows_by_year": {
+        "2021": 68,
+        "2022": 56,
+        "2023": 67,
+        "2024": 80,
+        "2025": 11
+      },
+      "structural_supervised_candidates": {
+        "1": 44,
+        "3": 6,
+        "7": 70
+      },
+      "non_observed_calendar_days_in_span": 1198,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Umrane",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 19,
+      "distinct_dates": 19,
+      "first_date": "2025-01-27",
+      "last_date": "2025-03-28",
+      "rows_by_year": {
+        "2025": 19
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 42,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Umrane APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 1,
+      "distinct_dates": 1,
+      "first_date": "2025-12-15",
+      "last_date": "2025-12-15",
+      "rows_by_year": {
+        "2025": 1
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 0,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Umrane APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 4,
+      "distinct_dates": 4,
+      "first_date": "2025-12-03",
+      "last_date": "2025-12-18",
+      "rows_by_year": {
+        "2025": 4
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 12,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Yeola",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "FAQ",
+      "observations": 611,
+      "distinct_dates": 611,
+      "first_date": "2021-01-01",
+      "last_date": "2024-11-27",
+      "rows_by_year": {
+        "2021": 160,
+        "2022": 172,
+        "2023": 144,
+        "2024": 135
+      },
+      "structural_supervised_candidates": {
+        "1": 128,
+        "3": 61,
+        "7": 206
+      },
+      "non_observed_calendar_days_in_span": 816,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Yeola",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 129,
+      "distinct_dates": 129,
+      "first_date": "2025-03-10",
+      "last_date": "2025-11-03",
+      "rows_by_year": {
+        "2025": 129
+      },
+      "structural_supervised_candidates": {
+        "1": 25,
+        "3": 16,
+        "7": 40
+      },
+      "non_observed_calendar_days_in_span": 110,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Yeola",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "FAQ",
+      "observations": 333,
+      "distinct_dates": 333,
+      "first_date": "2021-01-01",
+      "last_date": "2025-01-25",
+      "rows_by_year": {
+        "2021": 77,
+        "2022": 78,
+        "2023": 81,
+        "2024": 80,
+        "2025": 17
+      },
+      "structural_supervised_candidates": {
+        "1": 67,
+        "3": 28,
+        "7": 107
+      },
+      "non_observed_calendar_days_in_span": 1153,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Yeola",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 36,
+      "distinct_dates": 36,
+      "first_date": "2025-01-25",
+      "last_date": "2025-03-24",
+      "rows_by_year": {
+        "2025": 36
+      },
+      "structural_supervised_candidates": {
+        "1": 8,
+        "3": 3,
+        "7": 11
+      },
+      "non_observed_calendar_days_in_span": 23,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Yeola APMC",
+      "commodity": "Onion",
+      "variety": "Other",
+      "grade": "Local",
+      "observations": 8,
+      "distinct_dates": 8,
+      "first_date": "2025-12-05",
+      "last_date": "2025-12-25",
+      "rows_by_year": {
+        "2025": 8
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 13,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    },
+    {
+      "market_original": "Yeola APMC",
+      "commodity": "Onion",
+      "variety": "Red",
+      "grade": "Local",
+      "observations": 4,
+      "distinct_dates": 4,
+      "first_date": "2025-12-17",
+      "last_date": "2025-12-29",
+      "rows_by_year": {
+        "2025": 4
+      },
+      "structural_supervised_candidates": {
+        "1": 0,
+        "3": 0,
+        "7": 0
+      },
+      "non_observed_calendar_days_in_span": 9,
+      "closure_interpretation": "Unknown; non-observed calendar dates are not labeled trading-day omissions."
+    }
+  ],
+  "schema_versions": [
+    1,
+    2,
+    3
+  ],
+  "historical_columns": [
+    "id",
+    "record_key",
+    "source_file",
+    "source_row_number",
+    "source_sha256",
+    "source_url",
+    "source_publisher",
+    "source_attribution_claim",
+    "state",
+    "district",
+    "market_original",
+    "market_normalized",
+    "commodity",
+    "commodity_code",
+    "variety",
+    "grade",
+    "observation_date",
+    "min_price",
+    "max_price",
+    "modal_price",
+    "price_unit",
+    "price_unit_status",
+    "verified_available_at",
+    "availability_status",
+    "retrospective_policy",
+    "review_status",
+    "quarantine_reason",
+    "source_record",
+    "ingested_at"
+  ],
+  "backup_verification": {
+    "path": "C:\\Nexyra\\backups\\nexyra_pre_historical_20261009.db",
+    "integrity_check": "ok",
+    "canonical_fingerprint_matches": true,
+    "canonical_rows": 291
+  },
+  "idempotency": {
+    "second_run_inserted": 0,
+    "second_run_skipped": 21864,
+    "duplicates": 0,
+    "conflicts": 0
+  },
+  "canonical_fingerprint_matches_backup": true,
+  "source_file_sha256_verification": {
+    "2021.csv": "32709b6652f18b4e86c0de1a8523a640c3b7fef8a0954c1d7a972a3a3f492c35",
+    "2022.csv": "bca75203f780a71d0cf06cf8ea1b36c774ecc75a914c49dd00d5815f6c172126",
+    "2023.csv": "7f5a6ee607afe9731de0412862bd6e6dfe30079eacba3928432e2580136b95e1",
+    "2024.csv": "59794b7a4dad2fa5e3f1a116851b584368ca99ce44a9fe90b2638e8a5faf7a60",
+    "2025.csv": "0070d5c0fd8f95a2268420eaa3f9b712f74bbb179e8c09025c4f32d4999bb45a"
+  },
+  "weekly_analysis_file": {
+    "path": "C:\\Nexyra\\data\\raw\\agri\\Marketwise_Varietywise_Prices_Weekly_Analysis_Report_08-10-2026_10-19-23_PM.csv",
+    "sha256": "cf285393af3caedcd8c78d097d42e5f546e32275bfc3df6f0d9d551cdd40d882",
+    "modified_by_import": false
+  },
+  "canonical_overlap_review": {
+    "quarantined_alias_candidates": 13,
+    "exact_price_matches": 13,
+    "conflicts": 0,
+    "records": [
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Other",
+        "grade": "Local",
+        "observation_date": "2025-12-05",
+        "modal_price": 1300.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Other",
+        "grade": "Local",
+        "observation_date": "2025-12-09",
+        "modal_price": 1600.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Other",
+        "grade": "Local",
+        "observation_date": "2025-12-11",
+        "modal_price": 2050.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Other",
+        "grade": "Local",
+        "observation_date": "2025-12-12",
+        "modal_price": 2000.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Other",
+        "grade": "Local",
+        "observation_date": "2025-12-17",
+        "modal_price": 2000.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Red",
+        "grade": "Local",
+        "observation_date": "2025-12-19",
+        "modal_price": 1700.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Other",
+        "grade": "Local",
+        "observation_date": "2025-12-20",
+        "modal_price": 1200.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Red",
+        "grade": "Local",
+        "observation_date": "2025-12-20",
+        "modal_price": 1100.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Red",
+        "grade": "Local",
+        "observation_date": "2025-12-25",
+        "modal_price": 1600.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Red",
+        "grade": "Local",
+        "observation_date": "2025-12-26",
+        "modal_price": 1700.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Red",
+        "grade": "Local",
+        "observation_date": "2025-12-27",
+        "modal_price": 1740.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Other",
+        "grade": "Local",
+        "observation_date": "2025-12-27",
+        "modal_price": 1200.0
+      },
+      {
+        "market_original": "Lasalgaon (Niphad) APMC",
+        "canonical_market": "Lasalgaon(Niphad)",
+        "variety": "Red",
+        "grade": "Local",
+        "observation_date": "2025-12-29",
+        "modal_price": 1940.0
+      }
+    ]
+  },
+  "canonical_schema_unchanged": true
+}

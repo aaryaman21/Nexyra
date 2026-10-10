@@ -1,0 +1,1378 @@
+{
+  "experiment": "Nexyra Phase 3A retrospective Model A",
+  "research_only": true,
+  "policy": "retrospective_assumed_availability_plus_7_calendar_days_at_23:59:59_Asia/Kolkata",
+  "availability_verified": false,
+  "price_unit": "INR/quintal (provisional; unverified for Kaggle annual files)",
+  "series": {
+    "market": "Lasalgaon (Niphad)",
+    "commodity": "Onion",
+    "variety": "Other",
+    "grade": "FAQ"
+  },
+  "split": {
+    "validation_start": "2023-06-01",
+    "untouched_test_start": "2024-08-01"
+  },
+  "protocol": {
+    "min_proper_training": 60,
+    "calibration_rows": 20,
+    "rolling_folds": 3,
+    "origins_per_fold": 21,
+    "min_test_rows": 21,
+    "interval_coverage": 0.9,
+    "minimum_validation_mae_gain": 0.05
+  },
+  "feature_columns": [
+    "price",
+    "lag1",
+    "lag7",
+    "mean7",
+    "std7",
+    "change7",
+    "weekday",
+    "month"
+  ],
+  "models": {
+    "ridge_alphas": [
+      1.0,
+      10.0
+    ],
+    "hist_gradient_boosting": {
+      "max_iter": 80,
+      "max_leaf_nodes": 7,
+      "l2_regularization": 10.0,
+      "random_state": 42,
+      "early_stopping": false
+    }
+  },
+  "horizons": {
+    "1": {
+      "candidate_origins": 318,
+      "validation_candidates_before_cap": 110,
+      "validation_origins": 63,
+      "validation_origin_start": "2023-06-01",
+      "validation_origin_end": "2023-12-12",
+      "test_origins": 62,
+      "test_origin_start": "2024-08-01",
+      "test_origin_end": "2024-12-05",
+      "seasonal_naive_7d": "unavailable",
+      "selected_model": "naive",
+      "selection_reason": "No numerical model passed the validation MAE improvement and all-fold stability gate",
+      "comparison": [
+        {
+          "id": "naive",
+          "family": "baseline",
+          "algorithm": "last_observation",
+          "features": [],
+          "params": {},
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 143.28571428571428,
+              "rmse": 226.77143937075877,
+              "smape": 15.616449646370345,
+              "directional_accuracy": 0.19047619047619047,
+              "interval_coverage": 0.9523809523809523,
+              "interval_width": 1000.0
+            },
+            {
+              "n": 21,
+              "mae": 239.95238095238096,
+              "rmse": 348.40213492320567,
+              "smape": 15.290241542234565,
+              "directional_accuracy": 0.047619047619047616,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 998.0
+            },
+            {
+              "n": 21,
+              "mae": 836.047619047619,
+              "rmse": 985.9544324445947,
+              "smape": 25.36845422816406,
+              "directional_accuracy": 0.0,
+              "interval_coverage": 0.42857142857142855,
+              "interval_width": 1600.0
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 112,
+              "training_pool": 133,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-07-06"
+            },
+            {
+              "fold": 2,
+              "proper_training": 129,
+              "training_pool": 154,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-07-07",
+              "origin_end": "2023-08-31"
+            },
+            {
+              "fold": 3,
+              "proper_training": 153,
+              "training_pool": 178,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-09-01",
+              "origin_end": "2023-12-12"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 406.42857142857144,
+            "rmse": 617.7689633378259,
+            "smape": 18.758381805589654,
+            "directional_accuracy": 0.07936507936507936,
+            "interval_coverage": 0.7301587301587301,
+            "interval_width": 1199.3333333333333
+          },
+          "stability_mae_std": 306.3391428563385,
+          "test": {
+            "n": 62,
+            "mae": 397.0806451612903,
+            "rmse": 562.562727685229,
+            "smape": 10.111301356415517,
+            "directional_accuracy": 0.016129032258064516,
+            "interval_coverage": 0.45161290322580644,
+            "interval_width": 400.0
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-05",
+            "target_start": "2024-08-02",
+            "target_end": "2024-12-06",
+            "origins": 62,
+            "final_proper_training": 223,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_ridge_1",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 1.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 221.38927616466057,
+              "rmse": 237.89419230444338,
+              "smape": 22.58433004733352,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 1.0,
+              "interval_width": 1249.3780620740872
+            },
+            {
+              "n": 21,
+              "mae": 235.1298784427068,
+              "rmse": 305.60766352798555,
+              "smape": 14.635506798931214,
+              "directional_accuracy": 0.5714285714285714,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 773.0645192892404
+            },
+            {
+              "n": 21,
+              "mae": 764.5229864131989,
+              "rmse": 918.2405360623746,
+              "smape": 23.860222595263476,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 0.47619047619047616,
+              "interval_width": 1420.1733760119566
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 112,
+              "training_pool": 133,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-07-06"
+            },
+            {
+              "fold": 2,
+              "proper_training": 129,
+              "training_pool": 154,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-07-07",
+              "origin_end": "2023-08-31"
+            },
+            {
+              "fold": 3,
+              "proper_training": 153,
+              "training_pool": 178,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-09-01",
+              "origin_end": "2023-12-12"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 407.0140470068554,
+            "rmse": 575.3710028631772,
+            "smape": 20.36001981384274,
+            "directional_accuracy": 0.6190476190476191,
+            "interval_coverage": 0.7619047619047619,
+            "interval_width": 1147.538652458428
+          },
+          "stability_mae_std": 252.85922612437574,
+          "test": {
+            "n": 62,
+            "mae": 562.4456808935149,
+            "rmse": 731.7494479352426,
+            "smape": 15.233307612787483,
+            "directional_accuracy": 0.3870967741935484,
+            "interval_coverage": 0.6935483870967742,
+            "interval_width": 1388.024659379095
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-05",
+            "target_start": "2024-08-02",
+            "target_end": "2024-12-06",
+            "origins": 62,
+            "final_proper_training": 223,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_ridge_10",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 10.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 239.9810243738018,
+              "rmse": 255.60122313347605,
+              "smape": 24.38017542580069,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 1.0,
+              "interval_width": 1279.6925552412997
+            },
+            {
+              "n": 21,
+              "mae": 240.23468493097494,
+              "rmse": 312.69628873926115,
+              "smape": 15.05479148768701,
+              "directional_accuracy": 0.5238095238095238,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 786.6824855369324
+            },
+            {
+              "n": 21,
+              "mae": 773.476808863197,
+              "rmse": 913.9365735867369,
+              "smape": 24.220850746858925,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 0.5238095238095238,
+              "interval_width": 1458.1075290213594
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 112,
+              "training_pool": 133,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-07-06"
+            },
+            {
+              "fold": 2,
+              "proper_training": 129,
+              "training_pool": 154,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-07-07",
+              "origin_end": "2023-08-31"
+            },
+            {
+              "fold": 3,
+              "proper_training": 153,
+              "training_pool": 178,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-09-01",
+              "origin_end": "2023-12-12"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 417.8975060559913,
+            "rmse": 576.8856081864935,
+            "smape": 21.218605886782207,
+            "directional_accuracy": 0.5873015873015873,
+            "interval_coverage": 0.7777777777777778,
+            "interval_width": 1174.8275232665305
+          },
+          "stability_mae_std": 251.4325575902525,
+          "test": {
+            "n": 62,
+            "mae": 566.70316630973,
+            "rmse": 727.250268981058,
+            "smape": 15.372126228470762,
+            "directional_accuracy": 0.3870967741935484,
+            "interval_coverage": 0.6612903225806451,
+            "interval_width": 1391.4932937437138
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-05",
+            "target_start": "2024-08-02",
+            "target_end": "2024-12-06",
+            "origins": 62,
+            "final_proper_training": 223,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_boosting",
+          "family": "A",
+          "algorithm": "hist_gradient_boosting",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "max_iter": 80,
+            "max_leaf_nodes": 7,
+            "l2_regularization": 10.0,
+            "random_state": 42,
+            "early_stopping": false
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 306.78957935798365,
+              "rmse": 324.1780589805943,
+              "smape": 30.242098732405776,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 1.0,
+              "interval_width": 1163.333452078791
+            },
+            {
+              "n": 21,
+              "mae": 261.2984277319855,
+              "rmse": 340.8300898492599,
+              "smape": 16.577994546472276,
+              "directional_accuracy": 0.47619047619047616,
+              "interval_coverage": 0.8571428571428571,
+              "interval_width": 1026.3351359018998
+            },
+            {
+              "n": 21,
+              "mae": 1020.7263277656758,
+              "rmse": 1170.2880162386384,
+              "smape": 32.93950588807918,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 0.42857142857142855,
+              "interval_width": 1736.5837091274002
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 112,
+              "training_pool": 133,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-07-06"
+            },
+            {
+              "fold": 2,
+              "proper_training": 129,
+              "training_pool": 154,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-07-07",
+              "origin_end": "2023-08-31"
+            },
+            {
+              "fold": 3,
+              "proper_training": 153,
+              "training_pool": 178,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-09-01",
+              "origin_end": "2023-12-12"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 529.604778285215,
+            "rmse": 728.2011180580192,
+            "smape": 26.586533055652406,
+            "directional_accuracy": 0.5873015873015873,
+            "interval_coverage": 0.7619047619047619,
+            "interval_width": 1308.750765702697
+          },
+          "stability_mae_std": 347.77161422609083,
+          "test": {
+            "n": 62,
+            "mae": 1052.6438003165986,
+            "rmse": 1244.4005563004323,
+            "smape": 28.773653240889235,
+            "directional_accuracy": 0.532258064516129,
+            "interval_coverage": 0.22580645161290322,
+            "interval_width": 846.5199381310878
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-05",
+            "target_start": "2024-08-02",
+            "target_end": "2024-12-06",
+            "origins": 62,
+            "final_proper_training": 223,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "seasonal_naive",
+          "family": "baseline",
+          "algorithm": "seasonal_naive",
+          "features": [],
+          "params": {
+            "period_days": 7
+          },
+          "status": "unavailable",
+          "reason": "target-minus-7-day price is not available at forecast origin under the seven-day policy",
+          "eligible_origins": 0
+        }
+      ]
+    },
+    "3": {
+      "candidate_origins": 299,
+      "validation_candidates_before_cap": 109,
+      "validation_origins": 63,
+      "validation_origin_start": "2023-06-02",
+      "validation_origin_end": "2023-12-05",
+      "test_origins": 65,
+      "test_origin_start": "2024-08-01",
+      "test_origin_end": "2024-12-03",
+      "seasonal_naive_7d": "unavailable",
+      "selected_model": "naive",
+      "selection_reason": "No numerical model passed the validation MAE improvement and all-fold stability gate",
+      "comparison": [
+        {
+          "id": "naive",
+          "family": "baseline",
+          "algorithm": "last_observation",
+          "features": [],
+          "params": {},
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 188.71428571428572,
+              "rmse": 259.9031871037111,
+              "smape": 20.139910525086307,
+              "directional_accuracy": 0.14285714285714285,
+              "interval_coverage": 1.0,
+              "interval_width": 1040.0
+            },
+            {
+              "n": 21,
+              "mae": 299.23809523809524,
+              "rmse": 409.00750953636884,
+              "smape": 19.089490747342015,
+              "directional_accuracy": 0.0,
+              "interval_coverage": 0.7619047619047619,
+              "interval_width": 1040.0
+            },
+            {
+              "n": 21,
+              "mae": 818.7619047619048,
+              "rmse": 1006.0501265557582,
+              "smape": 23.922774858788205,
+              "directional_accuracy": 0.0,
+              "interval_coverage": 0.5714285714285714,
+              "interval_width": 1900.0
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 89,
+              "training_pool": 109,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-02",
+              "origin_end": "2023-07-07"
+            },
+            {
+              "fold": 2,
+              "proper_training": 105,
+              "training_pool": 130,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-07-08",
+              "origin_end": "2023-09-02"
+            },
+            {
+              "fold": 3,
+              "proper_training": 129,
+              "training_pool": 155,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-09-08",
+              "origin_end": "2023-12-05"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 435.57142857142856,
+            "rmse": 644.7153549349425,
+            "smape": 21.05072537707218,
+            "directional_accuracy": 0.047619047619047616,
+            "interval_coverage": 0.7777777777777777,
+            "interval_width": 1326.6666666666667
+          },
+          "stability_mae_std": 274.6878032727661,
+          "test": {
+            "n": 65,
+            "mae": 464.66153846153844,
+            "rmse": 593.5663140970596,
+            "smape": 11.757143681992044,
+            "directional_accuracy": 0.0,
+            "interval_coverage": 0.18461538461538463,
+            "interval_width": 350.0
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-03",
+            "target_start": "2024-08-04",
+            "target_end": "2024-12-06",
+            "origins": 65,
+            "final_proper_training": 199,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_ridge_1",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 1.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 212.51655864952374,
+              "rmse": 236.75012114052367,
+              "smape": 21.07130248715508,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 1.0,
+              "interval_width": 2101.926575844385
+            },
+            {
+              "n": 21,
+              "mae": 253.30957009384747,
+              "rmse": 343.88847053973905,
+              "smape": 15.79082250421649,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 0.7619047619047619,
+              "interval_width": 791.5299429516608
+            },
+            {
+              "n": 21,
+              "mae": 768.8093545052669,
+              "rmse": 960.6120859071443,
+              "smape": 22.73213959648808,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 0.5238095238095238,
+              "interval_width": 1673.2564480761298
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 89,
+              "training_pool": 109,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-02",
+              "origin_end": "2023-07-07"
+            },
+            {
+              "fold": 2,
+              "proper_training": 105,
+              "training_pool": 130,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-07-08",
+              "origin_end": "2023-09-02"
+            },
+            {
+              "fold": 3,
+              "proper_training": 129,
+              "training_pool": 155,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-09-08",
+              "origin_end": "2023-12-05"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 411.5451610828795,
+            "rmse": 604.7273434149445,
+            "smape": 19.86475486261988,
+            "directional_accuracy": 0.6507936507936508,
+            "interval_coverage": 0.7619047619047619,
+            "interval_width": 1522.2376556240586
+          },
+          "stability_mae_std": 253.17226727004945,
+          "test": {
+            "n": 65,
+            "mae": 512.235549673871,
+            "rmse": 662.8237945600928,
+            "smape": 13.60798816401525,
+            "directional_accuracy": 0.35384615384615387,
+            "interval_coverage": 0.5230769230769231,
+            "interval_width": 902.4014309110371
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-03",
+            "target_start": "2024-08-04",
+            "target_end": "2024-12-06",
+            "origins": 65,
+            "final_proper_training": 199,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_ridge_10",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 10.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 225.10456438217903,
+              "rmse": 249.11751293568977,
+              "smape": 22.23887179908272,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 1.0,
+              "interval_width": 2117.877621859204
+            },
+            {
+              "n": 21,
+              "mae": 254.87624385294535,
+              "rmse": 342.2684768464481,
+              "smape": 15.923905163813194,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 0.7619047619047619,
+              "interval_width": 801.5137243700793
+            },
+            {
+              "n": 21,
+              "mae": 782.1560017108987,
+              "rmse": 975.7594896433873,
+              "smape": 23.06529458363115,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 0.47619047619047616,
+              "interval_width": 1624.3332578092852
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 89,
+              "training_pool": 109,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-02",
+              "origin_end": "2023-07-07"
+            },
+            {
+              "fold": 2,
+              "proper_training": 105,
+              "training_pool": 130,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-07-08",
+              "origin_end": "2023-09-02"
+            },
+            {
+              "fold": 3,
+              "proper_training": 129,
+              "training_pool": 155,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-09-08",
+              "origin_end": "2023-12-05"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 420.7122699820076,
+            "rmse": 614.0884374754652,
+            "smape": 20.409357182175686,
+            "directional_accuracy": 0.6507936507936508,
+            "interval_coverage": 0.746031746031746,
+            "interval_width": 1514.574868012856
+          },
+          "stability_mae_std": 255.86815176207116,
+          "test": {
+            "n": 65,
+            "mae": 505.62696372288326,
+            "rmse": 647.6564187427997,
+            "smape": 13.465244683115019,
+            "directional_accuracy": 0.35384615384615387,
+            "interval_coverage": 0.4307692307692308,
+            "interval_width": 794.5786981788897
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-03",
+            "target_start": "2024-08-04",
+            "target_end": "2024-12-06",
+            "origins": 65,
+            "final_proper_training": 199,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_boosting",
+          "family": "A",
+          "algorithm": "hist_gradient_boosting",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "max_iter": 80,
+            "max_leaf_nodes": 7,
+            "l2_regularization": 10.0,
+            "random_state": 42,
+            "early_stopping": false
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 263.97491038873466,
+              "rmse": 295.0310874233913,
+              "smape": 25.560429218890146,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 1.0,
+              "interval_width": 2409.5517692698186
+            },
+            {
+              "n": 21,
+              "mae": 299.3356374025966,
+              "rmse": 441.24590300273877,
+              "smape": 18.78376976076192,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 0.7142857142857143,
+              "interval_width": 811.3972222904964
+            },
+            {
+              "n": 21,
+              "mae": 926.0178715648198,
+              "rmse": 1119.9290349498224,
+              "smape": 29.065856557709154,
+              "directional_accuracy": 0.5714285714285714,
+              "interval_coverage": 0.6190476190476191,
+              "interval_width": 2134.4277267666425
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 89,
+              "training_pool": 109,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-02",
+              "origin_end": "2023-07-07"
+            },
+            {
+              "fold": 2,
+              "proper_training": 105,
+              "training_pool": 130,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-07-08",
+              "origin_end": "2023-09-02"
+            },
+            {
+              "fold": 3,
+              "proper_training": 129,
+              "training_pool": 155,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-09-08",
+              "origin_end": "2023-12-05"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 496.44280645205043,
+            "rmse": 715.5376376745371,
+            "smape": 24.47001851245374,
+            "directional_accuracy": 0.6349206349206349,
+            "interval_coverage": 0.7777777777777778,
+            "interval_width": 1785.1255727756525
+          },
+          "stability_mae_std": 304.098282006237,
+          "test": {
+            "n": 65,
+            "mae": 968.3209959245248,
+            "rmse": 1110.8337223945737,
+            "smape": 25.843825385269113,
+            "directional_accuracy": 0.5076923076923077,
+            "interval_coverage": 0.2,
+            "interval_width": 828.4747108854917
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-03",
+            "target_start": "2024-08-04",
+            "target_end": "2024-12-06",
+            "origins": 65,
+            "final_proper_training": 199,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "seasonal_naive",
+          "family": "baseline",
+          "algorithm": "seasonal_naive",
+          "features": [],
+          "params": {
+            "period_days": 7
+          },
+          "status": "unavailable",
+          "reason": "target-minus-7-day price is not available at forecast origin under the seven-day policy",
+          "eligible_origins": 0
+        }
+      ]
+    },
+    "7": {
+      "candidate_origins": 370,
+      "validation_candidates_before_cap": 121,
+      "validation_origins": 63,
+      "validation_origin_start": "2023-06-01",
+      "validation_origin_end": "2023-10-25",
+      "test_origins": 63,
+      "test_origin_start": "2024-08-01",
+      "test_origin_end": "2024-12-03",
+      "seasonal_naive_7d": "unavailable",
+      "selected_model": "naive",
+      "selection_reason": "No numerical model passed the validation MAE improvement and all-fold stability gate",
+      "comparison": [
+        {
+          "id": "naive",
+          "family": "baseline",
+          "algorithm": "last_observation",
+          "features": [],
+          "params": {},
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 251.66666666666666,
+              "rmse": 325.2128240896735,
+              "smape": 27.29318646732436,
+              "directional_accuracy": 0.047619047619047616,
+              "interval_coverage": 1.0,
+              "interval_width": 1406.2857142857142
+            },
+            {
+              "n": 21,
+              "mae": 283.2857142857143,
+              "rmse": 455.4281606618211,
+              "smape": 19.045932515167337,
+              "directional_accuracy": 0.14285714285714285,
+              "interval_coverage": 0.6666666666666666,
+              "interval_width": 550.0
+            },
+            {
+              "n": 21,
+              "mae": 698.0952380952381,
+              "rmse": 1091.0410057328168,
+              "smape": 22.713025212251686,
+              "directional_accuracy": 0.09523809523809523,
+              "interval_coverage": 0.6666666666666666,
+              "interval_width": 1142.0
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 139,
+              "training_pool": 162,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-06-29"
+            },
+            {
+              "fold": 2,
+              "proper_training": 158,
+              "training_pool": 183,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-30",
+              "origin_end": "2023-08-10"
+            },
+            {
+              "fold": 3,
+              "proper_training": 178,
+              "training_pool": 208,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-08-11",
+              "origin_end": "2023-10-25"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 411.015873015873,
+            "rmse": 707.9427158244436,
+            "smape": 23.017381398247792,
+            "directional_accuracy": 0.09523809523809523,
+            "interval_coverage": 0.7777777777777777,
+            "interval_width": 1032.7619047619048
+          },
+          "stability_mae_std": 203.40577250717743,
+          "test": {
+            "n": 63,
+            "mae": 611.063492063492,
+            "rmse": 760.338051383036,
+            "smape": 15.350326909090073,
+            "directional_accuracy": 0.0,
+            "interval_coverage": 0.25396825396825395,
+            "interval_width": 650.0
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-03",
+            "target_start": "2024-08-08",
+            "target_end": "2024-12-10",
+            "origins": 63,
+            "final_proper_training": 266,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_ridge_1",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 1.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 215.230243952551,
+              "rmse": 240.6766043767765,
+              "smape": 22.139642815911266,
+              "directional_accuracy": 0.9047619047619048,
+              "interval_coverage": 1.0,
+              "interval_width": 2278.457563669093
+            },
+            {
+              "n": 21,
+              "mae": 302.4052087961668,
+              "rmse": 405.8827596922042,
+              "smape": 20.287203642467023,
+              "directional_accuracy": 0.47619047619047616,
+              "interval_coverage": 0.6190476190476191,
+              "interval_width": 435.711800757258
+            },
+            {
+              "n": 21,
+              "mae": 684.8369769351023,
+              "rmse": 1060.1213585153532,
+              "smape": 22.105641384623407,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 0.6666666666666666,
+              "interval_width": 955.578111083506
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 139,
+              "training_pool": 162,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-06-29"
+            },
+            {
+              "fold": 2,
+              "proper_training": 158,
+              "training_pool": 183,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-30",
+              "origin_end": "2023-08-10"
+            },
+            {
+              "fold": 3,
+              "proper_training": 178,
+              "training_pool": 208,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-08-11",
+              "origin_end": "2023-10-25"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 400.82414322794006,
+            "rmse": 669.9560526109487,
+            "smape": 21.510829281000568,
+            "directional_accuracy": 0.6666666666666666,
+            "interval_coverage": 0.7619047619047619,
+            "interval_width": 1223.2491585032856
+          },
+          "stability_mae_std": 203.95642656647777,
+          "test": {
+            "n": 63,
+            "mae": 607.6079219270742,
+            "rmse": 796.1694692295373,
+            "smape": 15.481525109777214,
+            "directional_accuracy": 0.5714285714285714,
+            "interval_coverage": 0.49206349206349204,
+            "interval_width": 925.173449260587
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-03",
+            "target_start": "2024-08-08",
+            "target_end": "2024-12-10",
+            "origins": 63,
+            "final_proper_training": 266,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_ridge_10",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 10.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 215.4845425300491,
+              "rmse": 240.17414365143983,
+              "smape": 22.18183421914049,
+              "directional_accuracy": 0.9047619047619048,
+              "interval_coverage": 1.0,
+              "interval_width": 2315.419687332207
+            },
+            {
+              "n": 21,
+              "mae": 309.3030267283399,
+              "rmse": 405.3036064761044,
+              "smape": 20.78511001150349,
+              "directional_accuracy": 0.47619047619047616,
+              "interval_coverage": 0.5714285714285714,
+              "interval_width": 509.2246153706649
+            },
+            {
+              "n": 21,
+              "mae": 680.6800115923837,
+              "rmse": 1066.3780471781172,
+              "smape": 21.860056418712606,
+              "directional_accuracy": 0.5714285714285714,
+              "interval_coverage": 0.6666666666666666,
+              "interval_width": 960.1373194277095
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 139,
+              "training_pool": 162,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-06-29"
+            },
+            {
+              "fold": 2,
+              "proper_training": 158,
+              "training_pool": 183,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-30",
+              "origin_end": "2023-08-10"
+            },
+            {
+              "fold": 3,
+              "proper_training": 178,
+              "training_pool": 208,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-08-11",
+              "origin_end": "2023-10-25"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 401.82252695025755,
+            "rmse": 673.0816622581676,
+            "smape": 21.609000216452195,
+            "directional_accuracy": 0.6507936507936508,
+            "interval_coverage": 0.746031746031746,
+            "interval_width": 1261.593874043527
+          },
+          "stability_mae_std": 200.86745140351707,
+          "test": {
+            "n": 63,
+            "mae": 605.0786543212432,
+            "rmse": 770.1993433975211,
+            "smape": 15.460401113263423,
+            "directional_accuracy": 0.49206349206349204,
+            "interval_coverage": 0.5396825396825397,
+            "interval_width": 1068.523963723314
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-03",
+            "target_start": "2024-08-08",
+            "target_end": "2024-12-10",
+            "origins": 63,
+            "final_proper_training": 266,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "A_boosting",
+          "family": "A",
+          "algorithm": "hist_gradient_boosting",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "max_iter": 80,
+            "max_leaf_nodes": 7,
+            "l2_regularization": 10.0,
+            "random_state": 42,
+            "early_stopping": false
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 283.01991791726005,
+              "rmse": 323.7576220315483,
+              "smape": 28.74609697015429,
+              "directional_accuracy": 0.9047619047619048,
+              "interval_coverage": 1.0,
+              "interval_width": 2513.5549736555463
+            },
+            {
+              "n": 21,
+              "mae": 300.4981060574372,
+              "rmse": 472.9632838983153,
+              "smape": 20.055789732507463,
+              "directional_accuracy": 0.38095238095238093,
+              "interval_coverage": 0.7142857142857143,
+              "interval_width": 778.0823257078584
+            },
+            {
+              "n": 21,
+              "mae": 706.9320847565499,
+              "rmse": 971.550148962921,
+              "smape": 23.47538619282824,
+              "directional_accuracy": 0.42857142857142855,
+              "interval_coverage": 0.6666666666666666,
+              "interval_width": 1106.4503520721883
+            }
+          ],
+          "folds": [
+            {
+              "fold": 1,
+              "proper_training": 139,
+              "training_pool": 162,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-06-29"
+            },
+            {
+              "fold": 2,
+              "proper_training": 158,
+              "training_pool": 183,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-06-30",
+              "origin_end": "2023-08-10"
+            },
+            {
+              "fold": 3,
+              "proper_training": 178,
+              "training_pool": 208,
+              "calibration": 20,
+              "validation": 21,
+              "origin_start": "2023-08-11",
+              "origin_end": "2023-10-25"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 430.15003624374907,
+            "rmse": 651.2610735307501,
+            "smape": 24.09242429849667,
+            "directional_accuracy": 0.5714285714285714,
+            "interval_coverage": 0.7936507936507936,
+            "interval_width": 1466.0292171451977
+          },
+          "stability_mae_std": 195.84449366674008,
+          "test": {
+            "n": 63,
+            "mae": 1280.0150569353277,
+            "rmse": 1441.5869462321502,
+            "smape": 35.07253582849009,
+            "directional_accuracy": 0.49206349206349204,
+            "interval_coverage": 0.031746031746031744,
+            "interval_width": 352.2254636384132
+          },
+          "test_split": {
+            "origin_start": "2024-08-01",
+            "origin_end": "2024-12-03",
+            "target_start": "2024-08-08",
+            "target_end": "2024-12-10",
+            "origins": 63,
+            "final_proper_training": 266,
+            "calibration": 20
+          }
+        },
+        {
+          "id": "seasonal_naive",
+          "family": "baseline",
+          "algorithm": "seasonal_naive",
+          "features": [],
+          "params": {
+            "period_days": 7
+          },
+          "status": "unavailable",
+          "reason": "target-minus-7-day price is not available at forecast origin under the seven-day policy",
+          "eligible_origins": 0
+        }
+      ]
+    }
+  },
+  "source_file_hashes": [
+    "32709b6652f18b4e86c0de1a8523a640c3b7fef8a0954c1d7a972a3a3f492c35",
+    "59794b7a4dad2fa5e3f1a116851b584368ca99ce44a9fe90b2638e8a5faf7a60",
+    "7f5a6ee607afe9731de0412862bd6e6dfe30079eacba3928432e2580136b95e1",
+    "bca75203f780a71d0cf06cf8ea1b36c774ecc75a914c49dd00d5815f6c172126"
+  ],
+  "production_registry_modified": false
+}

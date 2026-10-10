@@ -1,0 +1,35 @@
+﻿{
+  "manifest_version": 1,
+  "recorded_date": "2026-10-09",
+  "dataset_url": "https://www.kaggle.com/datasets/khandelwalmanas/daily-commodity-prices-india",
+  "publisher": "Kaggle account khandelwalmanas",
+  "retrieval_date": null,
+  "retrieval_date_status": "User-reported direct download; exact retrieval date not provided.",
+  "provenance": {
+    "attributed_source": "AGMARKNET",
+    "attribution_status": "Publisher claim; not independently verified against primary-source records.",
+    "resource_id": null,
+    "resource_id_status": "Not supplied or independently established."
+  },
+  "price_unit": "INR/quintal",
+  "price_unit_status": "Provisional pending source confirmation.",
+  "arrival_quantity": { "present": false, "unit": null },
+  "availability_timestamps": {
+    "verified_available_at": null,
+    "status": "unknown",
+    "note": "The source files do not provide publication timestamps; download time is not used as availability time."
+  },
+  "files": [
+    { "filename": "2021.csv", "local_path": "C:\\Nexyra\\data\\raw\\agri\\historical\\2021.csv", "bytes": 348738783, "rows": 3827438, "date_range": ["2021-01-01", "2021-12-31"], "sha256": "32709b6652f18b4e86c0de1a8523a640c3b7fef8a0954c1d7a972a3a3f492c35" },
+    { "filename": "2022.csv", "local_path": "C:\\Nexyra\\data\\raw\\agri\\historical\\2022.csv", "bytes": 409171893, "rows": 4476890, "date_range": ["2022-01-01", "2022-12-31"], "sha256": "bca75203f780a71d0cf06cf8ea1b36c774ecc75a914c49dd00d5815f6c172126" },
+    { "filename": "2023.csv", "local_path": "C:\\Nexyra\\data\\raw\\agri\\historical\\2023.csv", "bytes": 403215327, "rows": 4415690, "date_range": ["2023-01-01", "2023-12-31"], "sha256": "7f5a6ee607afe9731de0412862bd6e6dfe30079eacba3928432e2580136b95e1" },
+    { "filename": "2024.csv", "local_path": "C:\\Nexyra\\data\\raw\\agri\\historical\\2024.csv", "bytes": 532414234, "rows": 5544500, "date_range": ["2024-01-01", "2024-12-31"], "sha256": "59794b7a4dad2fa5e3f1a116851b584368ca99ce44a9fe90b2638e8a5faf7a60" },
+    { "filename": "2025.csv", "local_path": "C:\\Nexyra\\data\\raw\\agri\\historical\\2025.csv", "bytes": 573676886, "rows": 5819482, "date_range": ["2025-01-01", "2025-12-30"], "sha256": "0070d5c0fd8f95a2268420eaa3f9b712f74bbb179e8c09025c4f32d4999bb45a" }
+  ],
+  "collection_rows": 24084000,
+  "eligible_filter": { "state": "Maharashtra", "district": "Nashik", "commodity": "Onion" },
+  "eligible_source_rows": 21864,
+  "eligible_rows": 21851,
+  "quarantined_alias_candidates": 13,
+  "unit_assumptions": ["No arrival quantity is added.", "No dates or prices are synthesized."]
+}

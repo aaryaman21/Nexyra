@@ -1,0 +1,35 @@
+.dashboard { --interaction-border: var(--accent-brand); }
+.panel { transition: border-color .2s ease, box-shadow .2s ease; }
+.panel:hover { border-color: var(--interaction-border); box-shadow: 0 12px 32px color-mix(in srgb, var(--accent-brand) 10%, transparent); }
+.panel:focus-within { border-color: var(--interaction-border); }
+.dashboard :is(button, select, input, summary, a) { transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+.dashboard :is(button, select, input, summary, a):focus-visible { outline: 2px solid var(--accent-brand); outline-offset: 4px; }
+.dashboard select:hover:not(:disabled), .dashboard input:hover:not(:disabled) { border-color: var(--accent-brand); }
+.dashboard button:disabled, .dashboard select:disabled { opacity: .5; cursor: not-allowed; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 1px solid var(--border-strong); border-radius: 12px; padding: .65rem 1rem; color: var(--text-primary); background: var(--bg-surface); cursor: pointer; font-weight: 600; }
+.button:hover:not(:disabled) { background: var(--bg-secondary); border-color: var(--accent-brand); transform: translateY(-2px); }
+.button:active:not(:disabled) { transform: translateY(0) scale(.98); }
+.primary { background: var(--accent-brand); color: var(--button-text); }
+.primary:hover:not(:disabled) { background: var(--accent-end); }
+.badge { display: inline-flex; align-items: center; gap: .45rem; padding: .35rem .65rem; border: 1px solid var(--border-subtle); border-radius: 999px; font-size: .7rem; }
+.upload { border: 1px dashed var(--border-strong); border-radius: 16px; padding: 1.1rem; background: var(--bg-surface); min-width: 0; }
+.upload:hover { border-color: var(--accent-brand); background: var(--bg-secondary); }
+.upload input { display: block; width: 100%; margin-top: .8rem; font-size: .8rem; }
+.upload input::file-selector-button { border: 1px solid var(--border-subtle); border-radius: 8px; padding: .4rem .6rem; margin-right: .5rem; background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+.step { border-bottom: 2px solid var(--border-subtle); padding: .6rem 0; font-size: .75rem; }
+.activeStep { border-color: var(--accent-brand); color: var(--accent-brand); }
+.notice { border: 1px solid var(--border-subtle); background: var(--bg-secondary); border-radius: 12px; padding: 1rem; }
+.dashboard tbody tr:hover { background: var(--bg-secondary); }
+.dashboard a:hover { color: var(--accent-brand); }
+.dashboard summary { padding: .5rem 0; }
+.dashboard summary:hover { color: var(--accent-brand); }
+.spin { animation: spin 1.2s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion-preview="true"])) .dashboard *,
+  :global(html:not([data-motion-preview="true"])) .panel { transition: none !important; }
+  :global(html:not([data-motion-preview="true"])) .button:hover:not(:disabled),
+  :global(html:not([data-motion-preview="true"])) .button:active:not(:disabled) { transform: none; }
+  :global(html:not([data-motion-preview="true"])) .spin { animation: none; }
+}

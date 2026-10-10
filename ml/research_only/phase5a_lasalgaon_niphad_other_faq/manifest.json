@@ -1,0 +1,1478 @@
+{
+  "protocol_id": "phase5a-numerical-historical-replay-v1",
+  "series_id": "7fe6b31176a92334fc89",
+  "identity": {
+    "state": "Maharashtra",
+    "district": "Nashik",
+    "market": "Lasalgaon (Niphad)",
+    "commodity": "Onion",
+    "variety": "Other",
+    "grade": "FAQ",
+    "source_url": "https://www.kaggle.com/datasets/khandelwalmanas/daily-commodity-prices-india",
+    "source_publisher": "khandelwalmanas (Kaggle)",
+    "source_attribution_claim": "AGMARKNET (publisher claim; not independently verified)",
+    "unit": "INR/quintal",
+    "unit_status": "provisional"
+  },
+  "created_at_utc": "2026-10-09T08:42:40.363703+00:00",
+  "release_status": "research_only",
+  "production_authorized": false,
+  "database_source": "nexyra.db",
+  "input_fingerprint_sha256": "0220db8dde04aa196141453b954778a9a9d0c1b2a4d9040bb879aa172a910065",
+  "record_keys_fingerprint_sha256": "0d7dc258b5e815c28c56a9e31fa84b779452ddfbf04525db70dda3bae0c285d3",
+  "observation_count": 797,
+  "observation_start": "2021-01-01",
+  "observation_end": "2024-12-10",
+  "source_files": [
+    "2021.csv",
+    "2022.csv",
+    "2023.csv",
+    "2024.csv"
+  ],
+  "source_file_hashes": [
+    "32709b6652f18b4e86c0de1a8523a640c3b7fef8a0954c1d7a972a3a3f492c35",
+    "59794b7a4dad2fa5e3f1a116851b584368ca99ce44a9fe90b2638e8a5faf7a60",
+    "7f5a6ee607afe9731de0412862bd6e6dfe30079eacba3928432e2580136b95e1",
+    "bca75203f780a71d0cf06cf8ea1b36c774ecc75a914c49dd00d5815f6c172126"
+  ],
+  "availability_policy": "retrospective assumption: observation date + 7 calendar days at 23:59:59 Asia/Kolkata; not verified historical availability",
+  "availability_verified": false,
+  "feature_schema": [
+    "price",
+    "lag1",
+    "lag7",
+    "mean7",
+    "std7",
+    "change7",
+    "weekday",
+    "month"
+  ],
+  "protocol": {
+    "min_train": 60,
+    "calibration": 20,
+    "folds": 3,
+    "fold_size": 21,
+    "min_test": 21,
+    "coverage": 0.9,
+    "min_relative_gain": 0.05,
+    "validation_start": "2023-06-01",
+    "reused_test_start": "2024-08-01",
+    "test_status": "previously_examined_not_fresh"
+  },
+  "software": {
+    "scikit_learn": "1.9.1",
+    "pandas": "3.0.5"
+  },
+  "horizons": {
+    "1": {
+      "selected_model": "naive",
+      "baseline": "naive",
+      "selection_reason": "No learned model reliably beat the baseline: baseline retained",
+      "selection_basis": "rolling_validation_only",
+      "protocol": {
+        "min_train": 60,
+        "calibration": 20,
+        "folds": 3,
+        "fold_size": 21,
+        "min_test": 21,
+        "coverage": 0.9,
+        "min_relative_gain": 0.05
+      },
+      "comparison": [
+        {
+          "id": "naive",
+          "family": "baseline",
+          "algorithm": "last_observation",
+          "features": [],
+          "params": {},
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 143.28571428571428,
+              "rmse": 226.77143937075877,
+              "smape": 15.616449646370345,
+              "directional_accuracy": 0.19047619047619047,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 680.0
+            },
+            {
+              "n": 21,
+              "mae": 251.85714285714286,
+              "rmse": 352.98489108364583,
+              "smape": 16.001928626706906,
+              "directional_accuracy": 0.047619047619047616,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 942.0
+            },
+            {
+              "n": 21,
+              "mae": 676.5238095238095,
+              "rmse": 850.2584761062228,
+              "smape": 19.964695610855163,
+              "directional_accuracy": 0.0,
+              "interval_coverage": 0.47619047619047616,
+              "interval_width": 1562.0
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-05-24",
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-07-06"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-06-29",
+              "origin_start": "2023-07-07",
+              "origin_end": "2023-08-22"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-08-17",
+              "origin_start": "2023-08-25",
+              "origin_end": "2023-11-16"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 357.22222222222223,
+            "rmse": 547.4069465026591,
+            "smape": 17.1943579613108,
+            "directional_accuracy": 0.07936507936507936,
+            "interval_coverage": 0.6984126984126984,
+            "interval_width": 1061.3333333333333
+          },
+          "stability_mae_std": 230.0899338888964,
+          "test": {
+            "n": 70,
+            "mae": 411.3857142857143,
+            "rmse": 585.3911634844809,
+            "smape": 10.3153059686932,
+            "directional_accuracy": 0.014285714285714285,
+            "interval_coverage": 0.3,
+            "interval_width": 298.0
+          },
+          "predictor_fingerprint": "2a6e07fc78371d9ec3e775e07e5eff7944a81bd6ab83b48d22dc0b9c0f757607",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "2a6e07fc78371d9ec3e775e07e5eff7944a81bd6ab83b48d22dc0b9c0f757607",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "seasonal_naive",
+          "family": "baseline",
+          "algorithm": "seasonal_naive",
+          "features": [],
+          "params": {
+            "period_days": 7
+          },
+          "status": "unavailable",
+          "reason": "Seven-day seasonal inputs are missing or unavailable on the shared origin set"
+        },
+        {
+          "id": "A_ridge_1",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 1.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 211.8404571152028,
+              "rmse": 232.8224822249017,
+              "smape": 21.56879520549262,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 1.0,
+              "interval_width": 1111.510986791935
+            },
+            {
+              "n": 21,
+              "mae": 230.56376420042446,
+              "rmse": 305.83488746178193,
+              "smape": 14.56658926888324,
+              "directional_accuracy": 0.5714285714285714,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 722.9770497595885
+            },
+            {
+              "n": 21,
+              "mae": 691.956089220533,
+              "rmse": 852.045392838756,
+              "smape": 21.222964360231625,
+              "directional_accuracy": 0.5238095238095238,
+              "interval_coverage": 0.5238095238095238,
+              "interval_width": 1406.3740970860183
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-05-24",
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-07-06"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-06-29",
+              "origin_start": "2023-07-07",
+              "origin_end": "2023-08-22"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-08-17",
+              "origin_start": "2023-08-25",
+              "origin_end": "2023-11-16"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 378.12010351205345,
+            "rmse": 539.6673784458583,
+            "smape": 19.119449611535824,
+            "directional_accuracy": 0.5714285714285714,
+            "interval_coverage": 0.7777777777777778,
+            "interval_width": 1080.2873778791804
+          },
+          "stability_mae_std": 222.047157155504,
+          "test": {
+            "n": 70,
+            "mae": 668.9526992314774,
+            "rmse": 830.6632122356466,
+            "smape": 18.083802834779178,
+            "directional_accuracy": 0.4142857142857143,
+            "interval_coverage": 0.5,
+            "interval_width": 1242.8378970223291
+          },
+          "predictor_fingerprint": "da540c5fdca3b22468c5555bb71e39985135e6327745acb3ca8d9116d817687e",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "da540c5fdca3b22468c5555bb71e39985135e6327745acb3ca8d9116d817687e",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "A_ridge_10",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 10.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 225.46740115736733,
+              "rmse": 244.5014402001644,
+              "smape": 22.95549065170668,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 1.0,
+              "interval_width": 1135.2224678519506
+            },
+            {
+              "n": 21,
+              "mae": 234.81394722474766,
+              "rmse": 312.49797458651955,
+              "smape": 14.952046250322947,
+              "directional_accuracy": 0.5238095238095238,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 720.558945469293
+            },
+            {
+              "n": 21,
+              "mae": 693.0048418638087,
+              "rmse": 848.599880517533,
+              "smape": 21.423644708934862,
+              "directional_accuracy": 0.5714285714285714,
+              "interval_coverage": 0.5714285714285714,
+              "interval_width": 1454.9177900042953
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-05-24",
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-07-06"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-06-29",
+              "origin_start": "2023-07-07",
+              "origin_end": "2023-08-22"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-08-17",
+              "origin_start": "2023-08-25",
+              "origin_end": "2023-11-16"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 384.4287300819745,
+            "rmse": 540.8504708928347,
+            "smape": 19.77706053698816,
+            "directional_accuracy": 0.5714285714285714,
+            "interval_coverage": 0.7936507936507936,
+            "interval_width": 1103.566401108513
+          },
+          "stability_mae_std": 218.22962226768337,
+          "test": {
+            "n": 70,
+            "mae": 692.2280145988898,
+            "rmse": 839.1492161302251,
+            "smape": 18.747290944779206,
+            "directional_accuracy": 0.4142857142857143,
+            "interval_coverage": 0.45714285714285713,
+            "interval_width": 1185.055159931076
+          },
+          "predictor_fingerprint": "2a0c9d6d83668607164da97fd6b817f6b0b37999702ffb7b7198ab68e408abaf",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "2a0c9d6d83668607164da97fd6b817f6b0b37999702ffb7b7198ab68e408abaf",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "A_boosting",
+          "family": "A",
+          "algorithm": "hist_gradient_boosting",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "max_iter": 80,
+            "max_leaf_nodes": 7,
+            "l2_regularization": 10.0,
+            "random_state": 42,
+            "early_stopping": false
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 250.20661503463816,
+              "rmse": 256.90582948544835,
+              "smape": 26.07748701805526,
+              "directional_accuracy": 0.6190476190476191,
+              "interval_coverage": 1.0,
+              "interval_width": 1544.3938457627912
+            },
+            {
+              "n": 21,
+              "mae": 265.0533565084497,
+              "rmse": 367.4790554899283,
+              "smape": 16.633916481763293,
+              "directional_accuracy": 0.5238095238095238,
+              "interval_coverage": 0.6666666666666666,
+              "interval_width": 784.709700673128
+            },
+            {
+              "n": 21,
+              "mae": 852.2220036484565,
+              "rmse": 1002.0218011267729,
+              "smape": 27.764894302738824,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 0.47619047619047616,
+              "interval_width": 1444.648488798585
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-05-24",
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-07-06"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-06-29",
+              "origin_start": "2023-07-07",
+              "origin_end": "2023-08-22"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-08-17",
+              "origin_start": "2023-08-25",
+              "origin_end": "2023-11-16"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 455.82732506384815,
+            "rmse": 633.7952222867988,
+            "smape": 23.49209926751913,
+            "directional_accuracy": 0.6031746031746031,
+            "interval_coverage": 0.7142857142857143,
+            "interval_width": 1257.9173450781682
+          },
+          "stability_mae_std": 280.35889182824667,
+          "test": {
+            "n": 70,
+            "mae": 1156.9981512610048,
+            "rmse": 1356.2299686357594,
+            "smape": 32.034294263907555,
+            "directional_accuracy": 0.44285714285714284,
+            "interval_coverage": 0.21428571428571427,
+            "interval_width": 1026.5506761062827
+          },
+          "predictor_fingerprint": "7d3e61b385e0e0403a1a029799ad7bc34dcf5ea7bf25de62e59081e605b531d7",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "7d3e61b385e0e0403a1a029799ad7bc34dcf5ea7bf25de62e59081e605b531d7",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "B",
+          "family": "B",
+          "status": "unavailable",
+          "reason": "Complete as-of semantic coverage is unavailable"
+        },
+        {
+          "id": "C",
+          "family": "C",
+          "status": "unavailable",
+          "reason": "Complete as-of semantic coverage is unavailable"
+        }
+      ],
+      "training_period": {
+        "origin_start": "2021-03-09",
+        "target_end": "2024-07-24"
+      },
+      "validation_period": {
+        "origin_start": "2023-06-01",
+        "origin_end": "2023-11-16"
+      },
+      "test_period": {
+        "origin_start": "2024-08-01",
+        "target_end": "2024-12-07"
+      },
+      "interval_method": "Past-only held-out absolute residual rank; predictor is not refit after calibration; empirical, not guaranteed under temporal dependence",
+      "horizon_definition": "calendar_days",
+      "unit": "INR/quintal",
+      "origin_coverage": {
+        "calendar_origins": 1440,
+        "exact_target_origins": 796,
+        "targets_with_asof_price": 793,
+        "feature_eligible_scored_origins": 358,
+        "incomplete_feature_origins_excluded_from_comparison": 435,
+        "unscored_exact_target_origins": 644,
+        "seasonal_naive": {
+          "status": "unavailable",
+          "eligible_origins": 0,
+          "shared_scored_origins": 796,
+          "reason": "Seasonal inputs are absent or unavailable for at least one shared scored origin"
+        }
+      },
+      "test_status": "previously_examined_historical_diagnostic_not_fresh_holdout",
+      "previously_examined_target_end": "2024-12-10",
+      "holdout_eligible": false
+    },
+    "3": {
+      "selected_model": "naive",
+      "baseline": "naive",
+      "selection_reason": "No learned model reliably beat the baseline: baseline retained",
+      "selection_basis": "rolling_validation_only",
+      "protocol": {
+        "min_train": 60,
+        "calibration": 20,
+        "folds": 3,
+        "fold_size": 21,
+        "min_test": 21,
+        "coverage": 0.9,
+        "min_relative_gain": 0.05
+      },
+      "comparison": [
+        {
+          "id": "naive",
+          "family": "baseline",
+          "algorithm": "last_observation",
+          "features": [],
+          "params": {},
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 188.71428571428572,
+              "rmse": 259.9031871037111,
+              "smape": 20.139910525086307,
+              "directional_accuracy": 0.14285714285714285,
+              "interval_coverage": 1.0,
+              "interval_width": 1040.0
+            },
+            {
+              "n": 21,
+              "mae": 304.04761904761904,
+              "rmse": 411.90793007314494,
+              "smape": 19.550943816873176,
+              "directional_accuracy": 0.0,
+              "interval_coverage": 0.7619047619047619,
+              "interval_width": 898.0
+            },
+            {
+              "n": 21,
+              "mae": 754.2380952380952,
+              "rmse": 964.5341584708874,
+              "smape": 22.433628430561136,
+              "directional_accuracy": 0.0,
+              "interval_coverage": 0.6190476190476191,
+              "interval_width": 1800.0
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-05-23",
+              "origin_start": "2023-06-02",
+              "origin_end": "2023-07-07"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-06-30",
+              "origin_start": "2023-07-08",
+              "origin_end": "2023-08-25"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-08-18",
+              "origin_start": "2023-08-26",
+              "origin_end": "2023-11-14"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 415.6666666666667,
+            "rmse": 623.843984871472,
+            "smape": 20.70816092417354,
+            "directional_accuracy": 0.047619047619047616,
+            "interval_coverage": 0.7936507936507936,
+            "interval_width": 1246.0
+          },
+          "stability_mae_std": 243.99235456344107,
+          "test": {
+            "n": 72,
+            "mae": 463.22222222222223,
+            "rmse": 594.2477270559065,
+            "smape": 11.55820606792081,
+            "directional_accuracy": 0.0,
+            "interval_coverage": 0.125,
+            "interval_width": 300.0
+          },
+          "predictor_fingerprint": "2a6e07fc78371d9ec3e775e07e5eff7944a81bd6ab83b48d22dc0b9c0f757607",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "2a6e07fc78371d9ec3e775e07e5eff7944a81bd6ab83b48d22dc0b9c0f757607",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "seasonal_naive",
+          "family": "baseline",
+          "algorithm": "seasonal_naive",
+          "features": [],
+          "params": {
+            "period_days": 7
+          },
+          "status": "unavailable",
+          "reason": "Seven-day seasonal inputs are missing or unavailable on the shared origin set"
+        },
+        {
+          "id": "A_ridge_1",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 1.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 206.57007091668484,
+              "rmse": 231.33226793888895,
+              "smape": 20.484737279650655,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 1.0,
+              "interval_width": 2043.9272065396176
+            },
+            {
+              "n": 21,
+              "mae": 260.21152704382575,
+              "rmse": 347.3895820711187,
+              "smape": 16.628712937498687,
+              "directional_accuracy": 0.7142857142857143,
+              "interval_coverage": 0.7142857142857143,
+              "interval_width": 558.7016320939149
+            },
+            {
+              "n": 21,
+              "mae": 729.5355244368826,
+              "rmse": 949.1136106856576,
+              "smape": 21.966023698283163,
+              "directional_accuracy": 0.5238095238095238,
+              "interval_coverage": 0.5238095238095238,
+              "interval_width": 1601.6365518961366
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-05-23",
+              "origin_start": "2023-06-02",
+              "origin_end": "2023-07-07"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-06-30",
+              "origin_start": "2023-07-08",
+              "origin_end": "2023-08-25"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-08-18",
+              "origin_start": "2023-08-26",
+              "origin_end": "2023-11-14"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 398.77237413246434,
+            "rmse": 598.6125029070872,
+            "smape": 19.693157971810834,
+            "directional_accuracy": 0.6349206349206349,
+            "interval_coverage": 0.746031746031746,
+            "interval_width": 1401.4217968432229
+          },
+          "stability_mae_std": 234.90785094491466,
+          "test": {
+            "n": 72,
+            "mae": 633.1822190712161,
+            "rmse": 779.1873519458879,
+            "smape": 16.919112595088976,
+            "directional_accuracy": 0.3333333333333333,
+            "interval_coverage": 0.2916666666666667,
+            "interval_width": 708.4020695226664
+          },
+          "predictor_fingerprint": "56931d2282fae0022664d21ce1d2010aba37c5f3e9d8c529a9156931adb9b30a",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "56931d2282fae0022664d21ce1d2010aba37c5f3e9d8c529a9156931adb9b30a",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "A_ridge_10",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 10.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 213.78929136028702,
+              "rmse": 239.13159473634585,
+              "smape": 21.17457242615784,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 1.0,
+              "interval_width": 2038.0714533303453
+            },
+            {
+              "n": 21,
+              "mae": 262.0686016258394,
+              "rmse": 348.3673565169665,
+              "smape": 16.77800826306234,
+              "directional_accuracy": 0.7142857142857143,
+              "interval_coverage": 0.7142857142857143,
+              "interval_width": 589.7044332413767
+            },
+            {
+              "n": 21,
+              "mae": 730.2102693070966,
+              "rmse": 955.9542024616974,
+              "smape": 21.986384255193215,
+              "directional_accuracy": 0.5238095238095238,
+              "interval_coverage": 0.5238095238095238,
+              "interval_width": 1622.5411533123936
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-05-23",
+              "origin_start": "2023-06-02",
+              "origin_end": "2023-07-07"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-06-30",
+              "origin_start": "2023-07-08",
+              "origin_end": "2023-08-25"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-08-18",
+              "origin_start": "2023-08-26",
+              "origin_end": "2023-11-14"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 402.02272076440767,
+            "rmse": 603.4324518651465,
+            "smape": 19.979654981471135,
+            "directional_accuracy": 0.6349206349206349,
+            "interval_coverage": 0.746031746031746,
+            "interval_width": 1416.7723466280393
+          },
+          "stability_mae_std": 232.89915301659963,
+          "test": {
+            "n": 72,
+            "mae": 643.0769789352132,
+            "rmse": 772.4845211868214,
+            "smape": 17.155524583693968,
+            "directional_accuracy": 0.3333333333333333,
+            "interval_coverage": 0.3055555555555556,
+            "interval_width": 767.7357814983907
+          },
+          "predictor_fingerprint": "faf481e0d53eeec8e7ccc84d88e71ed16fc28a0044857aba31b171b6108ba90e",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "faf481e0d53eeec8e7ccc84d88e71ed16fc28a0044857aba31b171b6108ba90e",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "A_boosting",
+          "family": "A",
+          "algorithm": "hist_gradient_boosting",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "max_iter": 80,
+            "max_leaf_nodes": 7,
+            "l2_regularization": 10.0,
+            "random_state": 42,
+            "early_stopping": false
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 227.1755104457436,
+              "rmse": 248.04821388974614,
+              "smape": 23.235796019503756,
+              "directional_accuracy": 0.6666666666666666,
+              "interval_coverage": 1.0,
+              "interval_width": 2030.283528407543
+            },
+            {
+              "n": 21,
+              "mae": 290.31754799388017,
+              "rmse": 436.9876079024157,
+              "smape": 18.996251325387522,
+              "directional_accuracy": 0.47619047619047616,
+              "interval_coverage": 0.7142857142857143,
+              "interval_width": 923.5966154530846
+            },
+            {
+              "n": 21,
+              "mae": 839.9657882985204,
+              "rmse": 1087.6179902645042,
+              "smape": 27.349089207629806,
+              "directional_accuracy": 0.5238095238095238,
+              "interval_coverage": 0.6666666666666666,
+              "interval_width": 1976.0254639397758
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-05-23",
+              "origin_start": "2023-06-02",
+              "origin_end": "2023-07-07"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-06-30",
+              "origin_start": "2023-07-08",
+              "origin_end": "2023-08-25"
+            },
+            {
+              "train_start": "2021-03-09",
+              "train_target_end": "2023-08-18",
+              "origin_start": "2023-08-26",
+              "origin_end": "2023-11-14"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 452.4862822460481,
+            "rmse": 691.7126037647834,
+            "smape": 23.193712184173695,
+            "directional_accuracy": 0.5555555555555556,
+            "interval_coverage": 0.7936507936507936,
+            "interval_width": 1643.3018692668008
+          },
+          "stability_mae_std": 275.1993276813899,
+          "test": {
+            "n": 72,
+            "mae": 1014.0963450324008,
+            "rmse": 1171.5885831140192,
+            "smape": 26.99510227625491,
+            "directional_accuracy": 0.3888888888888889,
+            "interval_coverage": 0.125,
+            "interval_width": 511.2727057885504
+          },
+          "predictor_fingerprint": "d29bb5fa45e858d438262a71cfee66de4ad79af4e9535e048be46fab755a9c93",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "d29bb5fa45e858d438262a71cfee66de4ad79af4e9535e048be46fab755a9c93",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "B",
+          "family": "B",
+          "status": "unavailable",
+          "reason": "Complete as-of semantic coverage is unavailable"
+        },
+        {
+          "id": "C",
+          "family": "C",
+          "status": "unavailable",
+          "reason": "Complete as-of semantic coverage is unavailable"
+        }
+      ],
+      "training_period": {
+        "origin_start": "2021-03-09",
+        "target_end": "2024-07-24"
+      },
+      "validation_period": {
+        "origin_start": "2023-06-02",
+        "origin_end": "2023-11-14"
+      },
+      "test_period": {
+        "origin_start": "2024-08-01",
+        "target_end": "2024-12-06"
+      },
+      "interval_method": "Past-only held-out absolute residual rank; predictor is not refit after calibration; empirical, not guaranteed under temporal dependence",
+      "horizon_definition": "calendar_days",
+      "unit": "INR/quintal",
+      "origin_coverage": {
+        "calendar_origins": 1440,
+        "exact_target_origins": 795,
+        "targets_with_asof_price": 793,
+        "feature_eligible_scored_origins": 334,
+        "incomplete_feature_origins_excluded_from_comparison": 459,
+        "unscored_exact_target_origins": 645,
+        "seasonal_naive": {
+          "status": "unavailable",
+          "eligible_origins": 0,
+          "shared_scored_origins": 795,
+          "reason": "Seasonal inputs are absent or unavailable for at least one shared scored origin"
+        }
+      },
+      "test_status": "previously_examined_historical_diagnostic_not_fresh_holdout",
+      "previously_examined_target_end": "2024-12-10",
+      "holdout_eligible": false
+    },
+    "7": {
+      "selected_model": "naive",
+      "baseline": "naive",
+      "selection_reason": "No learned model reliably beat the baseline: baseline retained",
+      "selection_basis": "rolling_validation_only",
+      "protocol": {
+        "min_train": 60,
+        "calibration": 20,
+        "folds": 3,
+        "fold_size": 21,
+        "min_test": 21,
+        "coverage": 0.9,
+        "min_relative_gain": 0.05
+      },
+      "comparison": [
+        {
+          "id": "naive",
+          "family": "baseline",
+          "algorithm": "last_observation",
+          "features": [],
+          "params": {},
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 251.66666666666666,
+              "rmse": 325.2128240896735,
+              "smape": 27.29318646732436,
+              "directional_accuracy": 0.047619047619047616,
+              "interval_coverage": 0.5238095238095238,
+              "interval_width": 300.0
+            },
+            {
+              "n": 21,
+              "mae": 193.28571428571428,
+              "rmse": 345.46111351696436,
+              "smape": 13.85016333505612,
+              "directional_accuracy": 0.19047619047619047,
+              "interval_coverage": 0.7619047619047619,
+              "interval_width": 420.0
+            },
+            {
+              "n": 21,
+              "mae": 391.42857142857144,
+              "rmse": 643.3017510135837,
+              "smape": 17.43859983713444,
+              "directional_accuracy": 0.14285714285714285,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 1098.0
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-05-24",
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-06-29"
+            },
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-06-22",
+              "origin_start": "2023-06-30",
+              "origin_end": "2023-08-04"
+            },
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-07-28",
+              "origin_start": "2023-08-05",
+              "origin_end": "2023-10-18"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 278.7936507936508,
+            "rmse": 461.4989724661384,
+            "smape": 19.527316546504977,
+            "directional_accuracy": 0.12698412698412698,
+            "interval_coverage": 0.6984126984126984,
+            "interval_width": 606.0
+          },
+          "stability_mae_std": 83.13464143605806,
+          "test": {
+            "n": 68,
+            "mae": 615.1029411764706,
+            "rmse": 765.6003123270615,
+            "smape": 15.24760096452871,
+            "directional_accuracy": 0.0,
+            "interval_coverage": 0.14705882352941177,
+            "interval_width": 450.0
+          },
+          "predictor_fingerprint": "2a6e07fc78371d9ec3e775e07e5eff7944a81bd6ab83b48d22dc0b9c0f757607",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "2a6e07fc78371d9ec3e775e07e5eff7944a81bd6ab83b48d22dc0b9c0f757607",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "seasonal_naive",
+          "family": "baseline",
+          "algorithm": "seasonal_naive",
+          "features": [],
+          "params": {
+            "period_days": 7
+          },
+          "status": "unavailable",
+          "reason": "Seven-day seasonal inputs are missing or unavailable on the shared origin set"
+        },
+        {
+          "id": "A_ridge_1",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 1.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 212.49156528087843,
+              "rmse": 245.53994951187485,
+              "smape": 21.71247972597968,
+              "directional_accuracy": 0.9047619047619048,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 661.4181255528168
+            },
+            {
+              "n": 21,
+              "mae": 238.90156383819,
+              "rmse": 325.11347817189363,
+              "smape": 16.967796422579674,
+              "directional_accuracy": 0.38095238095238093,
+              "interval_coverage": 0.5714285714285714,
+              "interval_width": 421.94357746930257
+            },
+            {
+              "n": 21,
+              "mae": 387.04693456335207,
+              "rmse": 594.0034005678006,
+              "smape": 16.9462087130826,
+              "directional_accuracy": 0.47619047619047616,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 957.9451061145827
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-05-24",
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-06-29"
+            },
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-06-22",
+              "origin_start": "2023-06-30",
+              "origin_end": "2023-08-04"
+            },
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-07-28",
+              "origin_start": "2023-08-05",
+              "origin_end": "2023-10-18"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 279.4800212274735,
+            "rmse": 415.86403241982487,
+            "smape": 18.54216162054732,
+            "directional_accuracy": 0.5873015873015873,
+            "interval_coverage": 0.7301587301587301,
+            "interval_width": 680.4356030455672
+          },
+          "stability_mae_std": 76.82166638566495,
+          "test": {
+            "n": 68,
+            "mae": 663.2157257364888,
+            "rmse": 845.2485918316606,
+            "smape": 17.03001271542005,
+            "directional_accuracy": 0.45588235294117646,
+            "interval_coverage": 0.2647058823529412,
+            "interval_width": 611.6398035814962
+          },
+          "predictor_fingerprint": "3d6f6822d52a7d00d1b05cbc1805f3df7abb43eb4babf340c0462c9830fdedc0",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "3d6f6822d52a7d00d1b05cbc1805f3df7abb43eb4babf340c0462c9830fdedc0",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "A_ridge_10",
+          "family": "A",
+          "algorithm": "ridge",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "alpha": 10.0
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 212.3553625871726,
+              "rmse": 244.52869715522928,
+              "smape": 21.72728860070139,
+              "directional_accuracy": 0.9047619047619048,
+              "interval_coverage": 0.7619047619047619,
+              "interval_width": 667.9715549151506
+            },
+            {
+              "n": 21,
+              "mae": 243.97421461685371,
+              "rmse": 323.33341955193333,
+              "smape": 17.344152925070112,
+              "directional_accuracy": 0.38095238095238093,
+              "interval_coverage": 0.5238095238095238,
+              "interval_width": 357.3335583673232
+            },
+            {
+              "n": 21,
+              "mae": 382.0161463477124,
+              "rmse": 594.874249179581,
+              "smape": 16.683711431698313,
+              "directional_accuracy": 0.47619047619047616,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 933.3610026504012
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-05-24",
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-06-29"
+            },
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-06-22",
+              "origin_start": "2023-06-30",
+              "origin_end": "2023-08-04"
+            },
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-07-28",
+              "origin_start": "2023-08-05",
+              "origin_end": "2023-10-18"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 279.44857451724624,
+            "rmse": 415.617675381494,
+            "smape": 18.58505098582327,
+            "directional_accuracy": 0.5873015873015873,
+            "interval_coverage": 0.6984126984126984,
+            "interval_width": 652.8887053109585
+          },
+          "stability_mae_std": 73.66599416427768,
+          "test": {
+            "n": 68,
+            "mae": 680.4700892528144,
+            "rmse": 838.5367512227987,
+            "smape": 17.522688350078518,
+            "directional_accuracy": 0.3382352941176471,
+            "interval_coverage": 0.23529411764705882,
+            "interval_width": 550.7653087501877
+          },
+          "predictor_fingerprint": "1819b554e2dd878360d078c26ff16a51ae7cf1f4bfa9f7ddaca8f8ecfdf9c430",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "1819b554e2dd878360d078c26ff16a51ae7cf1f4bfa9f7ddaca8f8ecfdf9c430",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "A_boosting",
+          "family": "A",
+          "algorithm": "hist_gradient_boosting",
+          "features": [
+            "price",
+            "lag1",
+            "lag7",
+            "mean7",
+            "std7",
+            "change7",
+            "weekday",
+            "month"
+          ],
+          "params": {
+            "max_iter": 80,
+            "max_leaf_nodes": 7,
+            "l2_regularization": 10.0,
+            "random_state": 42,
+            "early_stopping": false
+          },
+          "status": "evaluated",
+          "fold_metrics": [
+            {
+              "n": 21,
+              "mae": 277.80816443961186,
+              "rmse": 300.6180032036048,
+              "smape": 28.399943494655773,
+              "directional_accuracy": 0.9047619047619048,
+              "interval_coverage": 1.0,
+              "interval_width": 1161.980371379918
+            },
+            {
+              "n": 21,
+              "mae": 227.64151657468196,
+              "rmse": 368.4681154075461,
+              "smape": 16.40210349531207,
+              "directional_accuracy": 0.3333333333333333,
+              "interval_coverage": 0.8095238095238095,
+              "interval_width": 775.1459031237558
+            },
+            {
+              "n": 21,
+              "mae": 455.9475270289731,
+              "rmse": 558.2089051639663,
+              "smape": 20.998744019321094,
+              "directional_accuracy": 0.23809523809523808,
+              "interval_coverage": 0.6190476190476191,
+              "interval_width": 887.8054670668068
+            }
+          ],
+          "folds": [
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-05-24",
+              "origin_start": "2023-06-01",
+              "origin_end": "2023-06-29"
+            },
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-06-22",
+              "origin_start": "2023-06-30",
+              "origin_end": "2023-08-04"
+            },
+            {
+              "train_start": "2021-03-16",
+              "train_target_end": "2023-07-28",
+              "origin_start": "2023-08-05",
+              "origin_end": "2023-10-18"
+            }
+          ],
+          "validation": {
+            "n": 63,
+            "mae": 320.46573601442225,
+            "rmse": 423.3741913589227,
+            "smape": 21.933597003096317,
+            "directional_accuracy": 0.49206349206349204,
+            "interval_coverage": 0.8095238095238095,
+            "interval_width": 941.6439138568267
+          },
+          "stability_mae_std": 97.96482331899814,
+          "test": {
+            "n": 68,
+            "mae": 1404.7917576149357,
+            "rmse": 1542.8538568295837,
+            "smape": 39.11138640522947,
+            "directional_accuracy": 0.3382352941176471,
+            "interval_coverage": 0.04411764705882353,
+            "interval_width": 832.5411683762842
+          },
+          "predictor_fingerprint": "17f51f0adef95c5f5b6d730bd6b0e9d06c6f2db115ca705a00b7478bd5f4a395",
+          "calibration": {
+            "method": "past_only_split_conformal_absolute_residual",
+            "sample_size": 20,
+            "rank_one_based": 19,
+            "nominal_coverage": 0.9,
+            "predictor_fingerprint": "17f51f0adef95c5f5b6d730bd6b0e9d06c6f2db115ca705a00b7478bd5f4a395",
+            "predictor_refit_after_calibration": false,
+            "coverage_guarantee": "not guaranteed under temporal dependence"
+          }
+        },
+        {
+          "id": "B",
+          "family": "B",
+          "status": "unavailable",
+          "reason": "Complete as-of semantic coverage is unavailable"
+        },
+        {
+          "id": "C",
+          "family": "C",
+          "status": "unavailable",
+          "reason": "Complete as-of semantic coverage is unavailable"
+        }
+      ],
+      "training_period": {
+        "origin_start": "2021-03-16",
+        "target_end": "2024-07-24"
+      },
+      "validation_period": {
+        "origin_start": "2023-06-01",
+        "origin_end": "2023-10-18"
+      },
+      "test_period": {
+        "origin_start": "2024-08-01",
+        "target_end": "2024-12-10"
+      },
+      "interval_method": "Past-only held-out absolute residual rank; predictor is not refit after calibration; empirical, not guaranteed under temporal dependence",
+      "horizon_definition": "calendar_days",
+      "unit": "INR/quintal",
+      "origin_coverage": {
+        "calendar_origins": 1440,
+        "exact_target_origins": 793,
+        "targets_with_asof_price": 793,
+        "feature_eligible_scored_origins": 413,
+        "incomplete_feature_origins_excluded_from_comparison": 380,
+        "unscored_exact_target_origins": 647,
+        "seasonal_naive": {
+          "status": "unavailable",
+          "eligible_origins": 0,
+          "shared_scored_origins": 793,
+          "reason": "Seasonal inputs are absent or unavailable for at least one shared scored origin"
+        }
+      },
+      "test_status": "previously_examined_historical_diagnostic_not_fresh_holdout",
+      "previously_examined_target_end": "2024-12-10",
+      "holdout_eligible": false
+    }
+  },
+  "selected_candidate_artifacts": {
+    "1": "h1.joblib",
+    "3": "h3.joblib",
+    "7": "h7.joblib"
+  },
+  "candidate_artifacts": {
+    "1": [
+      "A_boosting",
+      "A_ridge_1",
+      "A_ridge_10",
+      "naive"
+    ],
+    "3": [
+      "A_boosting",
+      "A_ridge_1",
+      "A_ridge_10",
+      "naive"
+    ],
+    "7": [
+      "A_boosting",
+      "A_ridge_1",
+      "A_ridge_10",
+      "naive"
+    ]
+  },
+  "historical_replay_demo_origin": "2024-11-20",
+  "test_period": {
+    "start": "2024-08-01",
+    "target_end": "2024-12-10",
+    "fresh_untouched": false,
+    "status": "previously_examined_historical_diagnostic"
+  },
+  "staleness_threshold_days": 7,
+  "artifact_files_sha256": {
+    "input_series.csv": "33a7eb060bb598facd02f484528b7f95eb40e96b265f3134dcfebd748d1d6c2d",
+    "h1.joblib": "84a744b6723fedd35708a4b99504514bd6cf448372b0680951026a5aae507563",
+    "candidates\\h1_naive.joblib": "b144af271cf36ffada21ab361a5b5847acddbc51ffbb668e320f15fd4977b157",
+    "candidates\\h1_A_ridge_1.joblib": "20ebfbd7f622a2fe663acf2a775557f35f153f543e3aa600dcd911ce1e1c9a6d",
+    "candidates\\h1_A_ridge_10.joblib": "73a09f92b8e222414b32e517a180e62710381e3806713b9cf8d5f13f3073b484",
+    "candidates\\h1_A_boosting.joblib": "d3d08fd1ecd6e7cd175bfbce2fa087e9d1adebbdd923a620040db3eac7a1dc63",
+    "h3.joblib": "f631e4b5260c9cd13c2104f0b546686d58c4e39b9c9e1ba519ce3481754243a4",
+    "candidates\\h3_naive.joblib": "04df8a5bc6f3207d743499c288e80b5e206d8192b07339bfaac395d1c4727195",
+    "candidates\\h3_A_ridge_1.joblib": "592b20465c14b09b168fbf0a9d15bceb2aeada4de7b944e7a3945e16f9fea675",
+    "candidates\\h3_A_ridge_10.joblib": "9936073177fe0d6c56550719236f8e6dbc46757208bfc3f7b2973df55b0d6e00",
+    "candidates\\h3_A_boosting.joblib": "e1f15fc0c3053bfc106be9ac891855379a9476ec52b260999b6dee06d73afb6d",
+    "h7.joblib": "f51fd762bcc25d11ae07ef148c4ee1b1d9180f1e09f74a7aada5f4cd1eb4ac81",
+    "candidates\\h7_naive.joblib": "1979d6b285d7689d15ee789408396efca805bf321aae20634887bc2ead94ac37",
+    "candidates\\h7_A_ridge_1.joblib": "f673295c9431b5b5555dc5b241187ab99c86344e2c133703531d6d8dd6c8ea71",
+    "candidates\\h7_A_ridge_10.joblib": "49721f54cb8da8c2d90726223eeac23ac4f916b7b8932a9c6074d579ac548278",
+    "candidates\\h7_A_boosting.joblib": "997a39eb91904e8156a61c990a5488b4188520a92d97ac2f79f15a3e4ac4570a"
+  }
+}

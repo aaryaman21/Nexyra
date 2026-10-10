@@ -1,0 +1,23 @@
+{
+  "status": "insufficient_labels",
+  "review_history_records": 0,
+  "reviewed_article_count": 0,
+  "eligible_article_count": 0,
+  "near_duplicate_group_count": 18,
+  "exclusions": {
+    "unreviewed": 18,
+    "uncertain": 0,
+    "identity_or_checksum_mismatch": 0,
+    "not_relevant": 0,
+    "development_reused": 0,
+    "current_eligible": 0
+  },
+  "publication_date_extraction": {
+    "reviewed_denominator": 0,
+    "correct": 0,
+    "accuracy": null,
+    "uncertain_excluded": 0
+  },
+  "metrics": null,
+  "message": "No eligible reviewed labels match current source revisions; no scores calculated."
+}

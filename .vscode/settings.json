@@ -1,0 +1,4 @@
+{
+  "css.customData": ["frontend/.vscode/tailwind.css-data.json"],
+  "css.lint.unknownAtRules": "ignore"
+}

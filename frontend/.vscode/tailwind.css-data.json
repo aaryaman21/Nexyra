@@ -1,0 +1,13 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    {
+      "name": "@custom-variant",
+      "description": "Tailwind CSS directive that defines a custom variant, such as the class-based dark theme."
+    },
+    {
+      "name": "@theme",
+      "description": "Tailwind CSS directive that defines theme variables used to generate utility classes."
+    }
+  ]
+}

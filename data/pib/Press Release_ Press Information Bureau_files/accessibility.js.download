@@ -1,0 +1,666 @@
+/* ---------------------------------------------------------------------
+   Accessibility bar behaviour - font size and theme.
+
+   The bar's buttons used to do two narrow things: put a percentage
+   font-size on <body>, and flip the alternate <link> stylesheets. Both
+   stop in the same place. A percentage only reaches text that inherits
+   its size, so a release body that arrives from the database with its
+   own inline font-size never moves, and neither does anything the site
+   stylesheet sizes in px; an alternate stylesheet loses to an inline
+   colour for the same reason. On top of that the release itself is
+   served inside a same-origin iframe, which neither mechanism crosses.
+
+   set_font_size() and setActiveStyleSheet() are redefined here to:
+
+     - scale every element that declares its own font size, measured
+       from the size it has at 100%, so inline styles and px rules move
+       together and the content keeps its heading hierarchy;
+     - mark <html> so css/accessibility.css can override the inline
+       colours the theme sheets cannot reach;
+     - repeat both inside every same-origin iframe, and again whenever
+       one of them loads a different release.
+
+   Load this after js/jquery-3.7.1.min_all_js.js, which carries the
+   bundled font-size.js and styleswitcher.js that define the originals.
+   --------------------------------------------------------------------- */
+
+(function (window) {
+    "use strict";
+
+    /* The step values the bar has always used: 90 is normal, one step
+       either way. */
+    var BASE_SIZE = 90;
+    var MIN_SIZE = 80;
+    var MAX_SIZE = 110;
+    /* Where both settings live now. */
+    var SIZE_STORE = "pibFontSize";
+    var STYLE_STORE = "pibStyle";
+    /* The names earlier builds used in cookies. Kept only to recognise a
+       setting saved under one, and to clear it. */
+    var SIZE_COOKIE = "fontSize";
+    var STYLE_COOKIE = "style";
+    /* Stored when the reader has chosen no theme, so that state is a value
+       of its own rather than an empty string that reads as "nothing saved". */
+    var NO_THEME = "normal";
+
+    /* Set on any element that turned out to declare its own font size,
+       holding the size it had before anything was scaled. Everything
+       else inherits and follows its ancestors. */
+    var BASE_ATTR = "data-pib-fsbase";
+    var BASE_LH_ATTR = "data-pib-lhbase";
+    /* What was in the element's own style attribute beforehand, so
+       Normal Font Size puts the page back exactly as it was served. */
+    var INLINE_ATTR = "data-pib-fsinline";
+    var INLINE_LH_ATTR = "data-pib-lhinline";
+    /* Carries each theme sheet's original title once the title itself
+       has been taken off - see normaliseThemeLinks. */
+    var THEME_ATTR = "data-pib-theme";
+    var CSS_HREF = "/css/accessibility.css?v=5";
+
+    var currentSize = BASE_SIZE;
+    var currentStyle = null;
+    /* Guards the mutation observers while we are the ones writing. */
+    var applying = false;
+    var reapplyTimer = null;
+    /* Element identity for the measuring pass. Never restarts, so a key
+       handed out in one pass is not handed out again in the next. */
+    var nextKey = 1;
+
+    /* --- stored settings ---------------------------------------------
+
+       localStorage, and nothing else. Both settings used to be kept in
+       cookies as well, which put them on every request to the edge and
+       left two sources of truth that could disagree - the disagreement
+       being exactly what kept flipping the theme back. One store, per
+       origin, no path or domain to duplicate on, never sent anywhere.
+       ------------------------------------------------------------------ */
+
+    function readSetting(key) {
+        var value = null;
+        try {
+            value = window.localStorage.getItem(key);
+        } catch (e) {
+            /* Private mode, or storage turned off. The setting simply does
+               not persist; everything else still works for this page. */
+            value = null;
+        }
+        return value === null || value === "" ? null : value;
+    }
+
+    function writeSetting(key, value) {
+        try {
+            window.localStorage.setItem(key, value);
+        } catch (e) {
+            /* As above - nothing to fall back to, and nothing to break. */
+        }
+    }
+
+    /* Reads a cookie by name. Used only to hand other cookies back through
+       the readCookie override below, and once to pick up a theme chosen
+       under the previous build. Neither setting is stored this way now. */
+    function readCookieValue(name) {
+        var pairs = window.document.cookie.split(";");
+        for (var i = 0; i < pairs.length; i++) {
+            var eq = pairs[i].indexOf("=");
+            if (eq !== -1 && pairs[i].slice(0, eq).replace(/^\s+|\s+$/g, "") === name) {
+                try {
+                    return decodeURIComponent(pairs[i].slice(eq + 1));
+                } catch (e) {
+                    return pairs[i].slice(eq + 1);
+                }
+            }
+        }
+        return null;
+    }
+
+    /* The two cookies earlier builds wrote are dead weight now, and they
+       ride along on every request until they expire. Cleared once, for
+       the paths they could have been written under. */
+    function dropLegacyCookies() {
+        var gone = "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=";
+        var dir = window.location.pathname.replace(/[^\/]*$/, "");
+        var names = [STYLE_COOKIE, SIZE_COOKIE];
+        for (var i = 0; i < names.length; i++) {
+            window.document.cookie = names[i] + gone + "/";
+            if (dir && dir !== "/") {
+                window.document.cookie = names[i] + gone + dir;
+            }
+        }
+    }
+
+    /* --- documents we have to reach --------------------------------- */
+
+    /* The main document plus every same-origin iframe in it. A frame
+       from another host throws on access and is simply left alone. */
+    function eachDocument(callback) {
+        var docs = [window.document];
+        var owners = [null];
+        var frames = window.document.getElementsByTagName("iframe");
+        for (var i = 0; i < frames.length; i++) {
+            var doc = null;
+            try {
+                doc = frames[i].contentDocument;
+            } catch (e) {
+                doc = null;
+            }
+            if (doc && doc.body) {
+                docs.push(doc);
+                owners.push(frames[i]);
+            }
+        }
+        for (var j = 0; j < docs.length; j++) {
+            try {
+                callback(docs[j], owners[j]);
+            } catch (e) {
+                /* A frame that navigated away mid-pass - nothing to do. */
+            }
+        }
+    }
+
+    /* A frame carries none of the page's stylesheets, so it needs its
+       own copy of the override sheet before the theme classes mean
+       anything in there. */
+    function ensureStylesheet(doc) {
+        if (doc === window.document || doc.getElementById("pibA11yCss")) {
+            return;
+        }
+        var head = doc.head || doc.getElementsByTagName("head")[0];
+        if (!head) {
+            return;
+        }
+        var link = doc.createElement("link");
+        link.id = "pibA11yCss";
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = CSS_HREF;
+        head.appendChild(link);
+    }
+
+    /* --- font size --------------------------------------------------- */
+
+    function skipElement(el) {
+        /* Only HTML elements get a size written on them: SVG and MathML
+           subtrees have their own sizing model, and the rest below hold
+           no text at all. */
+        if (el.namespaceURI && el.namespaceURI !== "http://www.w3.org/1999/xhtml") {
+            return true;
+        }
+        switch (el.nodeName) {
+            case "SCRIPT":
+            case "STYLE":
+            case "LINK":
+            case "META":
+            case "NOSCRIPT":
+            case "BR":
+            case "HR":
+            case "IMG":
+            case "SOURCE":
+            case "PARAM":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /* Records the size each element has at 100%, for the elements that
+       declare one of their own. Must run with the document unscaled,
+       which restore() guarantees, because these readings are what every
+       later step multiplies. An element whose size matches its parent's
+       is left unrecorded: it inherits, so scaling an ancestor already
+       moves it.
+
+       Reading and writing are kept in separate passes on purpose. A
+       setAttribute between two getComputedStyle calls invalidates style,
+       and the browser then has to recalculate the whole document before
+       it can answer the next read - which turns one pass over a long
+       release into several seconds. Nothing is written until every size
+       has been read. */
+    function measure(doc) {
+        var win = doc.defaultView;
+        var body = doc.body;
+        if (!win || !body) {
+            return;
+        }
+
+        var sizes = {};
+        var pending = [];
+
+        function remember(el, size) {
+            /* A plain property, not an attribute: it does not touch
+               style, so the reading pass stays a reading pass. */
+            if (!el.__pibFsKey) {
+                el.__pibFsKey = nextKey++;
+            }
+            sizes[el.__pibFsKey] = size;
+        }
+
+        function recall(el) {
+            return el && el.__pibFsKey ? sizes[el.__pibFsKey] : undefined;
+        }
+
+        function consider(el, computed) {
+            remember(el, computed.fontSize);
+            if (el.hasAttribute(BASE_ATTR)) {
+                return;
+            }
+            if (recall(el.parentNode) === computed.fontSize) {
+                return;
+            }
+            /* The computed style object is live, so the values are read
+               out now rather than kept for the writing pass. */
+            pending.push([el, computed.fontSize, computed.lineHeight]);
+        }
+
+        consider(body, win.getComputedStyle(body));
+
+        /* getElementsByTagName returns document order, so a parent is
+           always read before its children and one getComputedStyle call
+           per element is enough. */
+        var all = body.getElementsByTagName("*");
+        for (var i = 0; i < all.length; i++) {
+            if (!skipElement(all[i])) {
+                consider(all[i], win.getComputedStyle(all[i]));
+            }
+        }
+
+        for (var j = 0; j < pending.length; j++) {
+            record(pending[j][0], pending[j][1], pending[j][2]);
+        }
+    }
+
+    function record(el, fontSize, lineHeight) {
+        el.setAttribute(BASE_ATTR, fontSize);
+        el.setAttribute(INLINE_ATTR, el.style.fontSize || "");
+        /* A line-height fixed in px does not follow the text up, so it
+           has to be scaled alongside it. One written as a plain number,
+           or left at normal, already tracks the font size. */
+        if (/px$/.test(lineHeight)) {
+            el.setAttribute(BASE_LH_ATTR, lineHeight);
+            el.setAttribute(INLINE_LH_ATTR, el.style.lineHeight || "");
+        }
+    }
+
+    function restore(doc) {
+        var body = doc.body;
+        /* Before the first pass the bundled font-size.js may already have
+           put its percentage on <body> from the same cookie. It has to
+           come off, or every size measured next is read through it. */
+        if (body && !body.hasAttribute(BASE_ATTR) && /%$/.test(body.style.fontSize)) {
+            body.style.fontSize = "";
+        }
+        var marked = doc.querySelectorAll("[" + BASE_ATTR + "]");
+        for (var i = 0; i < marked.length; i++) {
+            var el = marked[i];
+            el.style.fontSize = el.getAttribute(INLINE_ATTR) || "";
+            if (el.hasAttribute(BASE_LH_ATTR)) {
+                el.style.lineHeight = el.getAttribute(INLINE_LH_ATTR) || "";
+            }
+        }
+    }
+
+    /* Drops the recorded sizes so the next pass measures again - used
+       when a resize may have brought different media-query sizes into
+       play. */
+    function forget(doc) {
+        var marked = doc.querySelectorAll("[" + BASE_ATTR + "]");
+        for (var i = 0; i < marked.length; i++) {
+            var el = marked[i];
+            el.removeAttribute(BASE_ATTR);
+            el.removeAttribute(INLINE_ATTR);
+            el.removeAttribute(BASE_LH_ATTR);
+            el.removeAttribute(INLINE_LH_ATTR);
+        }
+    }
+
+    function scale(doc, factor) {
+        var marked = doc.querySelectorAll("[" + BASE_ATTR + "]");
+        for (var i = 0; i < marked.length; i++) {
+            var el = marked[i];
+            var base = parseFloat(el.getAttribute(BASE_ATTR));
+            if (isNaN(base)) {
+                continue;
+            }
+            el.style.fontSize = (Math.round(base * factor * 100) / 100) + "px";
+            var lineHeight = parseFloat(el.getAttribute(BASE_LH_ATTR));
+            if (!isNaN(lineHeight)) {
+                el.style.lineHeight = (Math.round(lineHeight * factor * 100) / 100) + "px";
+            }
+        }
+    }
+
+    /* --- applying the current settings ------------------------------- */
+
+    /* PressReleaseDetail sizes its reader frame to the release it is
+       showing, so text that has grown needs the frame to grow with it
+       or the end of the release is cut off. Only a frame already given
+       an explicit height is touched. */
+    function refitFrame(frame, doc) {
+        if (!frame || !frame.style.height || !doc.body) {
+            return;
+        }
+        frame.style.height = doc.body.scrollHeight + "px";
+    }
+
+    /* Split out because this half can run before <body> exists, which is
+       what keeps a saved dark theme from flashing white on load. */
+    function applyThemeClasses(doc) {
+        var root = doc.documentElement;
+        root.classList.toggle("pib-hc", currentStyle === "change");
+        root.classList.toggle("pib-theme-green", currentStyle === "green");
+        root.classList.toggle("pib-theme-yellow", currentStyle === "yellow");
+    }
+
+    function applyTheme(doc) {
+        applyThemeClasses(doc);
+        /* A document showing a release and nothing else carries none of
+           the site chrome the theme sheets are written against, so the
+           blanket contrast rules are safe there and are the only thing
+           that colours text the release left to the stylesheet. */
+        if (doc.body && !doc.querySelector(".top-acess")) {
+            doc.documentElement.classList.add("pib-a11y-content");
+        }
+    }
+
+    function applyAll(remeasure) {
+        if (applying) {
+            return;
+        }
+        applying = true;
+        var factor = currentSize / BASE_SIZE;
+        var scaled = factor !== 1;
+        try {
+            eachDocument(function (doc, frame) {
+                ensureStylesheet(doc);
+                applyTheme(doc);
+                restore(doc);
+                if (remeasure) {
+                    forget(doc);
+                }
+                if (scaled) {
+                    measure(doc);
+                    scale(doc, factor);
+                }
+                watch(doc);
+                refitFrame(frame, doc);
+            });
+        } finally {
+            applying = false;
+        }
+    }
+
+    /* --- keeping up with content that arrives later ------------------ */
+
+    function isDefault() {
+        return currentSize === BASE_SIZE &&
+            currentStyle !== "change" && currentStyle !== "green" && currentStyle !== "yellow";
+    }
+
+    function scheduleReapply() {
+        if (applying || isDefault()) {
+            return;
+        }
+        window.clearTimeout(reapplyTimer);
+        reapplyTimer = window.setTimeout(function () {
+            applyAll(false);
+        }, 150);
+    }
+
+    /* Postbacks, partial updates and a frame swapping to another
+       release all bring in markup that has never been measured. Only
+       childList is watched, so the styles this file writes do not
+       trigger a pass of their own. */
+    function watch(doc) {
+        if (doc.__pibA11yWatched || !window.MutationObserver || !doc.body) {
+            return;
+        }
+        doc.__pibA11yWatched = true;
+        new window.MutationObserver(scheduleReapply).observe(doc.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    function watchFrames() {
+        var frames = window.document.getElementsByTagName("iframe");
+        for (var i = 0; i < frames.length; i++) {
+            if (frames[i].__pibA11yBound) {
+                continue;
+            }
+            frames[i].__pibA11yBound = true;
+            frames[i].addEventListener("load", function () {
+                /* The new document starts unmarked, so this measures
+                   that frame afresh and changes nothing elsewhere. */
+                applyAll(false);
+            });
+        }
+    }
+
+    /* --- the bar's buttons ------------------------------------------- */
+
+    function set_font_size(direction) {
+        if (direction === "increase") {
+            currentSize = Math.min(MAX_SIZE, currentSize + 10);
+        } else if (direction === "decrease") {
+            currentSize = Math.max(MIN_SIZE, currentSize - 10);
+        } else {
+            currentSize = BASE_SIZE;
+        }
+        writeSetting(SIZE_STORE, currentSize);
+        window.fontSize = currentSize;
+        applyAll(false);
+    }
+
+    /* ---------------------------------------------------------------
+       The theme sheets, taken off the alternate-stylesheet mechanism.
+
+       The original switcher picked a theme by setting link.disabled on
+       a rel="alternate stylesheet". Per CSSOM that property is a proxy
+       for link.sheet.disabled, and an alternate sheet is fetched lazily,
+       so until the download finishes link.sheet is null and the
+       assignment is dropped on the floor. Chrome implements that to the
+       letter; Firefox remembers the value and applies it once the sheet
+       arrives. Hence a theme that did nothing on the first click, worked
+       on the second, and never survived a page load - in Chrome only.
+
+       So the sheets stop being alternates. Each becomes an ordinary
+       rel="stylesheet", which is always fetched, and is switched with
+       the media attribute instead - which needs no sheet object and
+       takes effect immediately. The title has to come off with it: two
+       titled non-alternate sheets would put the browser's own preferred
+       stylesheet set back in charge of which one is showing. The title
+       is kept in a data attribute, which is all this file needs.
+       --------------------------------------------------------------- */
+    function normaliseThemeLinks() {
+        var links = window.document.getElementsByTagName("link");
+        for (var i = 0; i < links.length; i++) {
+            var link = links[i];
+            var title = link.getAttribute("title");
+            var rel = link.getAttribute("rel");
+            if (!title || !rel || rel.indexOf("style") === -1) {
+                continue;
+            }
+            link.setAttribute(THEME_ATTR, title);
+            link.removeAttribute("title");
+            link.setAttribute("rel", "stylesheet");
+            link.media = "not all";
+            /* The bundled switcher runs at parse time and may already
+               have disabled this sheet. */
+            link.disabled = false;
+        }
+    }
+
+    /* Shows the one theme asked for and hides the rest. Sheets without a
+       theme marker - the site stylesheet, the print sheet, the one this
+       file comes with - are never touched. */
+    function applyStyleLinks(title) {
+        var links = window.document.querySelectorAll("[" + THEME_ATTR + "]");
+        for (var i = 0; i < links.length; i++) {
+            links[i].media =
+                links[i].getAttribute(THEME_ATTR) === title ? "screen" : "not all";
+        }
+    }
+
+    function setActiveStyleSheet(title) {
+        /* The bar labels the orange theme "orange" while the sheet it
+           wants is titled "yellow". */
+        if (title === "orange") {
+            title = "yellow";
+        }
+
+        applyStyleLinks(title);
+        currentStyle = title;
+        writeSetting(STYLE_STORE, title || NO_THEME);
+        applyAll(false);
+    }
+
+    /* --- start-up ----------------------------------------------------- */
+
+    function readSettings() {
+        var savedSize = parseInt(readSetting(SIZE_STORE), 10);
+        if (!isNaN(savedSize) && savedSize >= MIN_SIZE && savedSize <= MAX_SIZE) {
+            currentSize = savedSize;
+        }
+        window.fontSize = currentSize;
+        var savedStyle = readSetting(STYLE_STORE);
+        /* "null" is what the bundled switcher's unload handler used to
+           write when it could not tell what was showing. */
+        if (savedStyle === NO_THEME || savedStyle === "null" || savedStyle === "") {
+            savedStyle = null;
+        }
+        /* Nothing stored yet, so a choice made under the build that kept
+           it in a cookie is picked up once and written to the store. Only
+           when the store is empty, so it can never overrule it. */
+        if (savedStyle === null) {
+            savedStyle = readCookieValue(STYLE_COOKIE);
+            if (savedStyle === NO_THEME || savedStyle === "null" || savedStyle === "") {
+                savedStyle = null;
+            }
+            if (savedStyle !== null) {
+                writeSetting(STYLE_STORE, savedStyle);
+            }
+        }
+        dropLegacyCookies();
+
+        currentStyle = savedStyle || currentStyle;
+        if (currentStyle === "orange") {
+            currentStyle = "yellow";
+        }
+    }
+
+    function init() {
+        watchFrames();
+        applyAll(false);
+
+        /* A different viewport can mean different sizes in the
+           stylesheet, so the measurements are taken again from scratch. */
+        var resizeTimer = null;
+        window.addEventListener("resize", function () {
+            window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(function () {
+                applyAll(true);
+            }, 300);
+        });
+
+        /* An UpdatePanel replaces its markup without a page load. */
+        if (window.Sys && window.Sys.WebForms && window.Sys.WebForms.PageRequestManager) {
+            window.Sys.WebForms.PageRequestManager.getInstance()
+                .add_endRequest(function () {
+                    watchFrames();
+                    applyAll(false);
+                });
+        }
+    }
+
+    /* These two replace the copies inside the jQuery bundle; the bar's
+       onclick attributes keep calling them by name. */
+    window.set_font_size = set_font_size;
+    window.setActiveStyleSheet = setActiveStyleSheet;
+
+    /* ---------------------------------------------------------------
+       styleswitcher.js, still in the bundle, ends with
+
+           window.onload = function () {
+               var t = readCookie("style"),
+                   i = t ? t : getPreferredStyleSheet();
+               setActiveStyleSheet(i);
+           }
+
+       That fires after everything on the page has loaded, and it decides
+       what to show by reading the cookie and nothing else. When the
+       cookie disagrees with what is actually stored - it is missing, or
+       still holds a value an older build wrote - it hands the wrong
+       answer to setActiveStyleSheet, which then dutifully switches the
+       theme sheets off, drops the class off <html>, and writes the wrong
+       value back over the store. A page that had loaded dark turns light
+       a moment later, and the saved choice is gone with it.
+
+       Rather than fight the handler, its three helpers are pointed at
+       the state this file already holds. readCookie keeps working for
+       every other cookie. The handler then asks its question, gets the
+       answer that is already true, and re-applies it - a no-op.
+       --------------------------------------------------------------- */
+    window.getActiveStyleSheet = function () {
+        return currentStyle || NO_THEME;
+    };
+    window.getPreferredStyleSheet = function () {
+        return currentStyle;
+    };
+    window.readCookie = function (name) {
+        return name === STYLE_COOKIE ? currentStyle : readCookieValue(name);
+    };
+    /* Its unload handler writes the theme straight back to a cookie. That
+       cookie is no longer read by anything, so writing it only puts the
+       value back on the wire on every request. */
+    window.createCookie = function (name, value, days) {
+        if (name === STYLE_COOKIE || name === SIZE_COOKIE) {
+            return;
+        }
+        var expires = "";
+        if (days) {
+            var d = new Date();
+            d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+            expires = "; expires=" + d.toGMTString();
+        }
+        window.document.cookie = name + "=" + value + expires + "; path=/";
+    };
+
+    /* Reports what the switcher thinks is going on, for checking against a
+       page that is not behaving. */
+    window.pibA11yState = function () {
+        var links = window.document.querySelectorAll("[" + THEME_ATTR + "]");
+        var sheets = [];
+        for (var i = 0; i < links.length; i++) {
+            sheets.push(links[i].getAttribute(THEME_ATTR) + ":" + links[i].media);
+        }
+        return {
+            style: currentStyle,
+            size: currentSize,
+            storedStyle: readSetting(STYLE_STORE),
+            storedSize: readSetting(SIZE_STORE),
+            staleCookie: readCookieValue(STYLE_COOKIE),
+            htmlClass: window.document.documentElement.className,
+            sheets: sheets
+        };
+    };
+
+    /* For anything that adds content by hand and wants it sized. */
+    window.pibA11yApply = function () {
+        watchFrames();
+        applyAll(false);
+    };
+
+    /* Done now rather than at DOMContentLoaded: the theme sheets are in
+       the document by this point, and choosing one here means a saved
+       dark theme paints with the first frame instead of flashing white
+       and then correcting itself. */
+    readSettings();
+    normaliseThemeLinks();
+    applyStyleLinks(currentStyle);
+    applyThemeClasses(window.document);
+
+    if (window.document.readyState === "loading") {
+        window.document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init();
+    }
+}(window));

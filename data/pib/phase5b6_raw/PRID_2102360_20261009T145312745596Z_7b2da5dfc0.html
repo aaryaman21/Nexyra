@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head id="Head1"><title>
+	Press Release Page | Press Information Bureau
+</title><link href="css/style.css?v=1" rel="stylesheet" type="text/css" /><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="alternate stylesheet" href="css/change.css?v=1" media="screen" title="change" /><link rel="alternate stylesheet" href="css/green.css?v=1" media="screen" title="green" /><link rel="alternate stylesheet" href="css/yellow.css" media="screen" title="yellow" /><link rel="stylesheet" type="text/css" href="css/prtint.css" media="print" /><link rel="stylesheet" href="css/style3.1.css" type="text/css" /><link id="pibA11yCss" rel="stylesheet" href="/css/accessibility.css?v=7" type="text/css" />
+      <script type="text/javascript">
+        /* Stamps the saved theme on <html> before the page paints. The
+           switcher in js/accessibility.js settles the rest, but on inner
+           pages it does not run until the end of the body and inside the
+           release frame it is a separate download - either way the reader
+           would otherwise watch a light page turn dark in front of them. */
+        (function (d) {
+            var t = "";
+            try {
+                t = window.localStorage.getItem("pibStyle") || "";
+            } catch (e) {
+                t = "";
+            }
+            if (t === "orange") {
+                t = "yellow";
+            }
+            var c = t === "change" ? " pib-hc"
+                : t === "green" ? " pib-theme-green"
+                : t === "yellow" ? " pib-theme-yellow" : "";
+            d.documentElement.className += c + " pib-a11y-content";
+        }(document));
+      </script>
+
+
+      <script src="js/jquery.min.js" type="text/javascript"></script>
+      <script type="text/javascript" src="/js/accessibility.js?v=7"></script>
+
+      <script type="text/javascript">
+            $(document).ready(function () {
+                  function getParameterByName(name) {
+                        var url = window.location.href;
+                        name = name.replace(/[\[\]]/g, '\\$&');
+                        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                              results = regex.exec(url);
+                        if (!results) return null;
+                        if (!results[2]) return '';
+                        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                  }
+                  // Get the IDs from the current page's URL
+                  let prid = parseInt(getParameterByName('PRID'), 10);
+
+                  if (!isNaN(prid) && prid > 0) {
+                        $.ajax({
+                              type: "POST",
+                              url: "AjaxMethod.aspx/UpdatePRHitCount",
+                              async: false,
+                              data: JSON.stringify({ 'PermId': prid }),
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              success: function (response) {
+                                    console.log(response);
+                              },
+                              error: function (error) {
+                                    console.log("Error in AJAX request", error);
+                              }
+                        });
+                  } else {
+                        console.log("Invalid parameters:", prid);
+                  }
+
+            });
+      </script>
+      <style type="text/css">
+            .table-responsive {
+                  width: 100%;
+                  overflow-x: auto;
+            }
+
+            .banner {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  background-color: #000;
+                  color: #fff;
+                  padding: 20px;
+            }
+
+            full-width {
+                  width: 100%;
+            }
+
+            .logo-left, .logo-center, .countdown {
+                  display: flex;
+                  align-items: center;
+            }
+
+                  .logo-left img, .logo-center img {
+                        height: 70px;
+                  }
+
+            .countdown {
+                  text-align: center;
+                  background-color: var(--dbim-text, #150202);
+                  border-radius: 10px;
+                  padding: 10px;
+                  border: 2px solid grey;
+            }
+
+            .firstnumber {
+                  color: #000000;
+                  position: absolute;
+                  top: 50px;
+                  right: 90px;
+                  font-size: 30px;
+            }
+
+            .secondnumber {
+                  position: absolute;
+                  color: #000000;
+                  right: 45px;
+                  top: 50px;
+                  font-size: 30px;
+            }
+
+            .countdown .days {
+                  font-size: 35px;
+                  color: gold;
+            }
+
+            .countdown p {
+                  margin: 0;
+            }
+
+            .countdown .text {
+                  font-size: 16px;
+            }
+
+            a {
+                  word-break: break-all;
+            }
+
+            iframe, img {
+                  max-width: 100%;
+            }
+
+            @media(max-width:1199px) {
+                  .firstnumber {
+                        top: 40px;
+                        right: 72px;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 35px;
+                        top: 40px;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:990px) {
+                  .firstnumber {
+                        top: 25px;
+                        right: 54px;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 25px;
+                        top: 25px;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:768px) {
+                  .countdown, .days {
+                        font-size: 12px !important;
+                  }
+
+
+                  .firstnumber {
+                        top: 25%;
+                        right: 8%;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 4.5%;
+                        top: 25%;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:475px) {
+                  .countdown, .days {
+                        font-size: 10px !important;
+                        top: 20%;
+                  }
+
+                  .bannerimgdiv {
+                        padding: 0 !important;
+                  }
+
+                  .bannerimg {
+                        width: 108% !important;
+                  }
+            }
+      </style>
+      <script type="text/javascript">
+            $(function () {
+                  $("[id*=printPDF]").click(function () {
+                        $("[id*=hfGridHtml]").val($("#PdfDiv").html());
+                  });
+            });
+            $(function () {
+                  $("[id*=printPDFEvent]").click(function () {
+                        $("[id*=hfGridHtml]").val($("#PdfDiv").html());
+                  });
+            });
+      </script>
+
+      
+
+      <link id="pibConsentCss" href="/css/consent.css?v=8" rel="stylesheet" type="text/css" /><link id="pibFontsCss" href="/css/fonts-noto.css?v=6" rel="stylesheet" type="text/css" /><link id="pibDbimCss" href="/css/dbim.css?v=1120" rel="stylesheet" type="text/css" /><meta property="og:title" content="Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF" /><meta property="og:url" content="www.pib.gov.in/Pressreleaseshare.aspx?PRID=2102360" /><meta property="og:description" content="In view of the falling prices of tomato in Madhya Pradesh, Maharashtra and other major producing sta" /><meta property="og:image" content="https:/pib.gov.in/images/indian-emblem.png" />
+                                <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="C4E7H-KSCMC-422L4-W3EM5-U36MF",function(){function e(){if(!i){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,o.parentNode.appendChild(e),i=!0}}function t(e){i=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(o.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",o.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"C4E7H-KSCMC-422L4-W3EM5-U36MF";var o=document.currentScript||document.getElementsByTagName("script")[0],i=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!i)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),o.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="eaaujecjbhyp2jqacqhseaaaabvmr756-f-56088b8d6-clienttons-s.akamaihd.net",o="false"=="true"?2:1,i={"ak.v":"41","ak.cp":"1825201","ak.ai":parseInt("1215205",10),"ak.ol":"0","ak.cr":133,"ak.ipv":6,"ak.proto":"http/1.1","ak.rid":"1b39ea0","ak.r":53715,"ak.a2":n,"ak.m":"dscb","ak.n":"ff","ak.cport":53942,"ak.gh":"23.212.5.111","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"bbr","ak.t":"1791557566","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==cjCBf9hgf1mIO6o6ZQqJsovxvplrCVcZeqC61Wkp9IT0bONS9rhFmULZOh5sYzl2IEid/LCkrmc+Hnf4ZaCiNWHFdyvJToJ4Ive5MrTlr2w6b5dgOkR8fmOXRBzyXy7Bx7QZSxu/KpFOZ2CWB4xG5JZI2d5sbSTyJBLusILiUbIeRbrgIyAoT7FlG/jxUqKfn810B7DNqmeddglmxZ+Pso1w6M4GycFD7whePGQ7xH9uFx5gjic4H6XvCW+pq73dmrbC0WJmAS1QiKJkJO3voA84Nb/YbK91w04fOSD+BnecVY78EBLXm4H31yGLuvSx5CtHnuSXnp9zs2GP9b0Ih0CnTRAZiLBSINBYPhuYddyles2sJ9kcFmB0PLZWPhr8GLyxB7OjFnZcLFToZJ8Lb9J2BH1amKopP7W5PyNo28Q=","ak.pv":"9","ak.dpoabenc":"","ak.tf":o};if(""!==t)i["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))i["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var e=["ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+<body>
+    
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+     style="position:absolute;width:0;height:0;overflow:hidden" id="dbim-icon-sprite">
+    <defs>
+        <symbol id="icon-angle-double-left" viewBox="0 0 24 24"><path d="M11.6 4.6 4.2 12l7.4 7.4 2.2-2.2L8.6 12l5.2-5.2z"/><path d="M19 4.6 11.6 12 19 19.4l2.2-2.2L16 12l5.2-5.2z"/></symbol>
+        <symbol id="icon-angle-double-right" viewBox="0 0 24 24"><path d="M12.4 4.6 10.2 6.8 15.4 12l-5.2 5.2 2.2 2.2L19.8 12z"/><path d="M5 4.6 2.8 6.8 8 12l-5.2 5.2L5 19.4 12.4 12z"/></symbol>
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="M20.8 10.6H9.6v2.8h11.2z"/><path d="M10.8 5.6 3.2 12l7.6 6.4z"/></symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M3.2 10.6h11.2v2.8H3.2z"/><path d="M13.2 5.6 20.8 12l-7.6 6.4z"/></symbol>
+        <symbol id="icon-blogger" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M6.4 2.4h11.2a4 4 0 0 1 4 4v11.2a4 4 0 0 1-4 4H6.4a4 4 0 0 1-4-4V6.4a4 4 0 0 1 4-4zm2.8 5.2a2 2 0 0 0 0 4h2.4a2 2 0 0 0 0-4zm0 5.6a2 2 0 0 0 0 4h5.6a2 2 0 0 0 0-4z"/></symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24"><path d="M7.6 2.4H10v2.4H7.6z"/><path d="M14 2.4h2.4v2.4H14z"/><path fill-rule="evenodd" d="M4 4.8h16a1.6 1.6 0 0 1 1.6 1.6v13.2a1.6 1.6 0 0 1-1.6 1.6H4a1.6 1.6 0 0 1-1.6-1.6V6.4A1.6 1.6 0 0 1 4 4.8zm.4 5.6v8.4h15.2v-8.4z"/><path d="M6.4 12.4h3.2v3.2H6.4z"/></symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="M15.4 4.6 8 12l7.4 7.4 2.2-2.2L12.4 12l5.2-5.2z"/></symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="M8.6 4.6 6.4 6.8 11.6 12l-5.2 5.2 2.2 2.2L16 12z"/></symbol>
+        <symbol id="icon-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24"><path d="M10.8 3h2.4v7.6h3.4L12 16.6l-4.6-6h3.4z"/><path d="M4 17.2h2.4v2.4h11.2v-2.4H20v3.2a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 20.4z"/></symbol>
+        <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M13.6 21.6v-8.4h2.8l.42-3.3h-3.22V7.8c0-.95.27-1.6 1.64-1.6h1.74V3.26a23 23 0 0 0-2.54-.13c-2.5 0-4.22 1.53-4.22 4.34v2.43H7.4v3.3h2.82v8.4z"/></symbol>
+        <symbol id="icon-fact-check" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4 3.6 5.6v6.2c0 4.6 3.4 8.6 8.4 9.8 5-1.2 8.4-5.2 8.4-9.8V5.6zm-1 13.2-3.6-3.6 1.7-1.7 1.9 1.9 4.5-4.5 1.7 1.7z"/></symbol>
+        <symbol id="icon-hashtag" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.8 3h2.4l-1 6h3.2l1-6h2.4l-1 6h3.4v2.4h-3.8l-.6 3.2h3.6V17h-4l-1 5h-2.4l1-5h-3.2l-1 5H5.4l1-5H3V14.6h3.8l.6-3.2H3.8V9h4zm.6 8.4-.6 3.2h3.2l.6-3.2z"/></symbol>
+        <symbol id="icon-home" viewBox="0 0 24 24"><path d="M12 3.4 2.8 11.6h2.4v8.4a1 1 0 0 0 1 1h3.3v-5.4h5v5.4h3.3a1 1 0 0 0 1-1v-8.4h2.4z"/></symbol>
+        <symbol id="icon-instagram" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.6 2.4h8.8a5.2 5.2 0 0 1 5.2 5.2v8.8a5.2 5.2 0 0 1-5.2 5.2H7.6a5.2 5.2 0 0 1-5.2-5.2V7.6a5.2 5.2 0 0 1 5.2-5.2zm0 2.4a2.8 2.8 0 0 0-2.8 2.8v8.8a2.8 2.8 0 0 0 2.8 2.8h8.8a2.8 2.8 0 0 0 2.8-2.8V7.6a2.8 2.8 0 0 0-2.8-2.8z"/><path fill-rule="evenodd" d="M12 6.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 2.4a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z"/><circle cx="17.3" cy="6.7" r="1.3"/></symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M4.8 8.8h3.6v12H4.8z"/><circle cx="6.6" cy="5.4" r="2.1"/><path d="M10.8 8.8h3.45v1.65h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.35 4.3 5.4v6.6h-3.6v-5.85c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1v5.95h-3.6z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M2.4 7.6v9.2a1.6 1.6 0 0 0 1.6 1.6h16a1.6 1.6 0 0 0 1.6-1.6V7.6L12 14z"/><path d="M21.2 5.4H2.8L12 11.8z"/></symbol>
+        <symbol id="icon-mail-open" viewBox="0 0 24 24"><path d="M2.4 9.8h19.2v9.6A1.6 1.6 0 0 1 20 21H4a1.6 1.6 0 0 1-1.6-1.6z"/><path d="M12 2.6 21.6 9.2h-3.8L12 5.3 6.2 9.2H2.4z"/><path d="m3.9 11.2 8.1 5.4 8.1-5.4 1.5 1.3-9.6 6.4-9.6-6.4z"/></symbol>
+        <symbol id="icon-map-marker" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4a7 7 0 0 0-7 7c0 5.2 7 12.2 7 12.2s7-7 7-12.2a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></symbol>
+        <symbol id="icon-newspaper" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2.8 4.4h14.8v15.2H2.8zm2 2v11.2h10.8V6.4z"/><path d="M6 7.6h8.4v1.6H6z"/><path d="M6 10.8h8.4v1.6H6z"/><path d="M6 14h5.2v1.6H6z"/><path d="M18.4 8.4h2.8v9.6a1.4 1.4 0 0 1-2.8 0z"/></symbol>
+        <symbol id="icon-pause" viewBox="0 0 24 24"><rect x="7.4" y="4" width="3.6" height="16" rx="0.9"/><rect x="13" y="4" width="3.6" height="16" rx="0.9"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="M8 4.5v15l12-7.5z"/></symbol>
+        <symbol id="icon-picture" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2.4 5.2h19.2v13.6H2.4zm2 2v9.6h15.2V7.2z"/><path d="M5.6 16.4 10 11l2.6 3 2-2.2 4 4.6z"/><circle cx="8" cy="10.4" r="1.5"/></symbol>
+        <symbol id="icon-press-conference" viewBox="0 0 24 24"><circle cx="12" cy="5.2" r="2.6"/><path d="M7.6 12.2a4.4 4.4 0 0 1 8.8 0z"/><circle cx="4.9" cy="9.6" r="2.2"/><path d="M1.8 15.2a3.1 3.1 0 0 1 6.2 0z"/><circle cx="19.1" cy="9.6" r="2.2"/><path d="M16 15.2a3.1 3.1 0 0 1 6.2 0z"/><path d="M6.6 13.6h10.8l2.2 7.8H4.4z"/></symbol>
+        <symbol id="icon-print" viewBox="0 0 24 24"><path d="M6.4 2.8h11.2v4.4H6.4z"/><path d="M4 8.4h16a1.6 1.6 0 0 1 1.6 1.6v5.6a1.6 1.6 0 0 1-1.6 1.6h-1.6v-2.8H6v2.8H4a1.6 1.6 0 0 1-1.6-1.6V10A1.6 1.6 0 0 1 4 8.4z"/><path d="M7.2 15.6h9.6v5.6H7.2z"/></symbol>
+        <symbol id="icon-rss" viewBox="0 0 24 24"><circle cx="4.8" cy="19.2" r="2.4"/><path d="M2.4 11.2v3.2a6.4 6.4 0 0 1 6.4 6.4H12A9.6 9.6 0 0 0 2.4 11.2z"/><path d="M2.4 4.8V8A13.6 13.6 0 0 1 16 21.6h3.2A16.8 16.8 0 0 0 2.4 4.8z"/></symbol>
+        <symbol id="icon-search-plus" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10 2.8a7.2 7.2 0 1 0 0 14.4 7.2 7.2 0 0 0 0-14.4zm0 2.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6z"/><path d="M15.3 14.6 21.2 20.5l-1.5 1.5-5.9-5.9z"/><path d="M9.2 6.8h1.6v2.4h2.4v1.6h-2.4v2.4H9.2v-2.4H6.8V9.2h2.4z"/></symbol>
+        <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5.6" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="18.4" r="3"/><path d="M8.3 10.9 15.7 7.2l.9 1.8-7.4 3.7z"/><path d="M9.2 13.1 16.6 16.8l-.9 1.8-7.4-3.7z"/></symbol>
+        <symbol id="icon-twitter" viewBox="0 0 24 24"><path d="M4.2 3h4.3l11.3 18h-4.3z"/><path d="M19.3 3h-2.6L4.2 21h2.6z"/></symbol>
+        <symbol id="icon-university" viewBox="0 0 24 24"><path d="M12 2.4 21.6 7.2v1.6H2.4V7.2z"/><path d="M4.8 10.4h2.4v8H4.8z"/><path d="M9.2 10.4h2.4v8H9.2z"/><path d="M13.4 10.4h2.4v8h-2.4z"/><path d="M17.6 10.4H20v8h-2.4z"/><path d="M3.2 19.8h17.6v1.8H3.2z"/></symbol>
+        <symbol id="icon-volume-up" viewBox="0 0 24 24"><path d="M3.2 9.2h3.3l5-4.2v14l-5-4.2H3.2z"/><path d="M14.6 8.4a5 5 0 0 1 0 7.2l1.6 1.6a7.2 7.2 0 0 0 0-10.4z"/><path d="M17.4 5.6a8.8 8.8 0 0 1 0 12.8l1.5 1.5a10.9 10.9 0 0 0 0-15.8z"/></symbol>
+        <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4a9.5 9.5 0 0 0-8.1 14.5L2.4 21.6l4.8-1.4A9.5 9.5 0 1 0 12 2.4zm0 2.2a7.3 7.3 0 1 1-3.8 13.5l-.4-.2-2.6.7.7-2.5-.3-.4A7.3 7.3 0 0 1 12 4.6z"/><path d="M9.4 7.8c-.2-.5-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.7 2.8 4.3 3.8 2.1.8 2.6.7 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.6c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.9 4.8 12 4.8 12 4.8s-5.9 0-7.6.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.4 7.6.4 7.6.4s5.9 0 7.6-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8zM10.2 15.1V8.9l5.1 3.1z"/></symbol>
+    </defs>
+</svg>
+
+      <form method="post" action="./PressReleasePage.aspx?PRID=2102360&amp;lang=1&amp;reg=1" id="form1">
+<input type="hidden" name="sc_HiddenField" id="sc_HiddenField" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="Ee3ndjlj/hl5a61bq4uXm9i229oStxLi76KUKDub/8FBP4PQCgM4jYn6jwsbcuMUYqNjbvqXjyPeENF+MENnuRbROZjKI70lWmabaY08EcfPbpUXeCzPwLMeVOOuCxx7UZrDln8XkRSGaHHVimzHp63+8BdD2UYaorIPtxNcYUQeIDYsfemkJE/DkgoN5Pd/hB0yB92ARqrZVd5uRe5nFprptCAZ+4guei8NBhn5pABN1C3Uvm7SayMwwqWuK38nk0GEYzi/SIwfbFPbs9r/mNzB/Tk28kdxT9hiEAa/Y7gJTrgWz4rue6jfuW+m76WBUCrveMCeIthEUlISs6Haiof0naW0RQUaEKP7pAzPlFypWnhGv1B6orncBQwCnZdCKCdv5eMdLbQhuZIvCOgR8sgt1J6CjJ1/OF/6xw49acVaeOri0Zb5DScfRD5AEil3QK8FaFW7RViNHxp2ULZgRYrohjHwavoWdwuBCLqvBpbu2BvHuW4Of44IYoy/0Xd6OnRXrmHhIWnuqThUQQ0cC0BgJ77GxVCwu9ZioMropZ9TC3ffb+eXKpGNFGXjEIxTXG8763RcntycRYObU/AxsBnH7dj/fdgPwPheh1GlopLhBaJCrzQ6+Sh12sSxbKwusn/++JQmOZojRLkTuKGIpSCc5BU4CPJT9P2E6i18MWO3i7Jpz9OuQ6IvH1a4L0lxAPawAXIIY2wGb+hYpuvCor/t/wmeBnSnx9T7cjGk9f8JL98cMsFgsqPls6vTEuRAqPJe4ToHJwPkdpeEEMh/AbJqVVswjvODENPD4EgIHc8U0evbKr80BiCNlUxfKCXRR5vKBZi3ZXdA8dO+b+MTJ0oKCZNBOrklE+HuJzfZYrzUUuox2tXGrYbyV58Ka/FQ/Zonst5Xn02t1pFgN0/kPP9xkETx4GJT2MwNJC40/wdiajULC+ijX6mVUG/dAdjkt0sRHr7F/UU6QRxdeyAubtQ1b+fR4QUOZM7c1wgWIbRCL5Wi7MLulvkEJ0C3XVqqdpuAM+THbM1DspaEvE3riBenKRQjm+mqWwsBgiFipShZpN+NmY8kPfBq3NIYgrv4H/m56YCFDD3LWeJNC9X52McYoq/1LQRYWWeYiODlUDyob+b6Ug81G0acE8WKR2Gt3B5mLpaERSL97EShQzJLIb8s9uufuGHUkxGx/RTsJn5tB2gjZP8n1DB2ktnNDywtq/g7h/TWdN5Yd8mHoe9vANE7v3ZJ//sjiCwjn0bEKEazw8OJTjiR0rU6k+TLlgNaCPFBHJanAoFvfFYbILqGfYKaeyywGeygjF7+1+QporIg2HO0lUo0FFxV2h4K7Khh2cKxdf82URSHQiu5aT4A3pbJcLwoTJqz3luZc6BHQdrYrfUdgA7jZikZAqCqcIhI6H5gUW+oDO9WK4xkMhPL2r4+KUDH7uQLHRL+WYHmmcWbEg7GVm+u2mHzeogxBQsPIxBv9H2KrZJPUBl4KwZ/ufOTCM3tebr+kN6p/62a5bCoWn1dHY7I5QDiaPgQOianH4hVZaG8KB6lXcl37aJY01iDdbv9JGwh3f3gI3nLoLLstkYYfNxWhPFlIKyr/kTMeUQPsSu660t7M+P4V1OUCIIkBFBF7vVfVJKMoPVyxy3YY57uV3DGAPfWWgRouI/59BiaifWcT2KiWIxe4ldQx+TK9p55CsKn//DMnecx6gJ8/dxuXnQs2QbclzAJJ/j1piKwzgxH3pWNmBJFv52hd2E0b0Z9RO03TeYcCJJDol81J4hS4+FFdsxLNi63brI+dXhpg8tLA8XfdefDScs7N/tTJagLss5WI+Cvt/JC3l8gkdoHv8onWaop7kh9i80iyNlyi2h39fPgPvaaIjzGfoLMubLWrWrKdKekH7kXYr6Bu4qu4aftAo0hRVgW6VJKC1w8mh5w4k8ZvngjbHN69n0xXsUmdYuPYWIqktGxeEz8VPBTFD56c4/U6w/j4bjK4yUBP9EHk8lWHkt+IZJd2OZUCa23ejL/LHgM17VJVRotE6dfx1X0xgohCuKK1/fXtGGxxv3BzmQfVvzK7FSTylMMQzEKNwlLYOE327FheijLrXQ/VB3tU/4Fbw0G/NjtDsIQu+YelDLLOh5DtscU+4irb2agB2vUcIr9gIDcVQ4IWLrGJ5ncV9ir1uve7+UXlIpoCt7lGnDPZN/0f1QXqk7td+JWtsa4Du4dzIwpnhznafJ4bsJTCsr/kWV4WXOG0MLlU4ipnGc5WFBkcmL6VHvXfoVyeYl1aA72K1n/Je4mbFOnJvG2gdofSNjUxj7duJ5GlA5KGmWfPwWENhXZHxqHEiwKlg98nS98Lxbq6TB6eANJ4KPeReBQ3qDhRd1tHf+++VMlCU/ZwyAAEYDRGQZHljL+O71FnMfvwbf1t8fxLCBX7T03QxB8CunWVgSuF+JenTO7qBQnN8kAZzpcevZZTmLgw8xc1Fdby4QMLKz/lFJih3Xi+3E4MIi8lKgDgH4k8cmbZ3Sd+/CnlQegFkx159WqpAAvLs6iOXxNhL3I8/7vQbrfm8TJXpWtrSXj0A/3LP/Cu4jwyp2vxg+IqM6h+OwmVcQnarN/FfrA14RKv0mJOM6EPsHK1RIw3mAApjWS0oiiaVV91UQSgnf0hKy9W0Gk8q0UBmi1yRiiV2rXlpTTV2CkBruHWlhLh2uPXDxq8u40t7pbm9qBrJlyYAucsJ2Wv3Os/uDudqQRy0xUvv+Bu/rxz383sxeBeQM3lASLRs3loDF2LqCqmyjla+UfuRNZtShKj5iu3JT6GOHfbzTnwzfg6M+x/2djopsiUl90bCI09XllTm0Z43hdOtjv033WOzN0aWHyhaiN6dKOvdxx5zPsqpp7hOmvnvRwa0wbqf56NlRv4v/RLdiEeZ4yem2uO3/QMPLRkr4sytcJ+ei52UHRJ3DurJVQ9eQCOfSlYtZ3QZNd3Kfczv7oumZPDQIiEUsjLRvgYWCtNOLoM9k7JhOkN1WdMUw8AW+TtMtIh/TR6zDvRhhfvidFlDgSXx7yJPeTu64BuEP7Td8Kgjp8EYHEOqsFTreRPsbs0mwywF8RxOAj1gZ6lm6sjZeOeTm32REh8Cd3Tc2ZXVmNgMZ/2DrzalavFziNeYAP0IuCWsMeA9sKN6ge7/kR81bledz2CfTMJhNwun9jzjWvb066GmHOQfpiaZNdnzUH0HJ2+f837sEe9zk687mQmSgD05A8aZkZFx2C2oM1O+J3P+scf5h6vxpD0ueMm2HuUuq5Yx2AvUqPsKkNGI7V/lx2pB1AHa4zBEg1SwpzyS0+UOTnnMLu4+Std6kLnnXafcB1u6sJUT1v+x+Id5/cC563H16WA8/H3A88G+BrBXZZNgFRuQnbOpl1K6ZDdRS67IGp0/CLC3z+XjduYTYdcLwhYkSqE7DEoJZaEKx2m1ACzaEEYyosLquyb2moafmyZE0YKiBTqxo8ENQLRvoW4f8H+MEKSX0pZs4S6xqiSAq6a4SIICKfO5YheILc+0dglDc/+Vs6/X0W2kHEjsjsyYe5aotZR6pG8jor95Z3KIdaGnfSNgDKPVciHbmVzCX09ghrPHHRLxBWpeQ6QL2KnLTSUf5HKVPUN4bDmLZM9trDN7xYFcXQtVdp4AQOrXmQ3RNcuxwlUBlkl9hbySyMmQmXOF0yljnbqa7L42mIzTY/EuRjqOPYSHPyqdfO5R3UKC9FIOxb2c+7YK5yAGDw2jnQhi08NGC8WSpDSzTxqa5RncWSJ4+tR9RFs+gFq+Lmj/nspKp4M8djCvRzwIFr35PgqTJ/OcDWRqCZyWV+2sLOyIImfPTSxHkcSwW8Nk6Is2V4vLsEfuBFST7Ki2ODEHEIO+R/s8X4UNaN4UdPe52SMOh73qJZEaJrdB6GhxGCZylwtv75ARdSt0GdBUrTU5jE2jQlqKOQLa5JFuBZMDek7+L4ZObzoaQfTtFejvAKSOML/xCsbBiPY8YROTJT2r5UhvwMG7OhE3wlvR4GmkmWh/lHF3nzsexRN+TVawDZv9Py8MeFNaTdES9erVxsxSzgndzWDuSDoqmGN43ediHxEFWq/3BCfvgj0E2IuDDbjaCKsLTNv+bEuIwbU5l1EoqQ1TWA0KnFY+medcsgKwP0RgpAHoY+e0QCpnRh0YIbDhGFbdL76YujeKNJUsdMq75Nh5YQBwkGMAH6zzwLehUL7XXatR6N7NPSQrx4QRfe4TIDMc953SMwDaCFYiMaXyWfUL1kPlY0wuZAgGfP185uKZwPp7CS1uSQfnZ4mNaSORDGXw42+3JpiCGug4lC2sX7YTUHbHJk7HdgyWdIglNghO5Cz5qEzixMxbNlXp8KBMeGQPP6jF39Ez42Vr2XzluWGSZnBKi7/k3eBF23ISGDY1vw765A0fBIbDz6MDZIT3i+oh1Tzkq3X5WZapgwmrC5psvhi2z3KMv7rygnkyThRNFtJIK2QfjYQYrHE1H63gCqTnf/Ip+d3TPZ0LW8Lqk3d9libqiqfWFzzEJctvPgrLl8eDPdxpiQKM4+1VaUUrY4cW3aE8RZDT8YqXvd4CVw0ZIiEomyBL7d9cDneMaCfXtLuSsoVCknH8NxLXQp9rYN3lQGlVScMkoWKtbOduIxi0p9DzaSfGxVSJdtMIMhzUhWFPEsD5T6P1hYEQxhGtW/uuj2PtajvLhP0QsEIDloE5sQPsbZLwM9FJYuANQmp+H6dVayDQfKx/K9B0e+eH7/MiVG3J9QHlh7k3AjD8eRHGPlXGqNAs1HQWIIi1MnTQfsXZ2KK4E3Aj4DcaaNggZmhWWAazEYbIN+GRmKn9ewKthg1oYptSrrc2Wa63xK6+w4DncjQfefQYU2QSC2FYrbr95+SwLBbkSYIPbxmWOmRPQRpU4P/KOnOn6ITDLYnpCS0BFIkDMVU8XyKrx3HT/4nt+xy3l0ybfQJ7LQP4a1V5ZByffzlAUKtZu5HEKOsVmBQLCvgrqgved5H5pRPTLvUTsemCXz7oFLBDYzVIAQDA1h6Gk7K+RW7L94SSGELNQ9ZZKz5l4Zs+X4nFe/GhDDI7GSuRWfTNgzmvkmcWD8id7CVQn6q/KaznwAMsnCrZBG8VOclCvChyW3JxpDvN+WRIfyV7YmgCDPSjd2m17QvfysYtMZHYjppQxPTpPshpg7ce+8g1wouzFqiL2IoW17zCgZYUbnp2HJcODnC2FPAhEOCU3Mn1zq3vggdPa1moj5naOHPbvCM+/g+NQme0+f34jDTfVmDxwLjdcPg32s2N6OF0Q9SSpMS3TNj929M5IMcPVvmiNgas9q/fGdRbTZ6ZlaGtIWDX0gDLFA5taOcc3yD6ZAWtpsiNLCbUTeVN7hxWh2u1vn8HeB6FtC+ttIHU0aX/+khq6Mbi/SdJfU6Aq0hQKXxHygKTUNjzyAEIo6nI4Gel4QtT+xmOzbi89h+L+qVqu/56GMTnYiaFFRkgH2ySLj5D1TgLDs8NqxjTO2+LvX4xINzQvUOPrfLV3nsyXLhDn7e4xjhaz3YOsjbVLJQIv1v0UNgI9f13GLLSMxxP8mCtgOaYIJT+3LZxtw72XjTw7fp/vguXaXle3EvMldQ8Z5zX+4hpuJOoTXJ5gbB2Rg4ok35V7R8KczqnfGw3tknSLKc3ElLLDSOXdVlql9N1Zbv9ZX6ke8xoJbYJl4DMDahf2A005O4woOyJ1bVSr4y3ISiSnXFdAZn2e6icERg760RFaN3dqs0ivpIbY9aCh66J7r5npOtjDiS6Pb3M7gnBW6UekE/Ov/de2+RKZm7yrtENljoFNtJAW0+AgCMuYIqs0h9VLgvwY+gRlmQ51j7095ON13xopM/Qw8KSVOtkkV4zXMAYiBApwVS+DMKvAAUHG1Ic+H9A2gbFnLnee1VuWooYdgmjjpQFCXtQKf/EoEY8GyWrywwjc3bAo68xJ16oOIqavZGHUKKhhyMKfxL4GACO9W+PHb+vlBRf42VaLhq7YEW9yAXUhcc+SO0K9p3IVBvVUlK2YncwvJyMJ8URAQdTG6NMiYtpmkf+RfwJ6Y4Jfzx75LL2Sx+zm79fFln+1P1E1Uat2wpPuM6LoYh5HnWzZspLyEcza9TAllE5WdGpUc95Gd13SRR3XdUJmrwaAVs2TxDh/PS9nrXo40o7lD6xR/cToyzXzBJPUpQGDQyGS7G41MvQblVK4HFn4aw5AaBG3kA0XazB6u1uQ8245q7HlyE6HVoYiH/s0T9U+iBLXDibLvhYEQq0hsHkj5FksSK+YKz1x4Us3ZiqgJ3EHBE/IFcI8qQt5HTph/pCyl3181ZHfSY89bLJK8wV5P8G9rTacumKsGoSkr9BcO75OOHzpHmG9FIlDF366y0qSBaO2kI7f20GkysP8+hkvbPV+cU2/ypYCvZRM0qp5+kJCQ7dFOqEFJv5z3bn0MgnOgWDzU+c/1U74DbDs+UDleTOCNbxVCacbC//3FsA0vSUACYScIMlZBcYfl+z2EejEbZgN9qJxKtm3SDAtAFVrqy7m5myHuaunpSDt2ObNNaAJ4AURoayLyCG44NOY83MzbQ9c6driYUi0VsYkg12gMa6+OuCQLL0bO9//YO1dCqpcoQlwrJUFMOddMa9p0HljMBMmnNrfbCYr4Ls7xV1TDicvLR7P37sxrGZQ1TTjq72Y4YP8Dg+qvq+K5VQBaztXF0oW26NX2OF99kJyqdOkFlxQWjpViIU8ZPiQ1Pup4Xr10tgedzrp9hVAeoXIEJ0UVQE+OhSmXO9jSZ0xIIVS2VR1zdRkwLS6O3SaNU0wtCh6KfPWfimjeoxl61nSyhBC/x5e+Vgv7+KlBNjMCHJLC1TuNDH+MmebKtyCKxxbponWcU2oZpLtNUoNXpxL9gU8YPLULzN8jwUIOo33JmUv8pXlypXp6KZVZ3cwCU1k3vF2rwVSSFl9vtHwqdDHPuhJdHb4C4RhbfXf74GDdXoz5jCA7vjGlpUlu0Jyo/B7KWaDvEmy+G9FBJn8iwylpOp0Ef+TvKVFN1Qbdc5KZywNGPlCbmTav6efDU5gEe0/pNdMrjXjdz6FWJx8lCmJOJmgArE2S0STotkOzHLbfbCtj+mMDdv3IXncoPmsRDE7WYT2/wSCWO+a56F1tkmaGT05z5rwyRSfTpdyjPWffDYWhNiApzOoAS7ldrbdVWbzYUYgNNi2KyK3jnyf3fV0bxENZhqZ8xri+0h6oaaafm7xCv6ag1UvI85Ok/8qyo/TujlLGRrhxDf6F5jWw2Ch6ZT5jVutmISaLC6UAIY1mvg/cmMOKuPpDNNxSfPD05pVQ52sgW5Zt67flp9C/Y0Q4ey1HKw5129RSHXkeYJTbtw+WAUCb9EvAtcHg3xYOU9gzCxA5K52u+Pudsve3s84z5y1LuTWM76UIm8kg+V7IAqYj8HhcEzm1YELN7bGPRr4NwSrMiaD3N2Oz8oyzxQYRliUjQhmCUfneh+ekUVyo3B4tShp6NKY4/ZnAOOP2Up+X34vMzp9mkxFMXKxYfIhixmWO1e+6bydrRc2uajZdYf3yPuVbSwxAtPk9NMeJeIpT0wpHYnYAUON9foPhusPtOvTF25wEMZ2ucc0tpDA28eX1IrDR0k7YcnjIVqVnodsG0hIfkIMmwnvrAOMwJkKvz51L7A58H3A4WjB7JJpwuHtYwGni6gKTI8Dwgfv7eJBmbWs0RmxSZg0QsVexSzpsF82XbZ95Fssw9RUUbzSRzTMK/N9QpvThXJ5NoiQd0xrF6wmSepLNRRqPWwlLHxzFCcliiKHIyP1MoVxH21EAC/tvtICGHgDKUxDPEMUZEq6CeGjrcZgW+KcXHllkcZJHny3Mx6QBqe0q3Ql/7Ceo22xjB45chgeOeRx0llVyZ/CrQeFHrsm1VbtpeF+o5FRlqSh0sk7qIV3+++fJquIuknpJv3FFeraecs79Ro2lBP961ATe52hf6ZFVienKlUGt5JdQJ3+MWTK4Vjaw+T4/iE+4GoZkr5DNilFOocBEbtMQgRVFkQqYpY0LulRkB956JYgRiZH49JUR1j232BglMM1GXrm6q6qj0DBkorOW4r/uQjYpTajdz9yMvyYaXoo2jv36C+LfeX4jlekenOlQ92sc5PENbFYKQBtEoU/6/hNMmySfDqCulirEN3rnLy0vL2yf1d1G7LMBbLla9bDM1T2lexT5GlgbFjX7lAXzt0KU4baxdBndi9Gei8kMKQF+5KnJSMUpuFk+VQ95Pi+9ikl5u5ZCwHFJ8zxD6clpzhiUWELkhA/lNvUV9tCAU2+d+N4x5ru3oviwf/HW9XqMc7ZjySQ9eh4EWihEKiLQfvxxRcqykDnPnEbrkJLX9dXN69iHdAF2T1I0MJZU8a9DA0Tc/sEO4BR9VEIsKXWcWcU7cb+wv0QP6BPvWNjQsLJQP3yC8jw8HgPBPbyE9HwNDT24bFLn8WtMlbVueSmxghehOKhZ9OLHrY9yAK7bfBsoa/oSO2WsEbRvSTgm7WOf+3eAJlzLyLiIFkO5t10+WGivw08Tv9aiPzlo01F9zdntnq7+FlJgp/j5ELB2TQ3P9FsceMlWD/U7HAYv+CVx2jYPHBF/IeT4911XbXhtdeCqtq/k6FfkHQ4J+Sht1+6qSHhisQq0v4bT1ADOrCVEKrPIlyAsFpwvgGiOcLiRMpAu2klD4YunrrXDd2llwRVKCgogFf0XQUO8x25HHMVTANcCcPrbtMjDtiAUcr+FXfRXQxK3GC4eA4pHwoFCiUVqeajP9ECEQ3Tl6uSFQTEliowBRpMbevG3Ok+22wup/EP40kw5Xi004z2o3Z/0oo/41KAK8VQO8ys7uDdDv3HyAAMw0E3QTsXeDiTkQIrJXAYb3U0Yoeuri78DLBu5TBn9eY6QfLC7ghFTQapgamH4LeoOcDmumvLQl5k+N+SkDfuHTVPUhlNzShpp7Qm9BCJsaacE3dnCJt3fnQkVTkk2InvllJFNOy6j0wdNSQSSobYNLxZEJMe4vhZKAPjFp17h2fHfOim8ePfX9ZGT2JDmAZ63jii5WqqFmA/+fcCsxbmuazhUko3QCKJHSIGmrYaMriVRnfZnYr2xB7mWs0JtZ/XdEGFR7pEqXGq/PVgw2t8CWc0sGAn3HcbVrSLZQjcb1VxZo5qXW5HrXp858nw/cXik6cLHEfu6LD/13lDcp47nnHwNGSIsEhFOAaIJybAQcPNpysraskMgzAB3+QXwB0y3Bg1vP5Hu4Kq+UsuFh/bXXYm9n0YoO1kiFyEx8Krc3NUhabGAY7ryWzQj9Eg7KbS248JOvqXzbdo8T4n6pDwHflR2vbc0ZQFCoLNHlbdMismZUUqrAbMzF52+IBbALLiZG/R4BzGJ+PibPP5+OZkZiW+s5Tqv+njnJMFE5Mq14eaIzQd1q/zB9+u+5ICJmAlME2ZVOihUAr5MToseIBNz7A2eh6nBGdcG0b2+LR460wPE5VE78f+DTnbNlq/Rh6QQ2Vew2pHoDHqzvc1+UYq0SW47KJ2NfvIkZpSKTqXLKEER5g0y71j98I1T+P7/zfglSW9aZNmfLh1NS9X0d+P7SgKas6L8ogBy2WPxsSj9NQuve2zlBECflZVcZ4OOX8bA4cGDRb+QSx2HQWNWKULH73Xiuft2Ehw/iQnqk3udNCaeQGhAL4xw5XHi6nAH26lkZdxwIGY66Abo5a90w8ZKoZ64OMYip1JUrI4u9PXtfKbR2AEnlN3W3oFiavKNh3yOrogRS9cOmh47AS2IIvGJdLjOaKkfolGCwRl13I21XTEqsTw4DIs5A76Evl8qLlmpaxMpgWlsN5d9mhE1TnjTzgh9/XEaMJ3pexy1O6B1MiFbFFYNYtUaEEBHBpKx/6RVQsR4uG5vx3Q9GfHmDUiJyRiym5ekN9ZQc56e3AWfb1k7JWYv3jr4h3mEpNQvvzDMgV/UY0kQmUD54qxF9jaiBcQ4SpMtIP23LIoiTAxtcAHtuCFlv9q2BzqKz3ZyCxhdnk3UAusUDpHs/fMqJuQLV5P7eQApNohpRCa0ZtVwMhiG/yTdFd+wFYAcvW7bGjjdZzuGHhrvn1WGz0h0I9qsT8bVWXySUb/YMIJZ6tWqpbSomGGhSiea/QVyi9SrXkVU84u42EsIAwqB/e4/JFvp0JBWf7CLxR9hJ52eGUYH8GE+C4X+PZMO6/RovgX1rlcq/YxRtw9X4/MN6kW4exfdov0Tr8irArd60jXeSO9/z7aiN/VqXWnk4w5USQkmFj5FvwAtUWs9eHZqv73atG27CDClmWFWk5yusK89Z0fz/S1ABEBhY2dJBOf9VlbH5UxdpfYObdVp0uDjCfIp14xB9bJEmEcRDbTeqpq2aiVQGmQz8xXjqBSnSWCcmLlyGYsYpdd/gOy8IoVBEqOXPJux10+KgbJAofB+fAO64aTFqjqm1E+xCJllTW2GCGQKL/zS8Bil0snVry2qphRm6FxQJl5+WXEKHYq40aeGrJwMO+50llCYvAeUWpMx2i01X25XzGMw2SF/w0jU129IfJYsdsjgGHqLDIaMycukSR820LSdF2c6XBxs5kvEq/LFI+SKcL7XapwnGB8QS91Tr1WME7bBasSghMT1aqq7duj5uzgSHK+rqm7Xjntvar6N9Hh6R7XCn2NwYF5mGDLK7LqTfelHeEU0BEdZcrC5RMiI9xzm94pBMELE4F7f6KyxXtAoLPw/2vIZFBF2Heq3fd7xuGjjq7EyHlBdbFfnqYYZITImxDuiFPxXqKImBbsdPXRRd3hvoFd89fhSjfRHxwp1fB7sdLeWoIjyLs9aXwU1k+7uZxnGXnCehGPy2VZvWs5d3oH7Xd75eKxUhfJriejPd6NaClxqJbG3LVyJ6BmQBEHgm1H+xNA3PskMelkJJ9G+Y8/8rPMW8ZTd00CLz5f37S1h6H+hdiSVOp6vcOd0uL6PsR+B1T2iHN0QvflCESdQwht0B37JbNw7Yh3NbaZdvvXmL0FlU5Np1vr6ZEqD5N2twMCqJ6Sapv89tBS/ZFLP7OKhYs1ym5N/HBQ/enqTdhuz/H9wP2UPsmOYQIa/NPOJerj/+qeJ9mOOgCRzKpD8kJJi6sBwvNw6nk+atGBfYssObxzDyPuiJ0Zlp8Vi+Nzr8ISfphAeFq+bWHY4+TbHnWwKVQdynrG9qq/x3Lgo4+9Bxhs+NgkwBoXqytniM/FGeGd3WXQQZ6ygnYWjOHxlWPipAA8kKhmWB5shGuDMn5La5HT+mqrhJLkNfI+PvKeUj7xo5qd5EtWdSQgp2nlzAFBvd1WA7blydmEpyI0QFC5MykSxqUu7S7cB2JBUXurd3eddX+ZVC9ZCtjboicmbDALzVvcezCnDUobdoo5AbW6whGv2fcRYwttAb/9UvKufN1cW1xydlgsM1hQ6/Y+WWIdkU/Fs0v49JuC3wX4P+KUvMj2hrk2fb8TEj3zjTQfG6drgoOrVUfgeKDV2nU0hHS06sidJ59UHpVRqpY+NSHJl5cLXGpjw/mmgrPiCinswJmh7CVv8NS9kPJk7bf/dBfRPSwDllcZY3XQCRcjWIHfhW6DIrCb5btfuYPlrWbtU8VYhMyF/oYB71L5NDUd/+5PoFORP/iinPUN5wKZJzSVEG5D0QkT7OurMJIOlaycj/PsvQNF0JUvQ+oJCjamYScT5JnshZ+WApjusmkJi3czQKffbrqcKMTV3eICA+DggHweghEMTd1+otNfe9ElC5pIFRQRRSOTFuNME6zzkXV17G0qOTpwd2B23PPEzMpI9kWcZjicou7tqUY8KSeQTYCWKwjiREVQKVjgd5uMj8HNAmscbAhB1I06w16Bw" />
+
+
+<script src="/ScriptResource.axd?d=x6wALODbMJK5e0eRC_p1LdIxBJXt0U_WW5GWfJqHAqo6frgCmGRfEywglicTersO2OKrFhK1gAIp0Wk2al2YrpdR3uWqH6f4nfjBsCyRUfTUUVmb0&amp;t=ffffffffecf8d3f2" type="text/javascript"></script>
+<script src="/PressReleasePage.aspx?_TSM_HiddenField_=sc_HiddenField&amp;_TSM_CombinedScripts_=%3b%3bAjaxControlToolkit%2c+Version%3d3.5.7.123%2c+Culture%3dneutral%2c+PublicKeyToken%3d28f01b0e84b6d53e%3aen-US%3a5a4df314-b4a2-4da2-a207-9284f1b1e96c%3ade1feab2%3af2c8e708%3a8613aea7%3af9cec9bc%3a3202a5a2%3aab09e3fe%3a87104b7c%3a720a52bf%3a589eaa30%3aa67c2700%3abe6fb298" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="59B53027" />
+<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="m/jmTp2NNBnvArrcbv4lSDbqFT5OJ9fDvmrqQc3BNuQLFQOf9BiNF+egd8Les4McK+MaQbmsbaoDGlYRvlq3+JeT3hgmZxVvG8UoVpWNldERkUQhciWWZ45NyQkelLicTXQM1vODSxX7h8k5nthW/qc5+KxggepxQXibDO/ahVmga4QAxw5+Gd2VLqdXwGI9ttYJ+6rkBhN0ZaktcB8uHNqBXxXg1Wg6DZUQUcUbBUppLsxalrKTPh5WglUGVYU6QzrI53GBHXuRlQuIjHia/X+MvxA=" />
+                              
+            <div id="templateCss"></div>
+            
+            <input type="hidden" name="hfGridHtml" id="hfGridHtml" />
+            <div class="container" style='margin-bottom: 50px;'>
+                  <div id="accessories">
+
+                        
+                        <div class="pull-right" style="display: flex">
+                              <div id="voll"></div>
+                              <div id="vollDT"></div>
+                              
+                              
+
+<span class="print-icons">
+<input type="image" name="Print1$print" id="Print1_print" aria-label="Print" src="images/printer_icon.png" alt="print page button" style="padding: 5px 10px 5px 10px;" />
+</span>
+                        </div>
+                  </div>
+                  <input type="hidden" name="hydpermid" id="hydpermid" value="2102360" />
+                  
+
+
+
+                  <div class="innner-page-main-about-us-content-right-part">
+
+                        <div id="MinistryName" class="MinistryNameSubhead text-center">
+                              Ministry of Agriculture &
+Farmers Welfare
+                        </div>
+                        
+                        <div id="lg_g"><div class='log_oo'>  <img src='https://static.pib.gov.in/WriteReadData/specificdocs/photo/2026/sep/ph_9768_20260902_10000501.png' alt='azadi ka amrit mahotsav' /> </div></div>
+
+
+
+
+
+                        <div class="text-center event-heading-background">
+                              
+                              <h1 id="Titleh2">
+                                    Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF
+                              </h1>
+                              <h3 id="Subtitleh3">
+                                    <span id="ltrSubtitle"></span>
+                              </h3>
+                        </div>
+
+                        <div id="PrDateTime" class="ReleaseDateSubHeaddateTime text-center pt20">
+                              Posted On:
+                12 FEB 2025 5:25PM by PIB Delhi
+                        </div>
+                        
+                        <div class='pt20'>
+                        </div>
+                        <input type="hidden" name="hydphotoUrl" id="hydphotoUrl" />
+                        
+                        <p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">In view of the falling prices of tomato in Madhya Pradesh, Maharashtra and other major producing states, Government of India has taken decision to implement the transportation component of Market Intervention Scheme (MIS). Under this scheme where there is a difference in the price of TOP crops (tomato, onion and potato) between the producing and consuming States, the operational cost incurred in storage and transportation of crops from the producing State to other consuming States will be reimbursed to Central Nodal Agencies (CNA) like NAFED and NCCF, in the interest of farmers of producing states. </span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Considering the steep drop in tomato prices, Union Agriculture Minister Shri Shivraj Singh Chouhan has approved implementation of transportation component of MIS for Tomato in Madhya Pradesh through NCCF. NCCF is making arrangements to start the transportation operations soon. </span></span></p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">******</span></span></p>
+
+<p><strong><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">MG/KSR</span></span></strong></p>
+
+
+                        
+                        <div id="reel_pic">
+                        </div>
+
+
+
+                        
+                        <br />
+                        <span id="ReleaseId">(Release ID: 2102360)</span>
+                        <span id="lblViews">Visitor Counter : 2053</span>
+                        <div>
+                              
+                        </div>
+                        
+
+                        <span id="lblRefPhoto"></span>
+
+                        <div class="BackgroundRelease">
+                              
+                        </div>
+                        <div>
+                              
+                        </div>
+                        <div class="ReleaseLang">Read this release in: 
+                        
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2102416' target="_blank">
+                                          Urdu </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2102543' target="_blank">
+                                          Marathi </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2102361' target="_blank">
+                                          हिन्दी </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2102933' target="_blank">
+                                          Punjabi </a>
+                              
+                        </div>
+
+                        <div class="RelTag">
+                              <ul>
+                                    
+                              </ul>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        
+                        <div class="pr-share pr-share--footer" role="group" aria-label="Share this press release">
+                              <span class="pr-share__label" aria-hidden="true">Share</span>
+                              <ul class="pr-share__list">
+                                    <li><a class="pr-share__btn pr-share__btn--facebook"
+                                           href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2102360"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on Facebook">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-facebook" xlink:href="#icon-facebook"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--twitter"
+                                           href="https://twitter.com/intent/tweet?url=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2102360"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on X">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-twitter" xlink:href="#icon-twitter"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--whatsapp"
+                                           href="https://api.whatsapp.com/send?text=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2102360"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on WhatsApp">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-whatsapp" xlink:href="#icon-whatsapp"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--linkedin"
+                                           href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2102360"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on LinkedIn">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-linkedin" xlink:href="#icon-linkedin"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--mail"
+                                           href="mailto:?subject=Press+release+from+PIB&amp;body=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2102360"
+                                           aria-label="Share by email">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-mail" xlink:href="#icon-mail"></use></svg>
+                                    </a></li>
+                              </ul>
+                        </div>
+                        <div id="RelLink" class="RelLink">
+                              <ul>
+                                    
+                                    
+                              </ul>
+                        </div>
+                        <center>
+                              
+                        </center>
+                  </div>
+
+                  <div id="update12">
+	
+                              
+                              <input type="hidden" name="Hidden" id="Hidden" />
+                              <div id="P_CategoryManagement" class="ModalWindow" style="display: none">
+		
+                                    <div>
+                                          <input type="image" name="btnClose" id="btnClose" src="images/close_flat_icon.png" />
+                                    </div>
+                                    <div id="description">
+                                    </div>
+                                    <div class="text-center">
+                                          <h2>
+                                                
+                                                <br>
+                                                
+                                          </h2>
+                                    </div>
+                                    <br />
+                                    <div class="clear">
+                                    </div>
+                                    
+                              
+	</div>
+                        
+</div>
+            </div>
+            
+            <div id="PdfDiv" style="display: none;">
+                  <table width="100%">
+                        <tr>
+                              <td style="font-weight: 200; text-align: center">
+                                    Ministry of Agriculture &
+Farmers Welfare
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: center; font-size: 30px;">
+                                          Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: center; font-size: 30px;">
+                                          
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="text-align: center; font-size: 14px;">
+                                          Posted On:
+                        12 FEB 2025 5:25PM by PIB Delhi
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: left; font-size: 16px;">
+                                          <p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">In view of the falling prices of tomato in Madhya Pradesh, Maharashtra and other major producing states, Government of India has taken decision to implement the transportation component of Market Intervention Scheme (MIS). Under this scheme where there is a difference in the price of TOP crops (tomato, onion and potato) between the producing and consuming States, the operational cost incurred in storage and transportation of crops from the producing State to other consuming States will be reimbursed to Central Nodal Agencies (CNA) like NAFED and NCCF, in the interest of farmers of producing states. </span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Considering the steep drop in tomato prices, Union Agriculture Minister Shri Shivraj Singh Chouhan has approved implementation of transportation component of MIS for Tomato in Madhya Pradesh through NCCF. NCCF is making arrangements to start the transportation operations soon. </span></span></p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">******</span></span></p>
+
+<p><strong><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">MG/KSR</span></span></strong></p>
+
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 100; text-align: left; font-size: 16px;">
+                                          (Release ID: 2102360)
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                              </td>
+                        </tr>
+                        <tr>
+                              <td style="font-weight: 200; text-align: center; font-size: 24px;"></td>
+                        </tr>
+                  </table>
+            </div>
+            <div class="clearfix">
+            </div>
+
+            
+
+            <div class="section1">
+                  <div id="frst_t">
+                        <div id="arr_rm"><div class='sticky-social_mb'><ul class='social_mb'><a href='http://www.facebook.com/share.php?u=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360' target='_blank'><li class='fb_b'   ></li></a><a href='https://twitter.com/intent/tweet?url=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360&text=Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF' target='_blank'><li class='twitter_r'  > </li></a><a href='https://api.whatsapp.com/send?text=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360' target='_blank'><li class='whatsapp_r'  ></li></a><a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF&body=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360&ui=2&tf=1&pli=1' title='Share by Email' target='_blank'><li class='fa-envelope_r' ></li></a><a href='https://www.linkedin.com/shareArticle?mini=true&url=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360&title=Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF&summary=My%20favorite%20developer%20program&source=LinkedIn' target='_blank'><li class='fa-linkedin_r'  ></li></a></ul></div></div>
+                  </div>
+                  <div id="second_t">
+                        <div id="sndr_rm"><div class='sticky-social'><ul class='social'><a href='http://www.facebook.com/share.php?u=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360' target='_blank'><li class='fb_b'   ></li></a><a href='https://twitter.com/intent/tweet?url=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360&text=Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF' target='_blank'><li class='twitter_r'  > </li></a><a href='https://api.whatsapp.com/send?text=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360' target='_blank'><li class='whatsapp_r'  ></li></a><a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF&body=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360&ui=2&tf=1&pli=1' title='Share by Email' target='_blank'><li class='fa-envelope_r' ></li></a><a href='https://www.linkedin.com/shareArticle?mini=true&url=https://pib.gov.in/PressReleasePage.aspx?PRID=2102360&title=Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF&summary=My%20favorite%20developer%20program&source=LinkedIn' target='_blank'><li class='fa-linkedin_r'  ></li></a></ul></div></div>
+                  </div>
+            </div>
+            <input type="hidden" name="ltrTitlee" id="ltrTitlee" value="Government approves implementation of transportation component of Market Intervention Scheme for Tomato through NCCF" />
+            <input type="hidden" name="ltrSubtitlee" id="ltrSubtitlee" />
+            <input type="hidden" name="ltrDescriptionn" id="ltrDescriptionn" value="&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>In view of the falling prices of tomato in Madhya Pradesh, Maharashtra and other major producing states, Government of India has taken decision to implement the transportation component of Market Intervention Scheme (MIS). Under this scheme where there is a difference in the price of TOP crops (tomato, onion and potato) between the producing and consuming States, the operational cost incurred in storage and transportation of crops from the producing State to other consuming States will be reimbursed to Central Nodal Agencies (CNA) like NAFED and NCCF, in the interest of farmers of producing states. &lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>Considering the steep drop in tomato prices, Union Agriculture Minister Shri Shivraj Singh Chouhan has approved implementation of transportation component of MIS for Tomato in Madhya Pradesh through NCCF. NCCF is making arrangements to start the transportation operations soon. &lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&amp;nbsp;&lt;/p>
+
+&lt;p style=&quot;text-align:center&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>******&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p>&lt;strong>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>MG/KSR&lt;/span>&lt;/span>&lt;/strong>&lt;/p>
+" />
+            <script type="text/javascript">
+                  var mPlayer = document.getElementById("background_music");
+                  var mPlayAction = document.getElementById("playbutton");
+
+                  var isPlaying = false;
+
+                  function playAudio() {
+                        mPlayer.play();
+                        isPlaying = true;
+                        document.getElementById('stopA').style.display = "block";
+                        document.getElementById('playA').style.display = "none";
+                  }
+
+                  function pauseAudio() {
+                        mPlayer.pause();
+                        isPlaying = false;
+                        document.getElementById('playA').style.display = "block";
+                        document.getElementById('stopA').style.display = "none";
+                  }
+                  //function HandleAudio() {
+                  //    if (isPlaying == true) {
+                  //        //Playing already Pause it
+                  //        pauseAudio();
+                  //    } else {
+                  //        //Play the music
+                  //        playAudio();
+                  //    }
+                  //}
+            </script>
+            <script type="text/javascript">
+                  var synth = window.speechSynthesis;
+
+            
+                  function CleanHtml(html) {
+
+                        html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+
+                        return html;
+                  }
+                  function stripHtml(html) {
+                        let tmp = document.createElement("DIV");
+                        tmp.innerHTML = CleanHtml(html);
+                        return tmp.textContent || tmp.innerText || "";
+                  }
+            </script>
+            <script type="text/javascript">
+                  $(document).ready(function () {
+                        //for responsive tables
+                        $("table").each(function () {
+                              if (!$(this).closest(".table-responsive").length) {
+                                    $(this).wrap("<div class='table-responsive'></div>");
+                              }
+                        });
+
+                        var width = $(window).width();
+                        if (width < 768) {
+
+                              // Extra Small Device
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+
+                        } else if (width < 991) {
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+                              // Small Device
+
+                        } else if (width < 1199) {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Medium Device
+
+                        } else {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Large Device
+
+                        }
+                  });
+            </script>
+            <script type="text/javascript">
+                  $(document).ready(function () {
+                        var width = $(window).width();
+                        if (width < 768) {
+
+                              // Extra Small Device
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+
+                        } else if (width < 991) {
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+                              // Small Device
+
+                        } else if (width < 1199) {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Medium Device
+
+                        } else {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Large Device
+
+                        }
+                  });
+            </script>
+            
+            <style type="text/css">
+                  @media print {
+                        .sticky-social, .sticky-social_mb, .pull-right, #printPDF {
+                              display: none !important;
+                        }
+                  }
+
+                  .f_vl {
+                        padding-right: 30px;
+                        font-size: 17px;
+                        cursor: pointer;
+                  }
+
+                  .log_oo {
+                        // width: 20%;
+                        display: flex;
+                        justify-content: space-between;
+                  }
+
+                        .log_oo img {
+                              width: 150px;
+                              /*width: 100%;
+                    height: auto;*/
+                        }
+
+                  .sticky-social_mb {
+                        position: fixed;
+                        bottom: 0px;
+                        padding: 0px;
+                        margin: 0px;
+                        width: 100%;
+                  }
+
+                  .social_mb {
+                        list-style: none;
+                        display: flex;
+                        width: 100%;
+                        margin-bottom: -8px;
+                  }
+
+                        .social_mb a {
+                              padding: 8px 0px;
+                              font-size: 30px;
+                              transition: all 0.8s ease-in-out;
+                              width: 20% !important;
+                              text-align: center;
+                        }
+            </style>
+            <style type="text/css">
+                  .section1 {
+                        position: relative;
+                        padding: 10px 0px;
+                        width: 100%;
+                  }
+
+
+
+                  .sticky-social {
+                        position: fixed;
+                        top: 20px;
+                        left: 0px;
+                        padding: 0px;
+                        margin: 0px;
+                  }
+
+                  .social {
+                        list-style: none;
+                  }
+
+                        .social a li {
+                              padding: 8px 12px;
+                              font-size: 25px;
+                              transition: all 0.8s ease-in-out;
+                        }
+
+                              .social a li:hover {
+                                    margin-right: -30px;
+                                    box-shadow: 2px 5px 10px grey;
+                              }
+
+                                    .social a li:hover .fa {
+                                          margin-left: 20px;
+                                    }
+
+                  .fb_b {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .twitter_r {
+                        /* background-color: rgb(29, 161, 242);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .whatsapp_r {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .fa-envelope_r {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .fa-linkedin_r {
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+            </style>
+            <style type="text/css">
+                  @media only screen and (max-device-width: 767px) {
+                        p span img {
+                              max-width: 90% !important;
+                              height: auto !important;
+                        }
+
+                        p img {
+                              max-width: 90% !important;
+                              height: auto !important;
+                        }
+
+                        h2 {
+                              font-size: var(--dbim-h2, 20px);   /* was 20px !important - the !important blocked A+/A- */
+                              font-weight: 600 !important;
+                        }
+
+                        h3 {
+                              font-size: var(--dbim-h3, 16px);   /* was 16px !important */
+                              font-weight: 600 !important;
+                        }
+                  }
+            </style>
+            <style type="text/css">
+                  /* === Film Roll Badge Styling(IFFI2025 countdown) === */
+                  .film-roll-badge {
+                        position: absolute;
+                        top:82%;
+                        right: 20px;
+                        width: 230px;
+                        height: 70px;
+                        background: repeating-linear-gradient( to right, var(--dbim-green-key, #0F5757) 0px, var(--dbim-green-key, #0F5757) 18px, var(--dbim-text, #150202) 18px, var(--dbim-text, #150202) 36px );
+                        border-top: 8px solid var(--dbim-green-key, #0F5757);
+                        border-bottom: 8px solid var(--dbim-green-key, #0F5757);
+                        border-radius: 8px;
+                        overflow: hidden;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+                        animation: moveFilm 8s linear infinite;
+                        z-index: 10;
+                  }
+
+                        /* film sprocket holes */
+                        .film-roll-badge::before,
+                        .film-roll-badge::after {
+                              content: "";
+                              position: absolute;
+                              width: 100%;
+                              height: 10px;
+                              background: repeating-linear-gradient( to right, var(--dbim-green-key, #0F5757) 0px, var(--dbim-green-key, #0F5757) 10px, #fff 10px, #fff 20px );
+                              left: 0;
+                              z-index: 2;
+                        }
+
+                        .film-roll-badge::before {
+                              top: -4px;
+                        }
+
+                        .film-roll-badge::after {
+                              bottom: -4px;
+                        }
+
+                  .film-roll-inner {
+                        position: relative;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        animation: flicker 2s infinite ease-in-out;
+                  }
+
+                  .countdown-text {
+                        font-size: 1.3rem;
+                        font-weight: 700;
+                        color: #fff;
+                        text-shadow: 0 0 6px rgba(255, 255, 255, 0.4), 0 0 10px #000;
+                        white-space: nowrap;
+                  }
+
+                  /* === Animations === */
+                  @keyframes moveFilm {
+                        0% {
+                              background-position: 0 0;
+                        }
+
+                        100% {
+                              background-position: 120px 0;
+                        }
+                  }
+
+                  @keyframes flicker {
+                        0%, 100% {
+                              opacity: 1;
+                        }
+
+                        50% {
+                              opacity: 0.9;
+                        }
+
+                        25% {
+                              opacity: 0.95;
+                        }
+
+                        75% {
+                              opacity: 0.85;
+                        }
+                  }
+
+                  /* === Responsive Adjustments === */
+                  @media (max-width: 1500px) {
+                        .film-roll-badge {
+                              top: 68%;
+                              right: 18px;
+                              /* width: 220px; */
+                              height: 65px;
+                              font-size: 0.85rem;
+                        }
+
+                        .press-section {
+                              margin-top: 35px;
+                        }
+                  }
+
+                  @media (max-width: 992px) {
+                        .film-roll-badge {
+                              top: 52%;
+                              right: 10px;
+                               width: 200px; 
+                              height: 60px;
+                        }
+                  }
+
+                  @media (max-width: 768px) {
+                        .film-roll-badge {
+                              top: 56%;
+                              right: 10px;
+                               width: 124px; 
+                              height: 55px;
+                        }
+
+                        .countdown-text {
+                              font-size: 0.9rem;
+                        }
+                  }
+
+                  @media (max-width: 576px) {
+                        .film-roll-badge {
+                              top: 59%;
+                              right: 5px;
+                              /* width: 160px; */
+                              height: 50px;
+                        }
+
+                        .countdown-text {
+                              font-size: 0.85rem;
+                        }
+                  }
+            </style>
+          <script type="text/javascript">
+                const festivalStart = new Date("2025-11-20T00:00:00").getTime();
+                const festivalEnd = new Date("2025-11-28T23:59:59").getTime();
+
+                const countdownElement = document.getElementById("countdown");
+
+                const interval = setInterval(() => {
+                      const now = new Date().getTime();
+
+                      // BEFORE FESTIVAL — show days + hours left
+                      if (now < festivalStart) {
+                            const diff = festivalStart - now;
+                            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+                            countdownElement.innerHTML = `
+              ${days} Day${days !== 1 ? 's' : ''} 
+              ${hours} Hour${hours !== 1 ? 's' : ''} to go
+          `;
+
+                      }
+
+                      // DURING FESTIVAL — show 56th IFFI - Day X
+                      else if (now >= festivalStart && now <= festivalEnd) {
+                            const dayNumber = Math.floor((now - festivalStart) / (1000 * 60 * 60 * 24)) + 1;
+                            countdownElement.innerHTML = `56th IFFI - Day ${dayNumber}`;
+                      }
+
+                      // AFTER FESTIVAL — new message
+                      else {
+                            countdownElement.innerHTML = `✨ IFFI closes but never ends…`;
+
+                            // Width change logic
+                            const elements = document.querySelectorAll('.film-roll-badge');
+                            elements.forEach(el => el.style.width = "350px");
+
+                            clearInterval(interval);
+                      }
+
+                }, 1000);
+          </script>
+ <script type="text/javascript">
+
+               const miffStart = new Date("2026-06-15T00:00:00").getTime();
+               const miffEnd = new Date("2026-06-15T23:59:59").getTime();
+
+               const miffElement = document.getElementById("miff");
+
+               if (miffElement) {
+
+                   const miffInterval = setInterval(() => {
+
+                       const now = new Date().getTime();
+
+                       // Before MIFF
+                       if (now < miffStart) {
+
+                           const diff = miffStart - now;
+                           const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                           const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+        
+
+                   /*  miffElement.innerHTML = `${days} Day${days !== 1 ? 's' : ''} ${hours} Hour${hours !== 1 ? 's' : ''} to MIFF`;*/
+                           miffElement.innerHTML = `${days} Day${days === 1 ? '' : 's'} to MIFF ...`;
+
+
+                     }
+
+                       // During MIFF
+                       else if (now >= miffStart && now <= miffEnd) {
+
+                           const dayNumber =
+                               Math.floor((now - miffStart) / (1000 * 60 * 60 * 24)) + 1;
+
+                           miffElement.innerHTML = `19th MIFF - Day ${dayNumber}`;
+                       }
+
+                       // After MIFF
+                       else {
+
+                           miffElement.innerHTML = `✨ MIFF concludes, cinema lives on...`;
+
+                           document.querySelectorAll('.film-roll-badge')
+                               .forEach(el => el.style.width = "350px");
+
+                           clearInterval(miffInterval);
+                       }
+
+                   }, 1000);
+               }
+
+</script>
+
+      
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("sc_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"P_CategoryManagement","dynamicServicePath":"/PressReleasePage.aspx","id":"mpe"}, null, null, $get("Hidden"));
+});
+//]]>
+</script>
+<input type="hidden" name="__ncforminfo" value="72L5fDFI3WwJYFVQTVhhkLMw1z71b8WWqgGzdCvYvnhnjtFUEM8AO7ZUMifYn04xvMK9UiriwkklUDG5SPpJ-_3xhNIk4hUq"/></form>
+      
+      
+
+<script type="application/json" id="pibConsentConfig">{"ga4Id":"G-Q414Y0X6EE,G-QJJ6LZ8LHV","policyUrl":"/CookiePolicy.aspx","text":{"bannerLabel":"Cookie consent","title":"Cookies on this website","body":"We use essential cookies to make this website work. We also set analytics cookies when you arrive, so we can see how the site is used and improve it - you can switch these off below or at any time from the Cookie Policy page. Cookies from embedded social media content are set only if you allow them.","policyLink":"Read our Cookie Policy","accept":"Accept all","reject":"Reject optional","customize":"Customise","prefsTitle":"Cookie preferences","prefsIntro":"Choose which cookies this website may set. Essential cookies cannot be switched off because the site does not work without them. Analytics cookies are on unless you turn them off. Social media cookies stay off until you allow them. You can change these choices at any time from the Cookie Policy page.","essentialName":"Essential cookies","essentialDesc":"Needed for the site to function. These remember your session, your language and region, your text size and colour theme, and verify the security check on forms. They are always on.","analyticsName":"Analytics cookies","analyticsDesc":"Help us understand how visitors use the site - which pages are read and how long people stay - so it can be improved. The information is collected in a form that does not directly identify you. These are on when you arrive; switching them off here stops them and deletes the ones already set.","socialName":"Social media cookies","socialDesc":"Set by content embedded from X, Facebook and YouTube, such as timelines and videos. These platforms may use them to track you across websites. They stay off until you allow them.","save":"Save preferences","cancel":"Cancel"}}</script>
+<script type="text/javascript" src='/js/consent.js?v=10'></script>
+
+<script type="text/javascript" src='/js/consent-embeds.js?v=10'></script>
+
+    
+
+<script type="text/javascript">
+    (function () {
+        try {
+            if (window.self === window.top) { return; }
+        } catch (e) { return; }
+        var s = document.createElement("style");
+        s.textContent =
+            ".sticky-social, .sticky-social_mb { display: none !important; }";
+        (document.head || document.documentElement).appendChild(s);
+    }());
+</script>
+</body>
+</html>
+

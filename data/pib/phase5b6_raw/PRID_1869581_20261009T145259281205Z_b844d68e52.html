@@ -1,0 +1,1199 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head id="Head1"><title>
+	Press Release Page | Press Information Bureau
+</title><link href="css/style.css?v=1" rel="stylesheet" type="text/css" /><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="alternate stylesheet" href="css/change.css?v=1" media="screen" title="change" /><link rel="alternate stylesheet" href="css/green.css?v=1" media="screen" title="green" /><link rel="alternate stylesheet" href="css/yellow.css" media="screen" title="yellow" /><link rel="stylesheet" type="text/css" href="css/prtint.css" media="print" /><link rel="stylesheet" href="css/style3.1.css" type="text/css" /><link id="pibA11yCss" rel="stylesheet" href="/css/accessibility.css?v=7" type="text/css" />
+      <script type="text/javascript">
+        /* Stamps the saved theme on <html> before the page paints. The
+           switcher in js/accessibility.js settles the rest, but on inner
+           pages it does not run until the end of the body and inside the
+           release frame it is a separate download - either way the reader
+           would otherwise watch a light page turn dark in front of them. */
+        (function (d) {
+            var t = "";
+            try {
+                t = window.localStorage.getItem("pibStyle") || "";
+            } catch (e) {
+                t = "";
+            }
+            if (t === "orange") {
+                t = "yellow";
+            }
+            var c = t === "change" ? " pib-hc"
+                : t === "green" ? " pib-theme-green"
+                : t === "yellow" ? " pib-theme-yellow" : "";
+            d.documentElement.className += c + " pib-a11y-content";
+        }(document));
+      </script>
+
+
+      <script src="js/jquery.min.js" type="text/javascript"></script>
+      <script type="text/javascript" src="/js/accessibility.js?v=7"></script>
+
+      <script type="text/javascript">
+            $(document).ready(function () {
+                  function getParameterByName(name) {
+                        var url = window.location.href;
+                        name = name.replace(/[\[\]]/g, '\\$&');
+                        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                              results = regex.exec(url);
+                        if (!results) return null;
+                        if (!results[2]) return '';
+                        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                  }
+                  // Get the IDs from the current page's URL
+                  let prid = parseInt(getParameterByName('PRID'), 10);
+
+                  if (!isNaN(prid) && prid > 0) {
+                        $.ajax({
+                              type: "POST",
+                              url: "AjaxMethod.aspx/UpdatePRHitCount",
+                              async: false,
+                              data: JSON.stringify({ 'PermId': prid }),
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              success: function (response) {
+                                    console.log(response);
+                              },
+                              error: function (error) {
+                                    console.log("Error in AJAX request", error);
+                              }
+                        });
+                  } else {
+                        console.log("Invalid parameters:", prid);
+                  }
+
+            });
+      </script>
+      <style type="text/css">
+            .table-responsive {
+                  width: 100%;
+                  overflow-x: auto;
+            }
+
+            .banner {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  background-color: #000;
+                  color: #fff;
+                  padding: 20px;
+            }
+
+            full-width {
+                  width: 100%;
+            }
+
+            .logo-left, .logo-center, .countdown {
+                  display: flex;
+                  align-items: center;
+            }
+
+                  .logo-left img, .logo-center img {
+                        height: 70px;
+                  }
+
+            .countdown {
+                  text-align: center;
+                  background-color: var(--dbim-text, #150202);
+                  border-radius: 10px;
+                  padding: 10px;
+                  border: 2px solid grey;
+            }
+
+            .firstnumber {
+                  color: #000000;
+                  position: absolute;
+                  top: 50px;
+                  right: 90px;
+                  font-size: 30px;
+            }
+
+            .secondnumber {
+                  position: absolute;
+                  color: #000000;
+                  right: 45px;
+                  top: 50px;
+                  font-size: 30px;
+            }
+
+            .countdown .days {
+                  font-size: 35px;
+                  color: gold;
+            }
+
+            .countdown p {
+                  margin: 0;
+            }
+
+            .countdown .text {
+                  font-size: 16px;
+            }
+
+            a {
+                  word-break: break-all;
+            }
+
+            iframe, img {
+                  max-width: 100%;
+            }
+
+            @media(max-width:1199px) {
+                  .firstnumber {
+                        top: 40px;
+                        right: 72px;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 35px;
+                        top: 40px;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:990px) {
+                  .firstnumber {
+                        top: 25px;
+                        right: 54px;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 25px;
+                        top: 25px;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:768px) {
+                  .countdown, .days {
+                        font-size: 12px !important;
+                  }
+
+
+                  .firstnumber {
+                        top: 25%;
+                        right: 8%;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 4.5%;
+                        top: 25%;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:475px) {
+                  .countdown, .days {
+                        font-size: 10px !important;
+                        top: 20%;
+                  }
+
+                  .bannerimgdiv {
+                        padding: 0 !important;
+                  }
+
+                  .bannerimg {
+                        width: 108% !important;
+                  }
+            }
+      </style>
+      <script type="text/javascript">
+            $(function () {
+                  $("[id*=printPDF]").click(function () {
+                        $("[id*=hfGridHtml]").val($("#PdfDiv").html());
+                  });
+            });
+            $(function () {
+                  $("[id*=printPDFEvent]").click(function () {
+                        $("[id*=hfGridHtml]").val($("#PdfDiv").html());
+                  });
+            });
+      </script>
+
+      
+
+      <link id="pibConsentCss" href="/css/consent.css?v=8" rel="stylesheet" type="text/css" /><link id="pibFontsCss" href="/css/fonts-noto.css?v=6" rel="stylesheet" type="text/css" /><link id="pibDbimCss" href="/css/dbim.css?v=1120" rel="stylesheet" type="text/css" /><meta property="og:title" content="Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country" /><meta property="og:url" content="www.pib.gov.in/Pressreleaseshare.aspx?PRID=1869581" /><meta property="og:description" content="Government of India’s continuous monitoring and policy decisions has led to the stability in the pri" /><meta property="og:image" content="https:/pib.gov.in/images/indian-emblem.png" />
+                                <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="C4E7H-KSCMC-422L4-W3EM5-U36MF",function(){function e(){if(!i){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,o.parentNode.appendChild(e),i=!0}}function t(e){i=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(o.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",o.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"C4E7H-KSCMC-422L4-W3EM5-U36MF";var o=document.currentScript||document.getElementsByTagName("script")[0],i=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!i)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),o.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="eaaujecjbhyp2jqacqhseaaaabvmr75x-f-080f20bd8-clienttons-s.akamaihd.net",o="false"=="true"?2:1,i={"ak.v":"41","ak.cp":"1825201","ak.ai":parseInt("1215205",10),"ak.ol":"0","ak.cr":13,"ak.ipv":6,"ak.proto":"http/1.1","ak.rid":"1b39533","ak.r":53715,"ak.a2":n,"ak.m":"dscb","ak.n":"ff","ak.cport":65350,"ak.gh":"23.212.5.111","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"bbr","ak.t":"1791557559","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==nsxZPPZr4mAxkneKPcLiNkx5ZSrq5o7fukx4qCrQmv+hErDOx1YvcrD5QkeVNuyML0+PKQmw6LuFQB8cVx/jwE/eu2PX3IIybgLzJiLH04Mm52cO2DrVwTxLnfW1nc+1X9xe1/P2raOKvAO4vw6WgL02HTRQ0b/l5aDRwq64UbPQRCj404Axzib9GVpb16RSSpVE2pZcnbiTW4PZFINsNB10VZlQu2kFFef7jShkgP/XJad4TG9ukcthNX4InKFsCRQfUw3KWSY/zADLh2CuQsiP6i6jSkH7GO8OxBTaSndlsjJohLmox+GrfrnpivPTtJzXM9iJCGR5/bqYOOcAe3PtH9/Ybc5ueMrIJxPtQC0q93cv6ALSouAZTrs6MBlxyROItG0DEVK5G5VrlWUJmUvsBsBojFUNmnBML9J2hio=","ak.pv":"9","ak.dpoabenc":"","ak.tf":o};if(""!==t)i["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))i["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var e=["ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+<body>
+    
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+     style="position:absolute;width:0;height:0;overflow:hidden" id="dbim-icon-sprite">
+    <defs>
+        <symbol id="icon-angle-double-left" viewBox="0 0 24 24"><path d="M11.6 4.6 4.2 12l7.4 7.4 2.2-2.2L8.6 12l5.2-5.2z"/><path d="M19 4.6 11.6 12 19 19.4l2.2-2.2L16 12l5.2-5.2z"/></symbol>
+        <symbol id="icon-angle-double-right" viewBox="0 0 24 24"><path d="M12.4 4.6 10.2 6.8 15.4 12l-5.2 5.2 2.2 2.2L19.8 12z"/><path d="M5 4.6 2.8 6.8 8 12l-5.2 5.2L5 19.4 12.4 12z"/></symbol>
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="M20.8 10.6H9.6v2.8h11.2z"/><path d="M10.8 5.6 3.2 12l7.6 6.4z"/></symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M3.2 10.6h11.2v2.8H3.2z"/><path d="M13.2 5.6 20.8 12l-7.6 6.4z"/></symbol>
+        <symbol id="icon-blogger" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M6.4 2.4h11.2a4 4 0 0 1 4 4v11.2a4 4 0 0 1-4 4H6.4a4 4 0 0 1-4-4V6.4a4 4 0 0 1 4-4zm2.8 5.2a2 2 0 0 0 0 4h2.4a2 2 0 0 0 0-4zm0 5.6a2 2 0 0 0 0 4h5.6a2 2 0 0 0 0-4z"/></symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24"><path d="M7.6 2.4H10v2.4H7.6z"/><path d="M14 2.4h2.4v2.4H14z"/><path fill-rule="evenodd" d="M4 4.8h16a1.6 1.6 0 0 1 1.6 1.6v13.2a1.6 1.6 0 0 1-1.6 1.6H4a1.6 1.6 0 0 1-1.6-1.6V6.4A1.6 1.6 0 0 1 4 4.8zm.4 5.6v8.4h15.2v-8.4z"/><path d="M6.4 12.4h3.2v3.2H6.4z"/></symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="M15.4 4.6 8 12l7.4 7.4 2.2-2.2L12.4 12l5.2-5.2z"/></symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="M8.6 4.6 6.4 6.8 11.6 12l-5.2 5.2 2.2 2.2L16 12z"/></symbol>
+        <symbol id="icon-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24"><path d="M10.8 3h2.4v7.6h3.4L12 16.6l-4.6-6h3.4z"/><path d="M4 17.2h2.4v2.4h11.2v-2.4H20v3.2a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 20.4z"/></symbol>
+        <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M13.6 21.6v-8.4h2.8l.42-3.3h-3.22V7.8c0-.95.27-1.6 1.64-1.6h1.74V3.26a23 23 0 0 0-2.54-.13c-2.5 0-4.22 1.53-4.22 4.34v2.43H7.4v3.3h2.82v8.4z"/></symbol>
+        <symbol id="icon-fact-check" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4 3.6 5.6v6.2c0 4.6 3.4 8.6 8.4 9.8 5-1.2 8.4-5.2 8.4-9.8V5.6zm-1 13.2-3.6-3.6 1.7-1.7 1.9 1.9 4.5-4.5 1.7 1.7z"/></symbol>
+        <symbol id="icon-hashtag" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.8 3h2.4l-1 6h3.2l1-6h2.4l-1 6h3.4v2.4h-3.8l-.6 3.2h3.6V17h-4l-1 5h-2.4l1-5h-3.2l-1 5H5.4l1-5H3V14.6h3.8l.6-3.2H3.8V9h4zm.6 8.4-.6 3.2h3.2l.6-3.2z"/></symbol>
+        <symbol id="icon-home" viewBox="0 0 24 24"><path d="M12 3.4 2.8 11.6h2.4v8.4a1 1 0 0 0 1 1h3.3v-5.4h5v5.4h3.3a1 1 0 0 0 1-1v-8.4h2.4z"/></symbol>
+        <symbol id="icon-instagram" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.6 2.4h8.8a5.2 5.2 0 0 1 5.2 5.2v8.8a5.2 5.2 0 0 1-5.2 5.2H7.6a5.2 5.2 0 0 1-5.2-5.2V7.6a5.2 5.2 0 0 1 5.2-5.2zm0 2.4a2.8 2.8 0 0 0-2.8 2.8v8.8a2.8 2.8 0 0 0 2.8 2.8h8.8a2.8 2.8 0 0 0 2.8-2.8V7.6a2.8 2.8 0 0 0-2.8-2.8z"/><path fill-rule="evenodd" d="M12 6.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 2.4a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z"/><circle cx="17.3" cy="6.7" r="1.3"/></symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M4.8 8.8h3.6v12H4.8z"/><circle cx="6.6" cy="5.4" r="2.1"/><path d="M10.8 8.8h3.45v1.65h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.35 4.3 5.4v6.6h-3.6v-5.85c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1v5.95h-3.6z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M2.4 7.6v9.2a1.6 1.6 0 0 0 1.6 1.6h16a1.6 1.6 0 0 0 1.6-1.6V7.6L12 14z"/><path d="M21.2 5.4H2.8L12 11.8z"/></symbol>
+        <symbol id="icon-mail-open" viewBox="0 0 24 24"><path d="M2.4 9.8h19.2v9.6A1.6 1.6 0 0 1 20 21H4a1.6 1.6 0 0 1-1.6-1.6z"/><path d="M12 2.6 21.6 9.2h-3.8L12 5.3 6.2 9.2H2.4z"/><path d="m3.9 11.2 8.1 5.4 8.1-5.4 1.5 1.3-9.6 6.4-9.6-6.4z"/></symbol>
+        <symbol id="icon-map-marker" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4a7 7 0 0 0-7 7c0 5.2 7 12.2 7 12.2s7-7 7-12.2a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></symbol>
+        <symbol id="icon-newspaper" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2.8 4.4h14.8v15.2H2.8zm2 2v11.2h10.8V6.4z"/><path d="M6 7.6h8.4v1.6H6z"/><path d="M6 10.8h8.4v1.6H6z"/><path d="M6 14h5.2v1.6H6z"/><path d="M18.4 8.4h2.8v9.6a1.4 1.4 0 0 1-2.8 0z"/></symbol>
+        <symbol id="icon-pause" viewBox="0 0 24 24"><rect x="7.4" y="4" width="3.6" height="16" rx="0.9"/><rect x="13" y="4" width="3.6" height="16" rx="0.9"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="M8 4.5v15l12-7.5z"/></symbol>
+        <symbol id="icon-picture" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2.4 5.2h19.2v13.6H2.4zm2 2v9.6h15.2V7.2z"/><path d="M5.6 16.4 10 11l2.6 3 2-2.2 4 4.6z"/><circle cx="8" cy="10.4" r="1.5"/></symbol>
+        <symbol id="icon-press-conference" viewBox="0 0 24 24"><circle cx="12" cy="5.2" r="2.6"/><path d="M7.6 12.2a4.4 4.4 0 0 1 8.8 0z"/><circle cx="4.9" cy="9.6" r="2.2"/><path d="M1.8 15.2a3.1 3.1 0 0 1 6.2 0z"/><circle cx="19.1" cy="9.6" r="2.2"/><path d="M16 15.2a3.1 3.1 0 0 1 6.2 0z"/><path d="M6.6 13.6h10.8l2.2 7.8H4.4z"/></symbol>
+        <symbol id="icon-print" viewBox="0 0 24 24"><path d="M6.4 2.8h11.2v4.4H6.4z"/><path d="M4 8.4h16a1.6 1.6 0 0 1 1.6 1.6v5.6a1.6 1.6 0 0 1-1.6 1.6h-1.6v-2.8H6v2.8H4a1.6 1.6 0 0 1-1.6-1.6V10A1.6 1.6 0 0 1 4 8.4z"/><path d="M7.2 15.6h9.6v5.6H7.2z"/></symbol>
+        <symbol id="icon-rss" viewBox="0 0 24 24"><circle cx="4.8" cy="19.2" r="2.4"/><path d="M2.4 11.2v3.2a6.4 6.4 0 0 1 6.4 6.4H12A9.6 9.6 0 0 0 2.4 11.2z"/><path d="M2.4 4.8V8A13.6 13.6 0 0 1 16 21.6h3.2A16.8 16.8 0 0 0 2.4 4.8z"/></symbol>
+        <symbol id="icon-search-plus" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10 2.8a7.2 7.2 0 1 0 0 14.4 7.2 7.2 0 0 0 0-14.4zm0 2.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6z"/><path d="M15.3 14.6 21.2 20.5l-1.5 1.5-5.9-5.9z"/><path d="M9.2 6.8h1.6v2.4h2.4v1.6h-2.4v2.4H9.2v-2.4H6.8V9.2h2.4z"/></symbol>
+        <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5.6" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="18.4" r="3"/><path d="M8.3 10.9 15.7 7.2l.9 1.8-7.4 3.7z"/><path d="M9.2 13.1 16.6 16.8l-.9 1.8-7.4-3.7z"/></symbol>
+        <symbol id="icon-twitter" viewBox="0 0 24 24"><path d="M4.2 3h4.3l11.3 18h-4.3z"/><path d="M19.3 3h-2.6L4.2 21h2.6z"/></symbol>
+        <symbol id="icon-university" viewBox="0 0 24 24"><path d="M12 2.4 21.6 7.2v1.6H2.4V7.2z"/><path d="M4.8 10.4h2.4v8H4.8z"/><path d="M9.2 10.4h2.4v8H9.2z"/><path d="M13.4 10.4h2.4v8h-2.4z"/><path d="M17.6 10.4H20v8h-2.4z"/><path d="M3.2 19.8h17.6v1.8H3.2z"/></symbol>
+        <symbol id="icon-volume-up" viewBox="0 0 24 24"><path d="M3.2 9.2h3.3l5-4.2v14l-5-4.2H3.2z"/><path d="M14.6 8.4a5 5 0 0 1 0 7.2l1.6 1.6a7.2 7.2 0 0 0 0-10.4z"/><path d="M17.4 5.6a8.8 8.8 0 0 1 0 12.8l1.5 1.5a10.9 10.9 0 0 0 0-15.8z"/></symbol>
+        <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4a9.5 9.5 0 0 0-8.1 14.5L2.4 21.6l4.8-1.4A9.5 9.5 0 1 0 12 2.4zm0 2.2a7.3 7.3 0 1 1-3.8 13.5l-.4-.2-2.6.7.7-2.5-.3-.4A7.3 7.3 0 0 1 12 4.6z"/><path d="M9.4 7.8c-.2-.5-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.7 2.8 4.3 3.8 2.1.8 2.6.7 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.6c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.9 4.8 12 4.8 12 4.8s-5.9 0-7.6.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.4 7.6.4 7.6.4s5.9 0 7.6-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8zM10.2 15.1V8.9l5.1 3.1z"/></symbol>
+    </defs>
+</svg>
+
+      <form method="post" action="./PressReleasePage.aspx?PRID=1869581&amp;lang=2&amp;reg=48" id="form1">
+<input type="hidden" name="sc_HiddenField" id="sc_HiddenField" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+
+<script src="/ScriptResource.axd?d=x6wALODbMJK5e0eRC_p1LdIxBJXt0U_WW5GWfJqHAqo6frgCmGRfEywglicTersO2OKrFhK1gAIp0Wk2al2YrpdR3uWqH6f4nfjBsCyRUfTUUVmb0&amp;t=ffffffffecf8d3f2" type="text/javascript"></script>
+<script src="/PressReleasePage.aspx?_TSM_HiddenField_=sc_HiddenField&amp;_TSM_CombinedScripts_=%3b%3bAjaxControlToolkit%2c+Version%3d3.5.7.123%2c+Culture%3dneutral%2c+PublicKeyToken%3d28f01b0e84b6d53e%3aen-US%3a5a4df314-b4a2-4da2-a207-9284f1b1e96c%3ade1feab2%3af2c8e708%3a8613aea7%3af9cec9bc%3a3202a5a2%3aab09e3fe%3a87104b7c%3a720a52bf%3a589eaa30%3aa67c2700%3abe6fb298" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="59B53027" />
+<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="gRcM5eHG+XDN580aJOfbUdqZNAUPJ2pzPM6mIXhkcB5824zLcL6VYERQEG3mqhE23ZAo2+9Kpl6Wy7Z5NhqAakGQ5HQqILeLg0RtyHrXHgqb6Ud9fRi3lokwObzRJbrV7hLprP1TYVtciQPjGk6a19ztUIKTwiux7Pz+RY+6tAT3Y2ybCR/luR6nPnk7EOUWwQfadK7ZEnNT86PmC2p+GxBeTnk9PArxuBvDcc/gRXmWJVzbM1x/Oj9FYEhXO5VdLpHzA1sQ/4cS5E+bSFjXSbSc0dI=" />
+                              
+            <div id="templateCss"></div>
+            
+            <input type="hidden" name="hfGridHtml" id="hfGridHtml" />
+            <div class="container" style='margin-bottom: 50px;'>
+                  <div id="accessories">
+
+                        
+                        <div class="pull-right" style="display: flex">
+                              <div id="voll"></div>
+                              <div id="vollDT"></div>
+                              
+                              
+
+<span class="print-icons">
+<input type="image" name="Print1$print" id="Print1_print" aria-label="Print" src="images/printer_icon.png" alt="print page button" style="padding: 5px 10px 5px 10px;" />
+</span>
+                        </div>
+                  </div>
+                  <input type="hidden" name="hydpermid" id="hydpermid" value="1869581" />
+                  
+
+
+
+                  <div class="innner-page-main-about-us-content-right-part">
+
+                        <div id="MinistryName" class="MinistryNameSubhead text-center">
+                              Ministry of Consumer Affairs, Food & Public Distribution
+                        </div>
+                        
+                        <div id="lg_g"><div class='log_oo'>  <img src='https://static.pib.gov.in/WriteReadData/specificdocs/photo/2026/sep/ph_9768_20260902_10000501.png' alt='azadi ka amrit mahotsav' /> </div></div>
+
+
+
+
+
+                        <div class="text-center event-heading-background">
+                              
+                              <h1 id="Titleh2">
+                                    Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country
+                              </h1>
+                              <h3 id="Subtitleh3">
+                                    <span id="ltrSubtitle"><br/>At present 43.82 Lakhs Tonne of buffer stock of various pulses available with Government of India<br/><br/>Chana allocated from available Stock to the States at discounted price of Rs 8 per Kg over the issue prices for its distribution under various welfare Schemes</span>
+                              </h3>
+                        </div>
+
+                        <div id="PrDateTime" class="ReleaseDateSubHeaddateTime text-center pt20">
+                              Posted On:
+                20 OCT 2022 4:45PM by PIB Delhi
+                        </div>
+                        
+                        <div class='pt20'>
+                        </div>
+                        <input type="hidden" name="hydphotoUrl" id="hydphotoUrl" />
+                        
+                        <p style="text-align:justify"><span style="font-family:"Times New Roman",Times,serif; font-size:16px">Government of India’s continuous monitoring and policy decisions has led to the stability in the prices of pulses and onion. The Centre keeps a close watch on the production, imports, exports and availability of essential commodities through frequent interaction with importers, research agencies, trade associations, etc, said Shri Rohit Kumar Singh, Secretary Department of Consumer Affairs during a media interaction here today.</span></p>
+
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div>
+			<ul style="list-style-type:square; margin-left:40px">
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Centre keeping close watch on production, imports, exports and availability of essential commodities</span></span></li>
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Centre starts procurement of 1.00 Lakh tons of imported Tur and 50,000 tons of imported urad</span></span></li>
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Import of Tur and Urad has been kept under 'Free Category' till 31.03.2023</span></span></li>
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The basic import duty on Masur has been reduced to zero w.e.f. 27.07.2021 and the zero Agriculture Infrastructure and Development Cess w.e.f 13.02.2022 till 30.09.2022 has been extended till 31.03.2023</span></span></li>
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Centre has built buffer stock of 2.50 LMT (Lakh Metric Tons) of onion during the Rabi 2022 harvesting period</span></span></li>
+			</ul>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">In order to augment the buffer stock, the government has started procurement of 1.00 Lakh tons of imported Tur and 50,000 tons of imported Urad. At present, the Government of India has 43.82 Lakhs Tonne of buffer stock of various pulses under PSF and PSS. The Chana is allocated from this available Stock to the States at discounted price of Rs 8 per Kg over the issue prices for its distribution by the States/UT under various welfare Schemes. Till date, based on the Indent received from Uttar Pradesh, Gujarat, Himachal Pradesh and Tamil Nadu, 88,600 MT of Chana has been allocated to these States.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">In order to ensure smooth and seamless import of pulses to augment domestic availability, import of Tur and Urad has been kept under 'Free Category' till 31.03.2023. In respect of Masur, the basic import duty has been reduced to zero w.e.f. 27.07.2021 and the zero Agriculture Infrastructure and Development Cess w.e.f 13.02.2022 till 30.09.2022 has been extended till 31.03.2023.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The Department of Consumer Affairs on 12th August, 2022, issued a directive to all the states and UTs to enforce stock disclosure by stockholders of Tur under Section 3(2)(h) and 3(2)(i) of the Essential Commodities Act, 1955 and also to monitor and verify the stocks. The states/UTs have also been asked to direct stockholder entities to upload the data of stocks held by them on the online monitoring portal of the Department of Consumer Affairs on weekly basis. Further, states have been requested to nominate the nodal officers to monitor the disclosure of tur stock by stockholders.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The Centre has built buffer stock of 2.50 LMT (Lakh Metric Tons) of onion during the Rabi 2022 harvesting period in a view to keep onion retail prices stable even during the lean arrival season. The release of Onion buffer is initiated to check the price rise and a quantity of 54,000 tons of Onion has been released to various Markets across 14 States/UTs from the National Onion Buffer Stock. This has resulted in stable onion prices all through the year. Further, to keep the onion retail prices stable, Government of India has offered onion to all the States/UTs and Mother Dairy, Safal, NCCF and Kendriya Bhandar to lift onion from Central Buffer Stock at the rate of Rs 800 per quintal.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Due to continuous monitoring and policy decisions of Central Govt., all India average retail prices of major pulses have been fairly stable since starting of the year, except for normal seasonal price increases. All India average prices of Gram dal and Masoor dal have slightly declined over last month, whereas all India average price of Tur dal, Urad dal and Moong dal have been stable with marginal increase over same period. The all-India average retail price of onion has witnessed a significant decline of 28% compared to last year.  </span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Regular reviews by the Inter-Ministerial Committee (IMC) and Committee of Secretaries (CoS) to review the situation of essential commodities, their price trends and suggest measures to enhance availability by way of various policy interventions to keep prices stable by way of imports, increasing production, imposing stock limits, import export regulations, etc.</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Govt. of India has set up The Price Stabilization Fund (PSF) to tackle price volatility of essential commodities such as Pulses, onion and potato to protecting consumers’ interest while promoting direct purchase from farmers/farmers’ associations at farm gate/mandi. The Buffer stock of onion and pulses is maintained under PSF with the objective to moderate prices during the lean arrival season to ensure price stability. These interventions while protecting consumer interest would also help in sending the appropriate signals to market and regulate speculative and hoarding activities. </span></span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Department of Consumer Affairs, Government of India, monitors prices of 22 essential commodities (Cereals, Pulses, Edible Oils, Vegetables and Others). To improve the quality of price data and analytical output thereof, the department has expanded the geographical coverage by increasing the number of price collection centres from 179 as on 1st January 2022 to 311 centres as on date. To improve the robustness of the price monitoring process, the department uses scientific models for predictive analytics and Scenario building models to develop information-based scenario.</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Hon’ble Prime Minister Shri Narendra Modi during PM-KISAN Samman Sammelan 2022 (on17th October 2022), expressed delight at the 70% increase in pulse production and thanked the farmers, recalling his clarion call in 2015 regarding the production of pulses. “We will make agriculture attractive and prosperous in the Azadi Ka Amrit Mahotsav”, the Prime Minister said and concluded his address by wishing the best to all the farmers and startups.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">For more details, read here: <a href="https://pib.gov.in/PressReleasePage.aspx?PRID=1868515" target="_blank">https://pib.gov.in/PressReleasePage.aspx?PRID=1868515</a></span></span></p>
+
+<p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="background-color:white">To view, click: <a href="https://t.co/kYkcDqG4OR" target="_blank">https://t.co/kYkcDqG4OR</a></span></span></span></p>
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">📡LIVE Now📡<br><br>PM <a href="https://twitter.com/narendramodi?ref_src=twsrc%5Etfw">@narendramodi</a> inaugurates <a href="https://twitter.com/hashtag/PMKISANSammanSammelan?src=hash&ref_src=twsrc%5Etfw">#PMKISANSammanSammelan</a> 2022<br><br>Watch on <a href="https://twitter.com/hashtag/PIB?src=hash&ref_src=twsrc%5Etfw">#PIB</a>'s📺<br>Facebook: <a href="https://t.co/ykJcYlNrjj">https://t.co/ykJcYlNrjj</a> <br>YouTube: <a href="https://t.co/kYkcDqG4OR">https://t.co/kYkcDqG4OR</a><a href="https://t.co/j1OPjuk8RS">https://t.co/j1OPjuk8RS</a></p>— PIB India (@PIB_India) <a href="https://twitter.com/PIB_India/status/1581894692073254913?ref_src=twsrc%5Etfw">October 17, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Earlier this week, in a pro-farmer initiative, the Cabinet Committee on Economic Affairs chaired by Hon’ble Prime Minister Shri Narendra Modi had approved the increase in the Minimum Support Prices (MSP) for all mandated Rabi Crops for Marketing Season 2023-24. Government has increased the MSP of Rabi Crops for Marketing Season 2023-24, to ensure remunerative prices to the growers for their produce.  The absolute highest increase in MSP has been approved for lentil (Masur) at Rs.500/- per quintal. </span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">For more details, read here: <a href="https://pib.gov.in/PressReleasePage.aspx?PRID=1868760" target="_blank">https://pib.gov.in/PressReleasePage.aspx?PRID=1868760</a></span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">To view the briefing on CCEA decisions, click: https://t.co/uYeXRAKXVt</span></span></p>
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/Cabinet?src=hash&ref_src=twsrc%5Etfw">#Cabinet</a> approves the increase in the Minimum Support Prices (MSP) for 6 Rabi Crops for Marketing Season 2023-24.<br><br>The increase in <a href="https://twitter.com/hashtag/MSP?src=hash&ref_src=twsrc%5Etfw">#MSP</a> is in line with Union Budget 2018 announcement of fixing MSP at a level of at least 1.5 times of average cost of production <a href="https://t.co/5PYQFUhTEU">pic.twitter.com/5PYQFUhTEU</a></p>— PIB India (@PIB_India) <a href="https://twitter.com/PIB_India/status/1582283327553536002?ref_src=twsrc%5Etfw">October 18, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Compared to 2014, the <a href="https://twitter.com/hashtag/MSP?src=hash&ref_src=twsrc%5Etfw">#MSP</a> of Gram has increased from 3175 to 5335 and for Lentil it has increased from 3075 to 6000 for Marketing Season 2023-24.<a href="https://twitter.com/hashtag/CabinetDecisions?src=hash&ref_src=twsrc%5Etfw">#CabinetDecisions</a> <a href="https://t.co/NV5W56WI9q">pic.twitter.com/NV5W56WI9q</a></p>— PIB India (@PIB_India) <a href="https://twitter.com/PIB_India/status/1582291271498203136?ref_src=twsrc%5Etfw">October 18, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</center>
+<p style="text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">******</span></span></span></p>
+
+<p style="text-align:justify"><strong><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">AD/NS</span></span></span></strong></p>
+
+
+                        
+                        <div id="reel_pic">
+                        </div>
+
+
+
+                        
+                        <br />
+                        <span id="ReleaseId">(Release ID: 1869581)</span>
+                        <span id="lblViews">Visitor Counter : 2572</span>
+                        <div>
+                              
+                        </div>
+                        
+
+                        <span id="lblRefPhoto"></span>
+
+                        <div class="BackgroundRelease">
+                              
+                        </div>
+                        <div>
+                              
+                        </div>
+                        <div class="ReleaseLang">Read this release in: 
+                        
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=1869790' target="_blank">
+                                          Urdu </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=1869754' target="_blank">
+                                          हिन्दी </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=1869707' target="_blank">
+                                          Marathi </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=1869727' target="_blank">
+                                          Odia </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=1869762' target="_blank">
+                                          Telugu </a>
+                              
+                        </div>
+
+                        <div class="RelTag">
+                              <ul>
+                                    
+                              </ul>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        
+                        <div class="pr-share pr-share--footer" role="group" aria-label="Share this press release">
+                              <span class="pr-share__label" aria-hidden="true">Share</span>
+                              <ul class="pr-share__list">
+                                    <li><a class="pr-share__btn pr-share__btn--facebook"
+                                           href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d1869581"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on Facebook">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-facebook" xlink:href="#icon-facebook"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--twitter"
+                                           href="https://twitter.com/intent/tweet?url=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d1869581"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on X">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-twitter" xlink:href="#icon-twitter"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--whatsapp"
+                                           href="https://api.whatsapp.com/send?text=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d1869581"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on WhatsApp">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-whatsapp" xlink:href="#icon-whatsapp"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--linkedin"
+                                           href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d1869581"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on LinkedIn">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-linkedin" xlink:href="#icon-linkedin"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--mail"
+                                           href="mailto:?subject=Press+release+from+PIB&amp;body=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d1869581"
+                                           aria-label="Share by email">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-mail" xlink:href="#icon-mail"></use></svg>
+                                    </a></li>
+                              </ul>
+                        </div>
+                        <div id="RelLink" class="RelLink">
+                              <ul>
+                                    
+                                    
+                              </ul>
+                        </div>
+                        <center>
+                              
+                        </center>
+                  </div>
+
+                  <div id="update12">
+	
+                              
+                              <input type="hidden" name="Hidden" id="Hidden" />
+                              <div id="P_CategoryManagement" class="ModalWindow" style="display: none">
+		
+                                    <div>
+                                          <input type="image" name="btnClose" id="btnClose" src="images/close_flat_icon.png" />
+                                    </div>
+                                    <div id="description">
+                                    </div>
+                                    <div class="text-center">
+                                          <h2>
+                                                
+                                                <br>
+                                                
+                                          </h2>
+                                    </div>
+                                    <br />
+                                    <div class="clear">
+                                    </div>
+                                    
+                              
+	</div>
+                        
+</div>
+            </div>
+            
+            <div id="PdfDiv" style="display: none;">
+                  <table width="100%">
+                        <tr>
+                              <td style="font-weight: 200; text-align: center">
+                                    Ministry of Consumer Affairs, Food & Public Distribution
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: center; font-size: 30px;">
+                                          Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: center; font-size: 30px;">
+                                          <div style='height:30px;width:100%;'></div>At present 43.82 Lakhs Tonne of buffer stock of various pulses available with Government of India<div style='height:30px;width:100%;'></div><div style='height:30px;width:100%;'></div>Chana allocated from available Stock to the States at discounted price of Rs 8 per Kg over the issue prices for its distribution under various welfare Schemes
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="text-align: center; font-size: 14px;">
+                                          Posted On:
+                        20 OCT 2022 4:45PM by PIB Delhi
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: left; font-size: 16px;">
+                                          <p style="text-align:justify"><span style="font-family:"Times New Roman",Times,serif; font-size:16px">Government of India’s continuous monitoring and policy decisions has led to the stability in the prices of pulses and onion. The Centre keeps a close watch on the production, imports, exports and availability of essential commodities through frequent interaction with importers, research agencies, trade associations, etc, said Shri Rohit Kumar Singh, Secretary Department of Consumer Affairs during a media interaction here today.</span></p>
+
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div>
+			<ul style="list-style-type:square; margin-left:40px">
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Centre keeping close watch on production, imports, exports and availability of essential commodities</span></span></li>
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Centre starts procurement of 1.00 Lakh tons of imported Tur and 50,000 tons of imported urad</span></span></li>
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Import of Tur and Urad has been kept under 'Free Category' till 31.03.2023</span></span></li>
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The basic import duty on Masur has been reduced to zero w.e.f. 27.07.2021 and the zero Agriculture Infrastructure and Development Cess w.e.f 13.02.2022 till 30.09.2022 has been extended till 31.03.2023</span></span></li>
+				<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Centre has built buffer stock of 2.50 LMT (Lakh Metric Tons) of onion during the Rabi 2022 harvesting period</span></span></li>
+			</ul>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">In order to augment the buffer stock, the government has started procurement of 1.00 Lakh tons of imported Tur and 50,000 tons of imported Urad. At present, the Government of India has 43.82 Lakhs Tonne of buffer stock of various pulses under PSF and PSS. The Chana is allocated from this available Stock to the States at discounted price of Rs 8 per Kg over the issue prices for its distribution by the States/UT under various welfare Schemes. Till date, based on the Indent received from Uttar Pradesh, Gujarat, Himachal Pradesh and Tamil Nadu, 88,600 MT of Chana has been allocated to these States.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">In order to ensure smooth and seamless import of pulses to augment domestic availability, import of Tur and Urad has been kept under 'Free Category' till 31.03.2023. In respect of Masur, the basic import duty has been reduced to zero w.e.f. 27.07.2021 and the zero Agriculture Infrastructure and Development Cess w.e.f 13.02.2022 till 30.09.2022 has been extended till 31.03.2023.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The Department of Consumer Affairs on 12th August, 2022, issued a directive to all the states and UTs to enforce stock disclosure by stockholders of Tur under Section 3(2)(h) and 3(2)(i) of the Essential Commodities Act, 1955 and also to monitor and verify the stocks. The states/UTs have also been asked to direct stockholder entities to upload the data of stocks held by them on the online monitoring portal of the Department of Consumer Affairs on weekly basis. Further, states have been requested to nominate the nodal officers to monitor the disclosure of tur stock by stockholders.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">The Centre has built buffer stock of 2.50 LMT (Lakh Metric Tons) of onion during the Rabi 2022 harvesting period in a view to keep onion retail prices stable even during the lean arrival season. The release of Onion buffer is initiated to check the price rise and a quantity of 54,000 tons of Onion has been released to various Markets across 14 States/UTs from the National Onion Buffer Stock. This has resulted in stable onion prices all through the year. Further, to keep the onion retail prices stable, Government of India has offered onion to all the States/UTs and Mother Dairy, Safal, NCCF and Kendriya Bhandar to lift onion from Central Buffer Stock at the rate of Rs 800 per quintal.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Due to continuous monitoring and policy decisions of Central Govt., all India average retail prices of major pulses have been fairly stable since starting of the year, except for normal seasonal price increases. All India average prices of Gram dal and Masoor dal have slightly declined over last month, whereas all India average price of Tur dal, Urad dal and Moong dal have been stable with marginal increase over same period. The all-India average retail price of onion has witnessed a significant decline of 28% compared to last year.  </span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Regular reviews by the Inter-Ministerial Committee (IMC) and Committee of Secretaries (CoS) to review the situation of essential commodities, their price trends and suggest measures to enhance availability by way of various policy interventions to keep prices stable by way of imports, increasing production, imposing stock limits, import export regulations, etc.</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Govt. of India has set up The Price Stabilization Fund (PSF) to tackle price volatility of essential commodities such as Pulses, onion and potato to protecting consumers’ interest while promoting direct purchase from farmers/farmers’ associations at farm gate/mandi. The Buffer stock of onion and pulses is maintained under PSF with the objective to moderate prices during the lean arrival season to ensure price stability. These interventions while protecting consumer interest would also help in sending the appropriate signals to market and regulate speculative and hoarding activities. </span></span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Department of Consumer Affairs, Government of India, monitors prices of 22 essential commodities (Cereals, Pulses, Edible Oils, Vegetables and Others). To improve the quality of price data and analytical output thereof, the department has expanded the geographical coverage by increasing the number of price collection centres from 179 as on 1st January 2022 to 311 centres as on date. To improve the robustness of the price monitoring process, the department uses scientific models for predictive analytics and Scenario building models to develop information-based scenario.</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Hon’ble Prime Minister Shri Narendra Modi during PM-KISAN Samman Sammelan 2022 (on17th October 2022), expressed delight at the 70% increase in pulse production and thanked the farmers, recalling his clarion call in 2015 regarding the production of pulses. “We will make agriculture attractive and prosperous in the Azadi Ka Amrit Mahotsav”, the Prime Minister said and concluded his address by wishing the best to all the farmers and startups.</span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">For more details, read here: <a href="https://pib.gov.in/PressReleasePage.aspx?PRID=1868515" target="_blank">https://pib.gov.in/PressReleasePage.aspx?PRID=1868515</a></span></span></p>
+
+<p style="margin-left:0cm; margin-right:0cm; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="background-color:white">To view, click: <a href="https://t.co/kYkcDqG4OR" target="_blank">https://t.co/kYkcDqG4OR</a></span></span></span></p>
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">📡LIVE Now📡<br><br>PM <a href="https://twitter.com/narendramodi?ref_src=twsrc%5Etfw">@narendramodi</a> inaugurates <a href="https://twitter.com/hashtag/PMKISANSammanSammelan?src=hash&ref_src=twsrc%5Etfw">#PMKISANSammanSammelan</a> 2022<br><br>Watch on <a href="https://twitter.com/hashtag/PIB?src=hash&ref_src=twsrc%5Etfw">#PIB</a>'s📺<br>Facebook: <a href="https://t.co/ykJcYlNrjj">https://t.co/ykJcYlNrjj</a> <br>YouTube: <a href="https://t.co/kYkcDqG4OR">https://t.co/kYkcDqG4OR</a><a href="https://t.co/j1OPjuk8RS">https://t.co/j1OPjuk8RS</a></p>— PIB India (@PIB_India) <a href="https://twitter.com/PIB_India/status/1581894692073254913?ref_src=twsrc%5Etfw">October 17, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">Earlier this week, in a pro-farmer initiative, the Cabinet Committee on Economic Affairs chaired by Hon’ble Prime Minister Shri Narendra Modi had approved the increase in the Minimum Support Prices (MSP) for all mandated Rabi Crops for Marketing Season 2023-24. Government has increased the MSP of Rabi Crops for Marketing Season 2023-24, to ensure remunerative prices to the growers for their produce.  The absolute highest increase in MSP has been approved for lentil (Masur) at Rs.500/- per quintal. </span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">For more details, read here: <a href="https://pib.gov.in/PressReleasePage.aspx?PRID=1868760" target="_blank">https://pib.gov.in/PressReleasePage.aspx?PRID=1868760</a></span></span></p>
+
+<p style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">To view the briefing on CCEA decisions, click: https://t.co/uYeXRAKXVt</span></span></p>
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/Cabinet?src=hash&ref_src=twsrc%5Etfw">#Cabinet</a> approves the increase in the Minimum Support Prices (MSP) for 6 Rabi Crops for Marketing Season 2023-24.<br><br>The increase in <a href="https://twitter.com/hashtag/MSP?src=hash&ref_src=twsrc%5Etfw">#MSP</a> is in line with Union Budget 2018 announcement of fixing MSP at a level of at least 1.5 times of average cost of production <a href="https://t.co/5PYQFUhTEU">pic.twitter.com/5PYQFUhTEU</a></p>— PIB India (@PIB_India) <a href="https://twitter.com/PIB_India/status/1582283327553536002?ref_src=twsrc%5Etfw">October 18, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Compared to 2014, the <a href="https://twitter.com/hashtag/MSP?src=hash&ref_src=twsrc%5Etfw">#MSP</a> of Gram has increased from 3175 to 5335 and for Lentil it has increased from 3075 to 6000 for Marketing Season 2023-24.<a href="https://twitter.com/hashtag/CabinetDecisions?src=hash&ref_src=twsrc%5Etfw">#CabinetDecisions</a> <a href="https://t.co/NV5W56WI9q">pic.twitter.com/NV5W56WI9q</a></p>— PIB India (@PIB_India) <a href="https://twitter.com/PIB_India/status/1582291271498203136?ref_src=twsrc%5Etfw">October 18, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</center>
+<p style="text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">******</span></span></span></p>
+
+<p style="text-align:justify"><strong><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">AD/NS</span></span></span></strong></p>
+
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 100; text-align: left; font-size: 16px;">
+                                          (Release ID: 1869581)
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                              </td>
+                        </tr>
+                        <tr>
+                              <td style="font-weight: 200; text-align: center; font-size: 24px;"></td>
+                        </tr>
+                  </table>
+            </div>
+            <div class="clearfix">
+            </div>
+
+            
+
+            <div class="section1">
+                  <div id="frst_t">
+                        <div id="arr_rm"><div class='sticky-social_mb'><ul class='social_mb'><a href='http://www.facebook.com/share.php?u=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581' target='_blank'><li class='fb_b'   ></li></a><a href='https://twitter.com/intent/tweet?url=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581&text=Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country' target='_blank'><li class='twitter_r'  > </li></a><a href='https://api.whatsapp.com/send?text=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581' target='_blank'><li class='whatsapp_r'  ></li></a><a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country&body=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581&ui=2&tf=1&pli=1' title='Share by Email' target='_blank'><li class='fa-envelope_r' ></li></a><a href='https://www.linkedin.com/shareArticle?mini=true&url=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581&title=Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country&summary=My%20favorite%20developer%20program&source=LinkedIn' target='_blank'><li class='fa-linkedin_r'  ></li></a></ul></div></div>
+                  </div>
+                  <div id="second_t">
+                        <div id="sndr_rm"><div class='sticky-social'><ul class='social'><a href='http://www.facebook.com/share.php?u=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581' target='_blank'><li class='fb_b'   ></li></a><a href='https://twitter.com/intent/tweet?url=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581&text=Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country' target='_blank'><li class='twitter_r'  > </li></a><a href='https://api.whatsapp.com/send?text=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581' target='_blank'><li class='whatsapp_r'  ></li></a><a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country&body=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581&ui=2&tf=1&pli=1' title='Share by Email' target='_blank'><li class='fa-envelope_r' ></li></a><a href='https://www.linkedin.com/shareArticle?mini=true&url=https://pib.gov.in/PressReleasePage.aspx?PRID=1869581&title=Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country&summary=My%20favorite%20developer%20program&source=LinkedIn' target='_blank'><li class='fa-linkedin_r'  ></li></a></ul></div></div>
+                  </div>
+            </div>
+            <input type="hidden" name="ltrTitlee" id="ltrTitlee" value="Centre’s continuous monitoring and policy decisions results in stability in prices of Pulses and Onion in the country" />
+            <input type="hidden" name="ltrSubtitlee" id="ltrSubtitlee" value="&lt;br/>At present 43.82 Lakhs Tonne of buffer stock of various pulses available with Government of India&lt;br/>&lt;br/>Chana allocated from available Stock to the States at discounted price of Rs 8 per Kg over the issue prices for its distribution under various welfare Schemes" />
+            <input type="hidden" name="ltrDescriptionn" id="ltrDescriptionn" value="&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:&quot;Times New Roman&quot;,Times,serif; font-size:16px&quot;>Government of India’s continuous monitoring and policy decisions has led to the stability in the prices of pulses and onion. The Centre keeps a close watch on the production, imports, exports and availability of essential commodities through frequent interaction with importers, research agencies, trade associations, etc, said Shri Rohit Kumar Singh, Secretary Department of Consumer Affairs during a media interaction here today.&lt;/span>&lt;/p>
+
+&lt;table>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>
+			&lt;div>
+			&lt;ul style=&quot;list-style-type:square; margin-left:40px&quot;>
+				&lt;li style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>Centre keeping close watch on production, imports, exports and availability of essential commodities&lt;/span>&lt;/span>&lt;/li>
+				&lt;li style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>Centre starts procurement of 1.00 Lakh tons of imported Tur and 50,000 tons of imported urad&lt;/span>&lt;/span>&lt;/li>
+				&lt;li style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>Import of Tur and Urad has been kept under &#39;Free Category&#39; till 31.03.2023&lt;/span>&lt;/span>&lt;/li>
+				&lt;li style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>The basic import duty on Masur has been reduced to zero w.e.f. 27.07.2021 and the zero Agriculture Infrastructure and Development Cess w.e.f 13.02.2022 till 30.09.2022 has been extended till 31.03.2023&lt;/span>&lt;/span>&lt;/li>
+				&lt;li style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>Centre has built buffer stock of 2.50 LMT (Lakh Metric Tons) of onion during the Rabi 2022 harvesting period&lt;/span>&lt;/span>&lt;/li>
+			&lt;/ul>
+			&lt;/div>
+			&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table>
+
+
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>In order to augment the buffer stock, the government has started procurement of 1.00 Lakh tons of imported Tur and 50,000 tons of imported Urad. At present, the Government of India has 43.82 Lakhs Tonne of buffer stock of various pulses under PSF and PSS. The Chana is allocated from this available Stock to the States at discounted price of Rs 8 per Kg over the issue prices for its distribution by the States/UT under various welfare Schemes. Till date, based on the Indent received from Uttar Pradesh, Gujarat, Himachal Pradesh and Tamil Nadu, 88,600 MT of Chana has been allocated to these States.&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>In order to ensure smooth and seamless import of pulses to augment domestic availability, import of Tur and Urad has been kept under &#39;Free Category&#39; till 31.03.2023. In respect of Masur, the basic import duty has been reduced to zero w.e.f. 27.07.2021 and the zero Agriculture Infrastructure and Development Cess w.e.f 13.02.2022 till 30.09.2022 has been extended till 31.03.2023.&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>The Department of Consumer Affairs on 12th August, 2022, issued a directive to all the states and UTs to enforce stock disclosure by stockholders of Tur under Section 3(2)(h) and 3(2)(i) of the Essential Commodities Act, 1955 and also to monitor and verify the stocks. The states/UTs have also been asked to direct stockholder entities to upload the data of stocks held by them on the online monitoring portal of the Department of Consumer Affairs on weekly basis. Further, states have been requested to nominate the nodal officers to monitor the disclosure of tur stock by stockholders.&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>The Centre has built buffer stock of 2.50 LMT (Lakh Metric Tons) of onion during the Rabi 2022 harvesting period in a view to keep onion retail prices stable even during the lean arrival season. The release of Onion buffer is initiated to check the price rise and a quantity of 54,000 tons of Onion has been released to various Markets across 14 States/UTs from the National Onion Buffer Stock. This has resulted in stable onion prices all through the year. Further, to keep the onion retail prices stable, Government of India has offered onion to all the States/UTs and Mother Dairy, Safal, NCCF and Kendriya Bhandar to lift onion from Central Buffer Stock at the rate of Rs 800 per quintal.&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>Due to continuous monitoring and policy decisions of Central Govt., all India average retail prices of major pulses have been fairly stable since starting of the year, except for normal seasonal price increases. All India average prices of Gram dal and Masoor dal have slightly declined over last month, whereas all India average price of Tur dal, Urad dal and Moong dal have been stable with marginal increase over same period. The all-India average retail price of onion has witnessed a significant decline of 28% compared to last year.  &lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Regular reviews by the Inter-Ministerial Committee (IMC) and Committee of Secretaries (CoS) to review the situation of essential commodities, their price trends and suggest measures to enhance availability by way of various policy interventions to keep prices stable by way of imports, increasing production, imposing stock limits, import export regulations, etc.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The Govt. of India has set up The Price Stabilization Fund (PSF) to tackle price volatility of essential commodities such as Pulses, onion and potato to protecting consumers’ interest while promoting direct purchase from farmers/farmers’ associations at farm gate/mandi. The Buffer stock of onion and pulses is maintained under PSF with the objective to moderate prices during the lean arrival season to ensure price stability. These interventions while protecting consumer interest would also help in sending the appropriate signals to market and regulate speculative and hoarding activities. &lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The Department of Consumer Affairs, Government of India, monitors prices of 22 essential commodities (Cereals, Pulses, Edible Oils, Vegetables and Others). To improve the quality of price data and analytical output thereof, the department has expanded the geographical coverage by increasing the number of price collection centres from 179 as on 1st January 2022 to 311 centres as on date. To improve the robustness of the price monitoring process, the department uses scientific models for predictive analytics and Scenario building models to develop information-based scenario.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>Hon’ble Prime Minister Shri Narendra Modi during PM-KISAN Samman Sammelan 2022 (on17th October 2022), expressed delight at the 70% increase in pulse production and thanked the farmers, recalling his clarion call in 2015 regarding the production of pulses. “We will make agriculture attractive and prosperous in the Azadi Ka Amrit Mahotsav”, the Prime Minister said and concluded his address by wishing the best to all the farmers and startups.&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>For more details, read here: &lt;a href=&quot;https://pib.gov.in/PressReleasePage.aspx?PRID=1868515&quot; target=&quot;_blank&quot;>https://pib.gov.in/PressReleasePage.aspx?PRID=1868515&lt;/a>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:0cm; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;background-color:white&quot;>To view, click: &lt;a href=&quot;https://t.co/kYkcDqG4OR&quot; target=&quot;_blank&quot;>https://t.co/kYkcDqG4OR&lt;/a>&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;>📡LIVE Now📡&lt;br>&lt;br>PM &lt;a href=&quot;https://twitter.com/narendramodi?ref_src=twsrc%5Etfw&quot;>@narendramodi&lt;/a> inaugurates &lt;a href=&quot;https://twitter.com/hashtag/PMKISANSammanSammelan?src=hash&amp;ref_src=twsrc%5Etfw&quot;>#PMKISANSammanSammelan&lt;/a> 2022&lt;br>&lt;br>Watch on &lt;a href=&quot;https://twitter.com/hashtag/PIB?src=hash&amp;ref_src=twsrc%5Etfw&quot;>#PIB&lt;/a>&#39;s📺&lt;br>Facebook: &lt;a href=&quot;https://t.co/ykJcYlNrjj&quot;>https://t.co/ykJcYlNrjj&lt;/a> &lt;br>YouTube: &lt;a href=&quot;https://t.co/kYkcDqG4OR&quot;>https://t.co/kYkcDqG4OR&lt;/a>&lt;a href=&quot;https://t.co/j1OPjuk8RS&quot;>https://t.co/j1OPjuk8RS&lt;/a>&lt;/p>— PIB India (@PIB_India) &lt;a href=&quot;https://twitter.com/PIB_India/status/1581894692073254913?ref_src=twsrc%5Etfw&quot;>October 17, 2022&lt;/a> 
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>Earlier this week, in a pro-farmer initiative, the Cabinet Committee on Economic Affairs chaired by Hon’ble Prime Minister Shri Narendra Modi had approved the increase in the Minimum Support Prices (MSP) for all mandated Rabi Crops for Marketing Season 2023-24. Government has increased the MSP of Rabi Crops for Marketing Season 2023-24, to ensure remunerative prices to the growers for their produce.  The absolute highest increase in MSP has been approved for lentil (Masur) at Rs.500/- per quintal. &lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>For more details, read here: &lt;a href=&quot;https://pib.gov.in/PressReleasePage.aspx?PRID=1868760&quot; target=&quot;_blank&quot;>https://pib.gov.in/PressReleasePage.aspx?PRID=1868760&lt;/a>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>To view the briefing on CCEA decisions, click: https://t.co/uYeXRAKXVt&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;>&lt;a href=&quot;https://twitter.com/hashtag/Cabinet?src=hash&amp;ref_src=twsrc%5Etfw&quot;>#Cabinet&lt;/a> approves the increase in the Minimum Support Prices (MSP) for 6 Rabi Crops for Marketing Season 2023-24.&lt;br>&lt;br>The increase in &lt;a href=&quot;https://twitter.com/hashtag/MSP?src=hash&amp;ref_src=twsrc%5Etfw&quot;>#MSP&lt;/a> is in line with Union Budget 2018 announcement of fixing MSP at a level of at least 1.5 times of average cost of production &lt;a href=&quot;https://t.co/5PYQFUhTEU&quot;>pic.twitter.com/5PYQFUhTEU&lt;/a>&lt;/p>— PIB India (@PIB_India) &lt;a href=&quot;https://twitter.com/PIB_India/status/1582283327553536002?ref_src=twsrc%5Etfw&quot;>October 18, 2022&lt;/a> 
+
+&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;>Compared to 2014, the &lt;a href=&quot;https://twitter.com/hashtag/MSP?src=hash&amp;ref_src=twsrc%5Etfw&quot;>#MSP&lt;/a> of Gram has increased from 3175 to 5335 and for Lentil it has increased from 3075 to 6000 for Marketing Season 2023-24.&lt;a href=&quot;https://twitter.com/hashtag/CabinetDecisions?src=hash&amp;ref_src=twsrc%5Etfw&quot;>#CabinetDecisions&lt;/a> &lt;a href=&quot;https://t.co/NV5W56WI9q&quot;>pic.twitter.com/NV5W56WI9q&lt;/a>&lt;/p>— PIB India (@PIB_India) &lt;a href=&quot;https://twitter.com/PIB_India/status/1582291271498203136?ref_src=twsrc%5Etfw&quot;>October 18, 2022&lt;/a>  
+
+&lt;p style=&quot;text-align:center&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>******&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;text-align:justify&quot;>&lt;strong>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>AD/NS&lt;/span>&lt;/span>&lt;/span>&lt;/strong>&lt;/p>
+" />
+            <script type="text/javascript">
+                  var mPlayer = document.getElementById("background_music");
+                  var mPlayAction = document.getElementById("playbutton");
+
+                  var isPlaying = false;
+
+                  function playAudio() {
+                        mPlayer.play();
+                        isPlaying = true;
+                        document.getElementById('stopA').style.display = "block";
+                        document.getElementById('playA').style.display = "none";
+                  }
+
+                  function pauseAudio() {
+                        mPlayer.pause();
+                        isPlaying = false;
+                        document.getElementById('playA').style.display = "block";
+                        document.getElementById('stopA').style.display = "none";
+                  }
+                  //function HandleAudio() {
+                  //    if (isPlaying == true) {
+                  //        //Playing already Pause it
+                  //        pauseAudio();
+                  //    } else {
+                  //        //Play the music
+                  //        playAudio();
+                  //    }
+                  //}
+            </script>
+            <script type="text/javascript">
+                  var synth = window.speechSynthesis;
+
+            
+                  function CleanHtml(html) {
+
+                        html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+
+                        return html;
+                  }
+                  function stripHtml(html) {
+                        let tmp = document.createElement("DIV");
+                        tmp.innerHTML = CleanHtml(html);
+                        return tmp.textContent || tmp.innerText || "";
+                  }
+            </script>
+            <script type="text/javascript">
+                  $(document).ready(function () {
+                        //for responsive tables
+                        $("table").each(function () {
+                              if (!$(this).closest(".table-responsive").length) {
+                                    $(this).wrap("<div class='table-responsive'></div>");
+                              }
+                        });
+
+                        var width = $(window).width();
+                        if (width < 768) {
+
+                              // Extra Small Device
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+
+                        } else if (width < 991) {
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+                              // Small Device
+
+                        } else if (width < 1199) {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Medium Device
+
+                        } else {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Large Device
+
+                        }
+                  });
+            </script>
+            <script type="text/javascript">
+                  $(document).ready(function () {
+                        var width = $(window).width();
+                        if (width < 768) {
+
+                              // Extra Small Device
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+
+                        } else if (width < 991) {
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+                              // Small Device
+
+                        } else if (width < 1199) {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Medium Device
+
+                        } else {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Large Device
+
+                        }
+                  });
+            </script>
+            
+            <style type="text/css">
+                  @media print {
+                        .sticky-social, .sticky-social_mb, .pull-right, #printPDF {
+                              display: none !important;
+                        }
+                  }
+
+                  .f_vl {
+                        padding-right: 30px;
+                        font-size: 17px;
+                        cursor: pointer;
+                  }
+
+                  .log_oo {
+                        // width: 20%;
+                        display: flex;
+                        justify-content: space-between;
+                  }
+
+                        .log_oo img {
+                              width: 150px;
+                              /*width: 100%;
+                    height: auto;*/
+                        }
+
+                  .sticky-social_mb {
+                        position: fixed;
+                        bottom: 0px;
+                        padding: 0px;
+                        margin: 0px;
+                        width: 100%;
+                  }
+
+                  .social_mb {
+                        list-style: none;
+                        display: flex;
+                        width: 100%;
+                        margin-bottom: -8px;
+                  }
+
+                        .social_mb a {
+                              padding: 8px 0px;
+                              font-size: 30px;
+                              transition: all 0.8s ease-in-out;
+                              width: 20% !important;
+                              text-align: center;
+                        }
+            </style>
+            <style type="text/css">
+                  .section1 {
+                        position: relative;
+                        padding: 10px 0px;
+                        width: 100%;
+                  }
+
+
+
+                  .sticky-social {
+                        position: fixed;
+                        top: 20px;
+                        left: 0px;
+                        padding: 0px;
+                        margin: 0px;
+                  }
+
+                  .social {
+                        list-style: none;
+                  }
+
+                        .social a li {
+                              padding: 8px 12px;
+                              font-size: 25px;
+                              transition: all 0.8s ease-in-out;
+                        }
+
+                              .social a li:hover {
+                                    margin-right: -30px;
+                                    box-shadow: 2px 5px 10px grey;
+                              }
+
+                                    .social a li:hover .fa {
+                                          margin-left: 20px;
+                                    }
+
+                  .fb_b {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .twitter_r {
+                        /* background-color: rgb(29, 161, 242);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .whatsapp_r {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .fa-envelope_r {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .fa-linkedin_r {
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+            </style>
+            <style type="text/css">
+                  @media only screen and (max-device-width: 767px) {
+                        p span img {
+                              max-width: 90% !important;
+                              height: auto !important;
+                        }
+
+                        p img {
+                              max-width: 90% !important;
+                              height: auto !important;
+                        }
+
+                        h2 {
+                              font-size: var(--dbim-h2, 20px);   /* was 20px !important - the !important blocked A+/A- */
+                              font-weight: 600 !important;
+                        }
+
+                        h3 {
+                              font-size: var(--dbim-h3, 16px);   /* was 16px !important */
+                              font-weight: 600 !important;
+                        }
+                  }
+            </style>
+            <style type="text/css">
+                  /* === Film Roll Badge Styling(IFFI2025 countdown) === */
+                  .film-roll-badge {
+                        position: absolute;
+                        top:82%;
+                        right: 20px;
+                        width: 230px;
+                        height: 70px;
+                        background: repeating-linear-gradient( to right, var(--dbim-green-key, #0F5757) 0px, var(--dbim-green-key, #0F5757) 18px, var(--dbim-text, #150202) 18px, var(--dbim-text, #150202) 36px );
+                        border-top: 8px solid var(--dbim-green-key, #0F5757);
+                        border-bottom: 8px solid var(--dbim-green-key, #0F5757);
+                        border-radius: 8px;
+                        overflow: hidden;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+                        animation: moveFilm 8s linear infinite;
+                        z-index: 10;
+                  }
+
+                        /* film sprocket holes */
+                        .film-roll-badge::before,
+                        .film-roll-badge::after {
+                              content: "";
+                              position: absolute;
+                              width: 100%;
+                              height: 10px;
+                              background: repeating-linear-gradient( to right, var(--dbim-green-key, #0F5757) 0px, var(--dbim-green-key, #0F5757) 10px, #fff 10px, #fff 20px );
+                              left: 0;
+                              z-index: 2;
+                        }
+
+                        .film-roll-badge::before {
+                              top: -4px;
+                        }
+
+                        .film-roll-badge::after {
+                              bottom: -4px;
+                        }
+
+                  .film-roll-inner {
+                        position: relative;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        animation: flicker 2s infinite ease-in-out;
+                  }
+
+                  .countdown-text {
+                        font-size: 1.3rem;
+                        font-weight: 700;
+                        color: #fff;
+                        text-shadow: 0 0 6px rgba(255, 255, 255, 0.4), 0 0 10px #000;
+                        white-space: nowrap;
+                  }
+
+                  /* === Animations === */
+                  @keyframes moveFilm {
+                        0% {
+                              background-position: 0 0;
+                        }
+
+                        100% {
+                              background-position: 120px 0;
+                        }
+                  }
+
+                  @keyframes flicker {
+                        0%, 100% {
+                              opacity: 1;
+                        }
+
+                        50% {
+                              opacity: 0.9;
+                        }
+
+                        25% {
+                              opacity: 0.95;
+                        }
+
+                        75% {
+                              opacity: 0.85;
+                        }
+                  }
+
+                  /* === Responsive Adjustments === */
+                  @media (max-width: 1500px) {
+                        .film-roll-badge {
+                              top: 68%;
+                              right: 18px;
+                              /* width: 220px; */
+                              height: 65px;
+                              font-size: 0.85rem;
+                        }
+
+                        .press-section {
+                              margin-top: 35px;
+                        }
+                  }
+
+                  @media (max-width: 992px) {
+                        .film-roll-badge {
+                              top: 52%;
+                              right: 10px;
+                               width: 200px; 
+                              height: 60px;
+                        }
+                  }
+
+                  @media (max-width: 768px) {
+                        .film-roll-badge {
+                              top: 56%;
+                              right: 10px;
+                               width: 124px; 
+                              height: 55px;
+                        }
+
+                        .countdown-text {
+                              font-size: 0.9rem;
+                        }
+                  }
+
+                  @media (max-width: 576px) {
+                        .film-roll-badge {
+                              top: 59%;
+                              right: 5px;
+                              /* width: 160px; */
+                              height: 50px;
+                        }
+
+                        .countdown-text {
+                              font-size: 0.85rem;
+                        }
+                  }
+            </style>
+          <script type="text/javascript">
+                const festivalStart = new Date("2025-11-20T00:00:00").getTime();
+                const festivalEnd = new Date("2025-11-28T23:59:59").getTime();
+
+                const countdownElement = document.getElementById("countdown");
+
+                const interval = setInterval(() => {
+                      const now = new Date().getTime();
+
+                      // BEFORE FESTIVAL — show days + hours left
+                      if (now < festivalStart) {
+                            const diff = festivalStart - now;
+                            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+                            countdownElement.innerHTML = `
+              ${days} Day${days !== 1 ? 's' : ''} 
+              ${hours} Hour${hours !== 1 ? 's' : ''} to go
+          `;
+
+                      }
+
+                      // DURING FESTIVAL — show 56th IFFI - Day X
+                      else if (now >= festivalStart && now <= festivalEnd) {
+                            const dayNumber = Math.floor((now - festivalStart) / (1000 * 60 * 60 * 24)) + 1;
+                            countdownElement.innerHTML = `56th IFFI - Day ${dayNumber}`;
+                      }
+
+                      // AFTER FESTIVAL — new message
+                      else {
+                            countdownElement.innerHTML = `✨ IFFI closes but never ends…`;
+
+                            // Width change logic
+                            const elements = document.querySelectorAll('.film-roll-badge');
+                            elements.forEach(el => el.style.width = "350px");
+
+                            clearInterval(interval);
+                      }
+
+                }, 1000);
+          </script>
+ <script type="text/javascript">
+
+               const miffStart = new Date("2026-06-15T00:00:00").getTime();
+               const miffEnd = new Date("2026-06-15T23:59:59").getTime();
+
+               const miffElement = document.getElementById("miff");
+
+               if (miffElement) {
+
+                   const miffInterval = setInterval(() => {
+
+                       const now = new Date().getTime();
+
+                       // Before MIFF
+                       if (now < miffStart) {
+
+                           const diff = miffStart - now;
+                           const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                           const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+        
+
+                   /*  miffElement.innerHTML = `${days} Day${days !== 1 ? 's' : ''} ${hours} Hour${hours !== 1 ? 's' : ''} to MIFF`;*/
+                           miffElement.innerHTML = `${days} Day${days === 1 ? '' : 's'} to MIFF ...`;
+
+
+                     }
+
+                       // During MIFF
+                       else if (now >= miffStart && now <= miffEnd) {
+
+                           const dayNumber =
+                               Math.floor((now - miffStart) / (1000 * 60 * 60 * 24)) + 1;
+
+                           miffElement.innerHTML = `19th MIFF - Day ${dayNumber}`;
+                       }
+
+                       // After MIFF
+                       else {
+
+                           miffElement.innerHTML = `✨ MIFF concludes, cinema lives on...`;
+
+                           document.querySelectorAll('.film-roll-badge')
+                               .forEach(el => el.style.width = "350px");
+
+                           clearInterval(miffInterval);
+                       }
+
+                   }, 1000);
+               }
+
+</script>
+
+      
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("sc_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"P_CategoryManagement","dynamicServicePath":"/PressReleasePage.aspx","id":"mpe"}, null, null, $get("Hidden"));
+});
+//]]>
+</script>
+<input type="hidden" name="__ncforminfo" value="t6E_ji6dHbpHUahnyOlGLOl6cg9aLHxXLQ-slLss-kW6MsmWQTMEpY_ZDQL-kifhJt3BSiYNQLe76HXacq57ZGc_uKYCgUIA"/></form>
+      
+      
+
+<script type="application/json" id="pibConsentConfig">{"ga4Id":"G-Q414Y0X6EE,G-QJJ6LZ8LHV","policyUrl":"/CookiePolicy.aspx","text":{"bannerLabel":"Cookie consent","title":"Cookies on this website","body":"We use essential cookies to make this website work. We also set analytics cookies when you arrive, so we can see how the site is used and improve it - you can switch these off below or at any time from the Cookie Policy page. Cookies from embedded social media content are set only if you allow them.","policyLink":"Read our Cookie Policy","accept":"Accept all","reject":"Reject optional","customize":"Customise","prefsTitle":"Cookie preferences","prefsIntro":"Choose which cookies this website may set. Essential cookies cannot be switched off because the site does not work without them. Analytics cookies are on unless you turn them off. Social media cookies stay off until you allow them. You can change these choices at any time from the Cookie Policy page.","essentialName":"Essential cookies","essentialDesc":"Needed for the site to function. These remember your session, your language and region, your text size and colour theme, and verify the security check on forms. They are always on.","analyticsName":"Analytics cookies","analyticsDesc":"Help us understand how visitors use the site - which pages are read and how long people stay - so it can be improved. The information is collected in a form that does not directly identify you. These are on when you arrive; switching them off here stops them and deletes the ones already set.","socialName":"Social media cookies","socialDesc":"Set by content embedded from X, Facebook and YouTube, such as timelines and videos. These platforms may use them to track you across websites. They stay off until you allow them.","save":"Save preferences","cancel":"Cancel"}}</script>
+<script type="text/javascript" src='/js/consent.js?v=10'></script>
+
+<script type="text/javascript" src='/js/consent-embeds.js?v=10'></script>
+
+    
+
+<script type="text/javascript">
+    (function () {
+        try {
+            if (window.self === window.top) { return; }
+        } catch (e) { return; }
+        var s = document.createElement("style");
+        s.textContent =
+            ".sticky-social, .sticky-social_mb { display: none !important; }";
+        (document.head || document.documentElement).appendChild(s);
+    }());
+</script>
+</body>
+</html>
+

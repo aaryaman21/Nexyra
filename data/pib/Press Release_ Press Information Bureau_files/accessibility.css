@@ -1,0 +1,360 @@
+/* ---------------------------------------------------------------------
+   Accessibility bar - the part the theme sheets cannot reach.
+
+   change.css / green.css / yellow.css dress the site chrome, which is
+   ours and carries classes they can select on. Release bodies are not
+   ours: they arrive from the database with their own inline colours,
+   and an inline style beats any stylesheet rule that is not !important.
+   That is why High Contrast used to stop at the edge of the content.
+
+   The rules below are switched on by js/accessibility.js, which puts
+   pib-hc on <html> whenever the High Contrast sheet is active, and adds
+   pib-a11y-content on a document that carries no accessibility bar -
+   PressReleasePage, whether it is being read on its own or inside the
+   reader frame of PressReleaseDetail. Such a document is all content,
+   so it can be treated as such.
+   --------------------------------------------------------------------- */
+
+/* --- High contrast, main document ---------------------------------- */
+
+html.pib-hc,
+html.pib-hc body
+{
+    background-color: #171717 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+}
+
+/* Reaches exactly the elements carrying an inline colour or background
+   - the ones a plain stylesheet rule loses to - plus the presentational
+   attributes still present in older releases. Matching on the style
+   attribute keeps this off everything else, so the chrome stays with
+   the colours change.css gives it. */
+html.pib-hc [style*="color"],
+html.pib-hc [style*="COLOR"],
+html.pib-hc [style*="background"],
+html.pib-hc [style*="BACKGROUND"],
+html.pib-hc font[color],
+html.pib-hc [bgcolor]
+{
+    color: #ffffff !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+html.pib-hc a,
+html.pib-hc a[style*="color"] *,
+html.pib-hc [style*="color"] a,
+html.pib-hc font[color] a
+{
+    color: #ffff00 !important;
+}
+
+html.pib-hc table,
+html.pib-hc table th,
+html.pib-hc table td
+{
+    border-color: #8c8c8c !important;
+}
+
+html.pib-hc table th
+{
+    background-color: #2b2b2b !important;
+}
+
+/* --- High contrast, a document that is nothing but content ---------- */
+
+/* A release page carries none of the theme sheets, so the blanket form
+   is safe here, and it is the only thing that reaches text whose colour
+   comes from a stylesheet rather than an inline style. */
+html.pib-hc.pib-a11y-content,
+html.pib-hc.pib-a11y-content body
+{
+    background-color: #171717 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+}
+
+html.pib-hc.pib-a11y-content body *
+{
+    background-color: transparent !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border-color: #8c8c8c !important;
+}
+
+/* Everything below has to outrank the blanket rule, so each selector
+   carries the same `body` step it does and comes after it. */
+html.pib-hc.pib-a11y-content body a,
+html.pib-hc.pib-a11y-content body a *
+{
+    color: #ffff00 !important;
+}
+
+html.pib-hc.pib-a11y-content body table th
+{
+    background-color: #2b2b2b !important;
+}
+
+html.pib-hc.pib-a11y-content body input,
+html.pib-hc.pib-a11y-content body select,
+html.pib-hc.pib-a11y-content body textarea,
+html.pib-hc.pib-a11y-content body button
+{
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #ffff00 !important;
+}
+
+/* --- High contrast, the release panel and the reader controls -------- */
+
+/* The panel on the left of PressReleaseDetail and the stepper above the
+   reading pane post-date the theme sheets, so change.css says nothing
+   about them and they keep their light surfaces on a dark page. What
+   follows is the dark half of the same palette. */
+
+html.pib-hc .leftSearchArea
+{
+    background: #1f1f1f !important;
+    border-color: #4a4a4a !important;
+}
+
+html.pib-hc .prd-side-head,
+html.pib-hc .prd-archive
+{
+    background: #2b2b2b !important;
+    border-color: #4a4a4a !important;
+}
+
+html.pib-hc .prd-side-title,
+html.pib-hc .prd-archive-title
+{
+    color: #ffffff !important;
+}
+
+html.pib-hc .prd-side-toggle,
+html.pib-hc .prd-relnav-btn
+{
+    background: #2b2b2b !important;
+    border-color: #7fd4cc !important;
+    color: #7fd4cc !important;
+}
+
+html.pib-hc .prd-side-toggle:hover,
+html.pib-hc .prd-side-toggle:focus,
+html.pib-hc .prd-relnav-btn:hover,
+html.pib-hc .prd-relnav-btn:focus
+{
+    background: #7fd4cc !important;
+    color: #111111 !important;
+}
+
+html.pib-hc .prd-relnav-btn[aria-disabled="true"],
+html.pib-hc .prd-relnav-btn[aria-disabled="true"]:hover,
+html.pib-hc .prd-relnav-btn[aria-disabled="true"]:focus
+{
+    background: #1f1f1f !important;
+    border-color: #4a4a4a !important;
+    color: #9a9a9a !important;
+}
+
+html.pib-hc .prd-relnav
+{
+    border-bottom-color: #4a4a4a !important;
+}
+
+html.pib-hc .prd-relnav-count
+{
+    color: #d5d5d5 !important;
+}
+
+/* The ministry headings in the list. Their print orange falls to about
+   3:1 on a dark ground, so it is lightened rather than dropped. */
+html.pib-hc .prd-rel-list h3.font104
+{
+    color: #ffff00 !important;
+    border-bottom-color: #3f3f3f !important;
+}
+
+html.pib-hc .prd-rel-list .num li:hover
+{
+    background: #333333 !important;
+}
+
+/* The release now showing. Its pale tint in the light theme leaves the
+   yellow link sitting on it unreadable. */
+html.pib-hc .prd-rel-list li.is-current
+{
+    background: #24423f !important;
+    box-shadow: inset 3px 0 0 #7fd4cc !important;
+}
+
+/* A near-white track reads as a column of glare down the side of a dark
+   panel. */
+html.pib-hc .prd-rel-list
+{
+    scrollbar-color: #7fd4cc #2b2b2b; /* Firefox */
+}
+
+html.pib-hc .prd-rel-list::-webkit-scrollbar-track
+{
+    background: #2b2b2b;
+}
+
+html.pib-hc .prd-rel-list::-webkit-scrollbar-thumb
+{
+    background: #7fd4cc;
+}
+
+/* The waiting veil is white, so it flashes bright over a dark pane on
+   every filter change and every release. */
+html.pib-hc .prd-loading.is-on
+{
+    background: rgba(23, 23, 23, .88) !important;
+}
+
+html.pib-hc .prd-loading-text
+{
+    color: #ffffff !important;
+}
+
+/* Form controls across the site. change.css dresses the two in the
+   accessibility bar by name and leaves every other one white. */
+html.pib-hc input:not([type="checkbox"]):not([type="radio"]),
+html.pib-hc select,
+html.pib-hc textarea,
+html.pib-hc .form-control
+{
+    background-color: #2b2b2b !important;
+    color: #ffffff !important;
+    border-color: #6a6a6a !important;
+}
+
+html.pib-hc select option
+{
+    background-color: #2b2b2b !important;
+    color: #ffffff !important;
+}
+
+/* --- High contrast, the explainer carousel --------------------------- */
+
+/* The section's tint is an inline background, so it comes off with every
+   other one - which strands the white cards inside it and a heading only
+   a shade off black on a dark page. The card links are already yellow
+   from change.css, which is why it is the white that has to go and not
+   the yellow. */
+html.pib-hc .explainer-section h2,
+html.pib-hc .explainer-section .name
+{
+    color: #ffffff !important;
+}
+
+/* A rim drawn as a shadow rather than a border: the cards are laid out at
+   border: 0, so a real one would shift them. */
+html.pib-hc .top2explainer
+{
+    background: #1f1f1f !important;
+    box-shadow: 0 0 0 1px #4a4a4a inset !important;
+}
+
+html.pib-hc .swiper-card
+{
+    background: #1f1f1f !important;
+    box-shadow: 0 0 0 1px #4a4a4a !important;
+}
+
+/* The carousel arrows are painted on the pseudo-elements, in black. */
+html.pib-hc .swiper-navBtn::before,
+html.pib-hc .swiper-navBtn::after
+{
+    color: #7fd4cc !important;
+}
+
+/* --- High contrast, the national emblem ------------------------------ */
+
+/* The emblem in the masthead of FrontMaster / FrontMasterHome is a dark
+   artwork on transparency, so it all but disappears on the dark page.
+   Nothing else about the image changes - only how it is painted. */
+html.pib-hc .indian-emblem img
+{
+    filter: invert(75%) sepia(250%) saturate(5.5);
+}
+
+/* --- High contrast, the sitemap (SiteMap.aspx) ---------------------- */
+
+/* The sitemap lists are peach section headers over pale grey rows, both
+   painted by style3.1.css and untouched by change.css - which leaves the
+   theme's yellow links sitting on near-white. Dark half of the same
+   layout: a mid grey for the section header, near black for the rows. */
+html.pib-hc .sitemapp li
+{
+    border-color: #4a4a4a !important;
+}
+
+html.pib-hc .sitemapp li a
+{
+    background: #3d3d3d !important;
+    color: #ffffff !important;
+}
+
+html.pib-hc .sitemapp li ul li,
+html.pib-hc .sitemapp li ul li a
+{
+    background: #1d1d1d !important;
+    border-color: #4a4a4a !important;
+}
+
+html.pib-hc .sitemapp li ul li a
+{
+    color: #ffff00 !important;
+}
+
+html.pib-hc .sitemapp li ul li a:hover,
+html.pib-hc .sitemapp li ul li a:focus
+{
+    background: #2b2b2b !important;
+    color: #ffffff !important;
+}
+
+/* --- High contrast, related photos / videos (EventDetail.aspx) ------ */
+
+/* Each tile is a thumbnail over a caption strip. The strip is #e8e8e8 in
+   the light theme, so its white caption text vanished on the dark page;
+   the thumbnail sits in a pale letterbox with a white double border. */
+html.pib-hc .photo_heading
+{
+    background: #2d2d2d !important;
+    border-bottom-color: #ffff00 !important;
+    color: #ffffff !important;
+}
+
+html.pib-hc .photo_heading .heading3,
+html.pib-hc .photo_heading .videotitle,
+html.pib-hc .photo_heading p
+{
+    color: #ffffff !important;
+}
+
+/* The print orange of the date falls to about 3:1 on the dark strip, so
+   it is lightened - the same shade the release list headings use. */
+html.pib-hc .photo_heading .publishdatesmall
+{
+    color: #ffff00 !important;
+}
+
+/* Thumbnails are shown whole (object-fit: contain); the space around them
+   gets a faint light wash instead of the light theme's pale grey, and the
+   double border drops to a quiet grey. */
+html.pib-hc .photo-gallery,
+html.pib-hc .photo_div img
+{
+    background-color: #fff3f317 !important;
+    border-color: #6a6a6a !important;
+}
+
+html.pib-hc .video_gall a:focus-visible .photo-gallery,
+html.pib-hc a:focus-visible > .photo-gallery
+{
+    outline: 3px solid #ffff00;
+    outline-offset: 2px;
+}

@@ -1,0 +1,10 @@
+{
+  "source_rows": 21864,
+  "eligible_rows": 21851,
+  "quarantined_rows": 13,
+  "inserted": 0,
+  "skipped": 21864,
+  "duplicates": 0,
+  "conflicts": 0,
+  "dry_run": false
+}

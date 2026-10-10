@@ -1,0 +1,186 @@
+/* ---------------------------------------------------------------------
+   Consent-gated third-party embeds - DBIM 3.0 section 7.6.3.2, which
+   classes social network tracking cookies as non-essential.
+
+   Timelines from X, videos from YouTube and the Facebook SDK all set
+   third-party cookies the moment they load. Offering a "social media
+   cookies" switch while loading them regardless would make the switch
+   decorative, so nothing here loads until that switch is on.
+
+   Two ways to mark an embed:
+
+     <script type="text/plain"
+             data-pib-embed="X"
+             data-pib-embed-src="https://platform.twitter.com/widgets.js"></script>
+
+     <iframe data-pib-embed="YouTube"
+             data-pib-embed-src="https://www.youtube.com/embed/..."></iframe>
+
+   type="text/plain" is what stops the browser running the script before
+   we decide; an iframe simply has no src until then.
+
+   When consent is absent the iframe is replaced by a placeholder that
+   says where the content comes from and offers to load it just this
+   once, without changing the stored preference. Someone who wants the
+   content should not have to accept tracking on every other page to
+   get it.
+
+   Requires js/consent.js, which owns the decision.
+   --------------------------------------------------------------------- */
+(function () {
+    "use strict";
+
+    var CATEGORY = "social";
+    var MARK = "data-pib-embed";
+    var SRC = "data-pib-embed-src";
+
+    function allowed() {
+        return !!(window.pibConsent && window.pibConsent.get(CATEGORY));
+    }
+
+    function text(node) {
+        return node.getAttribute(MARK) || "this platform";
+    }
+
+    /* --- activation --------------------------------------------------- */
+
+    function activateScript(node) {
+        var src = node.getAttribute(SRC);
+        if (!src) return;
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = src;
+        if (node.getAttribute("charset")) s.charset = node.getAttribute("charset");
+        node.parentNode.insertBefore(s, node.nextSibling);
+        node.removeAttribute(SRC);          /* never activate twice */
+    }
+
+    function activateFrame(node) {
+        var src = node.getAttribute(SRC);
+        if (!src) return;
+        node.setAttribute("src", src);
+        node.removeAttribute(SRC);
+        node.style.display = "";
+        var ph = node.getAttribute("data-pib-embed-placeholder");
+        if (ph) {
+            var el = document.getElementById(ph);
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+        }
+    }
+
+    function activateAll() {
+        var nodes = document.querySelectorAll("[" + SRC + "]");
+        for (var i = 0; i < nodes.length; i++) {
+            var n = nodes[i];
+            if (n.tagName === "SCRIPT") activateScript(n);
+            else activateFrame(n);
+        }
+        drainQueue();
+    }
+
+    /* Inline snippets that build their own script tag - the Facebook SDK
+       loader on the home pages - run in the <body> long before this file
+       is fetched from the footer, so they cannot simply ask whether
+       consent exists. They push a loader onto pibEmbedQueue instead and
+       it is called here, once, if and when social cookies are allowed. */
+    function drainQueue() {
+        var q = window.pibEmbedQueue;
+        if (!q || !q.length) return;
+        var pending = q.splice(0, q.length);
+        for (var i = 0; i < pending.length; i++) {
+            try { pending[i](); } catch (e) { /* one bad loader must not stop the rest */ }
+        }
+    }
+
+    /* --- placeholder -------------------------------------------------- */
+
+    var seq = 0;
+
+    function placeholderFor(frame) {
+        var platform = text(frame);
+        var id = "pibEmbedPh" + (++seq);
+
+        var box = document.createElement("div");
+        box.className = "pib-embed-placeholder";
+        box.id = id;
+        frame.setAttribute("data-pib-embed-placeholder", id);
+
+        var p = document.createElement("p");
+        p.className = "pib-embed-placeholder-text";
+        p.appendChild(document.createTextNode(
+            "Content from " + platform + " is not shown because it can set cookies that track you across websites."));
+        box.appendChild(p);
+
+        var actions = document.createElement("div");
+        actions.className = "pib-embed-placeholder-actions";
+
+        var load = document.createElement("button");
+        load.type = "button";
+        load.className = "pib-embed-btn";
+        load.appendChild(document.createTextNode("Load this content"));
+        load.onclick = function () {
+            /* Just this embed, just this time - the stored preference is
+               deliberately left alone. */
+            activateFrame(frame);
+        };
+        actions.appendChild(load);
+
+        var prefs = document.createElement("button");
+        prefs.type = "button";
+        prefs.className = "pib-embed-btn pib-embed-btn-link";
+        prefs.appendChild(document.createTextNode("Change cookie preferences"));
+        prefs.onclick = function () {
+            if (window.pibConsent && window.pibConsent.open) window.pibConsent.open();
+        };
+        actions.appendChild(prefs);
+
+        box.appendChild(actions);
+        return box;
+    }
+
+    function holdFrames() {
+        var frames = document.querySelectorAll("iframe[" + SRC + "]");
+        for (var i = 0; i < frames.length; i++) {
+            var f = frames[i];
+            if (f.getAttribute("data-pib-embed-placeholder")) continue;
+            var ph = placeholderFor(f);
+            f.style.display = "none";
+            f.parentNode.insertBefore(ph, f);
+        }
+    }
+
+    /* --- start -------------------------------------------------------- */
+
+    function apply() {
+        if (allowed()) activateAll();
+        else holdFrames();
+    }
+
+    function init() {
+        apply();
+        if (window.pibConsent && window.pibConsent.onChange) {
+            window.pibConsent.onChange(function () { apply(); });
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init();
+    }
+
+    /* Used by inline snippets that build their own script tag - the
+       Facebook SDK loader on the home pages does this. */
+    window.pibEmbedAllowed = allowed;
+
+    /* There is no MutationObserver here on purpose - watching the whole
+       document for the lifetime of every page is a real cost for something
+       that happens on a click. Instead, code that INJECTS an embed after
+       load calls this once, having built the node with data-pib-embed
+       rather than a live src. WebcastMore.aspx does exactly that.
+
+       Without it an injected iframe is never seen: apply() runs at init and
+       on a consent change, and neither happens when a script writes new
+       markup into the page. */
+    window.pibEmbeds = { apply: apply, allowed: allowed };
+}());

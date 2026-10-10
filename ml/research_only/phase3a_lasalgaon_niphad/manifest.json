@@ -1,0 +1,24 @@
+{
+  "research_only": true,
+  "production_registry": false,
+  "series_id": "research-only-lasalgaon-niphad-other-faq",
+  "policy": "retrospective_assumed_availability_plus_7_calendar_days_at_23:59:59_Asia/Kolkata",
+  "horizons": [
+    1,
+    3,
+    7
+  ],
+  "model_artifacts": [
+    "h1_A_boosting",
+    "h1_A_ridge_1",
+    "h1_A_ridge_10",
+    "h3_A_boosting",
+    "h3_A_ridge_1",
+    "h3_A_ridge_10",
+    "h7_A_boosting",
+    "h7_A_ridge_1",
+    "h7_A_ridge_10"
+  ],
+  "evaluation_file": "evaluation.json",
+  "data_snapshot": "input_series.csv"
+}

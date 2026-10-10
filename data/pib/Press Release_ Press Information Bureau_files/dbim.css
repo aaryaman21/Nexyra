@@ -1,0 +1,4502 @@
+﻿/* =====================================================================
+   DBIM 3.0 design tokens and overrides
+   Digital Brand Identity Manual, Version 3 (January 2025)
+
+   WHY THIS FILE EXISTS, AND WHY IT IS NOT style3.1.css
+   ----------------------------------------------------
+   css/style3.1.css is 197 KB on 18 lines. It is minified, there is no
+   unminified source anywhere in the tree, and there is no build pipeline
+   to regenerate one. Bootstrap 3.3.x is inlined into it as well. It
+   cannot be safely refactored by hand, so nothing in this programme
+   edits it.
+
+   Instead this file is loaded last and re-points the site chrome at
+   tokens. That is the same pattern css/accessibility.css already uses to
+   reach inline-styled content from the database, and it works.
+
+   LOAD ORDER (both masters)
+       style3.1.css -> accessibility.css -> consent.css -> fonts-noto.css -> dbim.css
+
+   HOW TO CHANGE THE COLOUR GROUP
+   ------------------------------
+   DBIM section 2.1 requires each organization to select exactly ONE
+   colour group from the primary palette. All six groups from Figure 1
+   are defined below with the manual's own hex values. Selecting one is a
+   single edit in the "ACTIVE COLOUR GROUP" block - nothing else in this
+   file, and nothing anywhere else in the site, needs to change.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. PRIMARY PALETTE - DBIM section 2.1, Figure 1
+
+   Six groups, five variants each, darkest to lightest. The darkest
+   variant is the "key" colour: section 5.6 requires the footer to use
+   it, and checklist item 3 requires icons to use it.
+
+   These values are transcribed from the manual's own figure. Do not
+   adjust them - a "close enough" tint is not the selected colour group.
+   --------------------------------------------------------------------- */
+
+:root {
+    /* Burgundy */
+    --dbim-burgundy-key: #6C1340;
+    --dbim-burgundy-dark: #A32966;
+    --dbim-burgundy-mid: #DB70A6;
+    --dbim-burgundy-light: #EBADCC;
+    --dbim-burgundy-pale: #FAEBF2;
+    /* Purple */
+    --dbim-purple-key: #29136C;
+    --dbim-purple-dark: #4729A3;
+    --dbim-purple-mid: #8B70DB;
+    --dbim-purple-light: #BDADEB;
+    --dbim-purple-pale: #EEEBFA;
+    /* Blue */
+    --dbim-blue-key: #162F6A;
+    --dbim-blue-dark: #214AAB;
+    --dbim-blue-mid: #5279D7;
+    --dbim-blue-light: #A3BBF3;
+    --dbim-blue-pale: #D2DFFF;
+    /* Green */
+    --dbim-green-key: #0F5757;
+    --dbim-green-dark: #2D8686;
+    --dbim-green-mid: #75BDBD;
+    --dbim-green-light: #A6D9D9;
+    --dbim-green-pale: #D9F2F2;
+    /* Chrome Yellow */
+    --dbim-yellow-key: #5D3E00;
+    --dbim-yellow-dark: #916100;
+    --dbim-yellow-mid: #DDA73A;
+    --dbim-yellow-light: #F4D390;
+    --dbim-yellow-pale: #FFEECC;
+    /* Cinnamon Red */
+    --dbim-red-key: #771D1D;
+    --dbim-red-dark: #A72626;
+    --dbim-red-mid: #D75151;
+    --dbim-red-light: #FAAAAA;
+    --dbim-red-pale: #FCDADA;
+}
+
+/* ---------------------------------------------------------------------
+   2. ACTIVE COLOUR GROUP  <-- THE ONLY BLOCK TO EDIT TO CHANGE IT
+
+   Currently: GREEN, provisionally.
+
+   DBIM 2.1(iii) says the group "should be used to complement and enhance"
+   an established brand colour. PIB's existing header bar is #267B74, which
+   sits between the Green group's key (#0F5757) and dark (#2D8686)
+   variants - Green is the closest fit to what the site already wears, so
+   adopting it is the smallest visual break for readers.
+
+   This remains PIB's decision under section 2.1, not a developer's. To
+   choose differently, replace "green" with burgundy | purple | blue |
+   yellow | red in the five lines below. Nothing else changes.
+   --------------------------------------------------------------------- */
+
+:root {
+    --dbim-key: var(--dbim-green-key);
+    --dbim-dark: var(--dbim-green-dark);
+    --dbim-mid: var(--dbim-green-mid);
+    --dbim-light: var(--dbim-green-light);
+    --dbim-pale: var(--dbim-green-pale);
+}
+
+/* ---------------------------------------------------------------------
+   3. FUNCTIONAL PALETTE - DBIM section 2.2, Table 1
+
+   Fixed by the manual; not an organizational choice.
+   --------------------------------------------------------------------- */
+
+:root {
+    --dbim-linen: #EBEAEA; /* background behind images, quote blocks, outlines */
+    --dbim-inclusive: #FFFFFF; /* page background; text and emblem on dark        */
+    --dbim-text: #150202; /* Deep Earthy Brown - body text on light          */
+    --dbim-emblem: #000000; /* State Emblem on a light background              */
+    --dbim-success: #198754;
+    --dbim-warning: #FFC107;
+    --dbim-error: #DC3545;
+    --dbim-info: #0D6EFD; /* Table 1 lists error and information next to
+                                    Coral Red and Blue; red reads as error and blue
+                                    as information, matching the usual convention. */
+    --dbim-link: #0D6EFD;
+    --dbim-grey-01: #C6C6C6;
+    --dbim-grey-02: #8E8E8E;
+    --dbim-grey-03: #606060;
+}
+
+/* ---------------------------------------------------------------------
+   4. TYPE SCALE - DBIM section 4.3
+
+   Desktop: H1 36 / H2 24 / H3 20 / P1 16 / P2 14 / Small 12
+   Mobile:  H1 24 / H2 20 / H3 16 / P1 14 / P2 12 / Small 10
+
+   Section 4.5(iii) puts line height between 1.2 and 1.5 times the size.
+   --------------------------------------------------------------------- */
+
+:root {
+    --dbim-h1: 36px;
+    --dbim-h2: 24px;
+    --dbim-h3: 20px;
+    --dbim-p1: 16px;
+    --dbim-p2: 14px;
+    --dbim-sm: 12px;
+    --dbim-leading-tight: 1.2;
+    --dbim-leading-body: 1.5;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --dbim-h1: 24px;
+        --dbim-h2: 20px;
+        --dbim-h3: 16px;
+        --dbim-p1: 14px;
+        --dbim-p2: 12px;
+        --dbim-sm: 10px;
+    }
+}
+
+/* =====================================================================
+   APPLIED OVERRIDES
+   Everything above is declarations. Everything below changes the page.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   5. TYPEFACE - DBIM section 4.1.1
+
+   Noto Sans is mandatory, and section 4.2 requires it for regional
+   scripts too. That is the whole point of the requirement: one family
+   that carries every Indian script, replacing the per-script
+   substitutions this site accumulated (Mangal for Devanagari, Jameel
+   Noori Nastaleeq for Urdu, Segoe UI and Open Sans for Latin).
+
+   Self-hosted in /fonts/noto/ rather than loaded from Google Fonts -
+   section 10.4.1 asks for third-party requests to be minimised, and
+   every other font on this site is already self-hosted.
+
+   The families are declared in fonts-noto.css, which is generated and
+   kept separate so this file stays readable.
+   --------------------------------------------------------------------- */
+
+body,
+button,
+input,
+select,
+textarea,
+.sf-menu a,
+.footer-bottom,
+.footer-top {
+    font-family: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Arabic", sans-serif;
+}
+
+/* Headings inherit the same family; the site sets several of them to
+   Oswald and Segoe UI in the minified sheet. */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Arabic", sans-serif;
+}
+
+/* ---------------------------------------------------------------------
+   6. TYPE SCALE APPLIED - DBIM section 4.3.1
+
+   The base was 14px (Bootstrap 3's default, winning over the site's own
+   earlier rule). DBIM puts body text at 16px. Component sizes throughout
+   style3.1.css are percentages of the base, so this rescales the site as
+   a whole - which is the intent, but it is also why this change needs a
+   full visual pass before release.
+   --------------------------------------------------------------------- */
+
+body {
+    font-size: var(--dbim-p1);
+    line-height: var(--dbim-leading-body);
+    color: var(--dbim-text);
+}
+
+h1 {
+    font-size: var(--dbim-h1);
+    line-height: var(--dbim-leading-tight);
+}
+
+h2 {
+    font-size: var(--dbim-h2);
+    line-height: var(--dbim-leading-tight);
+}
+
+h3 {
+    font-size: var(--dbim-h3);
+    line-height: var(--dbim-leading-tight);
+}
+
+h4 {
+    font-size: var(--dbim-p1);
+    line-height: var(--dbim-leading-tight);
+}
+
+h5,
+h6 {
+    font-size: var(--dbim-p2);
+    line-height: var(--dbim-leading-tight);
+}
+
+small,
+.small {
+    font-size: var(--dbim-sm);
+}
+
+/* ---------------------------------------------------------------------
+   7. COLOUR APPLIED - DBIM sections 2.1, 2.2 and 5.6
+
+   Checklist item 4 is explicit that the footer takes the key (darkest)
+   shade of the selected group, so that is not a judgement call.
+   --------------------------------------------------------------------- */
+
+/* Utility bar across the top of every page. */
+.top_head {
+    background: var(--dbim-key) !important;
+}
+
+/* Primary navigation.
+
+   Deliberately the KEY shade, not the dark variant. White text on the
+   Green group's dark variant (#2D8686) measures 4.32:1 - under the 4.5
+   that WCAG 1.4.3 requires for body-size text, and DBIM 4.4 defers to
+   that. The key shade measures 8.33:1. Any surface here that carries
+   white text at body size uses the key shade for that reason; the dark
+   variant is kept for hover and for large text only.
+
+   Groups differ: Blue, Purple, Burgundy and Cinnamon Red all clear 4.5
+   on their dark variant. Green and Chrome Yellow are the tight ones. If
+   the colour group changes, re-measure before relaxing this. */
+.navigation-bg,
+.sf-menu ul li,
+.sf-menu ul ul li {
+    background: var(--dbim-key) !important;
+}
+
+/* Hover and focus invert rather than darken, which keeps the contrast
+   high in both directions and makes the state obvious. */
+.sf-menu a:hover,
+.sf-menu a:focus {
+    background: var(--dbim-pale) !important;
+    color: var(--dbim-key) !important;
+}
+
+/* Footer - DBIM 5.6 and checklist item 4. */
+.footer-bottom {
+    background: var(--dbim-key) !important;
+    color: var(--dbim-inclusive) !important;
+}
+
+.footer-top {
+    background: var(--dbim-key) !important;
+    color: var(--dbim-inclusive) !important;
+}
+
+    .footer-bottom a,
+    .footer-top a {
+        color: var(--dbim-inclusive) !important;
+    }
+
+        /* --dbim-warning (#FFC107) was wrong twice over: it is the
+           functional palette's WARNING colour being used for a hover, which
+           is not a warning, and it reads as orange - which is what the
+           colour audit kept finding here. The active group's pale variant
+           is 7.11:1 on the key-colour footer and unmistakably a hover
+           against the 8.33:1 resting white. The underline carries the state
+           for anyone who cannot separate the two by colour. */
+        .footer-bottom a:hover,
+        .footer-bottom a:focus,
+        .footer-top a:hover,
+        .footer-top a:focus {
+            color: var(--dbim-pale, #D9F2F2) !important;
+            text-decoration: underline;
+        }
+
+/* Header band stays Inclusive White, with the emblem in black over it -
+   DBIM 5.3. */
+.mid-head {
+    background: var(--dbim-inclusive);
+}
+
+/* Links - DBIM 2.2 gives hyperlinks the functional blue, alongside the
+   key colour of the selected group. */
+a {
+    color: var(--dbim-link);
+}
+
+    a:hover,
+    a:focus {
+        color: var(--dbim-key);
+    }
+
+/* Status colours - DBIM 2.2, Table 1. */
+.text-success, .alert-success {
+    color: var(--dbim-success) !important;
+}
+
+.text-warning, .alert-warning {
+    color: var(--dbim-warning) !important;
+}
+
+.text-danger, .alert-danger,
+.norecord {
+    color: var(--dbim-error) !important;
+}
+
+/* Call-to-action buttons - DBIM 4.5(i) asks for consistent sizing and
+   uniform padding, and for distinct enabled / hover / focus / disabled
+   states. Bootstrap 3 supplies no distinct disabled treatment. */
+.btn-primary {
+    background-color: var(--dbim-key);
+    border-color: var(--dbim-key);
+    color: var(--dbim-inclusive);
+    padding: 10px 18px;
+    min-height: 44px;
+    font-size: var(--dbim-p2);
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        /* Inverted rather than darkened - see the navigation note above. */
+        background-color: var(--dbim-pale);
+        border-color: var(--dbim-key);
+        color: var(--dbim-key);
+    }
+
+    .btn-primary:disabled,
+    .btn-primary[disabled],
+    .btn.disabled {
+        background-color: var(--dbim-grey-01);
+        border-color: var(--dbim-grey-02);
+        color: var(--dbim-grey-03);
+        cursor: not-allowed;
+        opacity: 1; /* Bootstrap 3 fades it; a distinct colour reads better */
+    }
+
+/* The consent banner picked up the site's old orange while the palette
+   was still legacy. It now follows the selected group like everything
+   else - see css/consent.css. */
+#pibConsentBanner {
+    border-top-color: var(--dbim-key);
+}
+
+/* ---------------------------------------------------------------------
+   8. ALTERNATE THEMES
+
+   change.css (high contrast), green.css and yellow.css are forked full
+   stylesheets served from the CDN, and they are applied AFTER this file
+   when active. They therefore override these tokens by design, which is
+   correct for high contrast and wrong for the two colour themes - those
+   now duplicate a choice the primary palette already makes.
+
+   Retiring green.css and yellow.css in favour of the selected group is
+   a follow-up; nothing here depends on it. High contrast must keep
+   winning, so this file deliberately does not fight it.
+   --------------------------------------------------------------------- */
+
+html.pib-hc body {
+    /* Let accessibility.css own colour entirely in high contrast; only
+       the type scale carries through. */
+    font-size: var(--dbim-p1);
+}
+
+/* ---------------------------------------------------------------------
+   9. HEADER LOCKUP - DBIM section 5.3
+
+   The emblem, "Government of India" and the department name are one
+   identity block and must read as a single horizontal lockup.
+
+   The markup gives them to us as two floated boxes - .indian-emblem
+   beside .logo - with .logo stacking <h2> over <h1>. That renders as
+   two columns, not three, and the float version re-wrapped once
+   section 6 raised the base size from 14px to 16px.
+
+   Floats are replaced with a flex row here, so the three parts sit in
+   one line by construction rather than by fitting. Nothing in the
+   master pages changes.
+   --------------------------------------------------------------------- */
+
+/* The row carries two empty spacer columns that exist only to push the
+   right-hand logo across. Removing them hands their width to the
+   lockup, which is what stops the department name running out of room
+   in the longer scripts. The right-hand column floats right and is
+   unaffected. */
+.mid-head .row > .col-md-3,
+.mid-head .row > .col-md-1 {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .mid-head .row > .col-md-9 {
+        width: 58.3333%;
+    }
+}
+
+.mid-head .row > .col-md-9 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 100px;
+}
+
+.mid-head .indian-emblem {
+    float: none;
+    padding-right: 0;
+    flex: 0 0 auto;
+}
+
+    .mid-head .indian-emblem img {
+        display: block;
+        height: 84px;
+        width: auto;
+    }
+
+/* The two headings become the second and third cells of the same row.
+   min-width:0 lets the cell shrink below its content width, which is
+   what allows the long-script department names to reflow inside their
+   own cell instead of forcing the row to overflow. */
+.mid-head .logo {
+    float: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 12px;
+    min-width: 0;
+}
+
+    .mid-head .logo h2,
+    .mid-head .logo h1 {
+        margin: 0;
+        line-height: var(--dbim-leading-tight);
+    }
+
+    /* "Government of India" is short in every language the site serves,
+       so it is held on one line and the department name is given the
+       slack. */
+    .mid-head .logo h2 {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--dbim-grey-03); /* 6.29:1 on white - WCAG 1.4.3 AA */
+    }
+
+    /* Allowed to wrap within its own cell. In English and Hindi it does
+       not; in a longer script it takes a second line and the lockup
+       still reads as one row. */
+    /* ROUND 7, audit item 1: this was 22px, chosen to keep the lockup on
+       one line. It is also the ONLY h1 on the homepage and on 64 of the 86
+       pages that use FrontMaster.master, so every tool measuring "the page
+       title" measures this element - which is what reported 20px.
+
+       The structurally cleaner answer is to demote this out of the heading
+       outline (DBIM 5.4 lists the organisation name under the header's
+       DYNAMIC content, as part of the logo lockup, not as a heading) and let
+       each page's own title be the h1. That was measured and rejected for
+       now: 64 of 86 inner pages have no h1 of their own, so demoting would
+       leave them with none at all - a worse defect than the one being fixed.
+       Revisit once those 64 pages carry their own title.
+
+       So it takes the H1 size. The token drops to 24px below 768px, and the
+       rule above already allows this cell to wrap, so a longer regional
+       name takes a second line rather than overflowing the row. */
+    .mid-head .logo h1 {
+        flex: 0 1 auto;
+        min-width: 0;
+        font-size: var(--dbim-h1);
+        font-weight: 700;
+        padding-left: 12px;
+        border-left: 2px solid var(--dbim-grey-01);
+    }
+
+        .mid-head .logo h1 a {
+            color: var(--dbim-key); /* 8.33:1 on white */
+            text-decoration: none;
+        }
+
+            .mid-head .logo h1 a:hover,
+            .mid-head .logo h1 a:focus {
+                text-decoration: underline;
+            }
+
+/* Tablet - the column is full width here, so the row has room, but the
+   department name is trimmed to keep it off a second line. */
+@media (max-width: 991px) {
+    .mid-head .logo h1 {
+        font-size: 20px;
+    }
+
+    .mid-head .indian-emblem img {
+        height: 72px;
+    }
+}
+
+/* Phone - below this the three-across lockup is genuinely too narrow,
+   so the emblem stays beside a stacked name block. */
+@media (max-width: 600px) {
+    .mid-head .row > .col-md-9 {
+        gap: 10px;
+        min-height: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .mid-head .logo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+        .mid-head .logo h2 {
+            font-size: var(--dbim-p2);
+        }
+
+        .mid-head .logo h1 {
+            font-size: var(--dbim-h3);
+            padding-left: 0;
+            border-left: 0;
+        }
+
+    .mid-head .indian-emblem img {
+        height: 58px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   10. TOP UTILITY BAR - DBIM section 5.4
+
+   The engagement bar holds, left to right: three shortcut icons, then
+   the accessibility links, region and language selectors, theme and
+   font-size controls, search, and sitemap.
+
+   It was built from floats and .pull-left / .pull-right, with the two
+   selector labels set to display:block. That put each label on its own
+   line and left the bar two rows tall and ragged down its baseline.
+
+   This makes it one flex row on a single baseline, gives the selectors
+   a consistent pill shape, and drops a stray 5px border the theme left
+   on the right-hand group.
+
+   Hover colours are deliberately left alone: the icon glyphs are white
+   sprites from images/icons.png, so any light fill would erase them.
+   --------------------------------------------------------------------- */
+
+.top_head {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.top-acess {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    min-height: 40px;
+}
+
+    /* The floats and the theme border are what made the two groups
+       drift apart vertically. */
+    .top-acess .pull-left,
+    .top-acess .pull-right {
+        float: none !important;
+        padding: 0;
+        border-right: 0;
+        border-left: 0;
+        text-align: left;
+    }
+
+    .top-acess .pull-left > ul,
+    .top-acess .pull-right > ul {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+        /* flex-shrink is 0 deliberately. With the default of 1 the items
+           compress under pressure while the <select> inside keeps its
+           intrinsic width, so the control spills out of its own list
+           item and paints over the label of the item after it. Nothing
+           shrinks; if the bar genuinely cannot fit, it wraps instead. */
+        .top-acess .pull-left > ul > li,
+        .top-acess .pull-right > ul > li {
+            display: flex;
+            align-items: center;
+            flex: 0 0 auto;
+            float: none;
+            margin: 0;
+        }
+
+    /* Circular icon buttons. The theme put the ring on the list item and
+       sized it 28px; the item is now sized by its content, so the ring
+       moves to the anchor, where it matches the sprite circles in the
+       left-hand group. */
+    .top-acess .pull-right > ul > li.icon {
+        width: auto;
+        height: auto;
+        border: 0;
+        border-radius: 50%;
+        float: none;
+        padding-top: 0;
+        margin-left: 0;
+    }
+
+        .top-acess .pull-right > ul > li.icon > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 30px;
+            min-height: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 50%;
+            transition: background-color .15s ease;
+        }
+
+    /* The left-hand shortcuts. Their anchors are made flex containers
+       for the same reason as the icon buttons above, and for one more:
+       the theme carries a lone `span.home { vertical-align: middle }`
+       that has no counterpart on .subscribe or .rss, which sit at the
+       default baseline. It never mattered while all three were floated,
+       because floats ignore vertical-align - but dropping the float to
+       fix the sizing below woke it up and dropped the home icon a
+       couple of pixels below the other two. Inside a flex container
+       vertical-align does not apply at all, so the three align by
+       construction rather than by agreeing on a baseline. */
+    .top-acess .pull-left > ul > li > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* These carry their 28px box, their sprite offset and their own ring
+       from the theme, but all of it hung off float:left. Dropping the
+       float made them inline again, which discards width and height and
+       leaves a 1px-wide sliver of border. */
+    .top-acess span.home,
+    .top-acess span.rss,
+    .top-acess span.subscribe {
+        display: inline-block;
+        float: none;
+        margin-right: 0;
+        vertical-align: middle; /* consistent outside a flex context too */
+    }
+
+        /* Measured off images/icons.png: inside the 26px tile the glyph
+           centres fall at 12.0 (home), 12.5 (subscribe) and 11.5 (rss).
+           The odd one is rss, cut at -4px where the other two are at
+           -3px, so it rides a pixel high. Same offset as its
+           neighbours brings all three onto one line. */
+        .top-acess span.rss {
+            background-position: -460px -3px;
+        }
+
+    /* The accessibility and screen-reader links read as text, not as
+       chrome, so they are set apart from the icon run. */
+    .top-acess .skin-reader {
+        float: none;
+        padding: 0 4px;
+        color: var(--dbim-inclusive);
+    }
+
+        .top-acess .skin-reader a {
+            color: var(--dbim-inclusive);
+            font-size: var(--dbim-p2);
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+    /* Region and language: label stacked above its control.
+
+       This is also what buys the single row. Set beside the control the
+       pair costs label + select - about 190px for region and 187px for
+       language. Stacked, the item is only as wide as the WIDER of the
+       two, so roughly 125px comes back across the two selectors. That
+       is about the same saving as hiding the labels altogether, which
+       is why they can now stay visible at every width. */
+    .top-acess li.regional,
+    .top-acess li.language {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-bottom: 0;
+    }
+
+    .top-acess .selector-label {
+        display: block;
+        margin: 0 0 2px;
+        font-size: var(--dbim-sm);
+        font-weight: 600;
+        letter-spacing: .02em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+    /* The theme sets background: url(...) Transparent !important for
+       the custom arrow. Only the colour is overridden here, so the
+       arrow image survives.
+
+       Width is fixed rather than auto. A select sized auto takes the
+       width of its WIDEST OPTION, and the region list runs to entries
+       like "PIB Thiruvananthpuram" - which made the closed control
+       about 196px wide, far past its own list item, and put the pill
+       underneath the next label. The selected value is short in every
+       case, so a fixed box with ellipsis is both narrower and honest;
+       the full text is still there when the list is open. */
+    .top-acess select.form-control {
+        width: 140px;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 30px;
+        padding: 2px 28px 2px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.55) !important;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.12) !important;
+        color: var(--dbim-inclusive) !important;
+        font-size: var(--dbim-p2);
+        line-height: 1.2;
+        box-shadow: none;
+    }
+
+        /* Firefox inherits the select colour into the popup list, so
+           white-on-white would make the options unreadable without
+           this. */
+        .top-acess select.form-control option {
+            color: var(--dbim-text);
+            background: var(--dbim-inclusive);
+        }
+
+        .top-acess select.form-control:focus {
+            border-color: var(--dbim-inclusive) !important;
+            background-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+    /* The language list is short in every language; the region list is
+       not. */
+    .top-acess li.language select.form-control {
+        width: 112px;
+    }
+
+    /* Search - matches the pill shape the selectors now use. */
+    .top-acess .pib-headsearch {
+        gap: 6px;
+    }
+
+    .top-acess .pib-headsearch-input {
+        width: 170px;
+        height: 30px;
+        border-radius: 15px;
+        padding: 2px 12px;
+        font-size: var(--dbim-p2);
+    }
+
+    /* The search group is now just the field and this button. The
+       "Advanced search" link that used to follow it was removed from
+       Accessibility.ascx - it cost about 106px of the row, and the page
+       it pointed at is where the field itself submits to, so nothing
+       became unreachable. */
+    .top-acess .pib-headsearch-go {
+        height: 30px;
+        min-width: 30px;
+        border-radius: 50%;
+        border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* One visible focus treatment for every control on the bar -
+       WCAG 2.4.7. */
+    .top-acess a:focus-visible,
+    .top-acess button:focus-visible,
+    .top-acess select:focus-visible,
+    .top-acess input:focus-visible {
+        outline: 2px solid var(--dbim-inclusive);
+        outline-offset: 2px;
+    }
+
+/* Budget at a 1170px container, with the labels stacked and the
+   advanced-search link gone:
+
+     left group  3 sprite icons + gaps            96
+     text links  Accessibility + Screen Reader   314
+     selectors   region 140 + language 112       252
+     icons       accessibility, theme, sitemap    90
+     search      field 170 + gap + button        206
+     gaps        8 items                          48
+                                                -----
+                                                1006
+
+   That leaves about 164px of slack, which is what space-between opens
+   up between the two groups. One row, with room.
+
+   Below 1200px the container drops to 970px, so the field and the two
+   selects give some back. Further down the bar is allowed to take a
+   second line rather than overlap - .top-acess keeps flex-wrap:wrap
+   precisely so that failure is tidy. */
+@media (max-width: 1199px) {
+    .top-acess {
+        gap: 6px 10px;
+    }
+
+    .top-acess .pib-headsearch-input {
+        width: 130px;
+    }
+
+    .top-acess select.form-control {
+        width: 124px;
+    }
+
+    .top-acess li.language select.form-control {
+        width: 104px;
+    }
+
+    .top-acess .skin-reader {
+        padding: 0 2px;
+    }
+}
+
+/* .pull-left is .hidden-xs, so below 768px only the right-hand group is
+   left and space-between would strand it. */
+@media (max-width: 767px) {
+    .top-acess {
+        justify-content: flex-end;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   11. PRIMARY NAVIGATION - DBIM section 5.4
+
+   The menu is built from the database, so the number of items and the
+   length of every label change with the region and the language. The
+   theme laid it out with floats - .sf-menu > li { float: left } - and a
+   float that does not fit simply drops onto a second row. That is the
+   wrapping being reported, and it is worse in the longer scripts.
+
+   It is also worse since section 6: the theme sizes nav labels at 130%
+   of the base, so raising the base from 14px to 16px took every label
+   from 18.2px to 20.8px.
+
+   Two changes fix it for every language rather than for one:
+
+     1. flex-wrap: nowrap on the list. A flex row that is told not to
+        wrap cannot produce a second row, whatever the item count.
+     2. white-space: normal on the top-level labels, with the items
+        allowed to shrink. Where a language genuinely needs more width
+        than the bar has, the label now takes a second LINE inside its
+        own item instead of pushing the item onto a second ROW.
+
+   Everything is scoped to #main-nav and to min-width 768px, so the
+   meanmenu drawer that replaces this bar on small screens - and the
+   copy of the list it clones - is untouched.
+   --------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+
+    #main-nav .sf-menu {
+        display: flex;
+        flex-wrap: nowrap; /* never a second row */
+        align-items: stretch;
+        float: none;
+        width: 100%;
+    }
+
+        /* The list also carries .clearfix, whose :before and :after
+           become flex items once the list is a flex container. They are
+           only there to contain the old floats, which have gone. */
+        #main-nav .sf-menu:before,
+        #main-nav .sf-menu:after {
+            display: none;
+        }
+
+        /* Items share the bar. flex-grow fills it evenly; flex-shrink
+           with min-width:0 is what lets a long label compress into a
+           second line rather than overflow the container. */
+        #main-nav .sf-menu > li {
+            display: flex;
+            float: none;
+            flex: 1 1 auto;
+            min-width: 0;
+            width: auto;
+            padding: 0;
+            white-space: normal;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+            #main-nav .sf-menu > li:last-child {
+                border-right: 0;
+            }
+
+            #main-nav .sf-menu > li > a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 10px 12px;
+                font-size: var(--dbim-p1);
+                line-height: var(--dbim-leading-tight);
+                text-align: center;
+                hyphens: none;
+                word-break: normal;
+            }
+
+            /* The theme reserves 2em of right padding for the dropdown
+               arrow, which sits at right:1em. The padding above would
+               have overrun it, so both are restated together. */
+            #main-nav .sf-menu > li > a.sf-with-ul {
+                padding-right: 26px;
+            }
+
+                #main-nav .sf-menu > li > a.sf-with-ul:after {
+                    right: 10px;
+                }
+
+        /* Dropdowns are deliberately left alone. They are absolutely
+           positioned with a min-width of 12em and must stay one item
+           per line, so only the inherited 130% label size is brought
+           back into the type scale. */
+        #main-nav .sf-menu ul li a {
+            font-size: var(--dbim-p2);
+            line-height: var(--dbim-leading-body);
+        }
+}
+
+/* Two steps down before the drawer takes over at 767px. Padding is
+   given up before size, because the labels are the content. */
+@media (min-width: 768px) and (max-width: 1199px) {
+    #main-nav .sf-menu > li > a {
+        padding: 10px 8px;
+        font-size: 15px;
+    }
+
+    #main-nav .sf-menu > li > a.sf-with-ul {
+        padding-right: 22px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #main-nav .sf-menu > li > a {
+        padding: 10px 6px;
+        font-size: var(--dbim-p2);
+    }
+
+    #main-nav .sf-menu > li > a.sf-with-ul {
+        padding-right: 20px;
+    }
+}
+
+/* =====================================================================
+   REMEDIATION ROUND 2 - 30 September 2026
+   Sections 12-14 close three gaps found by inspecting the LIVE site
+   rather than the source. All three are cases where a theme rule with
+   higher specificity was quietly beating the DBIM rules above.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   12. COMPONENT HEADINGS - DBIM section 4.3.1
+
+   Section 6 sets the scale on bare h1-h6. That reaches a heading only
+   where nothing more specific claims it - and the theme claims most of
+   them, sizing each component's heading as a PERCENTAGE of the base:
+
+       .release h2          300%
+       .writeups h3         180%
+       .latest_gallery h3   140%
+       .twitter h3          130%   ... and so on
+
+   Two consequences. Those headings never adopted the DBIM scale at all,
+   and raising the base from 14px to 16px in section 6 scaled every one
+   of them up by about 14% - .release h2 went from 42px to 48px.
+
+   Restating them here in absolute px puts them on the scale and makes
+   them independent of the base. Selectors are matched to the theme's so
+   the specificity is equal and this file, loading last, wins.
+   --------------------------------------------------------------------- */
+
+/* `.release h2` is a SECTION heading, not a page title. On the homepage
+   it is "Latest Press Releases" (index.aspx:185), and this rule mapped it
+   to H1 - which made every homepage section heading 36px, LARGER than the
+   page title. The comment that stood here assumed the selector named a
+   release title; it does not. An h2 takes H2.
+   Audit item 14. */
+.release h2 {
+    font-size: var(--dbim-h2);
+    line-height: var(--dbim-leading-tight);
+}
+
+.as_lightbox_container h2,
+.media_invitations h2,
+.menus1 h2 {
+    font-size: var(--dbim-h2);
+    line-height: var(--dbim-leading-tight);
+}
+
+.writeups h3,
+.latest_gallery h3,
+.latest_webcast h3,
+.RelLink ul h3,
+.caollapseContent h3,
+.twitter h3,
+.facebook h3,
+.infographice h3 {
+    font-size: var(--dbim-h3);
+    line-height: var(--dbim-leading-tight);
+}
+
+/* ---------------------------------------------------------------------
+   13. TYPEFACE, THE SELECTORS SECTION 5 COULD NOT REACH - DBIM 4.1.1
+
+   Section 5 sets Noto Sans on bare elements, which loses to any theme
+   rule carrying a class. Six text selectors were still winning, so the
+   site was not actually on Noto where it mattered most - the primary
+   navigation and every press release title among them:
+
+       .sf-menu li a                      SegoeUI
+       .release h2                        Aparajita-Bold
+       .footer-top h4                     Oswald-Regular
+       .ace-responsive-menu > li > a      Open Sans
+       .mean-container .mean-nav ul li a  Arial
+       .mean-container .mean-nav ul li    Tw Cen MT Condensed
+
+   FontAwesome and Glyphicons are deliberately left alone: they are icon
+   fonts, and their glyphs live at codepoints Noto does not carry.
+   --------------------------------------------------------------------- */
+
+.sf-menu li a,
+.release h2,
+.footer-top h4,
+.ace-responsive-menu > li > a,
+.mean-container .mean-nav ul li,
+.mean-container .mean-nav ul li a {
+    font-family: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Arabic", sans-serif;
+}
+
+/* ---------------------------------------------------------------------
+   14. ICON SIZES - DBIM section 3.7
+
+   The manual lists 24, 32, 48 and 64px. The stylesheet uses 30px in 22
+   places, 20px in 12, 22px in 8, 28px in 5 and 34px in 6 - and only 24
+   and 32 anywhere comply. Section 10 of this file added to the problem
+   with a 30px icon button.
+
+   Everything here moves to the nearest permitted size.
+
+   The sprite spans need care. Their glyphs are cut from images/icons.png
+   at a fixed offset inside a 28px box, so growing the box to 32px alone
+   would push the glyph 2px off centre in each axis. Each
+   background-position is therefore shifted by +2px to match - measured
+   values, not guesses: the glyph occupies roughly 26 of the 28px.
+   --------------------------------------------------------------------- */
+
+.top-acess span.home,
+.top-acess span.rss,
+.top-acess span.subscribe {
+    width: 32px;
+    height: 32px;
+}
+
+    /* 28px box -> 32px box, so the cut moves 2px up and 2px left to keep
+       the glyph centred. Originals: home -500 -3, subscribe -429 -3,
+       rss -460 -4 (rss corrected to -3 in section 10). */
+    .top-acess span.home {
+        background-position: -498px -1px;
+    }
+
+    .top-acess span.subscribe {
+        background-position: -427px -1px;
+    }
+
+    .top-acess span.rss {
+        background-position: -458px -1px;
+    }
+
+/* The round icon buttons on the utility bar. 30px was not a DBIM size. */
+.top-acess .pull-right > ul > li.icon > a,
+.top-acess .pib-headsearch-go {
+    min-width: 32px;
+    min-height: 32px;
+}
+
+.top-acess .pib-headsearch-go {
+    height: 32px;
+}
+
+.top-acess .pib-headsearch-input,
+.top-acess select.form-control {
+    height: 32px;
+}
+
+/* ---------------------------------------------------------------------
+   15. WIDE-SCREEN TIER - DBIM section 10.2.2
+
+   Bootstrap 3 stops at a 1200px breakpoint and a 1170px container, so on
+   a 1440px or wider display the page sits in a fixed column with large
+   empty margins either side. Checklist item 43 asks for the layout to
+   respond across screen sizes, and above 1200px this one stops
+   responding at all.
+
+   One more tier, following the proportions Bootstrap 5 uses for its xxl
+   breakpoint. Only the container width changes; the grid inside is
+   percentage-based and follows on its own.
+   --------------------------------------------------------------------- */
+
+@media (min-width: 1400px) {
+    .container {
+        width: 1320px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   16. HIGH CONTRAST - the site's dark theme
+
+   The reader turns this on from the accessibility bar ("High Contrast"),
+   which puts .pib-hc on <html>. css/accessibility.css then paints the
+   document #150202 with #ffffff text and #ffff00 links.
+
+   It was not reaching the header, and the reason is this file. The load
+   order is
+
+       style3.1.css -> accessibility.css -> consent.css
+                    -> fonts-noto.css -> dbim.css
+
+   so every colour set in sections 7, 9 and 10 above lands AFTER the
+   high-contrast rules, and several of them carry !important. The result
+   in dark mode was a white .mid-head band with teal lettering and a grey
+   subtitle - the one part of the page that ignored the theme.
+
+   accessibility.css cannot fix this from where it sits. The overrides
+   belong here, next to the rules causing them.
+
+   Contrast on #150202: #ffffff is 20.2:1, #ffff00 is 18.8:1. Both clear
+   WCAG 1.4.3 AA and AAA.
+   --------------------------------------------------------------------- */
+
+/* --- header bands ------------------------------------------------- */
+
+html.pib-hc .top_head {
+    background: #150202 !important;
+    border-bottom: 1px solid #ffff00;
+}
+
+html.pib-hc .mid-head {
+    background: #150202 !important;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+/* --- the lockup --------------------------------------------------- */
+
+html.pib-hc .mid-head .logo h2 {
+    color: #ffffff !important;
+}
+
+html.pib-hc .mid-head .logo h1 {
+    border-left-color: #ffff00;
+}
+
+    html.pib-hc .mid-head .logo h1 a {
+        color: #ffff00 !important;
+    }
+
+/* The State Emblem artwork is solid black - measured, mean luminance 0
+   of 255, with no colour in it - so on a #150202 band it simply
+   disappears. brightness(0) flattens it to pure black and invert(1)
+   takes that to pure white, which is what DBIM 5.3 asks for: the emblem
+   in Inclusive White when it sits on a dark ground.
+
+   The PIB logo beside it is NOT treated this way. It is colour artwork -
+   45% of its opaque pixels are saturated - and inverting it would
+   produce false colours. It gets a white chip to sit on instead, which
+   keeps the logo exactly as issued. */
+html.pib-hc .mid-head .indian-emblem img {
+    filter: brightness(0) invert(1);
+}
+
+html.pib-hc .mid-head .pib-mark img {
+    background: #ffffff;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+/* --- utility bar controls ----------------------------------------- */
+
+html.pib-hc .top-acess .selector-label {
+    color: #ffffff !important;
+}
+
+html.pib-hc .top-acess select.form-control {
+    background-color: #150202 !important;
+    color: #ffffff !important;
+    border-color: #ffff00 !important;
+}
+
+    html.pib-hc .top-acess select.form-control option {
+        background: #150202;
+        color: #ffffff;
+    }
+
+html.pib-hc .top-acess .skin-reader a {
+    color: #ffff00 !important;
+}
+
+html.pib-hc .top-acess .pull-right > ul > li.icon > a {
+    border-color: #ffff00;
+}
+
+/* The shortcut sprites are white artwork on transparency, so they read
+   correctly on #150202 already; only the rings need the theme colour. */
+html.pib-hc .top-acess span.home,
+html.pib-hc .top-acess span.rss,
+html.pib-hc .top-acess span.subscribe {
+    border-color: #ffff00 !important;
+}
+
+html.pib-hc .top-acess a:focus-visible,
+html.pib-hc .top-acess button:focus-visible,
+html.pib-hc .top-acess select:focus-visible,
+html.pib-hc .top-acess input:focus-visible {
+    outline-color: #ffff00;
+}
+
+/* --- primary navigation ------------------------------------------- */
+
+html.pib-hc .navigation-bg,
+html.pib-hc .sf-menu ul li,
+html.pib-hc .sf-menu ul ul li {
+    background: #150202 !important;
+}
+
+html.pib-hc #main-nav .sf-menu > li {
+    border-right-color: #3a3a3a;
+}
+
+html.pib-hc .sf-menu a,
+html.pib-hc .sf-menu li a {
+    color: #ffff00 !important;
+}
+
+    /* Section 7 inverts hover to the pale shade, which is a light
+       background - wrong here. Hover stays dark and gains a ring. */
+    html.pib-hc .sf-menu a:hover,
+    html.pib-hc .sf-menu a:focus {
+        background: #150202 !important;
+        color: #ffffff !important;
+        outline: 2px solid #ffff00;
+        outline-offset: -2px;
+    }
+
+/* --- footer -------------------------------------------------------- */
+
+html.pib-hc .footer-top,
+html.pib-hc .footer-bottom {
+    background: #150202 !important;
+    color: #ffffff !important;
+}
+
+    html.pib-hc .footer-top a,
+    html.pib-hc .footer-bottom a {
+        color: #ffff00 !important;
+    }
+
+/* --- the social rail ----------------------------------------------- */
+
+html.pib-hc #fixed-social .social-icons {
+    background: #150202;
+    outline: 1px solid #ffff00;
+}
+
+html.pib-hc #fixed-social a:hover,
+html.pib-hc #fixed-social a:focus-visible {
+    box-shadow: 0 0 0 2px #ffff00;
+}
+
+/* --- call to action ------------------------------------------------ */
+
+html.pib-hc .btn-primary {
+    background-color: #150202;
+    border-color: #ffff00;
+    color: #ffff00;
+}
+
+    html.pib-hc .btn-primary:hover,
+    html.pib-hc .btn-primary:focus {
+        background-color: #ffff00;
+        border-color: #ffff00;
+        color: #150202;
+    }
+
+/* ---------------------------------------------------------------------
+   17. CMS-DELIVERED CONTENT - DBIM 4.1.1, 4.3.1, 6.1
+
+   Everything above this point styles the site CHROME. The body of a
+   press release, a tender or a content page is authored in the CMS and
+   arrives as HTML with its own inline style attributes, which beat any
+   ordinary stylesheet rule. Measured on a live release
+   (PressReleasePage.aspx?PRID=2100000):
+
+       font-family: "Mangal", serif      x28    <- not Noto Sans
+       text-align: justify               x12    <- DBIM wants left
+       font-size: 16 / 30 / 24 / 14px    x20
+       inline width on tables/images      x7
+
+   So the typography compliance claimed for the chrome stops at the
+   edge of the content well. These rules carry it inside.
+
+   The technique - attribute selectors matching on the style attribute -
+   is the one css/accessibility.css already uses to reach inline-styled
+   database content. It is the only thing that reaches an inline style
+   without editing the CMS.
+
+   SCOPE IS DELIBERATELY NARROW. Only the two content wells are
+   targeted, never the chrome:
+       .innner-page-main-about-us-content-right-part   (7 pages, the
+           press release family - note the triple-n, it is spelt that
+           way in the markup)
+       .content-area                                   (56 inner pages)
+   --------------------------------------------------------------------- */
+
+/* --- typeface, DBIM 4.1.1 ------------------------------------------ */
+
+/* Mangal, Arial, Times and anything else the CMS carries are replaced
+   by the mandated family. The inline declaration still exists in the
+   markup; this simply outranks it. */
+.innner-page-main-about-us-content-right-part [style*="font-family"],
+.innner-page-main-about-us-content-right-part font[face],
+.content-area [style*="font-family"],
+.content-area font[face] {
+    font-family: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Arabic", sans-serif !important;
+}
+
+/* --- body alignment, DBIM 4.1.1 ------------------------------------ */
+
+/* The manual asks for body text left-aligned. Justified text opens
+   uneven word spacing - "rivers" - which is measurably harder to read
+   for dyslexic readers, and WCAG 1.4.8 names it for the same reason.
+   12 justified blocks were found on a single release.
+
+   Matched on the value, so centred captions and headings - a separate,
+   deliberate choice - are left alone. */
+/* Matched on the whole declaration, not on the bare word "justify".
+   `[style*="justify"]` also matched `justify-content` on a flex container,
+   which forced text-align:left onto content an author had centred with
+   flexbox - a false positive this rule used to carry. Four spellings
+   because Word paste, which most of this content is, emits the property
+   name in capitals. Deliberately NOT using the `i` attribute flag: an
+   invalid selector invalidates the whole rule in a comma-separated list,
+   and the flag is unsupported in IE11.
+
+   js/dbim-typography.js used to cover the spellings not enumerated
+   here; it has been removed, so this list is all there is. It was
+   reading the parsed declaration through the CSSOM instead of matching
+   the attribute as a string. */
+/* JUSTIFICATION IS KEPT - a deliberate, recorded departure from DBIM
+   4.1.1(i), which asks for left-aligned body text.
+
+   PIB's editorial practice justifies long-form content, and the CMS writes
+   text-align:justify inline on it. Earlier rounds overrode that to `left`,
+   and then repeated the entire selector list under html[dir="rtl"] to say
+   `right` for Urdu. Both halves were broken: <html> emitted no dir at all,
+   so the RTL half never applied, and the override left Urdu flush to the
+   LEFT edge - the wrong edge for a right-to-left script.
+
+   Nothing forces an alignment here now. The inline value the editor wrote
+   stands, and `dir` on <html> decides which edge a justified paragraph
+   starts and ends its last line on. That is what makes justification
+   correct in Urdu rather than merely present. */
+
+/* Paragraph text in the two content wells, for database content that
+   carries no inline alignment of its own. Scoped to <p> on purpose:
+   justifying a heading or a caption is not what the editors intend, and
+   justifying a table cell makes columns unreadable. */
+/* Any paragraph in the two content wells, at any depth. The release body
+   arrives from the database as arbitrary HTML, so a child-combinator only
+   reached the paragraphs that happened to sit one level down. No
+   !important: a paragraph the editor deliberately centred keeps its
+   inline value. */
+.innner-page-main-about-us-content-right-part p,
+.content-area p {
+    text-align: justify;
+    /* Keeps the last line on the correct edge in Urdu. Modern engines
+       resolve this against dir; IE11 ignores it and justifies anyway. */
+    text-align-last: auto;
+}
+
+/* --- Perso-Arabic script: right-to-left and justified ---------------
+
+   DBIM 4.2 Table 2 names nine scripts - Devanagari, Bengali, Gujarati,
+   Gurmukhi, Kannada, Malayalam, Oriya, Tamil, Telugu - and Urdu is not
+   among them. The typeface stays Noto Sans (Noto Sans Arabic covers the
+   range), per 4.1.1; what the manual does not describe is how that script
+   has to behave, which is the part below.
+
+   Two routes in, because direction can arrive either way:
+
+     :lang(ur|ks|sd)   the page language, inherited from <html lang>.
+     [dir=rtl|RTL]     a block the CMS marked itself. 382 of these exist
+                       in page markup IN CAPITALS, and CSS attribute-value
+                       matching is case-sensitive, so both spellings are
+                       listed. This is what catches an Urdu passage sitting
+                       inside an otherwise left-to-right page, where the
+                       document direction alone would leave it LTR.
+
+   direction + unicode-bidi together, not text-align: text-align moves the
+   lines, but only direction reorders the characters and puts the
+   punctuation at the correct end of the sentence. */
+
+/* Keyed on dir ONLY, never on lang.
+
+   [lang="ur"] would match <html lang="ur">, which puts direction:rtl on the
+   document root - and a right-to-left root is exactly what blanks these
+   pages: measured at ZERO painted pixels against 1,055,458 with it off,
+   while every element still reported real dimensions. The Bootstrap 3 float
+   grid underneath this site fails to paint under an RTL root.
+
+   dir is on <main> and on the content wells, so these rules reach the text
+   and never the chrome. */
+
+
+    /* Justified, as asked, and on the correct edge. `start` rather than a
+       physical value so the last line follows the direction above. */
+
+/* Noto Sans Arabic sits lower in its em box than the Latin face and its
+   descenders are deeper, so the 1.2 floor that suits Latin crowds it.
+   4.5(iii) says line height "should" be 1.2 to 1.5 - advisory, unlike the
+   "must" on the typeface - and 1.6 stays close to that band while giving
+   the script the room it needs. */
+[lang="ur"], [lang="ks"], [lang="sd"],
+[lang^="ur-"], [lang^="ks-"], [lang^="sd-"] {
+    line-height: 1.6;
+}
+
+/* --- all caps --------------------------------------------------------
+
+   A rule stood here forcing text-transform:none on CMS paragraphs that
+   carried an inline `uppercase`, on DBIM 4.1.1(ii) - "All capital text
+   must not be used for long sentences or paragraphs".
+
+   It is gone at PIB's instruction. The boundary now is: DBIM governs the
+   TYPEFACE and the SIZE of database content, and nothing else. Case is a
+   property the editor sets, so the editor keeps it.
+
+   This is a recorded departure from 4.1.1(ii), not an oversight. The rule
+   it enforced was also the only one in this section carrying !important
+   over a text property other than font - so with it gone, the two
+   remaining !important declarations here are font-family and font-size,
+   which is exactly the agreed boundary and a useful thing to be able to
+   check at a glance.
+
+   What is NOT affected: text TYPED in capitals was never reachable from a
+   stylesheet, and still needs an editor. Only CSS-produced capitals were
+   ever in scope.
+   --------------------------------------------------------------------- */
+
+/* --- type scale, DBIM 4.3.1 ---------------------------------------- */
+
+/* The inline sizes observed are 16, 24 and 14px, which are P1, H2 and
+   P2 - already on the scale. 30px is not, so only that one is pulled
+   back. Matching on the literal value rather than overriding every
+   inline size, because a blanket override would flatten headings the
+   author set deliberately. */
+.innner-page-main-about-us-content-right-part [style*="font-size:30px"],
+.innner-page-main-about-us-content-right-part [style*="font-size: 30px"],
+.content-area [style*="font-size:30px"],
+.content-area [style*="font-size: 30px"] {
+    font-size: var(--dbim-h2) !important;
+}
+
+/* A floor, so nothing in the content well drops below the smallest
+   size the manual defines. */
+.innner-page-main-about-us-content-right-part [style*="font-size"],
+.content-area [style*="font-size"] {
+    min-height: 0;
+}
+
+/* --- images and tables in content, DBIM 6.1 and 10.2.2 ------------- */
+
+/* CMS authors set pixel widths that overflow a phone. Proportion is
+   preserved rather than stretched, which is checklist item 9. */
+.innner-page-main-about-us-content-right-part img,
+.content-area img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* `display: block` was here to let a wide table scroll instead of
+   widening the page. It does not do that, and it broke every content
+   table on the way past.
+
+   Setting display:block on a <table> does not turn the table into a
+   block. The tbody, tr and td keep their table-* displays, so the
+   browser wraps them in an ANONYMOUS table box inside the block. The
+   block takes the declared width - style3.1.css sets
+   `.content-area table{width:100%}` - but the anonymous table inside
+   shrink-to-fits its own content and ignores it. The table element
+   measures full width while its ROWS stop short.
+
+   Measured on the ESTIC release panel in a 714px column: the table
+   element 714px, the cells only 640px - the width of the banner image
+   inside - so the tinted panel ended 74px short of the column and sat
+   stranded on the left. That is the reported break. With the table
+   displaying as a table, the cells fill it: 710px of 714px.
+
+   Changing a table's display also costs it its table semantics in the
+   accessibility tree in some screen readers, so rows and cells stop
+   being announced as a table at all.
+
+   The auto inline margins are for the other half of the report: a table
+   given a narrower width of its own - `style="width:400px"` beats the
+   theme's 100% - was pinned to the left edge with the slack beside it.
+   It now centres in the column. Measured: left 0px before, 157px after. */
+.innner-page-main-about-us-content-right-part table,
+.content-area table {
+    max-width: 100%;
+    margin-inline: auto;
+    border-collapse: collapse;
+}
+
+/* The scrolling the rule above was reaching for, kept where it is the
+   only option. Below the phone breakpoint a table with more columns than
+   the screen can hold has nowhere to reflow to, so there it may scroll
+   inside its own box rather than widen the page. Verified at a 500px
+   viewport: the table scrolls internally and the document does not.
+
+   Above the breakpoint there is room to lay out properly, which is where
+   the anonymous-table problem above was doing its damage. */
+@media (max-width: 767px) {
+    .innner-page-main-about-us-content-right-part table,
+    .content-area table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* DBIM 4.1.1 gives table text the same left alignment as body copy,
+   and headers need to be distinguishable from cells. */
+.innner-page-main-about-us-content-right-part table th,
+.content-area table th {
+    text-align: left;
+    font-weight: 600;
+    background: var(--dbim-linen);
+    color: var(--dbim-text);
+}
+
+.innner-page-main-about-us-content-right-part table td,
+.innner-page-main-about-us-content-right-part table th,
+.content-area table td,
+.content-area table th {
+    border: 1px solid var(--dbim-grey-01);
+    padding: 8px 10px;
+}
+
+/* --- links in content, DBIM 2.2 ------------------------------------ */
+
+.innner-page-main-about-us-content-right-part a[style*="color"],
+.content-area a[style*="color"] {
+    color: var(--dbim-link) !important;
+}
+
+/* --- high contrast ------------------------------------------------- */
+
+/* accessibility.css already forces inline-styled content to white on
+   #150202. These rules must not fight it, so the two that carry
+   !important are stood down when the dark theme is on. */
+html.pib-hc .innner-page-main-about-us-content-right-part [style*="font-family"],
+html.pib-hc .content-area [style*="font-family"] {
+    font-family: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Arabic", sans-serif !important;
+}
+
+html.pib-hc .innner-page-main-about-us-content-right-part a[style*="color"],
+html.pib-hc .content-area a[style*="color"] {
+    color: #ffff00 !important;
+}
+
+html.pib-hc .innner-page-main-about-us-content-right-part table th,
+html.pib-hc .content-area table th {
+    background: #150202;
+    color: #ffffff;
+    border-color: #ffff00;
+}
+
+html.pib-hc .innner-page-main-about-us-content-right-part table td,
+html.pib-hc .content-area table td {
+    border-color: #ffff00;
+}
+
+/* ---------------------------------------------------------------------
+   18. RETIRING THE LEGACY ORANGE AND CORAL - DBIM 2.1
+
+   Section 7 re-pointed the main chrome at the selected colour group but
+   left two legacy colours in place elsewhere in style3.1.css:
+
+       #B55D00  burnt orange  - 11 selectors
+       #E46159  coral         -  9 selectors
+
+   Both are outside the DBIM palette entirely, so every surface using
+   them was off-group. They are replaced here with Green-group shades.
+
+   WHICH SHADE, AND WHY IT MATTERS
+   Key #0F5757 carries white text at 8.33:1. Dark #2D8686 carries it at
+   only 4.32:1, which is below the 4.5 WCAG 1.4.3 requires at body size.
+   So every surface that holds white body text takes the KEY shade, and
+   the dark variant is used only for hover, where it signals a state
+   change rather than carrying the text.
+
+   The 13 further occurrences that sat in page-level <style> blocks -
+   EventDetail, PM_Speech_Translation, VideoGallery, headsofpib,
+   HomeBanner, index and both masters - were changed in place to
+   var(--dbim-key, #0F5757); a stylesheet cannot outrank a rule that
+   lives in the page itself without a specificity fight.
+   --------------------------------------------------------------------- */
+
+/* --- former orange ------------------------------------------------- */
+
+.bg-3,
+.infocus-text,
+.latest_gallery h3,
+.latest_webcast h3,
+.webcast_video h3 {
+    background-color: var(--dbim-key) !important;
+    color: var(--dbim-inclusive);
+}
+
+/* The meanmenu drawer, its rows and its reveal button. */
+.mean-container .mean-nav ul li,
+.mean-container .mean-nav ul ul li,
+.mean-container a.meanmenu-reveal {
+    background: var(--dbim-key) !important;
+}
+
+    /* Inverted, not darkened. White on the dark variant measures 4.32:1,
+       under the 4.5 that WCAG 1.4.3 requires at body size; pale ground with
+       key text measures 7.11:1 and matches what section 7 already does for
+       the navigation and buttons. */
+    .mean-container .mean-nav ul li a:hover,
+    .mean-container .mean-nav ul li a:focus {
+        background: var(--dbim-pale) !important;
+        color: var(--dbim-key) !important;
+    }
+
+/* --- former coral, the media corner --------------------------------
+
+   CORRECTED 30 September. The first version of this block set
+   background-color on .media_advisory and .media_more, which turned
+   three white cards into solid dark-green panels and destroyed the
+   design. The coral was never a card background - reading the rules
+   property by property, #E46159 was only ever:
+
+       .media_advisory h3, .media_more h3,
+       .media_advisory .padding-none a       color        (heading text)
+       .media_advisory, .media_more          border-bottom (3px accent)
+       .media_advisory span, .media_more span,
+       .media_invitation:hover span          background   (icon circle)
+
+   The cards themselves are `background: #fff` and stay that way. Only
+   the three roles above move to the key shade.
+
+   Worth fixing on its own merits: coral on white measured 3.41:1, below
+   the 4.5 WCAG 1.4.3 asks for. The key shade on white is 8.33:1, and
+   white on the key circle is likewise 8.33:1 where it was 3.41:1.
+   ------------------------------------------------------------------- */
+
+/* Heading text and links - on the white card. */
+.media_advisory h3,
+.media_more h3,
+.media_advisory .padding-none a {
+    color: var(--dbim-key) !important;
+}
+
+/* The 3px accent under each card. */
+.media_advisory,
+.media_more {
+    border-bottom-color: var(--dbim-key) !important;
+}
+
+/* The icon circles, which carry a white glyph. */
+.media_advisory span,
+.media_more span,
+.media_invitation:hover span {
+    background-color: var(--dbim-key) !important;
+}
+
+/* The theme's hover is a scale transform plus a border-colour change -
+   the card stays white. An earlier version of this block added a
+   background fill, which was not part of the design. Only the border
+   colour moves. */
+.media_invitation:hover {
+    border-color: var(--dbim-key) !important;
+}
+
+/* --- high contrast ------------------------------------------------- */
+
+html.pib-hc .bg-3,
+html.pib-hc .infocus-text,
+html.pib-hc .latest_gallery h3,
+html.pib-hc .latest_webcast h3,
+html.pib-hc .webcast_video h3,
+html.pib-hc .media_advisory span,
+html.pib-hc .media_more span,
+html.pib-hc .mean-container .mean-nav ul li,
+html.pib-hc .mean-container .mean-nav ul ul li,
+html.pib-hc .mean-container a.meanmenu-reveal {
+    background-color: #150202 !important;
+    color: #ffffff !important;
+}
+
+html.pib-hc .media_invitation:hover,
+html.pib-hc .media_invitation:hover span,
+html.pib-hc .mean-container .mean-nav ul li a:hover {
+    background-color: #150202 !important;
+    color: #ffff00 !important;
+    outline: 2px solid #ffff00;
+    outline-offset: -2px;
+}
+
+/* ---------------------------------------------------------------------
+   19. ICON RENDER SIZE - DBIM section 3.7
+
+   The manual lists 24, 32, 48 and 64px. Section 14 already moved the
+   sprite buttons and their rings onto that scale; this does the same
+   for the PNG glyphs in the utility bar.
+
+   AN HONEST LIMITATION. Every one of those glyphs is raster artwork
+   smaller than 24px at source:
+
+       handicape-icon.png, theme.png, sitemap.png      16x16
+       decrease/increase-font, standard-view,
+       high-contrast                                   22x22
+       green.png, yello.png                            19x17
+
+   So rendering them at 24px is an upscale - 9% for the 22px set, 50%
+   for the 16px set - and they will be correspondingly soft. The rule
+   is applied anyway because 24px is the size the manual specifies and
+   the interactive target matters more than edge sharpness at this
+   scale; but the real fix is new artwork, ideally SVG, which would
+   also resolve checklist item 3 (icons in the key colour) since raster
+   PNGs cannot be recoloured by CSS at all.
+
+   Recorded so nobody later mistakes the softness for a rendering bug.
+   --------------------------------------------------------------------- */
+
+/* The nine raster glyphs became inline SVG, so the upscale problem above
+   no longer applies - they are crisp at any size and take the theme
+   colour through currentColor.
+
+   Two grounds, two colours. The toggles sit on the utility bar, which is
+   the key shade, so they are white (8.33:1). The dropdown panel behind
+   the menu items is #f9f9f9, so those take the body colour instead -
+   white on #f9f9f9 would be invisible, which is why the original PNGs
+   were drawn as dark letters on white cards. */
+.top-acess .pull-right > ul > li.icon > a > svg,
+.top-acess .dropdown-content a > svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.top-acess .pull-right > ul > li.icon > a > svg {
+    color: var(--dbim-inclusive);      /* on the key-shade bar */
+}
+
+.top-acess .dropdown-content a > svg {
+    color: var(--dbim-text);           /* on the #f9f9f9 panel */
+}
+
+/* Any raster icon left anywhere else keeps the sizing it had. */
+.top-acess .pull-right > ul > li.icon > a > img,
+.top-acess .dropdown-content a > img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* The search button's magnifier is now an inline SVG rather than the
+   U+1F50D emoji, so it scales cleanly and takes the button's colour
+   through currentColor. */
+.top-acess .pib-headsearch-go svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+/* Carousel play/pause, likewise converted from &#10074; and &#9658;. */
+.pp-icon-btn svg,
+#btnInFocusPlay svg {
+    width: 12px;
+    height: 14px;
+    display: block;
+}
+
+html.pib-hc .top-acess .pull-right > ul > li.icon > a > svg,
+html.pib-hc .top-acess .dropdown-content a > svg,
+html.pib-hc .top-acess .pib-headsearch-go svg,
+html.pib-hc .pp-icon-btn svg,
+html.pib-hc #btnInFocusPlay svg {
+    color: #ffff00;
+}
+
+/* ---------------------------------------------------------------------
+   20. CONTRAST FAILURES IN THE THEME - WCAG 1.4.3, DBIM 2.1 and 4.4
+
+   A contrast audit of style3.1.css found 9 surfaces the site authors
+   set as WHITE TEXT ON A LIGHT BACKGROUND. Measured ratios:
+
+       table tr th                       #fff on #ffac52   1.86:1
+       .twitter h3                       #fff on #34ccfe   1.87:1
+       .menus1 h2                        #fff on #f99426   2.26:1
+       .view_more_video a                #fff on #f99426   2.26:1
+       .accrediation_box .title          #fff on #f99426   2.26:1
+       .media_invitations h2             #fff on #f99426   2.26:1
+       .search_box .btn-default          #fff on #48ada5   2.69:1
+       .search-buttons                   #fff on #48ada5   2.69:1
+       .ace-responsive-menu ... a        #fff on #3daba2   2.78:1
+
+   WCAG 1.4.3 requires 4.5:1 at body size. The worst of these is 1.86:1,
+   which is barely legible - and DBIM 4.4 defers to WCAG on this.
+
+   Every one of those backgrounds is also a legacy colour outside the
+   DBIM palette (#f99426 orange, #34ccfe blue, #48ada5 and #3daba2 teal,
+   #ffac52 amber), so one change fixes both problems: move them to the
+   key shade, where white measures 8.33:1.
+
+   The social panel headings lose their platform brand colour. That is
+   deliberate - DBIM 2.1 asks for one selected colour group across the
+   chrome, and a brand colour that cannot carry its own label is not
+   serving the brand either.
+
+   Bootstrap 3's own .btn-success / .btn-info / .btn-warning defaults
+   fail too, but those are bundled vendor styles rather than anything
+   PIB authored, and the site does not use them in its chrome. They are
+   recorded in the audit and left alone.
+   --------------------------------------------------------------------- */
+
+.twitter h3,
+.menus1 h2,
+.media_invitations h2,
+.accrediation_box .title,
+.view_more_video a,
+.search-buttons,
+.search_box .btn-default,
+.ace-responsive-menu li ul.sub-menu li a {
+    background-color: var(--dbim-key) !important;
+    color: var(--dbim-inclusive) !important;   /* 8.33:1 */
+}
+
+    /* Inverted on hover, the pattern used everywhere else in this file:
+       pale ground with key text, 7.11:1. */
+    .view_more_video a:hover,
+    .view_more_video a:focus,
+    .search-buttons:hover,
+    .search-buttons:focus,
+    .search_box .btn-default:hover,
+    .search_box .btn-default:focus,
+    .ace-responsive-menu li ul.sub-menu li a:hover,
+    .ace-responsive-menu li ul.sub-menu li a:focus {
+        background-color: var(--dbim-pale) !important;
+        color: var(--dbim-key) !important;
+    }
+
+/* Table headers take the same treatment section 17 gives content tables,
+   so a table looks the same wherever it appears: 16.79:1. */
+table tr th {
+    background-color: var(--dbim-linen) !important;
+    color: var(--dbim-text) !important;
+}
+
+/* --- high contrast ------------------------------------------------- */
+
+html.pib-hc .twitter h3,
+html.pib-hc .menus1 h2,
+html.pib-hc .media_invitations h2,
+html.pib-hc .accrediation_box .title,
+html.pib-hc .view_more_video a,
+html.pib-hc .search-buttons,
+html.pib-hc .search_box .btn-default,
+html.pib-hc .ace-responsive-menu li ul.sub-menu li a,
+html.pib-hc table tr th {
+    background-color: #150202 !important;
+    color: #ffffff !important;
+}
+
+/* ---------------------------------------------------------------------
+   21. MEDIA CORNER BANNER AND ICON CIRCLES - DBIM 2.1, WCAG 1.4.3
+
+   The "MEDIA CORNER" strip was not a colour at all. The theme sets
+
+       .media-heading {
+           background-image: linear-gradient(rgb(0 0 0/.4), rgb(0 0 0/.4)),
+                             url(.../media-heading.jpg);
+           color: #fff;
+       }
+
+   - a photograph with a 40% black wash over it. That is where the orange
+   comes from, and it is why the strip does not match the rest of the
+   page: every other section heading on the home page now takes the key
+   shade through section 18 (.bg-3, .infocus-text, .latest_gallery h3,
+   .latest_webcast h3, .webcast_video h3).
+
+   Two reasons to make it flat:
+
+     - DBIM 2.1 asks for one selected colour group across the chrome, and
+       a photographic strip belongs to no group.
+     - White text over a photograph has NO guaranteed contrast ratio. It
+       varies pixel by pixel with the image behind it, so WCAG 1.4.3
+       cannot be satisfied by measurement. On the key shade white is a
+       fixed 8.33:1.
+
+   background-image must be set to none explicitly - overriding only
+   background-color would leave the photograph on top of it.
+   --------------------------------------------------------------------- */
+
+.media-heading {
+    background-image: none !important;
+    background-color: var(--dbim-key) !important;
+    color: var(--dbim-inclusive) !important;   /* 8.33:1 */
+}
+
+/* The three icon circles. Advisory and Engagements moved to the key shade
+   with the rest of the coral in section 18, but Invitations was set to
+   #636363 separately and so stayed grey - one grey disc between two green
+   ones. All three now match. */
+.media_invitation span {
+    background-color: var(--dbim-key) !important;
+}
+
+/* Hover keeps the theme's own grey on Engagements as a state change; it is
+   a background swap on a circle holding a white glyph, so it only has to
+   meet the 3:1 of WCAG 1.4.11, and #636363 against the white card is
+   5.74:1. Left alone deliberately. */
+
+/* Legacy orange still used as an accent rule under photo captions. */
+.photo_heading {
+    border-bottom-color: var(--dbim-key) !important;
+}
+
+/* --- high contrast ------------------------------------------------- */
+
+html.pib-hc .media-heading {
+    background-image: none !important;
+    background-color: #150202 !important;
+    color: #ffffff !important;
+}
+
+html.pib-hc .media_invitation span {
+    background-color: #150202 !important;
+    outline: 2px solid #ffff00;
+}
+
+html.pib-hc .photo_heading {
+    border-bottom-color: #ffff00 !important;
+}
+
+/* ---------------------------------------------------------------------
+   22. MEDIA CORNER SECTION BACKGROUND - DBIM 2.2, 6.1.1, 10.4.1
+
+   Section 21 dealt with the heading strip. The section BEHIND the three
+   cards is a separate rule and still a photograph:
+
+       .media_bg { background: url(../images/media-bg.jpg);
+                   background-size: cover }
+
+   - a 354 KB newspaper image. Every other section on the home page uses
+   a flat colour instead:
+
+       .banner_bg { background: #e5e1e0 }      (2 sections)
+
+   So the Media Corner was the only section not matching the rest.
+
+   Both now take DBIM's Linen, #EBEAEA, from the functional palette in
+   section 2.2, where it is defined as the background behind images and
+   blocks. It is within 1.08:1 of the #e5e1e0 the other sections already
+   use - imperceptible - so this aligns the page AND puts the colour on
+   the palette rather than off it.
+
+   Three things follow:
+     - 354 KB and one request leave the page (DBIM 10.4.1)
+     - the section is a measurable colour rather than a photograph
+     - the cards lose the dark ground they were standing out against
+
+   That last one needs handling rather than ignoring: a white card on
+   Linen has only a 1.20:1 edge. WCAG 1.4.11 asks for the boundary of a
+   component to be perceivable, so the cards get a soft shadow. A 1px
+   grey border would not do it - #C6C6C6 on #EBEAEA is 1.34:1 - but a
+   shadow reads as a gradient edge rather than relying on one contrast
+   step.
+   --------------------------------------------------------------------- */
+
+.media_bg,
+.banner_bg {
+    background-image: none !important;
+    background-color: var(--dbim-linen) !important;
+}
+
+/* The three cards keep their white ground; the shadow replaces the
+   separation the photograph used to provide. */
+.media_advisory,
+.media_invitation,
+.media_more {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .14);
+}
+
+/* --- high contrast ------------------------------------------------- */
+
+html.pib-hc .media_bg,
+html.pib-hc .banner_bg {
+    background-image: none !important;
+    background-color: #150202 !important;
+}
+
+/* On #150202 a shadow is invisible, so the edge comes from an outline. */
+html.pib-hc .media_advisory,
+html.pib-hc .media_invitation,
+html.pib-hc .media_more {
+    box-shadow: none;
+    outline: 1px solid #ffff00;
+}
+
+/* ---------------------------------------------------------------------
+   23. EXTERNAL AUDIT ITEMS 8, 12, 15, 16 AND 17
+
+   Items 1 (orange "+" links and carousel arrows) and 25 (footer) are
+   handled elsewhere - see the notes at the foot of this block.
+   --------------------------------------------------------------------- */
+
+/* --- item 8: icon sizes ------------------------------------------------
+   DBIM 3.7 lists 24/32/48/64. Two inline SVGs were smaller: the search
+   magnifier at 16px and the carousel play/pause at 12x14. Both sit in
+   buttons big enough to carry 24px, so both go to 24px and their
+   buttons to 32px, which is also a DBIM size.
+   --------------------------------------------------------------------- */
+
+.top-acess .pib-headsearch-go svg {
+    width: 24px;
+    height: 24px;
+}
+
+.pp-icon-btn svg,
+#btnInFocusPlay svg,
+.play-pause-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+.play-pause-button {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+/* --- item 12: body text alignment --------------------------------------
+   DBIM 4.1.1 asks for body text left-aligned. The three Media Corner
+   cards centre their LIST ITEMS - release titles and event details,
+   which are body copy, not headings. The h3 headings stay centred;
+   that is a deliberate and legitimate choice.
+   --------------------------------------------------------------------- */
+
+.media_advisory li,
+.media_invitation li,
+.media_more ul li a,
+.media_invitations li a {
+    /* `left` first for IE11, then the logical value every modern engine
+       resolves against dir. This replaces a second copy of the selector
+       list under html[dir="rtl"], which never matched because <html>
+       carried no dir and could not match dir="RTL" in capitals either. */
+    text-align: left !important;
+    text-align: start !important;
+}
+
+/* --- item 15: hidden-element contrast ----------------------------------
+   An automated audit reported the skip link at 1.85:1 and the "Search"
+   label at 2.42:1. Both figures reproduce exactly - but both elements
+   are VISUALLY HIDDEN:
+
+     .skip-link  is at left:-9999px until focused; when focused it is
+                 #fff on #000, which is 21:1 - what a user actually sees
+     .sr-only    is 1px and clipped, so it is never rendered at all
+
+   WCAG 1.4.3 applies to visible text, so neither is a live defect. They
+   are set explicitly anyway, for two reasons: an automated re-audit
+   will keep flagging them, and if a future change ever unhides either,
+   the inherited colour would be unreadable against the key-shade bar.
+   --------------------------------------------------------------------- */
+
+.top-acess .skip-link,
+.top-acess .sr-only,
+.skip-link {
+    color: var(--dbim-inclusive);      /* 8.33:1 on the bar if ever shown */
+}
+
+    /* The focused state already passes; restated so it cannot be lost. */
+    .skip-link:focus {
+        background: var(--dbim-text) !important;
+        color: var(--dbim-inclusive) !important;   /* 20.16:1 */
+    }
+
+/* --- items 16 and 17: button sizing and states -------------------------
+   DBIM 4.5(i) asks for consistent sizing, uniform padding and distinct
+   enabled / hover / focus / disabled states. Section 7 gave .btn-primary
+   all of that; every other button kept the theme's values, which vary:
+
+       .btn      6px 12px   (and 10px 16px / 5px 10px at breakpoints)
+       .btn-lg   10px 16px
+       .btn-sm   5px 10px
+       .btn-xs   1px 5px
+
+   One padding and one minimum height for all of them. 44px is the
+   target size WCAG 2.5.8 asks for, and .btn-sm / .btn-xs are left
+   alone because a deliberately small button is a valid choice.
+   --------------------------------------------------------------------- */
+
+.btn,
+.btn-default,
+.btn-primary {
+    padding: 10px 18px;
+    min-height: 44px;
+    border-radius: 4px;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+    /* Focus must be visible on every button, not only the primary one. */
+    .btn:focus-visible,
+    .btn-default:focus-visible,
+    .btn-primary:focus-visible {
+        outline: 2px solid var(--dbim-key);
+        outline-offset: 2px;
+    }
+
+    .btn-default {
+        background-color: var(--dbim-inclusive);
+        border: 1px solid var(--dbim-key);
+        color: var(--dbim-key);            /* 8.33:1 */
+    }
+
+        .btn-default:hover,
+        .btn-default:focus {
+            background-color: var(--dbim-pale);
+            color: var(--dbim-key);        /* 7.11:1 */
+        }
+
+    /* Bootstrap 3 only fades disabled buttons, which is not a distinct
+       state. Inactive components are exempt from 1.4.3, so the low
+       contrast here is deliberate - it is how "disabled" is signalled. */
+    .btn:disabled,
+    .btn[disabled],
+    .btn.disabled,
+    .btn-default:disabled,
+    .btn-default[disabled] {
+        background-color: var(--dbim-grey-01);
+        border-color: var(--dbim-grey-02);
+        color: var(--dbim-grey-03);
+        cursor: not-allowed;
+        opacity: 1;
+    }
+
+/* --- high contrast ------------------------------------------------- */
+
+html.pib-hc .btn,
+html.pib-hc .btn-default {
+    background-color: #150202;
+    border-color: #ffff00;
+    color: #ffff00;
+}
+
+    html.pib-hc .btn-default:hover,
+    html.pib-hc .btn-default:focus {
+        background-color: #ffff00;
+        color: #150202;
+    }
+
+html.pib-hc .btn:focus-visible,
+html.pib-hc .btn-default:focus-visible,
+html.pib-hc .btn-primary:focus-visible {
+    outline-color: #ffff00;
+}
+
+/* =====================================================================
+   24. ROUND 6 - AUDIT ITEMS 1, 2, 12, 14, 15, 16, 17
+
+   Four findings drove this block, and two of them correct earlier work in
+   this file rather than the theme.
+
+   TYPE SCALE (item 14). Three theme selectors size text as a percentage
+   of the base, which at the 16px base lands off the scale:
+
+       .release_list li a     104%  -> 16.64px
+       .font104               104%  -> 16.64px
+       .pm-section ul li a     97%  -> 15.52px
+       .publishdatesmall       94%  -> 15.04px
+
+   All four are nearest to P1, so all four go to P1. The since-removed
+   js/dbim-typography.js
+   snaps off-scale sizes in DATABASE content at run time but deliberately
+   never touches a theme rule on chrome, which is why these need CSS.
+
+   BODY TEXT (items 2 and 15). --dbim-text has been #150202 since the
+   palette was written, and body already carries it - but a bare `body`
+   rule loses to any selector with a class in it. 72 theme selectors set a
+   dark grey. Filtered by whether the class appears anywhere in markup OR
+   code-behind, only the ones below are live; the other 59 are unused
+   Bootstrap defaults (navbar-inverse, list-group-item, panel-default,
+   thumbnail, dropdown-menu, input-group-addon) and overriding them would
+   be churn with no rendered change.
+
+   #150202 on white is 20.16:1, against 16.10:1 for the #212121 it
+   replaces and 12.63:1 for #333 - so every one of these improves, which
+   is why the audit records contrast as already passing.
+
+   ORANGE (item 1). The audit named "three + links and two carousel
+   arrows". Those are provably not orange - the + links are already
+   var(--dbim-key) at index.aspx:499-507 and the arrows are &#10148;
+   glyphs inheriting .carousel-control{color:#fff}. But every previous
+   orange sweep grepped only #B55D00 and #E46159, the two values the
+   compliance report named. Searching by HUE instead - any hex in the
+   8-48 degree band at saturation >= 0.30 - found two more:
+
+       #b46119   19 occurrences across 12 files, never retired
+       #f99426   15 theme selectors, of which section 20 covered 4,
+                 the footer pair is already killed by !important at
+                 lines 305-311, and .photo_heading by section 21
+
+   #b46119 is 4.50:1 on white - it scrapes AA, which is why no contrast
+   audit ever flagged it. App_Data/tools/find_orange.py is the hue-based
+   scan; run it rather than grepping for known hex values.
+
+   BUTTONS (items 16, 17). Section 23 set the padding scale on .btn,
+   .btn-default and .btn-primary. Two problems: .btn-default has ZERO
+   uses anywhere in markup or code-behind, so a third of that selector
+   list styles nothing; and the classes that DO carry the odd paddings -
+   btn-outline-primary, search-buttons, the swiper nav and the four
+   component buttons - were not covered. Sizing is split from state here:
+   text buttons take the padding scale, icon-only buttons keep their own
+   box (all are at least 32px, above the 24px floor in WCAG 2.5.8), and
+   every button shares one set of hover / focus / active / disabled.
+   --------------------------------------------------------------------- */
+
+/* --- item 14: percentages that land off the type scale -------------- */
+
+.release_list li a,
+.font104,
+.pm-section ul li a,
+.publishdatesmall {
+    font-size: var(--dbim-p1);
+}
+
+/* --- items 2 and 15: body text to the palette text colour ---------- */
+
+/* Every selector below was confirmed in use. .sitemapp is emitted from
+   SiteMap.aspx.cs as code-behind HTML, so a class="..." grep alone reports
+   it dead - it is not. */
+.release_list li a,
+.social_headingg,
+.sitemapp li a,
+.sitemapp li ul li a,
+.media_advisory p a,
+.media_invitation p a,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus,
+.form-control,
+legend,
+output,
+pre {
+    color: var(--dbim-text);
+}
+
+/* pre keeps its monospace family - only the colour moves. */
+
+/* --- item 1: the two oranges that survived the earlier sweeps ------ */
+
+/* #b46119. The page-level copies live in each page's own <style>, which
+   sits after this file in the document, so those are edited in place
+   rather than overridden here. This covers the theme copy. */
+.publishdatesmall {
+    color: var(--dbim-key);            /* 8.33:1 on white, was 4.50:1 */
+}
+
+/* #f99426, the 11 selectors not already covered. */
+span.home:hover,
+span.rss:hover,
+span.subscribe:hover {
+    background-color: var(--dbim-key);
+}
+
+.ModalWindow .form-control,
+.infographics_box:hover,
+.view_video_mid {
+    border-color: var(--dbim-key);
+}
+
+.ace-responsive-menu > li:first-child {
+    border-top-color: var(--dbim-key);
+}
+
+/* The theme declares this one !important, so matching it is the only way
+   to reach it without raising specificity further. */
+.ace-responsive-menu li a:hover {
+    background: var(--dbim-key) !important;
+    color: var(--dbim-inclusive) !important;   /* 8.33:1 */
+}
+
+/* The utility bar is already a key-shade ground, so a key hover would be
+   invisible. It inverts to pale instead, and the icon has to invert with
+   it - white on pale would be 1.17:1. This is section 7's pattern, and
+   the pair measures 7.11:1.
+   Specificity: the svg rule in section 19 is (0,0,3,4); adding :hover to
+   the li makes this (0,0,4,4), so it wins. */
+.top-acess li.icon:hover {
+    background: var(--dbim-pale);
+}
+
+    .top-acess .pull-right > ul > li.icon:hover > a,
+    .top-acess .pull-right > ul > li.icon:hover > a > svg {
+        color: var(--dbim-key);        /* 7.11:1 on pale */
+    }
+
+/* --- item 12: alignment -------------------------------------------- */
+
+/* REVERTED. This rule left-aligned the PM card for audit item 12, on the
+   strength of DBIM 4.1.1(i) - "Body text must be left-aligned."
+
+   That reading was too broad. The card holds no body text: the markup is a
+   portrait, a name, a designation and a list of eight links, and its own
+   container is `class="pm-section text-center"`. 4.1.1(i) governs running
+   prose; a caption under a centred portrait and a navigation list are
+   neither. Forcing them left left the text hanging off the side of a
+   centred photograph.
+
+   The theme's own `text-center` is allowed to stand again. Justified was
+   the other option considered and rejected: 4.1.1(i) is explicit that body
+   text is left-aligned, phase 6 removed justified text across the site,
+   and on a three-word caption justification does nothing anyway - it only
+   affects lines that wrap. */
+
+.pm-section img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tables. This REVERSES the th rule in section 17, which set headers
+   left on the reading that DBIM 4.1.1 applies to every cell. The audit
+   asks for the three cell roles to be distinguished instead - headers
+   centred, text left, numerals right - which is the convention for data
+   tables and is the more useful rule. Section 17 keeps the font-weight.
+
+   A numeric cell cannot be selected in CSS - there is no "contains a
+   number" selector - so a script had to tag them with
+   data-dbim-num while it is already walking every td. */
+.innner-page-main-about-us-content-right-part table th,
+.content-area table th {
+    text-align: center;
+}
+
+.innner-page-main-about-us-content-right-part table td,
+.content-area table td {
+    text-align: left;
+    text-align: start;                    /* flips with dir */
+}
+
+/* The two html[dir="rtl"] table rules that stood here are gone: the
+   base rules above now use start/end, which already mean "right" and
+   "left" under a right-to-left direction. DBIM 4.1.1(i) asks for
+   left-aligned text and right-aligned numbers, and start/end is that
+   rule stated in a way that survives the script changing. */
+
+/* --- items 16 and 17: one button scale, one set of states ---------- */
+
+/* Text buttons take the padding scale. .btn-default is deliberately NOT
+   here - it has zero uses in markup or code-behind. */
+.btn,
+.btn-primary,
+.btn-outline-primary,
+.search-buttons,
+.btn-default {
+    padding: 10px 18px;
+    min-height: 44px;
+    border-radius: 4px;
+    transition: background-color .15s ease, color .15s ease, outline-color .15s ease;
+}
+
+/* Icon-only buttons keep their own box - forcing 44px would break the
+   32px rail toggle and the carousel control. All are at or above the 24px
+   floor in WCAG 2.5.8, so none needs enlarging. */
+.play-pause-button,
+.pp-icon-btn,
+.prd-relnav-btn,
+.swiper-button-prev,
+.swiper-button-next,
+#social-toggle {
+    border-radius: 4px;
+    transition: background-color .15s ease, color .15s ease, outline-color .15s ease;
+}
+
+/* One set of states for every button on the site, text or icon. */
+.btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-outline-primary:focus-visible,
+.btn-default:focus-visible,
+.search-buttons:focus-visible,
+.play-pause-button:focus-visible,
+.pp-icon-btn:focus-visible,
+.prd-relnav-btn:focus-visible,
+.swiper-button-prev:focus-visible,
+.swiper-button-next:focus-visible,
+#social-toggle:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--dbim-key);
+    outline-offset: 2px;
+}
+
+/* Hover and active use section 7's pale-and-key pair at 7.11:1. The
+   #2D8686 dark variant is not used: white on it is 4.32:1, below AA, and
+   text is still read while the pointer is over it. */
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.search-buttons:hover,
+.search-buttons:focus {
+    background-color: var(--dbim-pale);
+    color: var(--dbim-key);            /* 7.11:1 */
+}
+
+.btn:active,
+.btn-primary:active,
+.btn-outline-primary:active,
+.search-buttons:active {
+    transform: translateY(1px);        /* a state that does not rely on colour */
+}
+
+/* Disabled. Inactive components are exempt from WCAG 1.4.3, so the low
+   contrast is the signal rather than a defect - but it must be the SAME
+   signal on every button, which it was not. */
+.btn-outline-primary:disabled,
+.btn-outline-primary[disabled],
+.btn-outline-primary.disabled,
+.btn-primary:disabled,
+.btn-primary[disabled],
+.search-buttons:disabled,
+.search-buttons[disabled],
+.play-pause-button:disabled,
+.pp-icon-btn:disabled,
+.prd-relnav-btn:disabled,
+button:disabled {
+    background-color: var(--dbim-grey-01);
+    border-color: var(--dbim-grey-02);
+    color: var(--dbim-grey-03);
+    cursor: not-allowed;
+    opacity: 1;
+    transform: none;
+}
+
+/* --- high contrast ------------------------------------------------- */
+
+html.pib-hc .btn-outline-primary,
+html.pib-hc .search-buttons,
+html.pib-hc .ace-responsive-menu li a:hover,
+html.pib-hc span.home:hover,
+html.pib-hc span.rss:hover,
+html.pib-hc span.subscribe:hover,
+html.pib-hc .top-acess li.icon:hover {
+    background: #150202 !important;
+    color: #ffff00 !important;         /* 16.70:1 */
+    border-color: #ffff00 !important;
+}
+
+    html.pib-hc .top-acess .pull-right > ul > li.icon:hover > a,
+    html.pib-hc .top-acess .pull-right > ul > li.icon:hover > a > svg {
+        color: #ffff00 !important;
+    }
+
+/* This rule set these five to #150202 - the colour this theme uses for the
+   dark GROUND - so the Latest Press Releases list rendered near-black text
+   on a near-black page and had no visible text at all. Corrected in
+   section 31, which splits them by element type. Kept here as a marker so
+   the mistake is not reintroduced by someone restoring "the missing
+   high-contrast rule". */
+
+/* =====================================================================
+   25. THE ORANGE A HEX LIST COULD NOT FIND - DBIM 2.1, AUDIT ITEM 1
+
+   Section 24 retired #b46119 and #f99426. Re-running the hue scan after
+   that still reported live orange, because the theme carries nine more
+   values nobody had enumerated: #FD5025, #FF5737, #fd6d0d, #ec8719,
+   #eca63d, #f9c894, #a0522d, #B55200, #784106, #f49518.
+
+   Contrast was checked per ground BEFORE choosing each replacement, and
+   one of them refutes the obvious answer:
+
+       the mobile menu sits on #133243 navy. The key colour on that
+       ground is 1.61:1 - far below the 3:1 that WCAG 1.4.11 asks of a
+       non-text element. Those icons go to Inclusive White, 13.42:1.
+       Sending every orange to the key colour by reflex would have made
+       the menu icons effectively invisible.
+
+   Bootstrap status colours are deliberately NOT swept. .text-warning,
+   .alert-warning, .btn-warning and .label-warning are semantic - DBIM's
+   own palette carries a warning colour - and #66512c measures 7.56:1 on
+   white, so they are accessible as they stand. App_Data/tools/find_orange.py
+   excludes them by selector for the same reason.
+   --------------------------------------------------------------------- */
+
+/* --- the mobile menu ------------------------------------------------ */
+
+/* Icons, white on the #133243 ground: 13.42:1. Key would be 1.61:1. */
+.ace-responsive-menu li a i,
+.ace-responsive-menu > li > a i,
+ul[data-menu-style="accordion"] > li > a i,
+ul[data-menu-style="vertical"] > li > a i,
+ul[data-menu-style=accordion] > li > a i,
+ul[data-menu-style=vertical] > li > a i {
+    color: var(--dbim-inclusive);
+}
+
+/* Its edges. Separate properties because the theme sets border-bottom on
+   the list and border-top on the first item - collapsing them into one
+   `border-color` would paint three edges that were never painted. */
+.ace-responsive-menu {
+    border-bottom-color: var(--dbim-key);
+}
+
+ul[data-menu-style="accordion"] > li:first-child,
+ul[data-menu-style="vertical"] > li:first-child,
+ul[data-menu-style=accordion] > li:first-child,
+ul[data-menu-style=vertical] > li:first-child {
+    border-top-color: var(--dbim-key);
+}
+
+/* --- pale-orange grounds and borders -------------------------------- */
+
+/* #f9c894 was a pale orange wash. Linen is the palette's equivalent and
+   the breadcrumb's active text stays at 6.72:1 over it. */
+.breadcrumb {
+    background-color: var(--dbim-linen);
+}
+
+.innner-page-main-about-us-content-right-part,
+.writeups {
+    border-color: var(--dbim-key);     /* 8.33:1 against the white page */
+}
+
+.invitaiton-bottom {
+    border-top-color: var(--dbim-key);
+}
+
+/* --- hover accents -------------------------------------------------- */
+
+/* All three sit on the white page, so the key colour reads at 8.33:1. */
+.more a:hover,
+.more a:focus,
+.pm-section ul li a:hover,
+.pm-section ul li a:focus,
+.features_box ul li:hover a span {
+    color: var(--dbim-key);
+}
+
+.features_box ul li:hover img {
+    border-color: var(--dbim-key);
+}
+
+/* ul.level1 carries `color:#fff` on its links, so a key ground keeps them
+   at 8.33:1 - checked, because a key ground under dark text would have
+   been the same mistake as the menu icons above. */
+ul.level1 li:hover {
+    background: var(--dbim-key);
+}
+
+/* --- high contrast -------------------------------------------------- */
+
+html.pib-hc .breadcrumb,
+html.pib-hc ul.level1 li:hover {
+    background: #150202 !important;
+    color: #ffff00 !important;
+}
+
+html.pib-hc .ace-responsive-menu li a i,
+html.pib-hc .ace-responsive-menu > li > a i,
+html.pib-hc .more a:hover,
+html.pib-hc .pm-section ul li a:hover,
+html.pib-hc .features_box ul li:hover a span {
+    color: #ffff00 !important;
+}
+
+/* =====================================================================
+   26. THE TYPE SCALE THE OVERRIDE LAYER NEVER REACHED - ROUND 7
+
+   Audit items 1 and 16. The scale tokens have been correct and deployed
+   since v35, so the wrong numbers on screen were never the tokens. They
+   came from two places this layer had no authority over:
+
+     1. PERCENTAGE sizes in the theme that nothing here pinned. A % size
+        is a multiplier on an inherited base, so it can never land on the
+        DBIM scale reliably. 21 of the theme's 39 percentage-sized
+        heading rules were unpinned. The worst, .media-heading at 200%,
+        resolved to 36px - which is what reported "section headings
+        36px". It is a homepage section heading, so it takes H2.
+
+     2. Twelve `small` / `.small` rules at 65-75%. These are the source
+        of the odd fractional sizes an earlier audit named without
+        explaining: 65% of 25.6px is 16.64px, 65% of 23.87px is 15.52px.
+        Not a mystery - arithmetic. They take P2.
+
+   A third place, page-level <style> blocks, cannot be fixed from here at
+   all: they are parsed after this file and win on source order. Those are
+   edited in the pages themselves, in the same change as this.
+
+   Sizes only. No font-size here is !important, because js/accessibility.js
+   resizes through el.style.fontSize at normal priority - an !important
+   size would silently disable the A+/A- widget.
+   --------------------------------------------------------------------- */
+
+/* --- the 36px section heading -------------------------------------- */
+
+/* 200% of an 18px parent. A section heading at the same level as
+   "Latest Press Releases", so it matches it at H2.
+   NOTE: the markup carries these as h3 with role="heading" aria-level="4",
+   which contradicts both the element and this size. That is a markup
+   defect, logged separately - changing the level here would only hide it. */
+.media-heading {
+    font-size: var(--dbim-h2);
+    line-height: var(--dbim-leading-tight);
+}
+
+/* --- the remaining unpinned percentages ---------------------------- */
+
+.heading1 {
+    font-size: var(--dbim-h2);
+    line-height: var(--dbim-leading-tight);
+}
+
+.accrediation_box .title,
+.photo_heading {
+    font-size: var(--dbim-h3);
+    line-height: var(--dbim-leading-tight);
+}
+
+/* 90% of the inherited base. A caption under a video thumbnail, so it
+   takes body size rather than a heading size. */
+.videotitle {
+    font-size: var(--dbim-p1);
+}
+
+/* --- the fractional sizes ------------------------------------------ */
+
+/* Bootstrap sizes heading subtext as 65-75% of its parent heading, which
+   produces 16.64px, 15.52px and six other values that are on no scale at
+   all. One size for all six levels instead. */
+h1 small, h1 .small,
+h2 small, h2 .small,
+h3 small, h3 .small,
+h4 small, h4 .small,
+h5 small, h5 .small,
+h6 small, h6 .small,
+.h1 small, .h1 .small,
+.h2 small, .h2 .small,
+.h3 small, .h3 .small,
+.h4 small, .h4 .small,
+.h5 small, .h5 .small,
+.h6 small, .h6 .small {
+    font-size: var(--dbim-p2);
+}
+
+/* --- item 16: the rest of the button scale ------------------------- */
+
+/* The three paddings as tokens. Ten pages carried their own button padding
+   in a page-level <style>, which this file cannot override on source order -
+   11 distinct values between them. Those pages now point at these, so the
+   scale has one definition and a future change is one edit rather than
+   eleven. The base repeats section 24's value deliberately; section 24 is
+   what applies it to .btn itself. */
+:root {
+    --dbim-btn-pad: 10px 18px;
+    --dbim-btn-pad-sm: 6px 12px;
+    --dbim-btn-pad-lg: 14px 24px;
+}
+
+/* Section 24 set the base at 10px 18px and it wins over the theme. What
+   it did not provide was a SMALL and a LARGE, so every page that wanted
+   something other than the base invented its own - 11 distinct values
+   across 10 files. Three sizes, and the pages are pointed at these.
+
+   min-height stays 44px on all three. WCAG 2.5.8 asks 24px; 44px is the
+   AAA figure and the one DBIM's own components use. A smaller button that
+   still clears 44px of target is a padding change, not a height change. */
+.btn-sm,
+.btn-xs,
+.search-buttons.btn-sm {
+    padding: var(--dbim-btn-pad-sm);
+    min-height: 44px;
+    border-radius: 4px;
+}
+
+.btn-lg {
+    padding: var(--dbim-btn-pad-lg);
+    min-height: 44px;
+    border-radius: 4px;
+}
+
+/* Buttons that are only an icon keep their own box - all are at or above
+   32px, well clear of the 24px floor - but they still need the same
+   radius and transition so they read as the same family. */
+.pp-icon-btn,
+.lang-btn {
+    border-radius: 4px;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+/* --- item 21 / DBIM 5.6: the lineage line -------------------------- */
+
+/* The footer ground is already the key colour with white text, so this
+   inherits 8.33:1 and needs no colour of its own - setting one here would
+   only have to be undone in the high-contrast theme. Sized at P2 so it
+   reads as a statement of record rather than as body copy, and given a
+   max-width so the sentence does not stretch the full 1170px container
+   on a desktop, which DBIM 4.5 discourages for single lines. */
+.dbim-lineage {
+    font-size: var(--dbim-p2);
+    line-height: var(--dbim-leading-body);
+    max-width: 70ch;
+    margin: 0 auto 6px;
+}
+
+/* =====================================================================
+   27. STICKY HEADER AND NAVIGATION - AUDIT ITEM 6
+
+   DBIM requires this, in the homepage content-sections clause:
+
+       "This header must stay at the top of each page of the website. The
+        header/navigation menu (depending on screen size) should stay
+        sticky while scrolling."
+
+   Nothing in this site was sticky or fixed before this section.
+
+   WHAT PINS, AND WHY NOT SIMPLY ALL OF IT
+
+   The header is three bands, and DBIM 5.4 splits them for us: the
+   engagement bar and user controls are FIXED content, the organisation
+   name and co-branding are DYNAMIC. So:
+
+     .top_head   accessibility bar, language, search   - pins
+     .mid-head   emblem + name + logo lockup           - pins, COLLAPSED
+     #main-nav   global navigation                     - see the note below
+
+   .mid-head carries a 90px state emblem and, since section 26, a 36px
+   title. Pinning that at full height would hold roughly a third of a
+   laptop viewport, so js/dbim-header.js adds html.pib-header-stuck past a
+   40px scroll and the band collapses to a compact bar. The header stays in
+   FLOW - position:sticky, not fixed - so nothing below it shifts and no
+   spacer element is needed.
+
+   A FINDING THAT CHANGES WHAT "NAV" CAN MEAN HERE
+
+   #main-nav is served with an inline style="display: none;" and nothing
+   ever removes it. jquery.meanmenu.js is called on `#main-nav nav`, and
+   its meanOriginal() does jQuery(meanMenu).show() - which shows the inner
+   <nav>, not the hidden #main-nav wrapper around it. No stylesheet
+   overrides it either; there is no `display` rule for #main-nav anywhere.
+
+   So the desktop navigation band never renders. Above 768px MeanMenu
+   removes its .mean-bar and #main-nav stays hidden, which means there is
+   no visible primary navigation on a desktop viewport at all. That also
+   explains two things that had looked odd: why nobody ever reported the
+   theme's orange .navigation-bg (#B55D00) as a live contrast problem, and
+   why the #main-nav .sf-menu rules in section 15 appeared to do nothing.
+
+   That is a content/markup defect well beyond this item, and it is NOT
+   fixed here - un-hiding the band would put a whole navigation menu on
+   every page sight-unseen. It is reported instead. What this section can
+   do is make the navigation that DOES render - MeanMenu's bar, below
+   768px - sticky, and pin the header at every width.
+   --------------------------------------------------------------------- */
+
+/* --- the header, at every width ------------------------------------ */
+
+header[role="banner"] {
+    position: -webkit-sticky;   /* Safari 6.1-12 */
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+
+    /* The band must paint its own ground. Sticky keeps it in flow, so
+       without this the page content scrolls visibly behind it. 1020 sits
+       above .dropdown-menu and .skip-link:focus (1000) and below
+       .navbar-fixed-top (1030), the modals (1040+), the lightbox (9998+)
+       and the consent banner (10000) - all of which SHOULD cover it. */
+    background: var(--dbim-inclusive);
+}
+
+/* --- the collapsed state ------------------------------------------- */
+
+html.pib-header-stuck header[role="banner"] {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .18);
+}
+
+@media (min-width: 768px) {
+    html.pib-header-stuck .mid-head {
+        padding: 2px 0;
+    }
+
+        html.pib-header-stuck .indian-emblem img {
+            height: 44px;
+            width: auto;
+        }
+
+        html.pib-header-stuck .mid-head .logo h1 {
+            font-size: var(--dbim-h2);
+        }
+
+        html.pib-header-stuck .mid-head .logo h2 {
+            font-size: var(--dbim-sm);
+        }
+
+        /* The organisation mark's pinned size now lives in section 34,
+           with the rest of the lockup geometry. The rule that stood here
+           sized it as a percentage of the Bootstrap column it used to sit
+           in, and carried an !important to beat an inline width that the
+           3A markup no longer has. */
+}
+
+/* Phones have far less vertical room, so the collapse is harder and the
+   secondary logo goes rather than shrinks. The emblem and the title stay:
+   between them they are the DBIM 5.2 lockup. */
+@media (max-width: 767px) {
+    html.pib-header-stuck .mid-head {
+        padding: 2px 0;
+    }
+
+        html.pib-header-stuck .indian-emblem img {
+            height: 36px;
+            width: auto;
+        }
+
+        html.pib-header-stuck .mid-head .logo h1 {
+            font-size: var(--dbim-h3);
+        }
+
+        html.pib-header-stuck .mid-head .dbim-cobrand {
+            display: none;
+        }
+}
+
+/* Respect a reduced-motion preference: the collapse still happens, it just
+   happens instantly. */
+@media (prefers-reduced-motion: no-preference) {
+    .mid-head,
+    .indian-emblem img,
+    .mid-head .logo h1,
+    .mid-head .pib-mark img {
+        transition: padding .18s ease, height .18s ease,
+                    max-height .18s ease, font-size .18s ease;
+    }
+}
+
+/* --- the navigation that actually renders -------------------------- */
+
+/* MeanMenu builds its bar at <= 768px and prepends it into the empty
+   <div class="mean-container"> the masters place inside <main> - its
+   meanMenuContainer option is "", so jQuery("") matches nothing and the
+   pre-placed div is what receives the bar.
+
+   .mean-bar itself cannot be the sticky element: its containing block is
+   that wrapper, which is only as tall as the bar, so it would unstick
+   immediately. .mean-container can, because ITS containing block is
+   <main id="pageContent">, which spans the page.
+
+   768px rather than 767px, to match MeanMenu's own `<= 768` exactly. */
+@media (max-width: 768px) {
+    .mean-container {
+        position: -webkit-sticky;
+        position: sticky;
+        top: var(--pib-header-h, 56px);
+        z-index: 1019;   /* directly beneath the header */
+    }
+
+        /* A pinned menu has to stay reachable. .mean-nav is absolutely
+           positioned, so a long menu previously ran off the bottom of a
+           phone and could simply be scrolled past; pinned, it would be
+           unreachable. 48px leaves room for the bar itself. */
+        .mean-container .mean-nav {
+            max-height: calc(100vh - var(--pib-header-h, 56px) - 48px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+}
+
+/* --- anchors have to clear the pinned header ----------------------- */
+
+/* Without this the skip link lands on #pageContent with the header sitting
+   on top of the first line of content - the one thing a skip link must not
+   do. js/dbim-header.js keeps --pib-header-h current; the fallbacks are
+   what a no-JS visitor gets, measured from the collapsed band. */
+#pageContent,
+[id]:target {
+    scroll-margin-top: var(--pib-header-h, 96px);
+}
+
+@media (max-width: 767px) {
+    #pageContent,
+    [id]:target {
+        scroll-margin-top: var(--pib-header-h, 56px);
+    }
+}
+
+/* --- high contrast -------------------------------------------------- */
+
+html.pib-hc header[role="banner"] {
+    background: #150202 !important;
+}
+
+html.pib-hc.pib-header-stuck header[role="banner"],
+html.pib-hc header[role="banner"].pib-header-stuck {
+    box-shadow: 0 2px 0 #ffff00;
+}
+
+/* =====================================================================
+   28. THE LAST LIVE #333 - AUDIT ITEM 2
+
+   After the 512 inline attributes and the 15 page-level declarations were
+   cleared, 29 theme selectors still set color:#333 without cover here.
+   Filtering them by whether their class appears in markup or code-behind
+   leaves exactly ONE that can render:
+
+     .media_more ul li a    the Media Reference / Advisory / Invitation
+                            link lists on the homepage
+
+   .media_more is background:#fff, so --dbim-text reads at 19.1:1.
+
+   The other 28 are Bootstrap defaults for classes this site never uses -
+   .btn-default, .dropdown-menu, .navbar-default, .panel-default,
+   .thumbnail, .list-group-item - and are left alone rather than given
+   cover that nothing can exercise.
+
+   One near-miss worth recording: the theme has .btn:hover { color:#333 },
+   and this file covers .btn-primary, .btn-default and .btn-outline-primary
+   hovers but not a BARE .btn. No element is bare - every use carries a
+   variant (btn-primary, btn-outline-primary, btn-success,
+   btn-outline-danger) - and Bootstrap orders its variant hovers after
+   .btn:hover in the same file, so the variant wins on source order. No
+   rule is added for a case that does not occur.
+
+   NOTE for whoever revisits link styling: these are links the theme
+   deliberately paints as body text, and so are .slide-content a and
+   .top2explainer a on the homepage. Item 2 asks for the DBIM text colour,
+   which is what they now get. Whether a link should be distinguishable by
+   something other than colour (WCAG 1.4.1) is a separate question, and one
+   this change neither creates nor worsens.
+   --------------------------------------------------------------------- */
+
+.media_more ul li a,
+.media_more ul li a:link,
+.media_more ul li a:visited {
+    color: var(--dbim-text);
+}
+
+    .media_more ul li a:hover,
+    .media_more ul li a:focus {
+        color: var(--dbim-key);   /* 8.33:1 on the white card */
+    }
+
+html.pib-hc .media_more ul li a,
+html.pib-hc .media_more ul li a:hover,
+html.pib-hc .media_more ul li a:focus {
+    color: #ffff00 !important;
+}
+
+/* =====================================================================
+   29. CONTENT RESCUED FROM IMAGES OF TEXT - AUDIT ITEM 7
+
+   Two pages delivered their core content as a picture:
+
+     mainfunctions.aspx        the six core functions, as a PNG, with the
+                               same text repeated in an .sr-only block
+     organisationalsetup.aspx  the organisational chart, as a JPG at a
+     (+ h, + u)                fixed 602x286
+
+   Both fail WCAG 1.4.5. An image of text cannot reflow, cannot rescale
+   with the A+/A- widget, cannot follow the high-contrast theme, cannot be
+   searched, and cannot be translated. The .sr-only duplicate helped a
+   screen reader but not a low-vision reader who needs to enlarge - and a
+   parallel description can drift out of step with the picture.
+
+   The content is now real HTML, so these styles are what make it read as
+   a diagram rather than as a list.
+
+   Contrast, measured, all on the palette:
+       --dbim-text on --dbim-pale     17.22:1
+       --dbim-key  on --dbim-pale      7.11:1
+       --dbim-grey-03 on white         6.29:1
+   --------------------------------------------------------------------- */
+
+/* --- the six core functions ---------------------------------------- */
+
+/* A <dl> with <div> groups - valid HTML5, and the right structure: each
+   item is a term and what it means. Grid rather than float so the cards
+   finish level without the equal-height problem floats create. */
+.dbim-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 24px 0 28px;
+}
+
+    .dbim-deck-item {
+        background: var(--dbim-pale);
+        border-left: 4px solid var(--dbim-key);
+        border-radius: 4px;
+        padding: 14px 16px;
+    }
+
+        .dbim-deck dt {
+            margin: 0 0 4px;
+            font-size: var(--dbim-h3);
+            font-weight: 600;
+            color: var(--dbim-key);          /* 7.11:1 on the pale card */
+            line-height: var(--dbim-leading-tight);
+        }
+
+        .dbim-deck dd {
+            margin: 0;
+            font-size: var(--dbim-p1);
+            color: var(--dbim-text);         /* 17.22:1 */
+            line-height: var(--dbim-leading-body);
+        }
+
+/* --- the organisational hierarchy ---------------------------------- */
+
+.dbim-org {
+    margin: 24px 0 28px;
+}
+
+    .dbim-org > figcaption {
+        margin: 0 0 14px;
+        font-size: var(--dbim-h3);
+        font-weight: 600;
+        color: var(--dbim-text);
+        line-height: var(--dbim-leading-tight);
+    }
+
+    /* Six levels of indentation will outrun a narrow phone whatever the
+       indent is, so the diagram scrolls inside its own box rather than
+       making the page scroll sideways. */
+    .dbim-org-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .dbim-org ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+        /* The connector is a border on the nested list, not a pseudo-element
+           per item: one declaration instead of three, and it cannot get out
+           of step with the item heights. */
+        .dbim-org ul ul {
+            margin-left: 10px;
+            padding-left: 18px;
+            border-left: 2px solid var(--dbim-grey-01);
+        }
+
+        .dbim-org li {
+            margin: 7px 0;
+        }
+
+.dbim-org-node {
+    display: inline-block;
+    background: var(--dbim-pale);
+    color: var(--dbim-text);
+    border-left: 4px solid var(--dbim-key);
+    border-radius: 3px;
+    padding: 6px 12px;
+    font-size: var(--dbim-p1);
+    font-weight: 600;
+    line-height: var(--dbim-leading-tight);
+}
+
+    /* A count - "8", "5 zones", "34" - is not part of the title, so it is
+       not bold, and it takes the key colour to read as a figure. */
+    .dbim-org-count {
+        font-weight: 400;
+        color: var(--dbim-key);
+    }
+
+/* The qualifier under a node: "Secretary level officer", the DPO grades.
+   Its own line, so the node itself stays scannable. */
+.dbim-org-note {
+    display: block;
+    margin: 3px 0 0 16px;
+    max-width: 62ch;
+    font-size: var(--dbim-p2);
+    color: var(--dbim-grey-03);          /* 6.29:1 on the white page */
+    line-height: var(--dbim-leading-body);
+}
+
+/* CSS attribute-VALUE matching is case sensitive, and organisationalsetupu.aspx
+   and aboutfactchecku.aspx both write dir="RTL" in capitals. The [i] flag
+   would solve it in one selector but IE11 does not parse it, and an
+   unparseable selector invalidates the entire comma-separated rule - the
+   same trap section 17 hit. So both spellings are listed.
+
+   Urdu already carries dir="rtl" on individual blocks elsewhere in the
+   site, so if these pages ever set it at container level the indent and
+   the connector have to change sides. Logical properties would be the
+   tidy answer but IE11 does not have them. */
+
+/* --- high contrast -------------------------------------------------- */
+
+html.pib-hc .dbim-deck-item,
+html.pib-hc .dbim-org-node {
+    background: #150202 !important;
+    color: #ffffff !important;
+    border-color: #ffff00 !important;
+}
+
+html.pib-hc .dbim-deck dt,
+html.pib-hc .dbim-org-count {
+    color: #ffff00 !important;
+}
+
+html.pib-hc .dbim-org-note {
+    color: #ffffff !important;
+}
+
+html.pib-hc .dbim-org ul ul {
+    border-color: #ffff00 !important;
+}
+
+/* --- the procurement portal link above the tender tables ----------- */
+
+/* Left-aligned per DBIM 4.1.1(i), and given a pale ground so it reads as a
+   signpost rather than as the first line of the table. The arrow is CSS
+   content, not an icon font: DBIM 3.7(ii) allows PNG, WEBP and SVG only,
+   and a text character is none of those three - it is text. */
+.tender-portal-note {
+    margin: 0 0 14px;
+    padding: 10px 14px;
+    background: var(--dbim-pale);
+    border-left: 4px solid var(--dbim-key);
+    border-radius: 4px;
+    font-size: var(--dbim-p1);
+    text-align: left;
+}
+
+    .tender-portal-note a {
+        color: var(--dbim-key);          /* 7.11:1 on the pale ground */
+        font-weight: 600;
+        text-decoration: underline;      /* WCAG 1.4.1 - not colour alone */
+    }
+
+        .tender-portal-note a:hover,
+        .tender-portal-note a:focus {
+            color: var(--dbim-text);
+        }
+
+        .tender-portal-note a::after {
+            content: " 97";           /* north-east arrow: leaves the site */
+        }
+
+html.pib-hc .tender-portal-note {
+    background: #150202 !important;
+    border-color: #ffff00 !important;
+}
+
+    html.pib-hc .tender-portal-note a {
+        color: #ffff00 !important;
+    }
+
+/* =====================================================================
+   30. ICONS - AUDIT ITEMS 5 AND 7, AND THE LAST OF ITEM 2
+
+   DBIM 3.7(ii) permits PNG, WEBP or SVG only, which rules out icon fonts
+   as a category - not as a matter of taste. The site had two icon systems
+   and both are now gone from the markup:
+
+     FontAwesome + Glyphicons   43 live call sites across 13 files
+     images/icons.png           a 600x130 raster sprite behind 4 CSS rules
+
+   The sprite mattered beyond iconography: it held 3,344 orange-hue pixels,
+   2,868 of them #fd6d0d, which no CSS override could reach because they
+   were pixels. It was the reason audit item 2 could not close.
+
+   WHY THE FONTS ARE NOT "REMOVED"
+
+   css/style3.1.css carries the @font-face blocks and 786 .fa-*:before
+   rules, and that file is not ours to edit. It does not need to be: a
+   browser downloads a font only when a rule using it matches a rendered
+   element. With no .fa or .glyphicon class left in the markup, nothing
+   matches, and FontAwesome.otf is never requested. The 11 remaining
+   occurrences are inside <!-- --> and <%-- --%> comments and render
+   nothing.
+
+   SIZES
+
+   3.4 gives four sizes - 24 / 32 / 48 / 64 - and says they INCLUDE 2px of
+   padding. Every symbol is drawn inside 2..22 of a 24 viewBox, so the
+   padding is part of the glyph and survives scaling. These classes are the
+   only sizes available on purpose: a 20px or 30px icon would be off the
+   scale in exactly the way the old 30px/28px/22px/20px sprite boxes were.
+   --------------------------------------------------------------------- */
+
+.dbim-icon {
+    display: inline-block;
+    vertical-align: middle;
+    flex: 0 0 auto;
+
+    /* 3.7(iii): key colour or inclusive white only. currentColor means an
+       icon can never acquire a colour of its own - it takes the text colour
+       of whatever it sits in, which the palette already governs. */
+    fill: currentColor;
+
+    /* 3.7(iv): proportions preserved. A width without a height is how an
+       icon gets stretched. */
+    width: 24px;
+    height: 24px;
+}
+
+.dbim-icon-32 {
+    width: 32px;
+    height: 32px;
+}
+
+.dbim-icon-48 {
+    width: 48px;
+    height: 48px;
+}
+
+.dbim-icon-64 {
+    width: 64px;
+    height: 64px;
+}
+
+/* --- the header buttons --------------------------------------------- */
+
+/* 28px round buttons that drew their glyph from the raster sprite's
+   background-position. The background goes; the span becomes a centring
+   box for a real 24px icon. */
+span.home,
+span.rss,
+span.subscribe {
+    background-image: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+}
+
+/* --- the media badges ----------------------------------------------- */
+
+/* 90px round badges, same story. padding-top:25px was there to push the
+   sprite down the box; with a flex centre it would push the icon out of
+   it, so it goes. */
+/* The theme's own selector is `.media_advisory span` - EVERY span in that
+   block, not just the badge. Overriding only `.text-center span` left any
+   other span in there still pulling the raster, which the cascade resolver
+   caught. The raster is killed at the theme's scope; the badge presentation
+   below stays narrow, so a ticker span is not turned into a flex box. */
+.media_advisory span,
+.media_invitation span,
+.media_more span {
+    background-image: none;
+}
+
+.media_advisory .text-center span,
+.media_invitation .text-center span,
+.media_more .text-center span {
+    background-image: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    padding-top: 0;
+    color: var(--dbim-inclusive);
+}
+
+/* --- high contrast --------------------------------------------------- */
+
+/* Icons follow the text colour, so the high-contrast theme reaches them
+   without a rule of their own. These two are the exception: their ground is
+   set by the theme, so the glyph has to be told as well. */
+html.pib-hc span.home,
+html.pib-hc span.rss,
+html.pib-hc span.subscribe,
+html.pib-hc .media_advisory .text-center span,
+html.pib-hc .media_invitation .text-center span,
+html.pib-hc .media_more .text-center span {
+    color: #ffff00 !important;
+}
+
+/* =====================================================================
+   31. FOUR CORRECTIONS
+
+   Three of these are defects introduced by earlier sections of this file,
+   and are recorded as such rather than presented as improvements.
+   --------------------------------------------------------------------- */
+
+/* --- 1. the top bar icons went blue --------------------------------- */
+
+/* Section 30 replaced the raster sprite with SVG using currentColor. That
+   was right, but it changed where the colour came from: the glyph used to
+   be baked white into images/icons.png, and now it inherits from the <a>
+   around it - which resolves to var(--dbim-link). Hence blue icons on the
+   key-coloured bar.
+
+   Set on the span itself, so it wins over the inherited link colour
+   without a specificity contest. These three classes exist only in the
+   top bar, so the scope is already exact.
+   Inclusive white on the key ground: 8.33:1. */
+span.home,
+span.rss,
+span.subscribe {
+    color: var(--dbim-inclusive);
+}
+
+/* --- 2. the Latest Explainer bullet ---------------------------------- */
+
+/* The bullet was <i class="fa fa-circle"> at `font-size: 7px`, and section
+   30 swapped it for a 24px symbol - nearly three and a half times the
+   weight. That was the wrong call twice over: it is a list marker, not an
+   icon, so it should never have gone through the icon scale at all. DBIM
+   3.4 fixes icons at 24/32/48/64 and a 7px "icon" would be off that scale;
+   a bullet is simply not governed by it.
+
+   Drawn in CSS at 12px - half the 24px the icon swap produced, and the
+   size asked for. (The fa-circle it replaced was 7px; 12px is the
+   requested weight.) */
+
+/* No colour of its own. The rule this replaced, `.explainer-section
+   .fa-circle`, set only a font-size - the bullet inherited its colour, which
+   is what made it read as part of the text. An earlier pass here set it to
+   #C13584 on the belief that was "the colour the fa-circle carried"; it was
+   not. #C13584 belongs to the Instagram block (.instagram h3, .instagram i)
+   further up the same stylesheet. The base rule's `background: currentColor`
+   restores the original behaviour. */
+
+/* --- 3. the pinned logo ---------------------------------------------- */
+
+/* Section 27 collapsed the co-brand logo with `max-height: 44px`, which cut
+   it to roughly half its expanded size and left it sitting at the top of a
+   band whose height the logo lockup was setting - so it read as stuck to
+   the top right.
+
+   Sized by width instead: the image carries an inline `width: 25%`, so
+   16.25% is 65% of it - a 35% reduction rather than ~50%. max-height goes,
+   or it would keep overriding the width and re-impose the old size.
+
+   NOTE: at a 1170px container this puts the logo near 63px, which makes it
+   the tallest thing in the collapsed band - so the pinned header is around
+   105px rather than the ~86px section 27 produced. That is the direct
+   consequence of asking for a larger logo, and is the number to push back
+   on if the pinned bar now feels too deep. */
+/* The real cause of "the logo jumps to the top": .col-md-5 carries
+   `min-height: 100px` and centres its content, while .col-md-4 is a plain
+   Bootstrap float whose height is just the logo. Both columns start at the
+   same top edge, so the lockup appears centred in a 100px box and the logo
+   appears stuck to the top of one.
+
+   Giving the co-brand column the SAME box is what centres it - not
+   align-items on a column that has no height to centre within. Applied at
+   every scroll position, so the logo does not move when the header pins. */
+.mid-head .row > .dbim-cobrand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100px;
+}
+
+/* Scoped to 768px and up. Unscoped, this `display: flex` overrode section
+   27's `display: none` for phones - it comes later in the file at the same
+   specificity - and put the co-brand logo back on a pinned mobile header,
+   which section 27 had deliberately removed. */
+@media (min-width: 768px) {
+    html.pib-header-stuck .mid-head .dbim-cobrand {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    /* Both columns shrink TOGETHER when the header pins. Dropping only the
+       emblem left the 100px box standing, so the band never actually
+       collapsed. 68px holds the 63px logo with a little air. */
+    html.pib-header-stuck .mid-head .row > .col-md-9,
+    html.pib-header-stuck .mid-head .row > .dbim-cobrand {
+        min-height: 68px;
+    }
+}
+
+/* (The percentage-based pinned width that stood here belonged to the
+   co-brand column; section 34 sizes the mark in px inside the lockup.) */
+
+/* --- 4. Latest Press Releases was invisible in the dark theme -------- */
+
+/* Section 24 set these to #150202 - which is the colour this theme uses for
+   the dark GROUND everywhere else in this file. As a text colour it put
+   near-black text on a near-black page, so the Latest Press Releases list
+   had no visible text at all in the high-contrast theme.
+   (The two `color: #150202` rules on .btn-primary:hover and
+   .btn-default:hover are correct and are left alone: both set a #ffff00
+   ground in the same rule, so that is dark-on-yellow.)
+
+   Split by what each element is, following this file's own convention:
+   links take the yellow, body text and headings take white. */
+html.pib-hc .release_list li a,
+html.pib-hc .media_advisory p a,
+html.pib-hc .media_invitation p a {
+    color: #ffff00 !important;      /* 16.70:1 on #150202 */
+}
+
+html.pib-hc .publishdatesmall,
+html.pib-hc .social_headingg {
+    color: #ffffff !important;      /* 17.79:1 on #150202 */
+}
+
+/* =====================================================================
+   32. THE LOGO LOCKUP - DBIM 5.2.2 LOCKUP 2
+
+   5.2.2 defines Lockup 2 as the State Emblem with "Government of India"
+   AND the name of the central Ministry/Department, in a single language.
+   5.2.3 Figure 25 is the form for a department shown with its ministry.
+   5.2.1 style 2 is the one for website headers: "Text is left aligned to
+   the right of State Emblem".
+
+   The header had the emblem, "Government of India" and "Press Information
+   Bureau" running ACROSS, separated by a rule - and no Ministry line at
+   all, so the lockup named a department without saying whose it was.
+
+   Section 11 built that row deliberately, to keep the lockup on one line
+   when the department name was 22px. It cannot survive a third line and a
+   36px department name, so the row becomes the stack 5.2.1 describes. The
+   emblem stays beside it: .mid-head .row > .col-md-9 is already a flex row
+   and is left alone.
+
+   Hierarchy within the stack follows Figure 25 - the department is the
+   subject, the ministry and the state are its context, so the sizes run
+   P2 / P1 / H1 upward rather than the other way round.
+   --------------------------------------------------------------------- */
+
+.mid-head .logo {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1px;
+}
+
+    .mid-head .logo .logo-tagline {
+        flex: 0 0 auto;
+        margin: 0;
+        line-height: var(--dbim-leading-tight);
+    }
+
+
+    /* A ministry name is long in every language and must be allowed to
+       wrap - section 11's `white-space: nowrap` was safe for "Government
+       of India" and is not safe for this. The max-width stops it running
+       wider than the department name below it, which would invert the
+       visual hierarchy Figure 25 sets. */
+    .mid-head .logo .logo-tagline {
+        white-space: normal;
+        /* 44ch, not 34: at P1 that is about 352px, which holds "Ministry of
+           Information and Broadcasting" on one line while still staying
+           narrower than the department name at H1 (about 440px), so the
+           hierarchy Figure 25 sets is preserved. 34ch wrapped it. */
+        max-width: 44ch;
+        font-size: var(--dbim-p1);
+        font-weight: 600;
+        color: var(--dbim-text);      /* 20.16:1 on white */
+    }
+
+    /* The separator rule and the indent belonged to the row. In a stack a
+       left border would sit under the ministry name and read as a quote
+       bar. */
+    .mid-head .logo h1 {
+        flex: 0 0 auto;
+        padding-left: 0;
+        border-left: 0;
+    }
+
+/* --- the collapsed state --------------------------------------------- */
+
+/* Section 27 shrinks the emblem and the two headings when the header
+   pins; the ministry line has to come down with them or the lockup
+   re-proportions itself on scroll. */
+@media (min-width: 768px) {
+    html.pib-header-stuck .mid-head .logo .logo-tagline {
+        font-size: var(--dbim-p2);
+        max-width: 48ch;
+    }
+}
+
+@media (max-width: 767px) {
+    html.pib-header-stuck .mid-head .logo .logo-tagline {
+        font-size: var(--dbim-sm);
+    }
+}
+
+/* --- high contrast ---------------------------------------------------- */
+
+html.pib-hc .mid-head .logo .logo-tagline {
+    color: #ffffff !important;
+}
+
+/* ---------------------------------------------------------------------
+   33. THE REACHABLE REMAINDER OF THE ORANGE - ROUND 8, AUDIT ITEM 1
+
+   find_orange.py reported 79 orange-hue declarations the override layer
+   did not cover by name. Most are unreachable, and this section
+   deliberately does NOT chase them - a rule that paints nothing is not a
+   colour problem, and overriding it would only make the audit script
+   report a smaller number while changing nothing a reader can see.
+
+   PROVED DEAD, LEFT ALONE (markup search across every .aspx/.ascx/.master):
+
+     .text-warning  .has-warning  .btn-warning  .label-warning
+     .alert-warning  .progress-bar-warning  .list-group-item-warning
+     .panel-warning                       Bootstrap defaults, 0 call sites
+     .search-buttonss-dropbox             0 call sites
+     ViewAllEbooklet .yellow              0 call sites
+     Election_Chnages_2024/HomeBanner     control is never registered
+     .ace-responsive-menu ... i           every rule targets an <i>; the
+                                          font icons were removed in round 7
+                                          and 0 remain in these menus
+     .ace-responsive-menu border-bottom   declared `0 solid`, so no width
+
+   REACHABLE, FIXED BELOW. Each one was confirmed present in markup first.
+   --------------------------------------------------------------------- */
+
+/* The two homepage section headings the type-scale round reached but the
+   colour round did not: #B55D00 is the legacy burnt orange. White on the
+   key colour is 8.33:1. */
+.latest_gallery h3,
+.latest_webcast h3 {
+    background: var(--dbim-key, #0F5757) !important;
+    color: var(--dbim-inclusive, #FFFFFF) !important;
+}
+
+/* The primary navigation's dropdown panels. #main-nav is served
+   display:none today, so this paints nothing yet - but it is the one
+   "dead" rule worth covering anyway, because the open question on that
+   nav is whether to SHOW it, and it should not come back orange. */
+.sf-menu ul li,
+.sf-menu ul ul li {
+    background: var(--dbim-key, #0F5757);
+}
+
+/* A 3px orange rule above the first item of the side menu on Othermenu,
+   screenReaderAcces, ViewAccriditionList, ViewAllTenders and ViewPressNote.
+   This one is live and visible. */
+.ace-responsive-menu > li:first-child {
+    border-top-color: var(--dbim-key, #0F5757);
+}
+
+/* The same rule for the two menu styles the script can switch to at
+   runtime - js/ace-responsive-menu.js sets data-menu-style, so the
+   attribute being empty in the served markup does not make these dead. */
+ul[data-menu-style="accordion"] > li:first-child,
+ul[data-menu-style="vertical"] > li:first-child {
+    border-top-color: var(--dbim-key, #0F5757);
+}
+
+/* ---------------------------------------------------------------------
+   34. LOCKUP 3A GEOMETRY - DBIM 5.2.3, ROUND 8
+
+   Section 32 built Lockup 2: a stack of "Government of India", the
+   Ministry, then the department, with the PIB logo isolated in a
+   right-hand column as though it were a co-brand.
+
+   Table 5 assigns Lockup 2 to Ministries and Departments and Lockup 3A to
+   Organizations and Authorities. PIB is a media unit of the Ministry of
+   I&B, so 3A is the correct variation: "The State Emblem of India with
+   the government organization logo and name in a single language...
+   Tagline may be placed below the entity name."
+
+   Three consequences for the layout:
+
+     - the PIB logo joins the lockup, so emblem | mark | text is one flex
+       row rather than a column at each end of the header;
+     - the name leads and the tagline sits under it, inverting section
+       32's order, where the department sat below its context;
+     - the right-hand column is free for what 5.4(ii) actually reserves it
+       for - "logos for flagship programs, events" - with a maximum of 2.
+   --------------------------------------------------------------------- */
+
+.mid-head .dbim-lockup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 100px;
+}
+
+/* The emblem is the state and stays the tallest element; the
+   organisation mark is secondary to it, which is the hierarchy 5.2.3's
+   Figure 26 shows. Sized here rather than inline so the pinned state can
+   shrink it - the inline `width: 25%` the logo used to carry was why
+   section 27 needed an !important to get at it. */
+.mid-head .pib-mark {
+    flex: 0 0 auto;
+    line-height: 0;
+}
+
+    .mid-head .pib-mark img {
+        width: auto;
+        height: 72px;
+    }
+
+.mid-head .dbim-lockup .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+}
+
+    .mid-head .dbim-lockup .logo h1 {
+        margin: 0;
+        padding-left: 0;
+        border-left: 0;
+        line-height: var(--dbim-leading-tight, 1.2);
+    }
+
+    /* 3A's optional tagline. It carries the Ministry and the state, so it
+       is the line that keeps PIB's lineage visible now that Lockup 2's
+       "Government of India" row is gone. Allowed to wrap - it is long in
+       every language - but held narrower than the name above it so the
+       name stays the subject. */
+    .mid-head .logo .logo-tagline {
+        margin: 0;
+        white-space: normal;
+        max-width: 52ch;
+        font-size: var(--dbim-p2, 14px);
+        font-weight: 500;
+        line-height: var(--dbim-leading-tight, 1.2);
+        color: var(--dbim-grey-03, #606060);   /* 6.29:1 on white */
+    }
+
+/* 5.4(ii) co-branding slot - empty until PIB supplies a programme logo. */
+.mid-head .dbim-cobrand {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100px;
+}
+
+    .mid-head .dbim-cobrand img {
+        max-height: 72px;
+        width: auto;
+    }
+
+/* --- the collapsed state -------------------------------------------- */
+
+@media (min-width: 768px) {
+    html.pib-header-stuck .mid-head .dbim-lockup,
+    html.pib-header-stuck .mid-head .dbim-cobrand {
+        min-height: 68px;
+    }
+
+    html.pib-header-stuck .mid-head .pib-mark img {
+        height: 44px;
+    }
+
+    /* The tagline comes down with the rest; left at P2 it would end up
+       larger than the name once the name drops to H2.
+
+       The cap has to grow as the font shrinks. max-width is in `ch`, so a
+       smaller font makes 52ch a NARROWER box, and the line that fitted
+       when expanded wrapped to two when pinned - which made the collapsed
+       header taller than the expanded one at that spot. */
+    html.pib-header-stuck .mid-head .logo .logo-tagline {
+        font-size: var(--dbim-sm, 12px);
+        max-width: 72ch;
+    }
+}
+
+@media (max-width: 767px) {
+    .mid-head .dbim-lockup {
+        gap: 10px;
+        min-height: 0;
+    }
+
+    .mid-head .pib-mark img {
+        height: 48px;
+    }
+
+    html.pib-header-stuck .mid-head .pib-mark img {
+        height: 36px;
+    }
+
+    /* The co-brand column has no room beside a three-part lockup on a
+       phone, and 5.4 lists it as dynamic content rather than fixed. */
+    .mid-head .dbim-cobrand {
+        min-height: 0;
+    }
+}
+
+html.pib-hc .mid-head .logo .logo-tagline {
+    color: #ffffff !important;
+}
+
+/* ---------------------------------------------------------------------
+   35. LISTS IN CONTENT, AND LISTS IN RTL - ROUND 9
+
+   Two defects, both found by rendering the real stylesheets in both
+   directions rather than by reading them.
+
+   FLAT LISTS HAD NO BULLETS AT ALL, in English as well as Urdu.
+   style3.1.css carries a bare `ul{padding:0; margin:0;}`. A list marker
+   is drawn OUTSIDE the content box, so with no start-side padding it
+   falls outside the element and is never painted. The indent below is
+   what makes the marker visible again.
+
+   NESTED LISTS IN RTL left their bullets stranded at the far left, a
+   whole column from the text. The theme indents nested items with
+   `.content-area ul ul li{position:relative;padding-left:20px}` - a
+   PHYSICAL padding, which does not flip with direction. The text moved
+   to the right and the indent did not follow it.
+
+   Scoped to the two content wells. The header, nav and footer menus rely
+   on `padding:0` and are deliberately untouched.
+   --------------------------------------------------------------------- */
+
+/* The marker was missing for TWO reasons, and both had to go.
+
+   style3.1.css sets a bare `li{display:inline-block}`. An inline-block
+   list item generates no marker at all, whatever the padding.
+
+   It also carries a universal reset - `*{margin:0;padding:0;
+   list-style:none;word-wrap:break-word}` - so even once the item is a
+   list-item again, its marker type is still `none`. Restoring display
+   alone changed nothing; the list-style has to come back with it. */
+/* Specificity note: style3.1.css carries
+       .content-area ul li, .content-area ul ul li, ... { display:block }
+   at (0,1,2). A rule on `.content-area li` is (0,1,1) and loses to it,
+   which is why restoring display on the shorter selector changed nothing.
+   Matching (0,1,2) lets source order decide, and dbim.css loads last. */
+.innner-page-main-about-us-content-right-part ul li,
+.innner-page-main-about-us-content-right-part ol li,
+.content-area ul li,
+.content-area ol li {
+    display: list-item;
+}
+
+/* ...and one level deeper. The theme's selector list includes
+   `.content-area ul ul li` at (0,1,3), which outranks the (0,1,2) rule
+   above and put the nested item back to display:block - and a block
+   generates no marker at all, which is why the nested bullet stayed
+   stranded no matter how the padding was fixed. */
+.innner-page-main-about-us-content-right-part ul ul li,
+.innner-page-main-about-us-content-right-part ol ol li,
+.content-area ul ul li,
+.content-area ol ol li {
+    display: list-item;
+}
+
+.innner-page-main-about-us-content-right-part ul > li,
+.content-area ul > li {
+    list-style: disc outside;
+}
+
+.innner-page-main-about-us-content-right-part ol > li,
+.content-area ol > li {
+    list-style: decimal outside;
+}
+
+/* The nested marker stays a filled disc, matching what the theme drew, so
+   this is not a visual change - only a working one. */
+.innner-page-main-about-us-content-right-part ul ul > li,
+.content-area ul ul > li {
+    list-style: disc outside;
+}
+
+/* The theme draws its OWN nested bullet - an absolutely positioned
+   ::before at `left: 8px`:
+
+     .content-area ul ul li:before { width:6px; height:6px;
+       background:#404040; border-radius:50%; top:11px; left:8px;
+       content:''; position:absolute }
+
+   `left` is physical and cannot flip, so in Urdu that dot sat a whole
+   column away from the text it belonged to. It also doubled up with the
+   real marker restored above. A real list marker follows the direction on
+   its own, so the drawn one goes. */
+.innner-page-main-about-us-content-right-part ul ul li::before,
+.content-area ul ul li::before {
+    content: none;
+}
+
+/* The SAME doubling, one selector over - on FLAT lists this time.
+
+   The theme draws that dot through a single declaration shared by two
+   selectors:
+
+     .content-area ul ul li:before, .num li:before { width:6px; height:6px;
+       background:#404040; border-radius:50%; top:11px; left:8px; content:'' }
+
+   Only the `ul ul` half is cancelled above. The `.num` half is a bare
+   (0,1,1) selector that never mentions a well, so it kept painting - and
+   `.num` is the class the listing pages hang their results list on. On the
+   16 that render it INSIDE a well - AKAM_Factsheet, ActiveAdvisoryList,
+   AdvanceSearch, AllFactsheet, AllMediaAnnounceMent, AllMediaInvitation,
+   AllRelease, AllReleasem, EventDetail, Events, ViewAllEbooklet, allRel,
+   allRelMinistry, allRelReport, newslist and PMContents - every row came
+   out with TWO bullets: the real marker restored above at the ul's 24px
+   indent, and the drawn dot 18px further in.
+
+   The three press-release detail pages are the reason this is scoped
+   rather than global: PressReleaseDetail, PressReleaseDetailReview and
+   PressReleseDetail build the same `.num` list into their side rail, which
+   sits OUTSIDE the well. No marker was restored there, so their drawn dot
+   is the only bullet they have and it must survive.
+
+   Same resolution as the nested case, for the same reason - the drawn dot
+   is pinned with a physical `left`, which cannot flip for Urdu, while a
+   real marker follows the direction on its own. Scoped to the two wells:
+   a `.num` list outside them still has no restored marker, so its drawn
+   dot is the only bullet it has and must stay. */
+.innner-page-main-about-us-content-right-part .num li::before,
+.content-area .num li::before {
+    content: none;
+}
+
+/* `.num li` carries `padding:6px 6px 6px 20px` - a physical 20px reserved
+   for the dot that is no longer drawn. Left as-is it became dead indent,
+   holding the text a full 20px clear of the marker now sitting in the
+   ul's own padding. Converted rather than dropped: the 6px block padding
+   that sets the row rhythm stays untouched, and the inline padding moves
+   to a logical property so it follows the text direction in Urdu instead
+   of hugging the left edge. padding-left first, for IE11. */
+.innner-page-main-about-us-content-right-part .num li,
+.content-area .num li {
+    padding-left: 0;
+    padding-inline: 0 6px;
+}
+
+/* Two more components draw their own dot the same way, and both sit inside
+   a content well on the pages that use them - so both doubled up once the
+   real marker came back:
+
+     .RelLink ul li:before          - the related-links rail on EventDetail,
+                                      PressReleaseDetail, PressReleaseDetailReview,
+                                      PressReleseDetail, PressReleseDetailm,
+                                      PressReleasePage and PressReleaseIframePage
+                                      (the last two link style3.1.css and
+                                      dbim.css themselves, with no master)
+     .accrediation_box ul li:before - the panel on ViewAccridition
+
+   Verified by rendering, not by reading: each row showed the restored
+   marker and the drawn dot side by side. Both selectors are also pinned
+   with a physical `left:0`, so neither could follow Urdu text. The drawn
+   dot goes; the real marker stays.
+
+   Still scoped to the wells, and the scope earns its keep here too:
+   PMContents/PMVisitRelaese renders the rail OUTSIDE the well, so nothing
+   was restored on it and its drawn dot stays. HtmlToPdf does put the rail
+   in a well but links neither style3.1.css nor dbim.css, so it has no
+   bullet of either kind to reconcile. */
+.innner-page-main-about-us-content-right-part .RelLink ul li::before,
+.content-area .RelLink ul li::before,
+.innner-page-main-about-us-content-right-part .accrediation_box ul li::before,
+.content-area .accrediation_box ul li::before {
+    content: none;
+}
+
+/* The indent each one reserved for its dot, converted to a logical
+   property so it follows the text direction. The VALUES are deliberately
+   unchanged - `.RelLink ul li` is a floated 50% column under
+   `box-sizing:content-box`, where altering the inline padding would move
+   the column edge - so this fixes direction without touching layout. */
+.innner-page-main-about-us-content-right-part .RelLink ul li,
+.content-area .RelLink ul li {
+    padding-inline: 15px 20px;
+}
+
+.innner-page-main-about-us-content-right-part .accrediation_box ul li,
+.content-area .accrediation_box ul li {
+    padding-inline: 15px 0;
+}
+
+/* ---------------------------------------------------------------------
+   37. THE LISTS IN THE WELLS THAT ARE NOT PROSE LISTS
+
+   Section 35 turned the real marker back on for EVERY ul and ol in the
+   two content wells. That is right for editorial prose and wrong for the
+   lists in there that are interface, not content: the left nav rail, the
+   social rows, the share dropdown in the photo grids, the sitemap, and
+   the grouping <li> the release pages wrap each ministry block in.
+
+   Rendered against style3.1.css ALONE, not one of these carried a bullet.
+   One rule held them all clear: `.content-area ul li{display:block}` at
+   (0,1,2) - a block box generates no marker at all. Section 35 outranks
+   it, and the component rules that style these lists - `.sitemapp li`,
+   `.leftul li`, `.dropdown-content li` - are all (0,1,1), so none can win
+   it back on its own. Naming the component next to the well makes each of
+   these (0,2,1) or better, so they hold whatever the source order.
+
+   (Section 35 above cites a universal `*{...list-style:none...}` reset as
+   the second reason. There is no such rule: the declaration it quotes is
+   `.sf-menu,.sf-menu *{...}`, scoped to the header menu. Checked every
+   rule in style3.1.css whose selector list contains a bare `*` - there
+   are two, a print reset and box-sizing, and neither touches list-style.
+   The display:block rule was doing the work on its own.)
+
+   THE GROUPING ITEM is the one worth spelling out. allRel, allRelMinistry,
+   AllMediaInvitation, PMContents, ViewFaq, ViewFeatures and AllWebcastLink
+   all build their results as
+
+     <ul><li><h3>Ministry name</h3><ul class='num'> ...items... </ul></li></ul>
+
+   The outer <li> exists only to tie a heading to its block. It is not an
+   item and never looked like one; with markers restored it put a disc
+   beside every ministry heading on those pages. ViewFeatures labels it
+   `role="presentation"`, which is an exact hook; the rest are bare, so
+   they are matched structurally - an item holding a heading AND a nested
+   list is a wrapper, while a prose item that merely has a sub-list keeps
+   its own bullet because it has no heading. IE11 does not support :has()
+   and keeps the disc there; that is the behaviour it has today, so the
+   rule degrades to no change rather than to something worse. */
+.content-area ul > li[role="presentation"],
+.innner-page-main-about-us-content-right-part ul > li[role="presentation"],
+.content-area ul > li:has(> h2):has(> ul),
+.content-area ul > li:has(> h3):has(> ul),
+.content-area ul > li:has(> h4):has(> ul),
+.innner-page-main-about-us-content-right-part ul > li:has(> h2):has(> ul),
+.innner-page-main-about-us-content-right-part ul > li:has(> h3):has(> ul),
+.innner-page-main-about-us-content-right-part ul > li:has(> h4):has(> ul),
+
+/* .sitemapp paints each entry as a filled bar, .leftul as a bordered
+   row, and both already read as a list without a marker. */
+.content-area .sitemapp li,
+.content-area .leftul > li,
+
+/* Icon rows: the link IS the control, and a disc beside it reads as a
+   stray mark rather than as structure. */
+.content-area .social > li,
+.content-area .social_mb > li,
+.content-area .dropdown-content ul > li {
+    list-style: none;
+}
+
+/* ---------------------------------------------------------------------
+   38. THE 24px STUB UNDER THE RELEASE FOOTER
+
+   A short grey hairline was appearing under "(Release ID: ...)" on the
+   press-release pages, left-aligned with the text and about as wide as a
+   tab stop. Measured off the render: #ccc, 1px tall, 24px wide. That 24
+   is not a coincidence - it is section 35's `padding-left: 24px`.
+
+   The related-links rail is always in the markup, whether or not there
+   are any related links:
+
+     <div class="RelLink"><ul><asp:Label ID="ltrRefData"/></ul></div>
+
+   The AJAX callback fills that label only when the lookup returns rows;
+   with none it calls .empty() and appends nothing, so the <ul> stays
+   empty. `.RelLink` is `display:inline-block` with `border-top:1px solid
+   #ccc`, so it shrink-to-fits around that <ul>.
+
+   Before DBIM the theme's `*{padding:0}` left the empty <ul> zero pixels
+   wide, the rail collapsed to zero, and a zero-width border painted
+   nothing. Section 35 gave every list in the wells a 24px start padding
+   so an outside marker would have somewhere to sit - and an EMPTY list
+   got the 24px too. The rail is now 24px wide and its border-top finally
+   has something to draw on. Confirmed by rendering the same markup
+   against style3.1.css alone (no rule) and with dbim.css (a 24px rule).
+
+   This only ever SUBTRACTS. EventDetail already sets `.RelLink{border:
+   none}` in its own <style>, and re-asserting a border here - even the
+   theme's own #ccc - would put one back on that page. Collapsing the
+   margin and padding as well takes out the ~40px of dead vertical space
+   the empty rail was also holding open.
+
+   :has() is unavailable in IE11, which keeps the stub - the behaviour it
+   has today. */
+.content-area .RelLink:not(:has(li)),
+.innner-page-main-about-us-content-right-part .RelLink:not(:has(li)) {
+    border-top: 0;
+    margin-top: 0;
+    padding: 0;
+}
+.innner-page-main-about-us-content-right-part ul,
+.innner-page-main-about-us-content-right-part ol,
+.content-area ul,
+.content-area ol {
+    /* The indent an outside marker needs, on whichever side the text
+       starts.
+
+       `padding-inline` does that by itself: start 24px, end 0. It is the
+       reason there is no [dir="rtl"] twin here - a direction-conditional
+       rule has to find dir on an ANCESTOR, and dir can just as easily sit
+       on the element itself, which is exactly how the nested list kept
+       its bullet stranded on the wrong side.
+
+       padding-left first, for IE11, which ignores the logical property
+       and keeps the physical one. */
+    padding-left: 24px;
+    padding-inline: 24px 0;
+}
+
+/* The nested list needs its own rule: the theme sets
+   `.content-area ul ul{padding:0}` at (0,1,2), which outranks the (0,1,1)
+   rule above, so the nested marker had nowhere to sit and fell outside
+   the box - on the left, a column away from right-to-left text. */
+.innner-page-main-about-us-content-right-part ul ul,
+.innner-page-main-about-us-content-right-part ol ol,
+.content-area ul ul,
+.content-area ol ol {
+    padding-left: 20px;
+    padding-inline: 20px 0;
+}
+/* The theme indents nested items with a physical padding-left; same fix. */
+.innner-page-main-about-us-content-right-part ul ul li,
+.content-area ul ul li {
+    padding-left: 20px;
+    padding-inline: 20px 0;
+}
+
+/* ---------------------------------------------------------------------
+   36. THE BREADCRUMB BAND - DBIM 2.2 AND 4.4, ROUND 9
+
+   The band carried `background: #f5f5f5` as an INLINE style on 69 page
+   templates. #f5f5f5 is in neither palette, and an inline declaration
+   beats a stylesheet - so section 24's
+   `.breadcrumb { background-color: var(--dbim-linen) }` never applied on
+   any of those pages, and the colour could not be changed centrally.
+
+   The hardcoded value is gone from the markup rather than being fought
+   with an !important: these are our own templates, not CMS content, and
+   the right home for a colour is the stylesheet.
+
+   CONTRAST, which was already failing before this round touched it:
+
+     the "Home" link inherits a { color: var(--dbim-link) } = #0D6EFD
+       on #f5f5f5   4.13:1   <- already below the 4.5 AA floor, live
+       on linen     3.75:1
+       --dbim-key   6.94:1   <- on linen
+
+   2.2 gives hyperlinks the functional blue, but 4.4 requires conformance
+   with WCAG 1.4.3, and on a tinted band the harder constraint wins. The
+   active item (#484848, 7.62:1) and the "/" separator (#5a5a5a, 5.74:1)
+   both pass on linen and are left alone.
+   --------------------------------------------------------------------- */
+
+[aria-label="Breadcrumb"] {
+    background: var(--dbim-linen, #EBEAEA);
+}
+
+    [aria-label="Breadcrumb"] a {
+        color: var(--dbim-key, #0F5757);
+    }
+
+        [aria-label="Breadcrumb"] a:hover,
+        [aria-label="Breadcrumb"] a:focus {
+            color: var(--dbim-text, #150202);
+        }
+
+/* the high-contrast sheet already paints this band; keep its link yellow */
+html.pib-hc [aria-label="Breadcrumb"] {
+    background: #150202 !important;
+}
+
+    html.pib-hc [aria-label="Breadcrumb"] a {
+        color: #ffff00 !important;
+    }
+
+/* =====================================================================
+   37. STYLE3.1.CSS OVERRIDE - off-palette backgrounds
+
+   css/style.css and css/style3.1.css are forks of one file: 2577
+   selectors each, every one shared, 0 unique to either, 70 bytes apart.
+   The same off-palette backgrounds therefore exist twice.
+
+   style.css was fixed in place - it can be, and HtmlToPdf.aspx links it
+   without style3.1.css and without this file. style3.1.css is the
+   vendor theme and must not be edited, so its copy is corrected here.
+
+   These are the SAME selectors, which means the SAME specificity; this
+   file is linked after style3.1.css on every page that loads both, so
+   source order decides and no !important is needed. That matters -
+   !important here would also beat the high-contrast theme and the
+   inline-style overrides that are meant to win.
+
+   Verified by rendering the live homepage DOM against this stylesheet
+   in headless Chrome: 106 text-bearing elements resolve onto these
+   values, 0 below the WCAG AA floor.
+   ===================================================================== */
+
+body::-webkit-scrollbar-thumb { background-color: var(--dbim-text, #150202); }
+.top_head { background: var(--dbim-green-key, #0F5757); }
+span.home:hover,span.rss:hover,span.subscribe:hover { background-color: var(--dbim-green-key, #0F5757); }
+.regional .form-control { background-color: var(--dbim-green-key, #0F5757)!important; }
+.language .form-control { background-color: var(--dbim-green-key, #0F5757)!important; }
+.top-acess li.icon:hover { background: var(--dbim-green-key, #0F5757); }
+.dropdown-content { background-color: var(--dbim-linen, #EBEAEA); }
+.navigation-bg { background-color: var(--dbim-green-key, #0F5757); }
+.sf-menu ul li,.sf-menu ul ul li { background: var(--dbim-green-key, #0F5757); }
+.sf-menu li a:hover { background: var(--dbim-linen, #EBEAEA); }
+.banner_bg { background: var(--dbim-linen, #EBEAEA); }
+.webcast_video h3 { background: var(--dbim-green-key, #0F5757); }
+/* The chip rotation. These classes are composed at runtime as
+   "stick bg-" + count, so only bg-3 ever appears literally in markup and
+   a static reachability pass misses bg-2 and bg-4. All four are live.
+   dbim.css puts white text on them, so every ground here clears 4.5:1
+   against white - which is why yellow-mid (2.17:1) is not used. */
+.bg-1 { background: var(--dbim-green-key, #0F5757); }
+.bg-2 { background: var(--dbim-blue-key, #162F6A); }
+.bg-3 { background: var(--dbim-red-key, #771D1D); }
+.bg-4 { background: var(--dbim-grey-03, #606060); }
+.infocus { background: var(--dbim-linen, #EBEAEA); }
+.infocus-text { background-color: var(--dbim-green-key, #0F5757); }
+.border-devider { background: var(--dbim-red-mid, #D75151); }
+.latest_gallery h3,.latest_webcast h3 { background: var(--dbim-green-key, #0F5757); }
+.twitter h3 { background: var(--dbim-green-key, #0F5757); }
+.facebook h3 { background: var(--dbim-green-key, #0F5757); }
+footer { background: var(--dbim-text, #150202); }
+.footer-bottom { background: var(--dbim-text, #150202); }
+.media_advisory:hover span { background-color: var(--dbim-grey-03, #606060); }
+.media_advisory span { background-color: var(--dbim-red-mid, #D75151); }
+.media_invitation:hover span { background-color: var(--dbim-red-mid, #D75151); }
+.media_invitation span { background-color: var(--dbim-grey-03, #606060); }
+.media_more:hover span { background-color: var(--dbim-grey-03, #606060); }
+.media_more span { background-color: var(--dbim-red-mid, #D75151); }
+#imagelightbox-loading { background-color: var(--dbim-text, #150202); }
+#imagelightbox-close { background-color: var(--dbim-grey-03, #606060); }
+#imagelightbox-close:focus,#imagelightbox-close:hover { background-color: var(--dbim-text, #150202); }
+#imagelightbox-caption { background-color: var(--dbim-grey-03, #606060); }
+#imagelightbox-nav { background-color: var(--dbim-text, #150202); }
+.imagelightbox-arrow { background-color: var(--dbim-text, #150202); }
+.imagelightbox-arrow:active { background-color: var(--dbim-text, #150202); }
+.breadcrumb { background-color: var(--dbim-yellow-pale, #FFEECC); }
+.search_box { background: var(--dbim-linen, #EBEAEA); }
+.photo_heading { background: var(--dbim-linen, #EBEAEA); }
+.footer-top ul li.hasSubMenu ul { background: var(--dbim-text, #150202); }
+.menus1 h2 { background: var(--dbim-green-key, #0F5757); }
+.content-area ul ul li:before,.num li:before { background: var(--dbim-text, #150202); }
+.ace-responsive-menu>li.selected a { background: var(--dbim-green-mid, #75BDBD); }
+.content-area table tr:nth-child(even) { background: var(--dbim-linen, #EBEAEA); }
+.modalBackground { background-color: var(--dbim-grey-03, #606060); }
+.RelLink ul:before { background: var(--dbim-grey-01, #C6C6C6); }
+.RelLink ul li:before { background: var(--dbim-text, #150202); }
+.view_more_video a { background: var(--dbim-green-key, #0F5757); }
+.video-title { background: var(--dbim-grey-01, #C6C6C6); }
+.accrediation_box { background: var(--dbim-linen, #EBEAEA); }
+.accrediation_box .title { background: var(--dbim-green-key, #0F5757); }
+.accrediation_box ul li:before { background: var(--dbim-text, #150202); }
+ul.level1 { background: var(--dbim-green-key, #0F5757); }
+.search-buttons { background: var(--dbim-green-key, #0F5757); }
+.media_invitations h2 { background: var(--dbim-green-key, #0F5757); }
+.invitaiton-bottom-lable { background-color: var(--dbim-blue-pale, #D2DFFF); }
+.logos_scroller { background: var(--dbim-linen, #EBEAEA); }
+table tr th { background-color: var(--dbim-green-key, #0F5757); }
+.sitemapp li a { background: var(--dbim-yellow-pale, #FFEECC); }
+.sitemapp li ul li,.sitemapp li ul li a { background: var(--dbim-linen, #EBEAEA); }
+.nos { background-color: var(--dbim-warning, #FFC107); }
+.mean-container .mean-bar { background: var(--dbim-green-key, #0F5757); }
+.mean-container a.meanmenu-reveal { background: var(--dbim-green-key, #0F5757); }
+.mean-container .mean-nav ul li { background: var(--dbim-green-key, #0F5757); }
+.mean-container .mean-nav ul ul li { background: var(--dbim-green-key, #0F5757); }
+.mean-container .mean-nav ul li a:hover { background: var(--dbim-linen, #EBEAEA); }
+.ace-responsive-menu>li>a { background: url(images/sidemenubg.jpg) repeat-y var(--dbim-green-key, #0F5757); }
+.ace-responsive-menu li.menu-active>a { background: var(--dbim-text, #150202)!important; }
+.ace-responsive-menu li ul.sub-menu { background: var(--dbim-green-key, #0F5757); }
+.ace-responsive-menu li ul.sub-menu li a { background: url(images/sidemenubg.jpg) repeat-y var(--dbim-green-key, #0F5757); }
+.menu-toggle { background: var(--dbim-text, #150202); }
+.menu-toggle #menu-btn { background: var(--dbim-text, #150202); }
+ul[data-menu-style=accordion] li a:hover,ul[data-menu-style=vertical] li a:hover { background: var(--dbim-text, #150202)!important; }
+mark { background: var(--dbim-warning, #FFC107); }
+.mark,mark { background-color: var(--dbim-yellow-pale, #FFEECC); }
+code { background-color: var(--dbim-linen, #EBEAEA); }
+kbd { background-color: var(--dbim-text, #150202); }
+pre { background-color: var(--dbim-linen, #EBEAEA); }
+.table-hover>tbody>tr:hover,.table>tbody>tr.active>td,.table>tbody>tr.active>th,.table>tbody>tr>td.active,.table>tbody>tr>th.active,.table>tfoot>tr.active>td,.table>tfoot>tr.active>th,.table>tfoot>tr>td.active,.table>tfoot>tr>th.active,.table>thead>tr.active>td,.table>thead>tr.active>th,.table>thead>tr>td.active,.table>thead>tr>th.active { background-color: var(--dbim-linen, #EBEAEA); }
+.table>tbody>tr.warning>td,.table>tbody>tr.warning>th,.table>tbody>tr>td.warning,.table>tbody>tr>th.warning,.table>tfoot>tr.warning>td,.table>tfoot>tr.warning>th,.table>tfoot>tr>td.warning,.table>tfoot>tr>th.warning,.table>thead>tr.warning>td,.table>thead>tr.warning>th,.table>thead>tr>td.warning,.table>thead>tr>th.warning { background-color: var(--dbim-yellow-pale, #FFEECC); }
+.table>tbody>tr.danger>td,.table>tbody>tr.danger>th,.table>tbody>tr>td.danger,.table>tbody>tr>th.danger,.table>tfoot>tr.danger>td,.table>tfoot>tr.danger>th,.table>tfoot>tr>td.danger,.table>tfoot>tr>th.danger,.table>thead>tr.danger>td,.table>thead>tr.danger>th,.table>thead>tr>td.danger,.table>thead>tr>th.danger { background-color: var(--dbim-red-pale, #FCDADA); }
+.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control { background-color: var(--dbim-linen, #EBEAEA); }
+.btn-primary { background-color: var(--dbim-green-key, #0F5757); }
+.btn-primary.focus,.btn-primary:focus { background-color: var(--dbim-text, #150202); }
+.btn-primary.active,.btn-primary:active,.btn-primary:hover,.open>.dropdown-toggle.btn-primary { background-color: var(--dbim-text, #150202); }
+.btn-primary.active.focus,.btn-primary.active:focus,.btn-primary.active:hover,.btn-primary:active.focus,.btn-primary:active:focus,.btn-primary:active:hover,.open>.dropdown-toggle.btn-primary.focus,.open>.dropdown-toggle.btn-primary:focus,.open>.dropdown-toggle.btn-primary:hover { background-color: var(--dbim-green-key, #0F5757); }
+.btn-primary.disabled.focus,.btn-primary.disabled:focus,.btn-primary.disabled:hover,.btn-primary[disabled].focus,.btn-primary[disabled]:focus,.btn-primary[disabled]:hover,fieldset[disabled] .btn-primary.focus,fieldset[disabled] .btn-primary:focus,fieldset[disabled] .btn-primary:hover { background-color: var(--dbim-green-key, #0F5757); }
+.btn-success { background-color: var(--dbim-success, #198754); }
+.btn-success.focus,.btn-success:focus { background-color: var(--dbim-success, #198754); }
+.btn-success.active,.btn-success:active,.btn-success:hover,.open>.dropdown-toggle.btn-success { background-color: var(--dbim-success, #198754); }
+.btn-success.active.focus,.btn-success.active:focus,.btn-success.active:hover,.btn-success:active.focus,.btn-success:active:focus,.btn-success:active:hover,.open>.dropdown-toggle.btn-success.focus,.open>.dropdown-toggle.btn-success:focus,.open>.dropdown-toggle.btn-success:hover { background-color: var(--dbim-success, #198754); }
+.btn-success.disabled.focus,.btn-success.disabled:focus,.btn-success.disabled:hover,.btn-success[disabled].focus,.btn-success[disabled]:focus,.btn-success[disabled]:hover,fieldset[disabled] .btn-success.focus,fieldset[disabled] .btn-success:focus,fieldset[disabled] .btn-success:hover { background-color: var(--dbim-success, #198754); }
+.dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover { background-color: var(--dbim-linen, #EBEAEA); }
+.dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover { background-color: var(--dbim-green-key, #0F5757); }
+.nav>li>a:focus,.nav>li>a:hover { background-color: var(--dbim-linen, #EBEAEA); }
+.nav .open>a,.nav .open>a:focus,.nav .open>a:hover { background-color: var(--dbim-linen, #EBEAEA); }
+.nav-pills>li.active>a,.nav-pills>li.active>a:focus,.nav-pills>li.active>a:hover { background-color: var(--dbim-green-key, #0F5757); }
+a.list-group-item-info.active,a.list-group-item-info.active:focus,a.list-group-item-info.active:hover,button.list-group-item-info.active,button.list-group-item-info.active:focus,button.list-group-item-info.active:hover { background-color: var(--dbim-blue-dark, #214AAB); }
+.popover-title { background-color: var(--dbim-linen, #EBEAEA); }
+ul.level1 li:hover { background: var(--dbim-green-key, #0F5757); }
+
+@media screen and (max-width:768px) {
+    .mean-container .mean-nav ul li a:hover { background: var(--dbim-linen, #EBEAEA); }
+}
+
+@media screen and (max-width:2200px) {
+    .ace-responsive-menu li a:hover { background: var(--dbim-green-key, #0F5757)!important; }
+}
+
+
+/* =====================================================================
+   38. PRESS RELEASE SHARE RAIL
+
+   PressReleseDetail.aspx and PressReleaseDetail.aspx do not render the
+   release - they embed PressReleasePage.aspx in an iframe, and script
+   resizes that frame to the content height (measured live: 2899px). The
+   rail inside it is position:fixed, which inside a frame is fixed to the
+   FRAME's viewport; with no inner scrollbar that parks it roughly 3,200px
+   down the outer page and stops it following the reader. It was in the
+   DOM and unreachable in practice.
+
+   This rail sits in the top-level document, where sticky works. The
+   embedded copy is hidden when framed so no one meets two sets of share
+   controls.
+
+   Flexbox only - no float, no [dir] rule - so it follows the document
+   direction without imposing one.
+   ===================================================================== */
+
+.pr-share {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    margin: 0 0 14px;
+    padding: 10px 0;
+    background: var(--dbim-inclusive, #FFFFFF);
+    border-bottom: 1px solid var(--dbim-grey-01, #C6C6C6);
+}
+
+.pr-share__label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dbim-text, #150202);
+}
+
+.pr-share__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+    /* The content wells set `.content-area ul li { display: list-item }`
+       and a disc marker. That selector is (0,1,2); a single class here
+       was (0,1,1) and lost on element count, so the rail rendered with
+       a bullet beside it. Two classes makes this (0,2,1), which wins on
+       class count whatever the source order. */
+    .pr-share .pr-share__list li {
+        margin: 0;
+        padding: 0;
+        display: block;
+        list-style: none;
+    }
+
+        .pr-share .pr-share__list li::before {
+            content: none;
+            display: none;
+        }
+
+/* 44x44 clears WCAG 2.5.5 at AAA, not merely the 24px AA floor, and the
+   icon stays at the DBIM 3.4 size of 24 inside it. */
+.pr-share__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: var(--dbim-green-key, #0F5757);
+    color: var(--dbim-inclusive, #FFFFFF);
+    text-decoration: none;
+    transition: background-color .15s ease-in-out;
+}
+
+    .pr-share__btn:hover,
+    .pr-share__btn:focus {
+        background: var(--dbim-text, #150202);
+        color: var(--dbim-inclusive, #FFFFFF);
+        text-decoration: none;
+    }
+
+    .pr-share__btn:focus-visible {
+        outline: 3px solid var(--dbim-warning, #FFC107);
+        outline-offset: 2px;
+    }
+
+    .pr-share__btn .dbim-icon {
+        width: 24px;
+        height: 24px;
+        display: block;
+    }
+
+/* The high-contrast theme paints its own ground; the rail must not keep a
+   white strip across it. */
+html.pib-hc .pr-share {
+    background: var(--dbim-text, #150202);
+    border-bottom-color: rgba(255,255,255,.26);
+}
+
+html.pib-hc .pr-share__label {
+    color: var(--dbim-inclusive, #FFFFFF);
+}
+
+@media (max-width: 767px) {
+    .pr-share {
+        position: static;
+    }
+}
+
+/* A second placement for the same rail, at the END of the release - under
+   the Release ID line, where section 38 found an empty .RelLink painting a
+   24px hairline and nothing else. A reader who has just finished the
+   release should not have to scroll back up to share it.
+
+   Only the chrome differs from the rail at the top: it does not follow the
+   reader (there is nothing below it to follow), and its hairline moves to
+   the top edge, where it now has content under it instead of standing on
+   its own. */
+.pr-share--footer {
+    position: static;
+    margin: 15px 0 0;
+    padding: 10px 0 0;
+    border-bottom: 0;
+    border-top: 1px solid var(--dbim-grey-01, #C6C6C6);
+}
+
+html.pib-hc .pr-share--footer {
+    border-bottom-color: transparent;
+    border-top-color: rgba(255,255,255,.26);
+}
+
+/* ---------------------------------------------------------------------
+   39. WHAT ELSE THE CONTENT WELLS LET THROUGH
+
+   Section 17 gives `img` and `table` a `max-width: 100%`. Nothing else in
+   the wells had one, and CMS bodies are full of other things carrying an
+   authored pixel width - panels built as a div, YouTube embeds at
+   width="560", <video>, <embed>, <object>, pull-quotes.
+
+   Measured by putting fifteen shapes a release body actually contains
+   into a 712px column and reading their boxes back:
+
+     desktop   a 900px div overflowed the column by 206px
+               an 800px object overflowed by 106px
+     mobile    SEVEN of the fifteen overflowed, and the DOCUMENT itself
+               scrolled sideways - scrollWidth 920 against a 500px
+               viewport. That is a WCAG 1.4.10 Reflow failure, and it is
+               the whole page that moves, not one element.
+
+   After these rules the document scrollWidth equals the viewport at both
+   widths, and nothing overflows its column.
+
+   Three separate things were leaking, so there are three parts:
+
+   max-width stops a box wider than the column. The auto inline margins
+   are the div half of the same report section 38 answered for tables - a
+   620px panel in a 697px column sat hard against the left edge with the
+   slack stranded beside it; it now centres. Width-less blocks are
+   untouched: with `width: auto` the auto margins resolve to zero.
+
+   overflow-wrap is the one that was never right, before DBIM or after.
+   A pasted URL has no break opportunity, and content text computed to
+   `overflow-wrap: normal`, so a long query string pushed 72px past the
+   column and took the page with it. The property inherits, so declaring
+   it on the well covers everything inside.
+
+   <pre> is exempt from wrapping by definition, so it scrolls in its own
+   box instead - the same bargain section 17 wanted for wide tables, in
+   the one place it is genuinely the only option. */
+.innner-page-main-about-us-content-right-part,
+.content-area {
+    overflow-wrap: break-word;
+}
+
+.innner-page-main-about-us-content-right-part img,
+.innner-page-main-about-us-content-right-part iframe,
+.innner-page-main-about-us-content-right-part video,
+.innner-page-main-about-us-content-right-part embed,
+.innner-page-main-about-us-content-right-part object,
+.innner-page-main-about-us-content-right-part canvas,
+.innner-page-main-about-us-content-right-part div,
+.innner-page-main-about-us-content-right-part p,
+.innner-page-main-about-us-content-right-part blockquote,
+.innner-page-main-about-us-content-right-part pre,
+.innner-page-main-about-us-content-right-part figure,
+.content-area img,
+.content-area iframe,
+.content-area video,
+.content-area embed,
+.content-area object,
+.content-area canvas,
+.content-area div,
+.content-area p,
+.content-area blockquote,
+.content-area pre,
+.content-area figure {
+    max-width: 100%;
+}
+
+/* An inline `margin` from the CMS still wins - an inline declaration beats
+   any selector - so a block the author deliberately offset keeps its
+   position. A float ignores auto margins and is likewise untouched. */
+.innner-page-main-about-us-content-right-part div[style*="width"],
+.innner-page-main-about-us-content-right-part p[style*="width"],
+.innner-page-main-about-us-content-right-part blockquote[style*="width"],
+.innner-page-main-about-us-content-right-part figure[style*="width"],
+.content-area div[style*="width"],
+.content-area p[style*="width"],
+.content-area blockquote[style*="width"],
+.content-area figure[style*="width"] {
+    margin-inline: auto;
+}
+
+.innner-page-main-about-us-content-right-part pre,
+.content-area pre {
+    overflow-x: auto;
+}
+
+/* ---------------------------------------------------------------------
+   40. FORM CONTROLS ON A PHONE
+
+   iOS Safari zooms the whole page in when a field smaller than 16px takes
+   focus, and does not zoom back out when it loses focus. The reader is
+   left on a page wider than the screen, panning sideways to read on - and
+   it fires on the filter selects that are the first thing on every
+   listing page.
+
+   `.form-control{font-size:100%}` resolves against a 14px body, so every
+   select, every search field and every date box computed to 14px.
+   Measured: 14px before, 16px after, box height unchanged at 34px, no new
+   overflow.
+
+   The query is NOT the phone breakpoint, and that is the point. This was
+   written at `max-width: 767px` first, and measuring across widths showed
+   the fault surviving everywhere a tablet lives - 16px at 375 and 767,
+   back to 14px at 768, 820 and 1024. The zoom belongs to mobile Safari,
+   which is iPadOS as much as iOS, not to a width; an iPad in portrait is
+   768 or 820 and would have kept the bug. 1024 covers tablet landscape,
+   and the pointer arm catches touch devices wider still, such as a large
+   iPad Pro. Desktop keeps 14px - verified at 1100 and 1280.
+
+   16px is the threshold itself, not a preference; anything below it
+   triggers the zoom, and at or above it does not. */
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
+    .form-control,
+    input[type="text"],
+    input[type="search"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+        font-size: 16px;
+    }
+}

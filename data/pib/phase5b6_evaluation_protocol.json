@@ -1,0 +1,28 @@
+{
+  "protocol_id": "model-b-pib-prospective-semantic-eval-v1",
+  "status": "frozen_prospective_protocol_not_yet_populated",
+  "frozen_at_utc": "2026-10-09T15:48:32Z",
+  "scope": "Source-attributed official PIB article relevance, multilabel event type, exact evidence spans, and date-role extraction. No price forecast or causal price effect is evaluated.",
+  "identity": {
+    "article_key": "source organization + immutable source identifier (PIB PRID); exact source URL when no identifier exists",
+    "revision_key": "article key + raw/source representation checksum",
+    "duplicate_grouping": "All revisions of one article key remain in one group. Exact body hashes group identical bodies. Near-identical normalized bodies with five-word-shingle Jaccard similarity >= 0.90 share an evaluation group. Grouping does not merge or delete source records."
+  },
+  "availability": {
+    "system_available_at": "first_seen_at_utc for earliest genuine local capture; manual import time is not publication time",
+    "publication_time": "Use only source-reported precision; date-only remains date-only and an unsupplied timezone remains unknown",
+    "historical_backtests": "Never expose an article as a feature before its first-seen timestamp, regardless of its historical publication date"
+  },
+  "article_review_labels": ["relevance: relevant|irrelevant|uncertain", "commodity relevance", "geographic relevance"],
+  "event_review_labels": ["zero or more categories from the checked-in EVENT_TAXONOMY", "exact source quotation per event", "normalized date plus semantic date role where supported"],
+  "exclusions": ["pending/unreviewed", "uncertain relevance", "source identity mismatch", "source checksum mismatch", "near-duplicate group leakage across any future split"],
+  "current_partition": {
+    "development_reused_acquired_through_utc": "2026-10-09T15:30:00Z",
+    "validation": "none; no human-reviewed gold labels exist",
+    "independent_test_starts_utc": "2026-10-10T00:00:00Z",
+    "test_rule": "Only articles first captured at or after the test start may enter a future test. Keep full duplicate/revision groups intact. Hide test labels from rule/model edits until the evaluation is reported. Any classifier, taxonomy, feature, or threshold change after viewing test outcomes invalidates that test and requires a new future cutoff.",
+    "currently_populated_test_articles": 0
+  },
+  "metrics": ["article relevance precision/recall/F1 with confusion counts", "human-reviewed publication-date extraction accuracy", "event-category micro and supported per-category scores", "exact evidence-span precision/recall/F1", "exact normalized date and role precision/recall/F1"],
+  "limitations": "Keyword rules are experimental. No human labels, model training, calibration, validation, or accuracy claims are present in this protocol's current dataset."
+}

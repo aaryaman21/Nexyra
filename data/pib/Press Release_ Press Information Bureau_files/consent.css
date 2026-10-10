@@ -1,0 +1,387 @@
+/* ---------------------------------------------------------------------
+   Cookie consent banner and preferences dialog - DBIM 3.0 section 7.6.
+
+   Loaded after accessibility.css so it can be overridden by the high
+   contrast sheet the same way the rest of the chrome is. The banner is
+   built by js/consent.js and only ever appears when there is no stored
+   decision, so nothing here is on screen for a returning reader.
+
+   DBIM 2.2 and the Toolkit checklist both require the cookie bar to use
+   the INCLUSIVE WHITE background from the functional palette. This file
+   originally used the site's footer greys, on the reasoning that the
+   palette was not adopted yet; it is adopted now, so the dark ground is
+   gone and every colour here comes from a palette variable.
+
+   Every pair below was computed, not chosen by eye:
+
+       body text      #150202 on white   20.16:1
+       secondary text #606060 on white    6.29:1
+       link           #0D6EFD on white    4.50:1  (AA exactly)
+       button         white on #0F5757    8.33:1
+       button hover   #0F5757 on #D9F2F2  7.11:1
+       focus outline  #150202 on white   20.16:1
+
+   The hover state deliberately does NOT use --dbim-dark (#2D8686): white
+   on it measures 4.32:1 and fails AA. Going paler instead of darker is
+   what keeps the state change legible.
+   --------------------------------------------------------------------- */
+
+#pibConsentBanner
+{
+    position: fixed;
+    /* DBIM 7.6.1 asks for the bottom of the page specifically. */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background: var(--dbim-inclusive, #FFFFFF);
+    color: var(--dbim-text, #150202);
+    border-top: 3px solid var(--dbim-key, #0F5757);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, .35);
+    padding: 16px 20px;
+}
+
+.pib-consent-inner
+{
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.pib-consent-copy
+{
+    flex: 1 1 420px;
+    min-width: 260px;
+}
+
+.pib-consent-title
+{
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dbim-text, #150202);
+    line-height: 1.3;
+}
+
+.pib-consent-text
+{
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--dbim-grey-03, #606060);
+}
+
+.pib-consent-link
+{
+    color: var(--dbim-link, #0D6EFD);
+    text-decoration: underline;
+}
+
+.pib-consent-actions
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+/* Every button is the same size and weight. Making "Accept" louder than
+   "Reject" turns a choice into a nudge, which is the thing consent is
+   supposed to prevent. */
+.pib-consent-btn
+{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 10px 18px;
+    min-width: 116px;
+    /* Comfortably past the 24px minimum target size. */
+    min-height: 44px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.pib-consent-btn-primary
+{
+    background: var(--dbim-key, #0F5757);
+    color: var(--dbim-inclusive, #FFFFFF);
+    border-color: var(--dbim-key, #0F5757);
+}
+
+.pib-consent-btn-secondary
+{
+    background: transparent;
+    color: var(--dbim-key, #0F5757);
+    border-color: var(--dbim-key, #0F5757);
+}
+
+.pib-consent-btn:hover,
+.pib-consent-btn:focus
+{
+    background: var(--dbim-pale, #D9F2F2);
+    color: var(--dbim-key, #0F5757);
+    border-color: var(--dbim-key, #0F5757);
+}
+
+/* The site sets a global :focus-visible outline. On the dark banner this
+   had to be white; on the inclusive-white ground a white outline is
+   invisible, so it follows the text colour instead. */
+#pibConsentBanner .pib-consent-btn:focus-visible,
+#pibConsentPrefs .pib-consent-btn:focus-visible,
+#pibConsentBanner a:focus-visible
+{
+    outline: 3px solid var(--dbim-text, #150202) !important;
+    outline-offset: 2px !important;
+}
+
+/* --- preferences dialog --------------------------------------------- */
+
+.pib-consent-overlay
+{
+    position: fixed;
+    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10001;
+    background: rgba(0, 0, 0, .55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.pib-consent-dialog
+{
+    background: var(--dbim-inclusive, #FFFFFF);
+    color: var(--dbim-text, #150202);
+    max-width: 620px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 4px;
+    padding: 24px;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, .4);
+}
+
+.pib-consent-dialog-title
+{
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.pib-consent-dialog-intro
+{
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.pib-consent-group
+{
+    border-top: 1px solid var(--dbim-grey-01, #C6C6C6);
+    padding: 14px 0;
+}
+
+.pib-consent-group-head
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pib-consent-check
+{
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+}
+
+.pib-consent-group-name
+{
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+    cursor: pointer;
+}
+
+.pib-consent-check:disabled + .pib-consent-group-name
+{
+    cursor: default;
+}
+
+.pib-consent-group-desc
+{
+    margin: 6px 0 0 28px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--dbim-grey-03, #606060);
+}
+
+.pib-consent-dialog .pib-consent-actions
+{
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+
+
+/* --- high contrast --------------------------------------------------- */
+/* js/accessibility.js puts pib-hc on <html> when the high contrast sheet
+   is active. Those rules use !important to reach database content, so
+   these have to as well or the banner keeps its own colours. */
+
+html.pib-hc #pibConsentBanner,
+html.pib-hc .pib-consent-dialog
+{
+    background: #171717 !important;
+    color: #ffffff !important;
+    border-color: #ffff00 !important;
+}
+
+html.pib-hc .pib-consent-title,
+html.pib-hc .pib-consent-text,
+html.pib-hc .pib-consent-dialog-title,
+html.pib-hc .pib-consent-dialog-intro,
+html.pib-hc .pib-consent-group-name,
+html.pib-hc .pib-consent-group-desc
+{
+    color: #ffffff !important;
+}
+
+html.pib-hc .pib-consent-link
+{
+    color: #ffff00 !important;
+}
+
+html.pib-hc .pib-consent-btn
+{
+    background: #171717 !important;
+    color: #ffff00 !important;
+    border-color: #ffff00 !important;
+}
+
+html.pib-hc .pib-consent-btn:hover,
+html.pib-hc .pib-consent-btn:focus
+{
+    background: #ffff00 !important;
+    color: #171717 !important;
+}
+
+html.pib-hc .pib-consent-group
+{
+    border-top-color: #ffff00 !important;
+}
+
+/* --- small screens --------------------------------------------------- */
+
+@media (max-width: 767px)
+{
+    #pibConsentBanner
+    {
+        padding: 14px;
+        /* The banner is fixed to the bottom; on a short viewport it must
+           still be possible to scroll past it to the page content. */
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
+    .pib-consent-actions
+    {
+        width: 100%;
+    }
+
+    .pib-consent-btn
+    {
+        flex: 1 1 auto;
+    }
+}
+
+/* --- print ----------------------------------------------------------- */
+
+@media print
+{
+    #pibConsentBanner,
+    .pib-consent-overlay
+    {
+        display: none !important;
+    }
+}
+
+/* --- held third-party embeds ---------------------------------------- */
+/* Shown in place of an X / YouTube / Facebook embed while social cookies
+   are not allowed. See js/consent-embeds.js. */
+
+.pib-embed-placeholder
+{
+    border: 1px dashed var(--dbim-grey-03, #606060);
+    border-radius: 4px;
+    background: var(--dbim-linen, #EBEAEA);
+    color: var(--dbim-text, #150202);
+    padding: 16px;
+    margin: 8px 0;
+    text-align: center;
+}
+
+.pib-embed-placeholder-text
+{
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.pib-embed-placeholder-actions
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.pib-embed-btn
+{
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 2px solid var(--dbim-key, #0F5757);
+    border-radius: 3px;
+    background: var(--dbim-key, #0F5757);
+    color: var(--dbim-inclusive, #FFFFFF);
+    cursor: pointer;
+}
+
+.pib-embed-btn-link
+{
+    background: transparent;
+    color: var(--dbim-key, #0F5757);
+}
+
+.pib-embed-btn:hover,
+.pib-embed-btn:focus
+{
+    background: var(--dbim-pale, #D9F2F2);
+    color: var(--dbim-key, #0F5757);
+    border-color: var(--dbim-key, #0F5757);
+}
+
+html.pib-hc .pib-embed-placeholder
+{
+    background: #171717 !important;
+    color: #ffffff !important;
+    border-color: #ffff00 !important;
+}
+
+html.pib-hc .pib-embed-btn
+{
+    background: #171717 !important;
+    color: #ffff00 !important;
+    border-color: #ffff00 !important;
+}

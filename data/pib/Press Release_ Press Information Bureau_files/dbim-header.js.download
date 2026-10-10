@@ -1,0 +1,117 @@
+/* =====================================================================
+   Sticky header state - DBIM 3.0, audit item 6.
+
+   The CSS does the pinning; this file does only the two things CSS cannot:
+
+     1. toggles html.pib-header-stuck past a scroll threshold, so the header
+        can collapse to a compact bar instead of pinning its full height. The
+        .mid-head band carries a 90px state emblem and a 36px title; pinning
+        all of that would hold roughly a third of a laptop viewport.
+
+     2. publishes the header's CURRENT height as --pib-header-h, which the
+        mobile menu pins below and which every anchor target uses as its
+        scroll-margin-top. A hard-coded number would be wrong in four
+        different ways here: the band is a different height in each regional
+        script, in the collapsed and expanded states, at each breakpoint, and
+        after the A+/A- widget changes the base size.
+
+   It deliberately does NOTHING when position:sticky is unsupported. On IE11
+   the header cannot pin, and a header that shrank while scrolling away would
+   read as a rendering fault rather than a feature.
+   ===================================================================== */
+(function () {
+    "use strict";
+
+    var STUCK = "pib-header-stuck";
+    var THRESHOLD = 40;                 /* px scrolled before collapsing */
+    var root = document.documentElement;
+
+    function supportsSticky() {
+        var s = document.createElement("div").style;
+        s.position = "sticky";
+        if (s.position === "sticky") { return true; }
+        s.position = "-webkit-sticky";
+        return s.position === "-webkit-sticky";
+    }
+
+    if (!supportsSticky()) { return; }
+
+    var header = document.querySelector('header[role="banner"]');
+    if (!header) { return; }
+
+    var ticking = false;
+    var wasStuck = null;
+    var lastHeight = null;
+
+    function raf(fn) {
+        if (window.requestAnimationFrame) { window.requestAnimationFrame(fn); }
+        else { setTimeout(fn, 16); }
+    }
+
+    function apply() {
+        ticking = false;
+
+        var y = window.pageYOffset;
+        if (typeof y !== "number") { y = root.scrollTop || 0; }
+        var stuck = y > THRESHOLD;
+
+        /* add/remove rather than the two-argument toggle, which IE11 and some
+           older WebKit builds ignore the second argument of. */
+        if (stuck !== wasStuck) {
+            wasStuck = stuck;
+            if (stuck) { root.className += root.className ? " " + STUCK : STUCK; }
+            else {
+                root.className = root.className
+                    .replace(new RegExp("(^|\\s)" + STUCK + "(\\s|$)", "g"), " ")
+                    .replace(/\s+/g, " ").replace(/^\s|\s$/g, "");
+            }
+        }
+
+        /* Measured AFTER the class change, so the published height is the one
+           actually on screen. Only written when it moves - setting a custom
+           property on every scroll event would force a style recalculation
+           the rest of the page does not need. */
+        var h = Math.round(header.getBoundingClientRect().height);
+        if (h && h !== lastHeight) {
+            lastHeight = h;
+            root.style.setProperty("--pib-header-h", h + "px");
+        }
+    }
+
+    function schedule() {
+        if (ticking) { return; }
+        ticking = true;
+        raf(apply);
+    }
+
+    /* passive listeners where the browser understands them, so scrolling is
+       never blocked waiting on this handler */
+    var opts = false;
+    try {
+        window.addEventListener("pib-passive-test", null,
+            Object.defineProperty({}, "passive", {
+                get: function () { opts = { passive: true }; return true; }
+            }));
+    } catch (e) { /* older browser: stay with the boolean */ }
+
+    window.addEventListener("scroll", schedule, opts);
+    window.addEventListener("resize", schedule, opts);
+
+    /* The A+/A- widget changes the header's height without scrolling, and so
+       does MeanMenu when it builds or removes its bar on a resize. */
+    if (window.MutationObserver) {
+        new window.MutationObserver(schedule).observe(header, {
+            childList: true, subtree: true, attributes: true,
+            attributeFilter: ["style", "class"]
+        });
+    }
+
+    /* ASP.NET partial postbacks re-render parts of the page */
+    if (window.Sys && window.Sys.WebForms &&
+        window.Sys.WebForms.PageRequestManager) {
+        window.Sys.WebForms.PageRequestManager.getInstance()
+            .add_endRequest(schedule);
+    }
+
+    apply();
+}());

@@ -1,0 +1,531 @@
+/* ---------------------------------------------------------------------
+   Cookie consent - DBIM 3.0 section 7.6, DPDP Act 2023.
+
+   The site sets non-essential cookies (analytics, and third-party cookies
+   from embedded social content). Under DBIM 7.6.3.2 those need consent
+   before they are set, not after. This file holds the decision and is the
+   only thing that starts Google Analytics.
+
+   No jQuery. The banner has to be able to run on any page, including the
+   ones that emit their own <html> and never load the site bundle.
+
+   Configuration arrives as JSON from Usercontrol/CookieConsent.ascx, so
+   every string stays in the language table rather than being hardcoded
+   here - DBIM 7.6.4(ii) wants consent asked in the reader's own language.
+
+   Public API (also used by the preferences page):
+     pibConsent.get("analytics")  -> true | false
+     pibConsent.decided()         -> has the reader chosen yet
+     pibConsent.open()            -> open the preferences dialog
+     pibConsent.accept() / .rejectAll()
+     pibConsent.onChange(fn)      -> called with the new state
+   --------------------------------------------------------------------- */
+(function () {
+    "use strict";
+
+    var STORE = "pibCookieConsent";
+    /* VERSION 2 - 30 September 2026.
+       Bumped to invalidate every decision stored under version 1.
+
+       Version 1 cookies were written while analytics was OPT-IN, so a
+       reader who chose "Reject optional" then was refusing something the
+       site no longer asks permission for. Those stored refusals are not
+       decisions about the current policy, so they are discarded and every
+       visitor - new or returning - starts again from the current default,
+       which is analytics on. See analyticsAllowed().
+
+       A refusal made under version 2 is honoured exactly as before. */
+    var VERSION = 2;             /* bump to re-ask everyone after a policy change */
+    var LIFETIME_DAYS = 180;
+
+    /* PIB's decision of 30 September 2026: analytics is OPT-OUT. A reader
+       who has not chosen is measured; a reader who presses Reject is not.
+       This single constant is that decision.
+
+       To make analytics opt-in instead, set it to "denied". Nothing else
+       needs to change - analyticsAllowed() reads it for the undecided
+       case, and gtagConsentDefault() sends it to Google before any tag
+       loads. It is a policy switch, not a code change. */
+    var ANALYTICS_DEFAULT = "granted";   /* "granted" = opt-out | "denied" = opt-in */
+
+    /* Essential is not listed: it is never optional, and offering a switch
+       that cannot be turned off is worse than not offering one. */
+    var CATEGORIES = ["analytics", "social"];
+
+    var cfg = readConfig();
+    var state = readState();
+    var listeners = [];
+    var gaStarted = false;
+    var lastFocus = null;
+
+    /* --- storage ---------------------------------------------------- */
+
+    function readConfig() {
+        var el = document.getElementById("pibConsentConfig");
+        if (!el) return null;
+        try {
+            return JSON.parse(el.textContent || el.innerText || "");
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function cookieGet(name) {
+        var parts = ("; " + document.cookie).split("; " + name + "=");
+        return parts.length === 2 ? parts.pop().split(";").shift() : "";
+    }
+
+    function cookieSet(name, value, days) {
+        var d = new Date();
+        d.setTime(d.getTime() + days * 864e5);
+        var secure = location.protocol === "https:" ? "; Secure" : "";
+        document.cookie = name + "=" + value +
+            "; expires=" + d.toUTCString() +
+            "; path=/; SameSite=Lax" + secure;
+    }
+
+    function readState() {
+        var raw = cookieGet(STORE);
+        if (!raw) return null;
+        try {
+            var parsed = JSON.parse(decodeURIComponent(raw));
+            /* A stored decision from an older policy version is not a
+               decision about this one. The stale cookie is deleted rather
+               than left sitting in the browser being ignored - it carries
+               a choice the site will never act on again. */
+            if (!parsed || parsed.v !== VERSION) {
+                cookieSet(STORE, "", -1);
+                return null;
+            }
+            return parsed;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function writeState(next) {
+        next.v = VERSION;
+        next.ts = new Date().toISOString();
+        state = next;
+        cookieSet(STORE, encodeURIComponent(JSON.stringify(next)), LIFETIME_DAYS);
+        apply();
+        for (var i = 0; i < listeners.length; i++) {
+            try { listeners[i](copy(next)); } catch (e) { /* a bad listener must not stop the rest */ }
+        }
+    }
+
+    function copy(o) {
+        var out = {};
+        for (var k in o) { if (Object.prototype.hasOwnProperty.call(o, k)) out[k] = o[k]; }
+        return out;
+    }
+
+    function granted(cat) {
+        return !!(state && state[cat] === true);
+    }
+
+    /* ANALYTICS IS OPT-OUT. PIB's decision, 30 September 2026.
+
+       Analytics runs from the first page view and stops only when a
+       reader explicitly refuses it. That is a departure from DBIM 3.0
+       7.6.3.2 and from the DPDP Act 2023 position, both of which ask for
+       consent BEFORE a non-essential cookie is set - and it moves
+       checklist items F.1 #39 and #40 back to Non-Compliant. Recorded
+       here so the next reader of this file knows it was deliberate and
+       not an oversight.
+
+       Social embeds are NOT changed: consent-embeds.js still waits to be
+       allowed, because those cookies belong to third parties and are set
+       in their name, not PIB's. */
+    function analyticsAllowed() {
+        if (state) { return state.analytics === true; }
+        return ANALYTICS_DEFAULT === "granted";
+    }
+
+    /* What the rest of the site should ask. Analytics answers opt-out,
+       everything else opt-in. */
+    function effective(cat) {
+        return cat === "analytics" ? analyticsAllowed() : granted(cat);
+    }
+
+    /* --- acting on the decision ------------------------------------- */
+
+    function apply() {
+        /* The decision goes to Google BEFORE the tag is configured, so the
+           very first hit already carries it instead of being corrected a
+           moment later. */
+        gtagConsentUpdate();
+
+        if (!analyticsAllowed()) { clearAnalyticsCookies(); }
+
+        /* Advanced Consent Mode: the tag loads for every reader, consenting
+           or not. With analytics_storage denied it writes NO cookies and
+           sends a cookieless ping instead, which is what lets GA4 model the
+           readers it cannot identify.
+
+           This used to sit inside `if (analyticsAllowed())`. A refusal then
+           meant no tag, no ping and no signal of any kind - those readers
+           were missing from the reports rather than estimated in them. */
+        startAnalytics();
+
+        document.documentElement.setAttribute(
+            "data-pib-consent",
+            analyticsAllowed() ? "analytics" : "essential");
+    }
+
+    /* Consent Mode is set up before any tag loads, so the very first
+       request already carries the reader's choice rather than correcting
+       it afterwards. */
+    function gtagConsentDefault() {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        window.gtag("consent", "default", {
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            /* See ANALYTICS_DEFAULT. A reader who refuses flips this to
+               denied through gtagConsentUpdate(), and
+               clearAnalyticsCookies() removes what was already set. */
+            analytics_storage: ANALYTICS_DEFAULT,
+            functionality_storage: "granted",  /* accessibility preferences */
+            security_storage: "granted"
+        });
+
+        /* Advanced Consent Mode's two companion settings:
+
+           url_passthrough    without analytics cookies gtag cannot keep
+                              campaign information across a navigation, so
+                              it carries it in the URL instead. Without
+                              this, refused traffic loses its source and
+                              lands in GA4 as direct.
+           ads_data_redaction with ad_storage denied - which it always is
+                              here - this strips the ad identifiers from
+                              the network requests themselves rather than
+                              relying on them being ignored later. */
+        window.gtag("set", "url_passthrough", true);
+        window.gtag("set", "ads_data_redaction", true);
+    }
+
+    function gtagConsentUpdate() {
+        if (!window.gtag) return;
+        window.gtag("consent", "update", {
+            analytics_storage: analyticsAllowed() ? "granted" : "denied"
+        });
+    }
+
+    /* The site reports into MORE THAN ONE GA4 property - historically two,
+       inherited from two separate Universal Analytics accounts that were each
+       linked to their own GA4 property. GA4MeasurementId therefore accepts a
+       comma-separated list, and every id listed receives the same hits.
+
+       One loader is enough no matter how many properties: gtag.js is fetched
+       once, then each property is configured on it. */
+    function startAnalytics() {
+        var ids = measurementIds();
+        if (gaStarted || !ids.length) return;   /* none configured -> nothing loads */
+
+        /* PressReleaseDetail, PressReleseDetail and PressReleaseDetailReview
+           all load PressReleasePage into a reader iframe, and that page
+           carries its own consent control. Both documents therefore started
+           a tag and both sent a page_view, so every release read was counted
+           TWICE under two different page_location values - which also split
+           one article across two rows of every "top pages" report.
+
+           The parent measures the read; the frame does not. PressReleasePage
+           is still measured normally when opened on its own, which is how
+           every share link reaches it. */
+        if (inFrame()) return;
+
+        gaStarted = true;
+
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(ids[0]);
+        document.head.appendChild(s);
+
+        window.gtag("js", new Date());
+        for (var i = 0; i < ids.length; i++) {
+            /* anonymize_ip was carried over from Universal Analytics and is
+               dropped here: GA4 anonymises IP addresses unconditionally and
+               ignores the parameter, so passing it only advertised a control
+               that was never doing anything. */
+            window.gtag("config", ids[i]);
+        }
+    }
+
+    function measurementIds() {
+        var raw = (cfg && cfg.ga4Id) || "";
+        var out = [];
+        var parts = raw.split(",");
+        for (var i = 0; i < parts.length; i++) {
+            var id = parts[i].trim();
+            if (id) out.push(id);
+        }
+        return out;
+    }
+
+    /* Withdrawing consent has to remove what was already set, or the
+       switch is decorative. Cookies are cleared on the bare host and on
+       the registrable domain, which is where gtag writes them. */
+    function clearAnalyticsCookies() {
+        var names = document.cookie.split(";").map(function (c) {
+            return c.split("=")[0].trim();
+        }).filter(function (n) {
+            return n.indexOf("_ga") === 0 || n === "_gid" || n.indexOf("_gat") === 0;
+        });
+        if (!names.length) return;
+
+        var host = location.hostname;
+        var domains = ["", host, "." + host];
+        var dot = host.indexOf(".");
+        if (dot > -1) domains.push(host.substring(dot));   /* ".pib.gov.in" */
+
+        var gone = "=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+        for (var i = 0; i < names.length; i++) {
+            for (var j = 0; j < domains.length; j++) {
+                document.cookie = names[i] + gone + (domains[j] ? "; domain=" + domains[j] : "");
+            }
+        }
+    }
+
+    /* --- markup ----------------------------------------------------- */
+
+    function t(key) {
+        return (cfg && cfg.text && cfg.text[key]) || "";
+    }
+
+    function el(tag, attrs, text) {
+        var node = document.createElement(tag);
+        for (var k in attrs) {
+            if (Object.prototype.hasOwnProperty.call(attrs, k)) node.setAttribute(k, attrs[k]);
+        }
+        if (text) node.appendChild(document.createTextNode(text));
+        return node;
+    }
+
+    function buildBanner() {
+        /* A region, not a dialog. A consent notice that traps focus or
+           blocks the page keeps people from the content they came for,
+           which trades one accessibility failure for another. */
+        var box = el("div", {
+            id: "pibConsentBanner",
+            role: "region",
+            "aria-label": t("bannerLabel") || t("title")
+        });
+
+        var inner = el("div", { "class": "pib-consent-inner" });
+        var copyWrap = el("div", { "class": "pib-consent-copy" });
+        copyWrap.appendChild(el("h2", { "class": "pib-consent-title" }, t("title")));
+
+        var p = el("p", { "class": "pib-consent-text" }, t("body") + " ");
+        if (cfg && cfg.policyUrl) {
+            p.appendChild(el("a", { href: cfg.policyUrl, "class": "pib-consent-link" }, t("policyLink")));
+        }
+        copyWrap.appendChild(p);
+        inner.appendChild(copyWrap);
+
+        var actions = el("div", { "class": "pib-consent-actions" });
+
+        /* Reject is listed first and styled the same weight as Accept.
+           Burying or de-emphasising it would make the choice a nudge
+           rather than a choice. */
+        var reject = el("button", { type: "button", "class": "pib-consent-btn pib-consent-btn-secondary" }, t("reject"));
+        var custom = el("button", { type: "button", "class": "pib-consent-btn pib-consent-btn-secondary" }, t("customize"));
+        var accept = el("button", { type: "button", "class": "pib-consent-btn pib-consent-btn-primary" }, t("accept"));
+
+        reject.onclick = function () { rejectAll(); };
+        custom.onclick = function () { openPrefs(); };
+        accept.onclick = function () { acceptAll(); };
+
+        actions.appendChild(reject);
+        actions.appendChild(custom);
+        actions.appendChild(accept);
+        inner.appendChild(actions);
+        box.appendChild(inner);
+        return box;
+    }
+
+    function buildPrefs() {
+        var overlay = el("div", { id: "pibConsentPrefs", "class": "pib-consent-overlay" });
+
+        var dlg = el("div", {
+            "class": "pib-consent-dialog",
+            role: "dialog",
+            "aria-modal": "true",
+            "aria-labelledby": "pibConsentPrefsTitle"
+        });
+
+        dlg.appendChild(el("h2", { id: "pibConsentPrefsTitle", "class": "pib-consent-dialog-title" }, t("prefsTitle")));
+        dlg.appendChild(el("p", { "class": "pib-consent-dialog-intro" }, t("prefsIntro")));
+
+        var list = el("div", { "class": "pib-consent-groups" });
+
+        /* Essential is shown so the reader can see what is set regardless,
+           with the control disabled and checked rather than hidden. */
+        list.appendChild(group("essential", t("essentialName"), t("essentialDesc"), true, true));
+        for (var i = 0; i < CATEGORIES.length; i++) {
+            var c = CATEGORIES[i];
+            list.appendChild(group(c, t(c + "Name"), t(c + "Desc"), effective(c), false));
+        }
+        dlg.appendChild(list);
+
+        var actions = el("div", { "class": "pib-consent-actions" });
+        var cancel = el("button", { type: "button", "class": "pib-consent-btn pib-consent-btn-secondary" }, t("cancel"));
+        var save = el("button", { type: "button", "class": "pib-consent-btn pib-consent-btn-primary" }, t("save"));
+        cancel.onclick = function () { closePrefs(); };
+        save.onclick = function () {
+            var next = {};
+            for (var i = 0; i < CATEGORIES.length; i++) {
+                var input = document.getElementById("pibConsent_" + CATEGORIES[i]);
+                next[CATEGORIES[i]] = !!(input && input.checked);
+            }
+            writeState(next);
+            closePrefs();
+            hideBanner();
+        };
+        actions.appendChild(cancel);
+        actions.appendChild(save);
+        dlg.appendChild(actions);
+
+        overlay.appendChild(dlg);
+        overlay.addEventListener("keydown", onDialogKey);
+        return overlay;
+    }
+
+    function group(id, name, desc, on, locked) {
+        var wrap = el("div", { "class": "pib-consent-group" });
+        var row = el("div", { "class": "pib-consent-group-head" });
+
+        var input = el("input", { type: "checkbox", id: "pibConsent_" + id, "class": "pib-consent-check" });
+        input.checked = !!on;
+        if (locked) {
+            input.disabled = true;
+            input.setAttribute("aria-describedby", "pibConsentDesc_" + id);
+        }
+
+        var label = el("label", { "for": "pibConsent_" + id, "class": "pib-consent-group-name" }, name);
+        row.appendChild(input);
+        row.appendChild(label);
+        wrap.appendChild(row);
+        wrap.appendChild(el("p", { id: "pibConsentDesc_" + id, "class": "pib-consent-group-desc" }, desc));
+        return wrap;
+    }
+
+    /* --- dialog behaviour ------------------------------------------- */
+
+    function focusables(root) {
+        return [].slice.call(root.querySelectorAll(
+            'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ));
+    }
+
+    function onDialogKey(e) {
+        var overlay = document.getElementById("pibConsentPrefs");
+        if (!overlay) return;
+
+        if (e.key === "Escape" || e.keyCode === 27) {
+            closePrefs();
+            return;
+        }
+        if (e.key !== "Tab" && e.keyCode !== 9) return;
+
+        var items = focusables(overlay);
+        if (!items.length) return;
+        var first = items[0], last = items[items.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault(); first.focus();
+        }
+    }
+
+    function openPrefs() {
+        if (document.getElementById("pibConsentPrefs")) return;
+        lastFocus = document.activeElement;
+        var overlay = buildPrefs();
+        document.body.appendChild(overlay);
+
+        var items = focusables(overlay);
+        if (items.length) items[0].focus();
+    }
+
+    function closePrefs() {
+        var overlay = document.getElementById("pibConsentPrefs");
+        if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+        lastFocus = null;
+    }
+
+    function hideBanner() {
+        var b = document.getElementById("pibConsentBanner");
+        if (b && b.parentNode) b.parentNode.removeChild(b);
+    }
+
+    function showBanner() {
+        if (document.getElementById("pibConsentBanner")) return;
+        document.body.appendChild(buildBanner());
+    }
+
+    function acceptAll() {
+        var next = {};
+        for (var i = 0; i < CATEGORIES.length; i++) next[CATEGORIES[i]] = true;
+        writeState(next);
+        hideBanner();
+    }
+
+    function rejectAll() {
+        var next = {};
+        for (var i = 0; i < CATEGORIES.length; i++) next[CATEGORIES[i]] = false;
+        writeState(next);
+        hideBanner();
+    }
+
+    /* --- start ------------------------------------------------------ */
+
+    gtagConsentDefault();
+    apply();
+
+    /* PressReleasePage and PressReleaseIframePage are read both on their
+       own and inside the reader frame of PressReleaseDetail. Inside the
+       frame the parent page already asks, so a second banner would stack
+       one notice on top of another. The decision is still applied either
+       way - only the prompt is suppressed. */
+    function inFrame() {
+        try {
+            return window.self !== window.top;
+        } catch (e) {
+            return true;    /* cross-origin parent: treat as framed */
+        }
+    }
+
+    function init() {
+        if (!cfg) return;              /* control not on the page - stay silent */
+        if (inFrame()) return;
+        if (!state) showBanner();
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init();
+    }
+
+    window.pibConsent = {
+        get: effective,
+        decided: function () { return !!state; },
+        state: function () { return state ? copy(state) : null; },
+        open: openPrefs,
+        accept: acceptAll,
+        rejectAll: rejectAll,
+        onChange: function (fn) { if (typeof fn === "function") listeners.push(fn); },
+        /* Clears the stored decision so the banner is asked again. Used by
+           the "change your mind" control on the policy page. */
+        reset: function () {
+            cookieSet(STORE, "", -1);
+            state = null;
+            apply();
+            showBanner();
+        }
+    };
+}());

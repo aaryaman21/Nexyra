@@ -1,0 +1,1445 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head id="Head1"><title>
+	Press Release Page | Press Information Bureau
+</title><link href="css/style.css?v=1" rel="stylesheet" type="text/css" /><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="alternate stylesheet" href="css/change.css?v=1" media="screen" title="change" /><link rel="alternate stylesheet" href="css/green.css?v=1" media="screen" title="green" /><link rel="alternate stylesheet" href="css/yellow.css" media="screen" title="yellow" /><link rel="stylesheet" type="text/css" href="css/prtint.css" media="print" /><link rel="stylesheet" href="css/style3.1.css" type="text/css" /><link id="pibA11yCss" rel="stylesheet" href="/css/accessibility.css?v=7" type="text/css" />
+      <script type="text/javascript">
+        /* Stamps the saved theme on <html> before the page paints. The
+           switcher in js/accessibility.js settles the rest, but on inner
+           pages it does not run until the end of the body and inside the
+           release frame it is a separate download - either way the reader
+           would otherwise watch a light page turn dark in front of them. */
+        (function (d) {
+            var t = "";
+            try {
+                t = window.localStorage.getItem("pibStyle") || "";
+            } catch (e) {
+                t = "";
+            }
+            if (t === "orange") {
+                t = "yellow";
+            }
+            var c = t === "change" ? " pib-hc"
+                : t === "green" ? " pib-theme-green"
+                : t === "yellow" ? " pib-theme-yellow" : "";
+            d.documentElement.className += c + " pib-a11y-content";
+        }(document));
+      </script>
+
+
+      <script src="js/jquery.min.js" type="text/javascript"></script>
+      <script type="text/javascript" src="/js/accessibility.js?v=7"></script>
+
+      <script type="text/javascript">
+            $(document).ready(function () {
+                  function getParameterByName(name) {
+                        var url = window.location.href;
+                        name = name.replace(/[\[\]]/g, '\\$&');
+                        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                              results = regex.exec(url);
+                        if (!results) return null;
+                        if (!results[2]) return '';
+                        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                  }
+                  // Get the IDs from the current page's URL
+                  let prid = parseInt(getParameterByName('PRID'), 10);
+
+                  if (!isNaN(prid) && prid > 0) {
+                        $.ajax({
+                              type: "POST",
+                              url: "AjaxMethod.aspx/UpdatePRHitCount",
+                              async: false,
+                              data: JSON.stringify({ 'PermId': prid }),
+                              contentType: "application/json; charset=utf-8",
+                              dataType: "json",
+                              success: function (response) {
+                                    console.log(response);
+                              },
+                              error: function (error) {
+                                    console.log("Error in AJAX request", error);
+                              }
+                        });
+                  } else {
+                        console.log("Invalid parameters:", prid);
+                  }
+
+            });
+      </script>
+      <style type="text/css">
+            .table-responsive {
+                  width: 100%;
+                  overflow-x: auto;
+            }
+
+            .banner {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  background-color: #000;
+                  color: #fff;
+                  padding: 20px;
+            }
+
+            full-width {
+                  width: 100%;
+            }
+
+            .logo-left, .logo-center, .countdown {
+                  display: flex;
+                  align-items: center;
+            }
+
+                  .logo-left img, .logo-center img {
+                        height: 70px;
+                  }
+
+            .countdown {
+                  text-align: center;
+                  background-color: var(--dbim-text, #150202);
+                  border-radius: 10px;
+                  padding: 10px;
+                  border: 2px solid grey;
+            }
+
+            .firstnumber {
+                  color: #000000;
+                  position: absolute;
+                  top: 50px;
+                  right: 90px;
+                  font-size: 30px;
+            }
+
+            .secondnumber {
+                  position: absolute;
+                  color: #000000;
+                  right: 45px;
+                  top: 50px;
+                  font-size: 30px;
+            }
+
+            .countdown .days {
+                  font-size: 35px;
+                  color: gold;
+            }
+
+            .countdown p {
+                  margin: 0;
+            }
+
+            .countdown .text {
+                  font-size: 16px;
+            }
+
+            a {
+                  word-break: break-all;
+            }
+
+            iframe, img {
+                  max-width: 100%;
+            }
+
+            @media(max-width:1199px) {
+                  .firstnumber {
+                        top: 40px;
+                        right: 72px;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 35px;
+                        top: 40px;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:990px) {
+                  .firstnumber {
+                        top: 25px;
+                        right: 54px;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 25px;
+                        top: 25px;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:768px) {
+                  .countdown, .days {
+                        font-size: 12px !important;
+                  }
+
+
+                  .firstnumber {
+                        top: 25%;
+                        right: 8%;
+                        font-size: 30px;
+                  }
+
+                  .secondnumber {
+                        right: 4.5%;
+                        top: 25%;
+                        font-size: 30px;
+                  }
+            }
+
+            @media(max-width:475px) {
+                  .countdown, .days {
+                        font-size: 10px !important;
+                        top: 20%;
+                  }
+
+                  .bannerimgdiv {
+                        padding: 0 !important;
+                  }
+
+                  .bannerimg {
+                        width: 108% !important;
+                  }
+            }
+      </style>
+      <script type="text/javascript">
+            $(function () {
+                  $("[id*=printPDF]").click(function () {
+                        $("[id*=hfGridHtml]").val($("#PdfDiv").html());
+                  });
+            });
+            $(function () {
+                  $("[id*=printPDFEvent]").click(function () {
+                        $("[id*=hfGridHtml]").val($("#PdfDiv").html());
+                  });
+            });
+      </script>
+
+      
+
+      <link id="pibConsentCss" href="/css/consent.css?v=8" rel="stylesheet" type="text/css" /><link id="pibFontsCss" href="/css/fonts-noto.css?v=6" rel="stylesheet" type="text/css" /><link id="pibDbimCss" href="/css/dbim.css?v=1120" rel="stylesheet" type="text/css" /><meta property="og:title" content="Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures" /><meta property="og:url" content="www.pib.gov.in/Pressreleaseshare.aspx?PRID=2303587" /><meta property="og:description" content="The Government has commenced calibrated and targeted release of onions from the buffer stock to ensu" /><meta property="og:image" content="https:/pib.gov.in/images/indian-emblem.png" />
+                                <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="C4E7H-KSCMC-422L4-W3EM5-U36MF",function(){function e(){if(!i){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,o.parentNode.appendChild(e),i=!0}}function t(e){i=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(o.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",o.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"C4E7H-KSCMC-422L4-W3EM5-U36MF";var o=document.currentScript||document.getElementsByTagName("script")[0],i=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!i)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),o.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="eaaujecjbhyp2jqacqhseaaaabvmr76h-f-f2f1ff572-clienttons-s.akamaihd.net",o="false"=="true"?2:1,i={"ak.v":"41","ak.cp":"1825201","ak.ai":parseInt("1215205",10),"ak.ol":"0","ak.cr":17,"ak.ipv":6,"ak.proto":"http/1.1","ak.rid":"ebac305","ak.r":53715,"ak.a2":n,"ak.m":"dscb","ak.n":"ff","ak.cport":54236,"ak.gh":"23.212.5.116","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"bbr","ak.t":"1791557575","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==g7gmm9OwaK347kONvvhh6GiJ6Tm7GsIKNppXm0l79txPNWful8ECRJubScYUQHSIPgZqRxvFR8VsdlXsBFrT2qDRJn46pSOT20CX2GRzxHmpODoepsQnlRn21fCEDzAkL7sd1866PMQH48EeZUOHB57tbjZyKoyraEVtBv4OfA0lrQavsUTefBvZd6pVLkdmjDyaVfJSPhUoGtRbK3CEO4YgXkq+c9wzDE7UTZ0HGPdUgT7N/S/lB4JpfGdiD2TyhaTaKyEs2FzSCb3xLFWswx3A96YlioMeasKIoYg3KnXfRUO0VaB3jWZwWEba9Y8QlM1jKM3pJegRyN/LcdepgEDx4Gc3J2L6ii9rfCca5dy2AhQM5XAW+A0sSJ0PN10OMjXNrDCFFAKpicqANN3uYabDyXac2lM4IYPnREb4l/k=","ak.pv":"9","ak.dpoabenc":"","ak.tf":o};if(""!==t)i["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))i["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var e=["ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+<body>
+    
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
+     style="position:absolute;width:0;height:0;overflow:hidden" id="dbim-icon-sprite">
+    <defs>
+        <symbol id="icon-angle-double-left" viewBox="0 0 24 24"><path d="M11.6 4.6 4.2 12l7.4 7.4 2.2-2.2L8.6 12l5.2-5.2z"/><path d="M19 4.6 11.6 12 19 19.4l2.2-2.2L16 12l5.2-5.2z"/></symbol>
+        <symbol id="icon-angle-double-right" viewBox="0 0 24 24"><path d="M12.4 4.6 10.2 6.8 15.4 12l-5.2 5.2 2.2 2.2L19.8 12z"/><path d="M5 4.6 2.8 6.8 8 12l-5.2 5.2L5 19.4 12.4 12z"/></symbol>
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="M20.8 10.6H9.6v2.8h11.2z"/><path d="M10.8 5.6 3.2 12l7.6 6.4z"/></symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M3.2 10.6h11.2v2.8H3.2z"/><path d="M13.2 5.6 20.8 12l-7.6 6.4z"/></symbol>
+        <symbol id="icon-blogger" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M6.4 2.4h11.2a4 4 0 0 1 4 4v11.2a4 4 0 0 1-4 4H6.4a4 4 0 0 1-4-4V6.4a4 4 0 0 1 4-4zm2.8 5.2a2 2 0 0 0 0 4h2.4a2 2 0 0 0 0-4zm0 5.6a2 2 0 0 0 0 4h5.6a2 2 0 0 0 0-4z"/></symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24"><path d="M7.6 2.4H10v2.4H7.6z"/><path d="M14 2.4h2.4v2.4H14z"/><path fill-rule="evenodd" d="M4 4.8h16a1.6 1.6 0 0 1 1.6 1.6v13.2a1.6 1.6 0 0 1-1.6 1.6H4a1.6 1.6 0 0 1-1.6-1.6V6.4A1.6 1.6 0 0 1 4 4.8zm.4 5.6v8.4h15.2v-8.4z"/><path d="M6.4 12.4h3.2v3.2H6.4z"/></symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 24 24"><path d="M15.4 4.6 8 12l7.4 7.4 2.2-2.2L12.4 12l5.2-5.2z"/></symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="M8.6 4.6 6.4 6.8 11.6 12l-5.2 5.2 2.2 2.2L16 12z"/></symbol>
+        <symbol id="icon-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24"><path d="M10.8 3h2.4v7.6h3.4L12 16.6l-4.6-6h3.4z"/><path d="M4 17.2h2.4v2.4h11.2v-2.4H20v3.2a1.4 1.4 0 0 1-1.4 1.4H5.4A1.4 1.4 0 0 1 4 20.4z"/></symbol>
+        <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M13.6 21.6v-8.4h2.8l.42-3.3h-3.22V7.8c0-.95.27-1.6 1.64-1.6h1.74V3.26a23 23 0 0 0-2.54-.13c-2.5 0-4.22 1.53-4.22 4.34v2.43H7.4v3.3h2.82v8.4z"/></symbol>
+        <symbol id="icon-fact-check" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4 3.6 5.6v6.2c0 4.6 3.4 8.6 8.4 9.8 5-1.2 8.4-5.2 8.4-9.8V5.6zm-1 13.2-3.6-3.6 1.7-1.7 1.9 1.9 4.5-4.5 1.7 1.7z"/></symbol>
+        <symbol id="icon-hashtag" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M8.8 3h2.4l-1 6h3.2l1-6h2.4l-1 6h3.4v2.4h-3.8l-.6 3.2h3.6V17h-4l-1 5h-2.4l1-5h-3.2l-1 5H5.4l1-5H3V14.6h3.8l.6-3.2H3.8V9h4zm.6 8.4-.6 3.2h3.2l.6-3.2z"/></symbol>
+        <symbol id="icon-home" viewBox="0 0 24 24"><path d="M12 3.4 2.8 11.6h2.4v8.4a1 1 0 0 0 1 1h3.3v-5.4h5v5.4h3.3a1 1 0 0 0 1-1v-8.4h2.4z"/></symbol>
+        <symbol id="icon-instagram" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.6 2.4h8.8a5.2 5.2 0 0 1 5.2 5.2v8.8a5.2 5.2 0 0 1-5.2 5.2H7.6a5.2 5.2 0 0 1-5.2-5.2V7.6a5.2 5.2 0 0 1 5.2-5.2zm0 2.4a2.8 2.8 0 0 0-2.8 2.8v8.8a2.8 2.8 0 0 0 2.8 2.8h8.8a2.8 2.8 0 0 0 2.8-2.8V7.6a2.8 2.8 0 0 0-2.8-2.8z"/><path fill-rule="evenodd" d="M12 6.8a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4zm0 2.4a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z"/><circle cx="17.3" cy="6.7" r="1.3"/></symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M4.8 8.8h3.6v12H4.8z"/><circle cx="6.6" cy="5.4" r="2.1"/><path d="M10.8 8.8h3.45v1.65h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.35 4.3 5.4v6.6h-3.6v-5.85c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1v5.95h-3.6z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M2.4 7.6v9.2a1.6 1.6 0 0 0 1.6 1.6h16a1.6 1.6 0 0 0 1.6-1.6V7.6L12 14z"/><path d="M21.2 5.4H2.8L12 11.8z"/></symbol>
+        <symbol id="icon-mail-open" viewBox="0 0 24 24"><path d="M2.4 9.8h19.2v9.6A1.6 1.6 0 0 1 20 21H4a1.6 1.6 0 0 1-1.6-1.6z"/><path d="M12 2.6 21.6 9.2h-3.8L12 5.3 6.2 9.2H2.4z"/><path d="m3.9 11.2 8.1 5.4 8.1-5.4 1.5 1.3-9.6 6.4-9.6-6.4z"/></symbol>
+        <symbol id="icon-map-marker" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4a7 7 0 0 0-7 7c0 5.2 7 12.2 7 12.2s7-7 7-12.2a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></symbol>
+        <symbol id="icon-newspaper" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2.8 4.4h14.8v15.2H2.8zm2 2v11.2h10.8V6.4z"/><path d="M6 7.6h8.4v1.6H6z"/><path d="M6 10.8h8.4v1.6H6z"/><path d="M6 14h5.2v1.6H6z"/><path d="M18.4 8.4h2.8v9.6a1.4 1.4 0 0 1-2.8 0z"/></symbol>
+        <symbol id="icon-pause" viewBox="0 0 24 24"><rect x="7.4" y="4" width="3.6" height="16" rx="0.9"/><rect x="13" y="4" width="3.6" height="16" rx="0.9"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="M8 4.5v15l12-7.5z"/></symbol>
+        <symbol id="icon-picture" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M2.4 5.2h19.2v13.6H2.4zm2 2v9.6h15.2V7.2z"/><path d="M5.6 16.4 10 11l2.6 3 2-2.2 4 4.6z"/><circle cx="8" cy="10.4" r="1.5"/></symbol>
+        <symbol id="icon-press-conference" viewBox="0 0 24 24"><circle cx="12" cy="5.2" r="2.6"/><path d="M7.6 12.2a4.4 4.4 0 0 1 8.8 0z"/><circle cx="4.9" cy="9.6" r="2.2"/><path d="M1.8 15.2a3.1 3.1 0 0 1 6.2 0z"/><circle cx="19.1" cy="9.6" r="2.2"/><path d="M16 15.2a3.1 3.1 0 0 1 6.2 0z"/><path d="M6.6 13.6h10.8l2.2 7.8H4.4z"/></symbol>
+        <symbol id="icon-print" viewBox="0 0 24 24"><path d="M6.4 2.8h11.2v4.4H6.4z"/><path d="M4 8.4h16a1.6 1.6 0 0 1 1.6 1.6v5.6a1.6 1.6 0 0 1-1.6 1.6h-1.6v-2.8H6v2.8H4a1.6 1.6 0 0 1-1.6-1.6V10A1.6 1.6 0 0 1 4 8.4z"/><path d="M7.2 15.6h9.6v5.6H7.2z"/></symbol>
+        <symbol id="icon-rss" viewBox="0 0 24 24"><circle cx="4.8" cy="19.2" r="2.4"/><path d="M2.4 11.2v3.2a6.4 6.4 0 0 1 6.4 6.4H12A9.6 9.6 0 0 0 2.4 11.2z"/><path d="M2.4 4.8V8A13.6 13.6 0 0 1 16 21.6h3.2A16.8 16.8 0 0 0 2.4 4.8z"/></symbol>
+        <symbol id="icon-search-plus" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10 2.8a7.2 7.2 0 1 0 0 14.4 7.2 7.2 0 0 0 0-14.4zm0 2.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6z"/><path d="M15.3 14.6 21.2 20.5l-1.5 1.5-5.9-5.9z"/><path d="M9.2 6.8h1.6v2.4h2.4v1.6h-2.4v2.4H9.2v-2.4H6.8V9.2h2.4z"/></symbol>
+        <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5.6" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="18.4" r="3"/><path d="M8.3 10.9 15.7 7.2l.9 1.8-7.4 3.7z"/><path d="M9.2 13.1 16.6 16.8l-.9 1.8-7.4-3.7z"/></symbol>
+        <symbol id="icon-twitter" viewBox="0 0 24 24"><path d="M4.2 3h4.3l11.3 18h-4.3z"/><path d="M19.3 3h-2.6L4.2 21h2.6z"/></symbol>
+        <symbol id="icon-university" viewBox="0 0 24 24"><path d="M12 2.4 21.6 7.2v1.6H2.4V7.2z"/><path d="M4.8 10.4h2.4v8H4.8z"/><path d="M9.2 10.4h2.4v8H9.2z"/><path d="M13.4 10.4h2.4v8h-2.4z"/><path d="M17.6 10.4H20v8h-2.4z"/><path d="M3.2 19.8h17.6v1.8H3.2z"/></symbol>
+        <symbol id="icon-volume-up" viewBox="0 0 24 24"><path d="M3.2 9.2h3.3l5-4.2v14l-5-4.2H3.2z"/><path d="M14.6 8.4a5 5 0 0 1 0 7.2l1.6 1.6a7.2 7.2 0 0 0 0-10.4z"/><path d="M17.4 5.6a8.8 8.8 0 0 1 0 12.8l1.5 1.5a10.9 10.9 0 0 0 0-15.8z"/></symbol>
+        <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2.4a9.5 9.5 0 0 0-8.1 14.5L2.4 21.6l4.8-1.4A9.5 9.5 0 1 0 12 2.4zm0 2.2a7.3 7.3 0 1 1-3.8 13.5l-.4-.2-2.6.7.7-2.5-.3-.4A7.3 7.3 0 0 1 12 4.6z"/><path d="M9.4 7.8c-.2-.5-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.7 2.8 4.3 3.8 2.1.8 2.6.7 3 .6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.6c-.1-.2 0-.4.1-.5l.4-.5.3-.5v-.5z"/></symbol>
+        <symbol id="icon-youtube" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.9 4.8 12 4.8 12 4.8s-5.9 0-7.6.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.7.4 7.6.4 7.6.4s5.9 0 7.6-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8zM10.2 15.1V8.9l5.1 3.1z"/></symbol>
+    </defs>
+</svg>
+
+      <form method="post" action="./PressReleasePage.aspx?PRID=2303587&amp;lang=1&amp;reg=48" id="form1">
+<input type="hidden" name="sc_HiddenField" id="sc_HiddenField" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="XqMtReBjiP3Y7pcAj2W/JyWuGbNd1bC8RW9VaWdChNi6Ct/Hm0bBmXS4uPxDMmooXZMSNnllMFuo6TVo0fUkVlEcTIv3trWNP2gkMBKDuK30wfZ5/HVMPs2jkV7qUSib/uMwPbOVq3oJVgVIpeufhkCZGZSXjnPW7gPRN1vjqGUJlCTFNfNHXC/U2N1/fdyEKLBhJ+tdQawHkKbruruqntSMt4jw08K6aCkDmTMayXJGa6wH9kYxRkgQr48zhfgdidjE2TX9WBDwbM8FOZ383x28g6L1Tt2eKq5uPke/9aWNFWjbkhnm9c9Dh1t7G52aNbw03lze7a5yx2lo9NE1i5D7oysRantwqcvVK1e0LrvHrNdQApElOis/7sh0ozVKf8iW7Kr1gDNc6SQmIo3ydf42O/ty+3A9AyssnRhZa3nODt0XUqOO2heOuSDmY8yy+ufPzR399MwziKsP1qmm0QFQgrSJBI3lHHHdlC5dt3Zqv0P+0JioeriljkFeEes8SPpu/Rr5FiPUbMdYDyM6XO3FDk1/v2jxZpuB/D8dy+sXMYpnZO6mqMFBrKqZmG8uWblXYQZxqN1jXIAoVyOtg3N+viP4SiaZHiHIfzrPGvzscOQ8voS8UzLwl2m1r7Mvd6EGeGT3/8y1xhy5aL2h0VYejjSXOQUruun2uIJMqM0cawmLFM7kPeQCs8zPEdGRB2RnqtVB6vGQzzB7BoYBBsjOljyNot0Vyzu0G51y51d/pwhqBDZyOdmmFxzf/61dgZKTyLVtx0RspCz+w4nYoI1nX0eFKaM/5OxnmDtVzbceVEyEl0tJ2WUtMbvPGx+5+//KQkdMPoivcKWpMbJDD7EeXR+4UjtHRfZqpfA8/pQ10ur/44GTv4g1xkvQyplS//5NeVBBqaJASp5WsVaQPhTDT6IzMQ1u+jKNX/v8rBq5UAHrc+53OILUyQiOLMO1y+GES7MjuyxIVNTSwYg5vCkG+Aa4+T+oePrTMmYaNZAVx9D5ec15LLdpx57f6WuDrAkW8CEVBvv+tgUq8PDlkkdMVGoFVUpcqOmFcgWMFNG55fhjs3EFoy/gCe1mElqF5Yb6Si2oiArfVsBmhDj8aCbt7B00t1NNFP7CiMc7vjHS5KufIZ8M76EKxsAHPr+dSLp60svj9W7nsuIT4JOhcfuUDqvWMk1sv5d+dd+cDOS8BTBa7IcB6/cmS3O4Fvau2tRYkJ7DJ8lqJhzaoci8bjoCVnQIXMpc06Z0o7zl4XszmkAQz7xh2wZok67QS0G8NAZJiUobPNQAprQ5BNiINSa0pyr96nMxfYwmxN1smLf5AeEcgYNlsDkWXQ04YicMagGntyk1Zwv9w02yK2W56+LphsAiZr+KGmCqizJBcOCsPj6zutcnhX2iSmDQoy0vQKM3iJE+i0N9S41rjPGi0p1SToiGZd8U7qsXG4pTNyUTlda/e9TJTPjw0MP/Brb8k9XfxQWv3Chs/iiOk7VarVGZ46wo91DNm1aBSBJViU9DzWdBLfAs9MhTF6ot+96tMsftQReiKXLY0V+LEB87LxiKJrhlSQK2RipRnY+DUbOKr64Jj/8kHY31l8+xdIIKkqq8/P4KHYqgTbyKb06JNvdU8U8awuQzTOy//wKCrkLIR+k+qGXP5okVRlfa2DmmMv8PSgBFd0VU88Txq7ujcV2Zt+xru8TScvAfcDh5LYHPr/9k/yl1JgNoyIfR8yn0IuqWhbJiRahYfqKHrg0bCg2DFPvXLLX8wwUdYYs0JhZ0BIZb8dSLeGugkP7o7Z6q3u7qed+1ES1evpM3YuOFV9fEwF2VVQb3cHytDpuIPClPbp0I6mzlmKOFCrufCAy5JitSvvi+d1AXvaYXE30ZriGFUCdMZxj+lfMFTKtyrI9KQLiDphpYvzL0eOx8wZCob/I1kAUIZCDgxF5gMfc6zuiV+wQznE58hFYalk2izBK3qpc+LxmlmH6RBDZmqkT5bedx5S1QqnWoC401f0ZnnlYVoEfyDnjoyM/sJ5Bb5w20fh0Cbc8Dpc+JvWvD67k28UJR+KAmY5Rwq9CvQWRafUDMF8brxSHjdCED4d/uCFs24H+BWAEA1hlTZJ8f1msmHakTKJc+U1vXSqzrQ4LURhqglQNrwNMXcb7hccegVkLCZJSy7FfjqGFWd5wUYD3bHpDAhgqi2XH5pLrzBqtYHUC4CS3xMYHC7l+TeDvgEf+R+o7cLe4l9HI3lzlgpN2OVlBGtTRFgpez84g80sVP1Zly4d5/12SNr4u9wPH8WyPSLTsHgUSdUca+4D78rKRbqf1Rt0agoTsFw1M4qBoy4EUtTzW2Z56iatyNKVLMAbfpwq8L+a0dTYPoISGAXphCzsJcyd+qR4W/cTce3jJtaFBINh0tYuTm5xTEA/kuSpK3vD0xlGSen2ogkkSWxbZOFUA32Sw6vQorlgsvae5bTibW0k+BonKG7ArVf77aH5OcyMpoPqMlxwLCW2r9oUGgdqvvoIXDjrT+Tdqycfc4XpN4dIFKKlxXRfLdNtHiVIErMjyoWZyzVrRv9Pide4HIGXjzTUe2HhtQ0PbL4aCRe9gvex3WkpqLtchdK7C1qCXPZgG7f4UjT/sIVHapQ6VFBJawg8h7wrIC9PG2Iny/V3tT1AnteZnHsutLYV/ErZbZkvlhH+XPm0asu/xxSYa8R/H1KVlM9pe3n8NVssJrDedPXm1m6/dfKpI4MFgQjYXrhTI7Eu7cSzIrG09SeobqO1bdltlpmYeN+hf+lgnMIDEEyXxC5yUitzqsgK5dYDMPuz7DOII/HiQ/pO6g137ixpo1Hk5QYg33Xel3nJUvpc6iIFiE1+7u9jTqrYLa5WnE4qRX1r1oBJ2Lc+bfbrQVDt5GN7adIPTzReA7zK5HWkMT27ATwWIxmIOI2V9GsIsdcnlcK+dcBrxXnAY3y7noVsmVhW49NWWh5kH6cJToZSA7G9xbxdaZaWVeDvyeTA2tjef+RHKpobFz8aEqT8Y0V6MyXTlph13QpQui8mg5DsRFG1+FSQABgU7h9+hJ6Hzz6z+fGMm+E7SalayydYXHEoj0CfWfk8d4ghm4xVhIiJnc3IwwT4D2yHv+kzA98M+hCBuj+ARxwENiYpw9k+sfjZY4h04XQTVNpmPWup+gzdP8jO28v97WP2KlGm+gjO7Z7tDa3jRPIOwOPjG2rGPL2dDpgtoEwai10ILrX83dWtJgzqvQ/gTgRGCc/uKfiLZv18HtkQw+fwxAFX4NuFv7nJgTCf79DYA2jBUHxUT1HDE3johmns6hnw+AaRTMoGzvEinadHmCgo1fLyigvlUdtt5RaEu89x6TEJKaEEbZdLOWfPj/WTmRSgeFs9jm4EyFilPJfrZ47BCDiGGOG+Y2af2SGPDiW8TvpyQ6biYEjG6DNABE2cw1aFe+aqoHhJN0hMGY9twSwoL/GSsfWUQiD21f3kpOjjxCsCCAJDRCNf9QIOePzZaBQqA2kKw0DNdYx/M+LaSm50Jbpy6pIg6BryBEf/iYZ9rLT4AO0PSNEbIuhVqx0XZAzoy4MYvKPItucAPoOLmOdPvVBiZkD6mYY5JV3hlxDv6bos0CRl1QM1lFTcdMWDRYD1yy2MV9tpxhqxqOflTaW92MLPKsXCTkkSEwE2Kg8OmhRHUJvXG9fmXJACgtgRm7quZrF1JQ02noTFvMWqM579D7jEgfUEY7RMbleQWEpipiyG2Cbfw1sRbVrO3LJI1omfA9Y+OJuLt7hNyfp4pJv5q6Y4ai0bjcQTwSOlSeHXfAdU/8ddxH+a+Jo7ILawBUW4JtIVx0JQ0FYjcnjdrr2Z16WFM8N4KgEGlBNQpPy6TbJBvFFmCloZEvffVEnqarec3QqrN7op3biucaALYjYdDOf+7tyfNS+40d9VC6jnC/i7gBXmvyDMkbXmQuoBraEtgX/biBzT6VLv1PcrGebKPX/P+qwtmHOe9XG0qnodgGqU6koDYgypEbZvliIlHO9SKtrDbBT7r7tOE3rpHQr5qbvxmcGKXMphHTUsfnyh4yu9mD0nkTWlUQIzXJGgcJJaiErvbwlxesYQ8WVUf0GLgIVkxsRF78SPLdNRDtJuXYP7cgWaO0uM3BxzRkJY9wUEGIKHoaxR8VsHiuM7veontwcFB2ocjabad1BfLPiMRro/mSmsy6z/6B3HEKA1Zk02MZBkTcegzeY758yCIfEmh6eCjf7bO2igQ9QRzxW/cp18gL5sFamcjj8EqFTziJSX/gxm6yRblmuUBWt5KpSkPJdOKTT2+ll6HQuxagjyFiI5kZ/aSjYk+Ls05e/zYStvGjP2BCYh/w5rclkzZQ01fnuLhB3ls3zOQPR7d416Lo+WNdUzrcVBSJhu18n0TdMtgCOvUslUiH3Bu2A/fY775fdkqyIjo3YO+AjNBDz1OX4fCmO0jgtjmKmnbBfJsQcLGu1Qfxjn5L+uyIuwdHLfGqK1NtwdNLRNeH065O2fmmP/jccXneNQfYo+QbnyfrrOLhhNg4YpbFOigEgjvmPYP5mLgKnXE1ZsW3I0XIOcbCIkoIAxoWvsVKQmcs1vZR0galwJdRaMuXPRHGeELm8g+JtmE9Qek+6ePlBLLSTp69v782PEuzVcPa1MHDr2rbz/wVbJ3MNAxyLnqHSHu2hICfUbr9n1QLo2qgg+kwyBzFRv3wfDaaIfAs4FNJ3t73ACmaWoeijtAo5+PxSBauRTq6XxVf1eLu/FukbEEcXo4IDqqXMlsjVdvu3hB9Ss6r9Ydo6/9NLTgQ8Z5JKLu6SS+v5FPB8n9N+zJKdb8sNLtsMwGRPwnkP0nX1/Sb3ERjUHe/ox317m/geEVQOBnlTpjJqfNRhJmc3v36RVUcEC3osqOewR/lYHvvWrbjEvHNQb9OcbBn6ea0m0SpgykpS6TQtvu0W7a0wa5Moxmb5gBntcQJtrE7S4OLN5sQxzFZYjMSMlwU1dr3zbIUcg/Q0EpHlImIGrG5+3Hkd9fBfu+YKo94wrDSvWxRdYp/ndnWPLIX1pi6OUqPd+RHuAeXi9/E1uQ5t+AzJDC+6IhsPmAJUL3OW7iRAh4Iie5d76Rokz6Z6KvEEPl55J1pH2KT0BEr5UzPHdcXo4pJu2kvObm3i7a+VoOz2bMKXpvD8doGvv5MW2hlWr9h9EQWWoAVTnyoZxqEvCL+U9hl58B/eUwrBXyEqJuQorI4brfsODAzbAPFfg/HCDOwd9GIaR02rTk4BJDksDwdvTRpxq1UzCPuVNiJcpcbDmKGCKAKAi+Sj2KueVbew/z+rdaOkqHvc6e1JOSbU30eWWble4Rqi7KDEDXyjS1hCS4RJa5mdo62oI7q03WcgR1HLt7MSdKgutwOO173nO3oxJ0x1nMPrHhq0687D2N1YCeQNw4Q1/VAnZdGVhBqjpuIOUNdqUUwt+jjHsNokOp1a9M4HZuACHD5CVzwZBzoGNoj+PAFiO2EMJMrYTiAJgEoH4cv8Nq5Da/LH1jpYVWB+VtgWsltgMzbalLu2FPUzZR29w+s2iGf1XXGl9Ke/0WofpcxRTE/0kcmW8sgwFRWu0nVgNXUuy8YbOfFEcy4ohX1sa8JI6Qcv7YpKWUqmrlTXsMkbt0FbJ5ljg1JyAnC6vI89B9B4poHj+BMp6TOeE37ETvfRDqJJoLLqPs9s3e7JVGYwAu9YCUwVXM6UJ9RLWQL6Tj6Tn4mrEOtIF5RcGK2z00eUo351TOyDagurTKPzl6IViZH5UPeIvht7T2fYzl7shwRNyVIgj2qWS1F7ExkcRM1hICbZkQCZ+MY1Fx1M8nKwiwqkBYMFafLtWTZeJUjp10ajiq3kPazu+LJz8Ea1gOc9dijxnVmqvFZTIV8bEDHCvB4x7s9bUehD9ViioAPJC0mUHZzSnR9f+B+5k4iW8XoIs8I6j+exsA+zZMB3SvRHftbk3y9F8OYp0lFwbV8JOXiVW1fVSmeoNa44ta1Y4+Q0Ak27I4JTo7YQ0JNK728vEUxpO+cZRZzwdn70PWj4B9+NPEtb9oD/KrRVGEVN5rnhNL8PrtjUN+ZfoLgCjBtUr3ZRQ2seDx52jn1JD0kJ+I3lVUEUnHF+ZdbdmHPE24sQy1vOL9+oPd0OiWG3wfgUe9ImJ9aCLKfooqIrXFsnwFYnc43WY3ck3J/mw4Z7Fb6ZVZvEmR88DFK1FAsxItebAxtw7JPJv9qoyt9FI3O+tKjo3SK6JZlv26CdUxzxKUqfcQEYdKTjgvpFIkMx4LbjkahvLWH4AIWtcLihjAKEQWFiNIyYKsCJ4IIpe1NVYFaoiePFIVKVb5Ro764tOsuFtaiF9va5bqfT4ShiLm2FP9wKo/9iVkzkwcvixzuYMVT6uu+oLe1eEXuszpXsupc8ZtOP8RVH+OyeUSdLYpbt7JSus+ofd+DDFwjEX3ZBDYx2mownwwXt8eHa/079cEiHa/YrZFmapWaQo8oSl1v7Sr0cuNiH7viWhAcWVIJ0FWhyiO6yDELtp0X9fL44O6Ft8sFvLkVAo67iAzMIC0uACg1Q5YiipuxuVIF9rVJMrcGZEfVINfXirVB/W52JxS+L3dNaDRrSYpnZOwu/oXSUvnubR1etm2ulDaD5NvcKT5dADjZwiqJ9ghlChrpZ60AeNe3o29vHsZjGkHxF6k94109ynozWJewIQHbZ9sZK6t3/M4nwknIee8VscfJwlGUzaf28MfJQX6jPuQAWCeW0MCD5t6e27Y6KW68x9OMgKSAduHC3jOFjVr1wBWJSHDPSuY5nIlxTvZyIXrFWzQxGK/CvHtg+5v0NFPA5bX/fkntlXa1HUitZuViNzouPQqNSlAwulduGmxo0QBejBFcc5xARfXNJ6lLJrxUIptSKjuTCI6MPkMO4N8DdbjBS9ySPQuNgj0f8IvGxpzYSwzrPOWJRm84IUN5QWlDGK7xqLCQ2QHusUJhrAjoYIQTnQaUfELORfYY1+nPfabOsGqFDh5i6M1oaeJUw20nxUjM/MVQv93lud8agyL2UQC8jb1jaMKUKuvwkh+y8tDQ3OZ87+qK/PMicK6cIPm0mll2sD+K+H4ksPYafkVoLtuiooQu/rhDGhEQhddU8u/9WE7MZVOm916v7Jo4zQU0fFW6rIcS2Dk9acmcCqcglzHxipDIlfomWDlX+BKb3qLoCmW0exY7NChw9Xgg0oyvg21/rxKt2YKqkOenrh5pDrY9H1QClaJr6PGj3nfUAbHH0PjMupRolh6MZjXDhV9m1YGSEUA9zFDlnnZny25/3LAWi/aVpcptY/925hxCJpDY83OuJgSjX91e9xaYdCQPS7KSxqckea5z4yKBp8VBUCbTTfHosdCi0lCfv+vcPhQugsj1qOlJQckNBoJ4i6ixKx3DU2RZ5QEn/p6E9nboBRlWN9hPLBF46P8bYMaNABdTeh9y+54XYTC9SpUgcoukTmFpftjczxEw6wiYmBDzMmliEd0eA65mBcskXJEFPwzckNvl0+v6zOG1Qoopijfkje3Py5VVHFuruJ0JF+a3X+g4+Cd57MEo4sgxvrPZFPd2gA77BpGEVbtl6uocGo9TvaHp7ZUmVlv478fFSNfE3OrEd6dn6K8s1iVUCNTA57jHlsrRQ8uEvRYM56TgRAHfH7owrbzkdbmhzCVr5l0+PwsMxZEiL5GU7P38QRGezRI6T6CmIvsQ1WbupM/iBzeswtcmNh8dOqofm71ZGprDDkoWpQ5021KRQwHRLqzUul8ctSntaCoyraazllONOKL7zfjWLGL27yJZ5zuu3O4FaV3PtNa4ygPqVK+8tP3e0ic2uUQonubtbjwLYNDYcjXOOo6za++xwEgsssQBZGgatqOPsp/5+SmjaF8rmrpG3c9qs2gz0lY0BAGYPO2ks1FeNkwnnFyYmxa3VeKME+71zlfTQpmgMUQJAeYZEn+5ZZ7YYRpuiPGJj2qiz6f4dAi1X9H74Pw+GSaOXhRf/FbjG78DshzSAM/TXsqer8LMmwIc/xgvjklt9QdCYQFAytnGqD2F9xJGUnJPQXxW0jHTg/l0+ayCTlDJUeGI5t9ZG2tK/GTEdUb87Yy+fHAzx7Hm5ElWHxyQN3B43WZXAlQYDiFAV2STv0yJHDU4cWvgsdUKVTQLW1fmOXsbsV/bWKeYSAeXJ8uc5Xh9MvxApes4meXGVMIQnSZLfBOGCVEiSd55/UGpmA2VjGUuy/XenhboqgLrjH1ZwFnL7GF9jemmCQKLsAYAXnchz0XDtNlOzntM9XLaZ75DSRhnHGNq6SckpG1am9F/NaIa+IUDusMHLYtnIqoX3Sz82YIT6atFBmme8w1NpbqXa1vqayd0B37upaaAIUi5sivsrBWPGQ1AuCbcMYrU1jQrLtDrFIwOBexxy7pJSAklv9xykpJbe0iypSHf/kzbqmjdipFPsE3OFahtsmdvew+5qL5YrFJWsGKr0xO/uikywkb8yu/wn6BrplrSdQ8rb6HkZ08x5Joa6l8GXLzoqPxT9k3El4vrUSayahfpIIoCF4KQa4yqFv7whgpeJM7Y+tBjDIGLzTZwnPdL1G/Lr1SNwd77M2UsQ2q71x8uRNvATzBKsF1Y4QCioWFo2peRIpNZuQW2jB+OeImDmBLRibqupkMWvRHY35Yngsa2+LIOM/vTSyAFp5PHRCXSb+ilLO+d7e0PUGa/ztBJWcu9ZkQ25PUGxIBO9jSS7vsBRbuaxGUVsxOAKym9p05Guktu7c4NjAg82ud7at4GplRbuZjtH39/2KhaePEb7CljNpH2q8FvAuenVUjvQSmu3Ts0tSyh/LvRjRf2hyLlA9aozqt3G8VNqmU3oMAvMikEZQ0Rkby4NPTWB23NfcSGSXETbJe30USujd4ZIC2U0bWlQNO0J9fvi/jmIF4N24RTqo7L1B7JfKkQvsLjfxRwaV0x7Mu4gCF30mbdVc5I1u2yZ10e7vv859rn7coL7X8SiNE2o+BoVaebe3uYiRJCOX7aIRJ2PeW6XhFGKHif8T1IhgoI5gF607BhUbPI8of189DPzFMnZExfXZk2zRt9pxSNzWRBMni77aJOHDFIVWEKhP/d2cyvfx0rFMe4Eoll9Oot3fzLZU6hUlxo9+cD2NYLWj1aIsoyTwT/Awb17uElAc2ifeACihSsCEUOxx+dTZDKw7J8JnFw/2TmylXU1B0x4QnGoqrAy5ux2z4/OiZ97E9/XyTrkTVvuJGcIm4UYefOifd0QWygc2KAOgjRSVpjkxs6OT95pXugjUxEpQug5KBROP5GVWoPs/eg7LuNmyImM9H/B3ld25rOiyXoj/yWpWt4UGVjYzo9YUdGovKl13ggslkt0BHHNVuEswzUHUMjKIb/Sylqo9PGptoj2ZugOQbqaNv8TNPy3WjfKjno8uSiTRm9lFvASQcWF3frDNfl0qNJ83+qhkX+V7O3ixvCMK+YZsmT3f+oaX5G45tMRtg/M41PZrycnVuE7KXkrETconhIcg4RkpyRV0betpAJnzZ93gWYW2dGsORpWOmTGadov6sxlWt70KoKv44KS4oVQCFUSPkWJPOgnDzMI0eKRMO0rWGZJUShUoMAhnAKfpjE2WvTnsBU6Y8z/BhgUL/4/LhCjQ1b5rH+c+MruunmiqHOMzVUTdupRIU9eOeF93tvxQ9+GLPwy4cxbHbNMlJQxbcuAipKXCvFcmdy5Dt0Lr6xd0kdgIpEs3dWT4UAojGDwUcNQO/JQ193TsrD514uG69fv1D9bhOndn0kfQGvIu+KQ6sZtsERWflaVZOwYodauqL1qd57wkPod/GecAm2+awYgQPKVl4dzOp6LwR0eVCcqQB6wibyN5oaNKRuv4EB5SH9lcDT1drLXZ0QnhMzgMQOEavDBQuzYGm4WrkicXpcy3xoUX/MHdg1uyDaiudAIU2ia0OwAl32IJt00om86N+YN4bq5q9814s8A0nbZvVjWaLUL/4dD09xaK462SZlLelp3D5Jwl4AqF3K6QYW10LfIzrg0VVNWMnagIdHzZQ3QggocT8sojOP5L1oXEU59UPGuCVkE4qfvieBTYcieojmkrj+P+hjd6cThybGwOHNHiDuvM1CasRpgQIW7lz617RkfAlBzRhSrwIM31D0a/p4cnBufiurqpDnBBPZfPoClXuF7DM+J/IZBQTGjsGbRuxXE0iwohGxxyKUB6DZ28PGgZCb3MMs1+czqJMaU7HzOUNMZ1mqlqJR6QcdvBcpboouK2D+/ZNAcPwf/ftoJGonorBixMtYR7L8818rK1viE1nEb0TDSvAbaEAcdEVavZjwYRmwhWAOuzc0OqPIH0pcNVmZzJazSgnp0M0NZj5MQOTAI+JuVx1T4fARHn4yVrrN6/5ut3ih+4E9GlAmjGnPqPZ6DIBdPXfFXSRyLzxmVNjTPLtOtqLQnxYqxUBF6rbsg8XTUpeV9uIzhIQboMOGnkLj3dQO2UHHql4uIh0yKIOuk5T7XCa34jvfBbnlDGIujm1A5ilkVK5R8wCM8AHi8ioRpHku5EzOgg8YTJ8ZwIEwmX6NYjSHkRIxDwTg10PLtsgjuiYvbY0+c+d0mx9DC0ycOrhiJT4ZFiI7cBKptPIY0aFwT4NFZvsiDEKNxTZp/W/nYkInp015/aKA0shtNuPnLDhqntB/E09vlfuF38L/MqLHhuW8j0WS7P/KKtktLwYxXlCh9yorLE3UuB36Sa5lFZf9ZyNbeLHHe0jS6FQJhAWW6N6jkqBsIllsLzJyf0/P4quMyAqDsuVc7UaF4NbapRFpImZ49XaSUJ+OJMLMgBRz2EAHPvqusDEhABkB8RwLaUra8YRaziED+S7MdzcB7PRDNwYjTOGtoNpxK5ipCe4Xk5ZvnLkG+9l2BQNennzWAvfyk93N9lpR3myQuPoQsIKTZYcHGuZxDB11aJji+iPQv7UXoXF8K8mO1YQedeyM7Mdd27lm969jpk+HPQy3hqHjShg+4OoY8ukSqN8jOnVO84dUtWIQNeq3aca7CUU4Q7NmQ3ui7OXVYxwgzU4EB/EaWIhokpvolB7SvBes8jPGIR+GRDpPznEPL01x1AxmtepkAc1OYsMk4r5DWi/Rb7mp10xIZHr9kF46yvro+HdfuNVR1/MsJSjphvqLOHuhR0/zi3dKrKcCttyY2ofqsJ62WfxHSFe30K3RtUiEi/ayAF7/Rq61hHT+4EHwPuY1+KLXo78hf/cvHBjnNghxyDcvUnnlioOZr481PoqcNP3C9HicSJJHDrC8xG9Tv7uY1trXNV6O50mHfJKy4W43ej5UYDjbPFdeLCv79PYP6HLe3kbHr5I+bVetshN5Uv6aNKjes2oecYSnPU9ElgCa7PeDCvSgEfbZP36g4Nq8rdejFQsmReAWDhhBIflYj3EnwCJoz0ZPm1y4bti0xI6PSb2RlUXRz7q4zIeeVRHjpmvbv6F++977x/5RWmaqERBrNX23WWQv0LbfyOnGDZkngj4etNu2SZQIBbwLClXFw/Y4Dw+DFLFfwULiPS0mEu2i9246KfO+ixuBHdUlC3XfI+XNFBztyySj95Xyomp5ZZqLnhKPYntC517jnvYXEIZ5VDu+eOAhE06Uc8ZTy0/s/HLeYopOQGzRO2ynRPRQe9H+dpTRzM9HcxoZXR/dgV6npzxZgG2N9bm9fA92v0sknEQwbkIh/CUTGCvE4JqtrAQlZWP+lJOwS6NDESR+C7lIJR9BvH6zj3187ItQ/rZTw2i7Wli3y3gkOlE0ucBMaHrvMA8JII00kbULNQgQSR5n47YTWKJgU60HMJp89Jn7V1Avt44pqJShLL86XE5VsaFb+FlODIdlMhU5bt65J8oSUmGg61SBKk4YeDYL3Dejgr40ir8srria3Sbcs6nuKOlYgK0IyfrGBMOrzJ8wp+hbxkv15SW+M5AFMlkorJxB2pb2AH8qOsUgZNFldli32IPT6lv3sBNcJLI2yZ3osTsAO8nx45gfZMq2IvBmPLOozzQY58ZAaNq3kVuS+zn7WdpxSyK5da6GgboUdVZef89np0oyBUkUsZ86uNSb4przLnGiHecuxBHMC+plcAV7lN/drUxpey4+76b22wfmdkOU9U61/cz5L/O0m9IuTXRLCp6gBfmlkn+q6pPG1LF8gN/GwlBHU+VgoF8YnlWdQ14/Rc3Tfx/bbsH36q923XYKcX7EbEpm5hvoNqkrD/Gdqan5S+MrA7Bl+VjsyXanoaQ+6Z57+jD+0F19MCAfXwNoBiVwDeeoZ0a2XKJ33HldHUwpLrNdkjS1hIeZK6IwS/rex632YRv94nsnvr3NAjXl7S0M9Uc7rDaM0RoJMvfKnQwWT8eJBspZmPtXY5B1KDRTKqpLIPiKwevQ4Y8CLjWqTLAjunU+zYea3uD2OJgjvZ1IR/ionAQxBaSSahQqvGu5sW6SsCNBdmtHSFw5LoCR5WGIBvD5qV8+GeyHcxS/Z7ZaSzr+iANcRq2mPR+sQ8uzsFvZNOQVaWVX9HA9NedSIK4t69O/gaIExxeKcxaJdeCdBcc1SUab93Z8lAJLnmCbpUxt8KPyemNJbD/5hcphayMkAwcgJtACE1K7ZjCFt5CDuxRa0xwA20XKRnAx/gO/YOe0FaZv2wZkVjGQIew6u4T66+dsYhEVnBkLB5o/r4TtGT72eHaduiqYYIpzKCsMpMsnfkoicYSH3P/cdUK1CrKCR/EGfyWelg3ics4UIGOjirnpyifeYuCcZ0l+9VuxT/qpy3C2fSFxbXZRekK2SH76i1sSPIyS6VXXzXwHjWRqSV+Ph8A+w3JhF9uyvsjwy6Cyh1wstofGUuL+d+veTdcZ5MIfmhGml19kutDXrUrD6Fo5i2WBvRUdeh4TsHVbzgB5CEDDMPbY1ABFM1v9d5KDns2INamNbHDGENAImHWlKNVwe8PFQcjCAVZsEgsUGss44jWDBDr9neuzxE2m8O3l31rjAg7dCzL5RaQhWYIikPZAKn8cRHDCWh3wqA6unHSfPG81CFkqQHMQ0mxrnX4kRb0XjvfiqzOwAegvOvfTX6kv+WvNnXpybCwpqj6tIFFf7vGjiwFSbD1HZHj4akR+1QvCZJIEkeES8xnI9RujHcw6Cv5sapc0lIhopfZ87Tt8wQpwHAzuDaalNyl5BWD/Q4f3jL/cHN8Vj+ldO4+/XHQl8RE+IGf6Ob3y0zpn4Zi8/V7Cgxj7rZYwcMh6jtmdKrQH89tMO0SQvGbMStpCDh6MyQBVRcPdi8MuMSMxdiPHE9S1t25G2e+CXYu5ef50swT4+wuLwJ5ZBrw3zFzpT7Dh2I29xqO4VJU5p5ZkGULRn+TlorHfhbkqsV7e26ne+Fp47jWBTbJfK7fPdGRJUrsfSbZzFmhsltfCowWoyMkpyuvhhq0Jijwi1o37RVvhr8RiQ9b7SDd1A34mi2GDQlBThR1UrbST25dpYOKBqX5vhbqGOMxh3REWvvEgvpNvjh/Akp43Szu/vXDC9gt8Vrlb8HU1ayTVLf72f9PtxO5J7WtnTtkTAhvL1NeNoaeGXWTOx8Dp0OISggxKsjOfzO+wGLVzojMvdfR6dQS99bsErgcOtS7pRR9V1LnzhBDpU3X9/usaWXXn4wukmTX1CK9YtlDJZdQhfHZ/R/IdMNE9Uf79Y4JmV7DTRpASeoDy3nReU8LXFsDkXPhfS1BpufT+MiB+ed8orSrRZT5maVZEPrT4im9lLUUAq33GJU4md1gULAr+uJo4GtmeSsqJMv3Gx1E3OqmFtLWPi2bJ+nEr1895Yl0FY8aSgtpWOno4IJS6jdGFNWyfRT2lkNoSw2Dc2ChcTmNj/BdePZYUZNq9II6q+ymgj6om0xLhUdEMlGbgB16xWgCpDw5MXXj6beW+fkX09UfnpGqkXXQ813jvVBIbH7GHPemFtnEuuR6MeHMbFjHZwZZQWIWyoohZZlCbJfropv0utyGqgnzRzU9lAZ+65PapRaoQBTPn2HU1Sj4GvJJ+VqfvfFOjd+U/f1C0r3q7qVjqjApqW97yLJqtuvIQIDnMgrnKK7kYvoq74JP1swp+tNP8rD9t5QKuTS04LyV0DlpkcVrkTbT0uTEEAczeit/FAwXvLJxmdfFM1zCne68KF+B2Us9SOj+7WiRWZKwj8HDhaxFfO+7xLalmVVRToFxwLgVL4m5vT1RFZc0TmvGnRtRZN4xWiskM5VAT8gXRBBqpPp/99dOFwyQcw12gaDuWbAwKpytWc3e+PUlhauRovH1cpfXCNy5SEyMmLMf8CX8NojVpVODQEev/idigHlRwR9I7lh6npDd/NEfXj8ofzQ9NY++2kaHRbzyK0v16TLHzhP2ttWXatHBTKPKcKTdHImriC+Eb0ViKWJvez6C0Xi4wGJ3nQQva/H1kMFnMDvwRo0TvSGbfvfMlruT3dh0Xyj5nKNMzyERt2PovUIhu+uKkLm7JqSIk79LlVNmRjSh9ZqlSRC5yb9mqivASAZyhISGcPrsioNaXW+Hn/UjxXAC8KfzHB9Bl26UdPPqfpHxTjqLpVWAIznNkghvF3L0Iyq6+b+2qacenHxAQHfbtj+mNWd/9EGQUBBOdLOS+SokUpG2/0BiKErWTomRCYu5pXibC2AO+kPIbyfgqquu7dd5WVhwc6zieSZYTyYBoHsGNOpnhtTKzy43X8c5AgdeqD3vVfcK+zULpfbKyBjNpCtH9U9TvoUy5DIRBekq6e9v2bUrbpsK2/KsuvfKqbOTW7CBWiSvnJu5GOQiDXwe6jkCxAQxGH3sbyPNgZHGxz4vn1x6EGRlGgOl4pkQkJjAV+/y2PniZlohGqawDrOYx64g3mA3Zq/xYaKwOsyHTTGFnv7KH74lpU5ihtqIhgdIFhqknSBh3byaKq1MTtlIt5B32K68O0YWQuAvxmtGcUoJJmnxfckO5hMaIfYaXvwZgVMd7wROuw2YlP3LeEExhFzdX9oTX+Ze2b2x7mrK05Va5xU3pFRBFcmg20TAAZKKMLFBb1mNEDzFZRfNxzhHk4rbKgod77k+QRBpZyC4oXMDmYhjVvlR4fYELusyLemIih8HRGpT/R4BMHDyOuzY6LKz5QamoNgM6PWNci6WtLkyYMJgBrq2LHJUi0IoiwCcCkVe1Ol2lRC4APuu0d/znEr5GSpKJtKQOdCKuWP6fZhwYe2dSZxYNIppCZb9zga0yh4G7cCfTqn+4AFLogk5K3VLYrfUzXfG02UJVnoZ5CAMFVYZFBURN/inUnaUq+ZNo/UCoARCyVZP2vof1E9PlYPq+O5yAIiLB5d4IKRTaX/3sA7rtTXntq+OOoRsI17+wGYvmni3jsweVu947DWPLfRp6dxSkqrEl7vEVVd/wXTOIvHKkoVap+HAnFc7oW6p9mHikTPBxK/bjQOknk67ZPoSRC9T3kplCAvKUVsS0Y7ETXca1DYi7jHkd5BRb7NY5B4GVkbW+/u6K0xVGg0oUWzh8hoG9rmsCHC9aT6ld735OOzYO+fw+I7uG/0U0S5nLX2DvdMfeMrsF4mFYcAeWFYEQ2dWWWFi34pHGkzc/JhqU0W67naEptZgl1zL3pDVd0ne2E0pdL4KmKlfRmbVTXFLWf2NMvQI5jNXf8H15B08D/sQmscT8uTbdX5fk2IVQxkfHtLoMKbTrXxU/dMTW8Jx8bwtvoitQtr1Dvz/NKjjGQ6lArCkKEVEA7rZ9+gTHTUAPioJaqIR7uND3VY+GaeGYheS2l+4HqHBQTjeQxrT99+EH2X4phRn03xtqzmMT4FMstJPE42QsCWytSqsvC99vR6V43xyzbg1W0rskfKdNmzejZ0ZjM3l9zinDnFwUOZe9JlPM7kOT6ML4JkxMZM7ZEPuw0/UfHfBb2etU1Xs93rWJxY5Jt3HAgZQe2bMd5pz1KQ4tQh4VWBsDQVmVyDzj4JIs1SwzOhH9bDAhqEkmbdFdYSLm0KOEZUseQDUMUtadDhr0FHe2MfxwXDRJUwcaQd/5T/TNW9zeF0sYNNcrVfkAQ8hduTjcdjiwndvN4r2u0QCG5WwdAyJI/gqH9CDEWNantKBN+MvH0MIzpZicgWXzYcDJgBNZhAICFSO/41dvodAO7xhfXxKbjTHyZLc6N6ygo8IJQjwRBLCPrBvi7WtjEz5ZLqA1AYTljCkNTC5O08L/W9vsaGe6LFgStISBtIzrufbokhLrGLzXxnzOpVpnWSyDUZqh2SCs/ljEfCensnIfgMO7nSR/A8tT9trWbNXoPc0UHI/KZHgB4W0of/oiBesN9gRMn+NbnK0eXGDRwqdhp3EQVFXrR3uxItOWmp+FKtQLVIQXe25PwIKBTWAAUFgE2o7gbe8EaG8W19vDWtkvdAocVV7JTVaf+0RMUpsSp7cFHuY5Ibj7IrPj7nmE4uaZN21hz1oVDjS7WabUy5leVmb6n5u4P902+cvWtSGxHfGg9pmfQZJu/lylCZAYltpSxPHVzf336pgvAQs3jNp7lX2EMSPc6OAzcOGqKwTU9GmYGd5USuJDw1oFDhS2V80k3AG3LfKclBoNvSTtncQnJdBSvY/ApWDBi1bKxqN9EiwsUP/YuBJDhNV+a5ROISeJXU3V3pWCpycXa4hl+2x7K54QJwukUva5OWNKsIBB16wTCbl5MtcKNBsaWvAnoGM/7SH51YBCKlzHNHsoi1k24qIJt1c459a3liEl3ejXydTvJ8iJilRz9NUKseFaOfgC/DL6X/fDHu6CyWXnZvPqDm2kho++l6Xn54g+/j8Eh1+bcdv5nuvjqkwg0kehqse/6G0LkS6b9UzrTWw+eYtPA2A26L6P2KTEqBG8hnws9z+RlwSsKXpbwJNc/naHn00cmRbSM3kgh3Abxv4kL6uj9wVWaiuRaLtrnH2jWAPBeDNnEhF3hM0hb7u4wkD6dKe947KuHetnlYj5YzFzEI+mER/AG6ZmMEvVnyAJ5uu6Mvx3W+zXhN45yDG1qP4GhtMGoMe0ube9rp4e1MG0w9JuI0woCH996Gd2Nipq07Upd2ahisTYvGXTn7PDxLEbS0Ok78WALeDp0UN2kXu8bOIi/SV5GwHVdo9df9KOXPrBhRaXm6lDekzHlLUk/NFVU91S+0BzZJPYGMJCYKRn+0ya8MZWToNoWT7sZ8UQMbeoUGOwwjkwn6woMpf/GwEQ93xlMRyW6p8Pr7CIEuHTjHRvTjknZH5dS49UnZGWAhu3r9KQGx16sq58AgynMcku1cwEwbyl/NG9VMA1y6AUKu/8sODP35iYIb+KMbU06H/qUX88V2apMwhNSckNX1rdqUPcTv4ehvEJ7Zsi/avshVtyZOTQQcPSUl7lqzmk8vArc1eB/IM9/LUZSi075dGeLCrnNXR0dRiW6b5AZz71zAkYLJ8GRGJNJwrKankwVrXs+GauTh34loNwAi0gtJUC9v4Ix8O226NyAqWYAt1muLDIHNPYHdsm5rSSwIYSCWd2WiVRPxIMbDPUsXmt0SOoxjJsWWbDkuroJjD//A8SuHM9qCBANdgUM3w2GMerau4NK64ENeKfEPAboQnMck07zAvnbLRarMs2hfn9v4vTgzYa3BX9lqoTvb6MJDvww9Hz39ovQK0B17V/Snul6FGS8oj9iuZjqPRD3LCMY6vh8i3iiWBYOhmCDMWp2XNxKI3I5VDLgwk5FO8vcFP+sKUVpLM4VnaX45X8Edgu+qAOOpsrCtFvwNGsIm9qKXkMtkcHokmLHP7PdrAs6fYq60u7/Z1nDeLPgpjnTV6JeHuL3jaZyGctKlFhax5wI4ZNVBNlVmKUjIPSJlg7xjYofa+6EuklPd+lei7h3CYxohUfx5pBCfQwkzDsIuIDOdEcfnWsO+6MRPtDIjm8yYs+Cw61h9HCw1BogxBbDy1U4peFXLGa0cBITNK8N3DSefkWE3J4tY64CdbUL2TWhM0Mtp/p7f+d0gX33WENlHbINGf3NaropcToWgbixnrkcyK51UUQFu7oAG/rTSlm/4S/1fIC3amGBxHy5r8l91lO8qzr5PpjKv0ytz8QTGAOjFjo7ir0dbT1ZvAninDSC0NK1BcANQv+JlJXRPm2FLcl5MYqf+iuTmUGE4o/mDSAFkkxw4AIT86DChzd9e0gAJr45d9c7Uq01iD+bGq2RdEDCXsD1ntRVg1dHHdO8/3k3RuOnM07T9j0ljBYVxAiXQj4L80xx6I7jTFgH5wSL/MZ10UVbk++++jJWQ9MhkZW1oU4Y1JO+KE+ctE/ntlH8jnDpnSjihfMNtcnFXd7sQTBo3NRGD3UMkF1BPnjxbMCbvQYcto8eB0WIrXBYNKgJybqZwWZt29U5NywMfajICGoDIH+BmEIScBTS6tmwlB7b+4Dju8jtbMXLLmnyvQ5YNpxlFWx9tbUBJJqkWRog6sEArC6xnQQUBzpk31ramfacRZt1UwsdMPgoi3/KPI83MIsHAzuHrcS/aoV5dZj8Ily67GMG5h0Qnt/AxWBFqhfVF8O0mWFvHvaF2dmOMyiwHhn3713YlpX6fYymxLRju/KgdRnYpxa+/EV9I/C149lJNMB7NAJXmjZWiNvPP3VB28PRC7wOf/4WEwT2pez0HGPH5MJKdQQzJX2ae6rPkkKoM3znj+pDEvYoJ2wd3oEnDDuc1c6uCs2+ufkF56Ca8UFATKDmQbo5glRpEvYSv9+XpNvK37zI2OxiL/AzJYGU38XLXwC99admFbJJPhJI6ahLTlAihyexpJwOOXQ3jtxxShbhsKDvNub/oWffEkrkMQugF8nVEsioJEezf9F4W2FwSU1+6xdgC0WcYGrw1iosjH4D9S9vn0HbY2V8KyXaQX+hiCMcoBG9MmDm80gkgHELFLgd099AwaL0OzKnTLwqebqDx73kBrqKCdvXvHVrIyXeoCci3AZcCeGmvmtIvQ3+/djReYfqHNtLhZsrBYYe6d4bffRw2eFuESTpNBm9s0KXuvc2iVzOwhijtTW9kLTgG1oaBXy1kNNBbG11WzcCqqjfHTbCKTKDqoJtKNLXYuIYJlQ9XZq78h2eGxg4JdbOiJ2PHoyvJD/W+gu52wrt5bNQOfh8GAk9XGzKPLy98Pn4AC8P1Y6CFF1I9Nnw6PR43k8Eg3M336NbxbHy7cgUXCQywHPDx0faT6fDPLzJX36fJyEIls14xsRup87hK610wGoj1DUJ7v8PsS6/hkZtUiWIYlFuRvClCu4B3rC/DCvaXUWw8Jm9Te/4lap4ej9gNQJ1a5BMQ0Jrnqm23sTi0DA2Z4MM6Po2OUgCBSna3p9M1Ebk5ZChCzho1meUvM2vc99o/3Htke9Gnaoe+ZHuIHZC05da+LT4gCyITAFDK0uQ7tmpDocXXTl+pLxnsDHfXiG8ieMIxJubfZ79ZC03VPqLOM6ZTH2pZSeSg//EUw4QlmLP5efM5N5rAKCsxrdWbg8OXYPZXablbxzAnIiNCAo4nUJr0Qvl9N6f4Cmj+FqTsm8wo5PXPxh/wKxrv/tuPqLwqgHXhLTGEwzAKPN7N9HRjXFmxg6OYS2Mt4t/NWXCCgYOfDEyfsVWJktcF/JQIfb3mwyG01pMNC+Zxa3bp7tAb9iZEfFxjnMdG/rhtSF/kDABlcNk9EJY6ayg1ZFKbLMhLaHqVFScXoLFlfKxdGvkAOf54qUfuakQWvFGKXGpVyW3taE9CuQM0tLE4ztXe1pOzHfVZZ51Qlu0HAdYglO6vSt/bO4txuLuQK9Z8ZVYIGYul9IE9vN/QMfs3bOi8r9i3JAetvfr7qswvysK/c7wRkbj38eiiBa/1mMd3fYPjJAqi8HFHUuRdMyZ8Ur55WKzxO9jiv8mJlq1zhpwqFraBtOPMdLVT8tb8GzFv19oX9CtScNaSQO2SAx3IraNJaHS0+Gm9i0Vlo3OP0YEvCNVCC3Pe6Gu3W1heAUOXKk3uHRu1IG9z3CCTOfXbqI4TooT7MhX20eAwjPRWIwPZrb5rMyPIp+NGErIDiqjjvsDQclmVPdHXxtAxLhRhxhhBmPppHWILheFhQ6CSKG1vT3bDrATHMkJvjV2MD3eUTUGdgj3S5SAMZsL+Zc9j2TIo013gRnU5X8xR1qBJAmvfxU5/vBGiYxuYfhdsiDhbFfZ/AtQ49MIt534fS6/sKi6ubz5VP8jWmzwlXu1uAK4nXo4tsIzcTBotDX0M1wTFZB5Lkq9iz9SCiUEunyczJKV5vUsz0LXlP7yZShnFdTg1iEgTZXSX2UuFnolbEgNaobhL0tHV+ufHyV1zye/1eTy2/QGPiEibrBKWb0E429hK96nEhg2XcRqvJX+kw1stwtKPllV3TufGVCf4NBaSDvXlRCpSrp/dxIQ/xp3mjhnJq9MfWhKnIkqIBJuT5DTjqEknQeZvEm5xQ91YlALTZpumHZ6YJcCbR4me1D4T0PRu1eQ0bZp519WHPs08oI98+D7mdaxtHiDiAPPLyFYH6DG8nHvDavKO1hIZUSdMtWIR2Tl9zAhiE24fO/RaQJmMU5LvAruUs3uOHwCzs1wQAcSvV7Gr522KQ4RfpjPR2gJBUZXVTz8yAs4Yq7a9jyvsKqtXkImrVYPKQw2YFblqVu+g6FhdHF8NIq2AU7Kef4VRt3rnSlTq+Bm1+F3q9Iz7Bik5XsJ0yTcUZMItqYkoaU9R1RwnkmUOE3MOzeuG7RudtIGoW/O7ENsGdiOF9zNdbOqlS8Syd9yfVyie9EP9DDcRFPByMv95mln38m+gL7YLSC0LF5L0McnTxbLxvqUFwmQIniiYLdVZqAE4slIZh9qR6ipJO2PjxY5tEoKQt3mca7Z7ahOQwsrYCS8FyIMl9UsgbQkRglRUcAGa5D0iFchTZtXEm+0Kof79JAWw/irIx4jfCg6HViD0qSXBQR3AwGeAh0mZcF7xDmK+0ynq/qOhqiCsOqnTI+ASBUH6sQqE5vMMRCxDXyAE5GRvacX5tsDUsQy/RTsO18jQt6nfiwXHv4Kk0AsP8CpAK5LlpkrPObHOHmhco/INUkVZRTI5RFbmrzwhQwFItrZmTPoUEJoUllFMZ64VF2e4lhmCchK+Zer6XVFANnO3i8aiR7MrTyg9uNG8rWGvB+cG+VOWf0SUtO71eH1Bxhq6gJGFhe1h4UIJnOwADgCCyb0MvLvMe40eKtoKsRmiRN0U1Qj4hhtMVx8QMhA170QJZfnTwcJvaHVDNAc0i4T4WjMA/iEAQsj85zCAU7W1CgSZXTyDpb2Igfxe9qdwTPgkmWnYotIwyAl8nRkrlU+0tpODOJeVMjpyN6WWPGStYc3/18RHXvERl0jGJNiF1YEyZQ+Ek3DOy0Mx34BKfKjAsFqT1x3YPAb7bVKeyFlJw66DMLZfNdB9x4dv3TAiXp7wzKl7BYhCZsRWRqftGgehDAwFI/hNgUZF2Ks7aT1Lbrx3XkKxg9h7BFvMiCYGyYSzddLXo+V7liawFfaul470v0mrHwzy7GybtGSlPebN89piCjVtvbnlKTDt9anH/e6nqsx3IoXdqtsZn03pXjT+Gb3mS4pcow8Rkt+sQIRh43bjzXoifgevK/z8nWB3VI+I0HLjSQREF+nPQEgfLPS62GCQwoApcsKgJZQUwBWqVceyjPqxLNKeJIszEyoIK6vy393wA3RNSNFJKnsDIJOnQzjRupCzETJTgtl4z9Os9VAL/zkjmCa0qhFVQDUwNwmSklQOMl1/vkF8ONaofq5jfsWNwST1KFandVHM+ruvWLNew7njFkeZK69MbwDazBt2zPw4JtYHdz9nisWM889JzByWKrybPQh8A2x6EZOP1PeCUS6afCpxPqgd/bc6kAgvQtC0SgnoVUYUmKSpB7ze/cxjOZrYTdEov8Bra2w+/WDeVnCyXzIQhK7TOGKdHZUejH/SgExY9OgUaGvEbdclreHA2inQHmiZO8dnk7XOtQvx6AJoZk9EtjHvbm9VsqRYD3DV3QB3ZhdWO/1PI1ropYtHbH8IJyeFWQyVtxfEXPjC/Sdeib5rTdmttb57SqyDdDqor96ex1M4gYoGevNQvGazMdkNYdlOCSVfzOVWog6w3J4xF5FzFMLgU1BwACjgX1y8E8xlKOjLmkB9dOEUlRyMpeRAKIf4QtcNXZpu0fScT59xAhGjErkl44hGbhuiY11PWaNDbVb9wHZt2gUOfpGiQeWcAk6z+Fo7gF2n/jZyexlYvxaHXZ1n1ICc5NXcykU3Kvldk7cW5Yjhy4qiqCCt0/qh/C5YgK+adxM5reSMpzYiV5Rs/8RIrka9elHqj0qZ6P8K0xmxo4Ec1DpwButJfj2j4BRjK+iF5N+v79XoSo9bfuU+sXgB5nzxCFXIkrML842khVDOCTONgf+NOdi3XCxn3HLrzFaJ73190JR9u3P5R4MhKw7k+s4UItsQR4QB79nnPYdvLtxvgSuqKHgYea9n8uJJJWwUujU2WsQqDvdXkXrumXdtQn+e4Q3yDTeYPxyPpEdEvYodWtO3Fte/FDiefJdIkRoKLuQUz6pjyGAVlsudyQytjQQJssBkrTR3RFUTot3ozodyn3XNjLEkTeDP+xd71ofay/VIEZoDFb2GW3HdxUAyFfF7xvgFdTQGknNzYagfY/1XOQEWosZJQTbXw7bhvfb6DDzp778hZbChJ3I8pHP4f/vf/cg18hONNnllIIoLuNQFkN2z5FlMM/C0qd2YbOZXi8JsKClAZindtcfUegX/qTNuZZ7P8iflHScmlrQcjS0m6jN0iRIRKmr8/yN2VRYz1raazaGxhMNJ85xxsG9r5z4ZZtBoOgdHzP9NSjaPnSnD4Aj0PGGlRvRzR4hGFx8FkYls5pgckfqj0kskUbkSxQmCXTs2n9th9+cPc1IXhU2DbJGuLTNUpW04mZElERzcrRwy2x11mGE+nYhgNQV9OGpcVQoriTtVcNA0IGV+0ACjQTb/VD4Aq/DLXEORoDc9Z7viGyZ+aM3LqUia3Nfe4dyekrNjjZGWobr+OV/beRqm+qpNSnYAPVld+Phd6t1QlyEbU0PxFW9R6uxAj9gUfl35FFHoK7BlOBGNflm03lr20GYycYua0J5s5QSccD1H8h2zDBlKcA27RgA+CZe6DH74OavKMjbogJcO6jb+l+z4KJdMOX+kO97WWWMTnGypRuOnMQu47JJEVJ2qteTVVYw2bHMWeNFkR5Gzl4bP+JOY2a5iCZjReo+oe/DVik7Zg0UwEIDO0hSJVOA8VGDUQtHnlyJ32uB/f61B3nLUFPqcCGrbmT4kclnz2Oq5IqMBNq6Me8fqR6UNpMZrVKWorC8ZAKs4cbOERjM7TsUYif9cQvLb76d5PKLjvhZXI4O8/g6za41xs8gSJFvpLKM4R99za/D425fW8+93ZVJtnnyyytU8Rly4QAMWhwgVo+g5ixyt0+l2q/vtMuMcQbT1662EpQMzUrXu70u9pSZMrhOXZJxZ10BpzeV2QYkDxt47xgvblsdio8FJI5bJFpqpgnfHzzD52APWxjBt1HgQVSyUoCxY1paCaZPcGD1L7rKA15PKqeMaaOm4slde7CT78xHW3cgE5QXbndOLTDgV5AwNnbnZlEXqDV7ApJUuveVkDPFg/U5RBm04keFcwuqjXGO/qln0Ln34pSLZI+b0ksyasbEc7L4jBj9BqpqEAat0DdUKP+BrO6KXhjdoYhP+D6ary6S+BDO9AOid8p1X2aiHoNJSD1trY2RJiL+Wnv2ujkIGfosP8RXyQTIf3R/WohfvV8Fj/qA/BtR9JcHHIisdbJSfxjbn1AgEEzPoPa5QivhSVZCnF1Gy86rRG3878CIZJmtW1CAABzSh+rVx/yP6mrr70cHmZ1Y1TCo3C0P14y1eGtLsm00GrsFgL4+GXgRHsi4N+QUVJ8eA8Q0sqK1K8AYvpyZi7AppyucMHEB4nzYfFfvr8BFjCeyd3vyd7Yqju8AcQkVjy0PVpQ2fHeCZ1dTpNVar3uqsa44VthY1PmlCyS9WWGxElzbgil6IozbZ/+Itma8mPFTAuF7PoqKtBK5HbfaXkvJ2CTQRpKQRkm0btCsxug784Zu0JOiOgCtaQpwzcnfoPRIa5Xl2dRhHOuLAz1s3TbZ6DDOSo93dv8BhQGz2HnTuui659lQqgwvHTUPa56AxPfHNGP7EJ2aGCl6Ai1pZ64JnK1Dw0lPUicST08JOcZvyFchf6JXseZ/kJL7RXaUMMKA+q+C9P5dSAYAJrCwdH91a5zBUVl5+vwwMn4FXfv5HYBZGE0YdLjeTxlblYixhuVT7xYQXWWLXN7TV6frJfCwdIpKnAiy6Ls57stGZ6G3NJ8cAClsUfWMuzC6I5JLkiJMrX/iY+L0BgkD94uat8adXYXxkQyEu7lDiCl3qgMlovJw+5jQKIyMzW5UB/6emtrCHN8uIE3oJJ43HpWJaS3I8vw+wYL+0CBi/L9WJDC5Fm2zsTl5VdhoIYcYPOeqEkYeoYA4q89Pt+q129t367j9TB0FhXMWB7bprwQcnGsuEp/7KjzGzTWouNJtd+TUCrLpW4oUlY+QCDNSn2I3FQa2KmVx2IEEDwyQnt+M8fxFthgcFbjFQtoiCgADflWEtUlGSoQPfP/65KL5NpAFJKbflpofMOtYbGtbeQWz0Mbgm/eIydeGfbvT1rVP194we2+wf1cSzRjfATpo0yWQvjnJjS77/cPGiG8MoYmSY32vEtdaZA/p2vOHpcL9shZaMw35os52qTaYCPfFVR584FvmS1A6sZK573tQ1l318ZJZXEwHJpJSbt1Zz0THlWRGqCM7GMNSUrhQDA4w8eUZDaQ/qCnNqTKC7mJg5zlWjG5Zx4EPVHN+P1sYK5e1OEJZAi3Af/oeWf234Ux2RAOzsP16//wbz9nd8W5wy/URZSKxSimAkcGmnYxIZLl7v979RbwQLgfXIbFPDQg7E/q44dgyG9tz48egzSXX6HrVms5YI3BCRwavaYSo7myDRTgpjsTxob5+bHDE/bT9S1WNhN9wllFegpt6hUNm4fqTIkYEB2SGzAwfC7LtsmBfZ0QQXzgeb8qRNZCfWrGO/WeY+c5y1qNWfcOJKgVAYJOnsQZ8lGnyg5O3gCnFkXQ4dh/wInXhBe9ueXD33OFCIoC/Ke2DFBG0KC+biSqu4HXhfMR65sIz2Yu5l4Cym6phgd0M7FH5bN9E+AynJHXcW54F5PPdnv/6XlNWZnfI/CSo0AC2EZWtl8Jc5N8Sz0bNE36HIEMqCWEyNaOdbrCkPiz8FxDajSRj8DpbpTxxuqy/TTQCLBCA1bXuFCSGk18+97xcr2XkiLp6CXbF4gfqw6/2O07+RBwKtVLxNsin5L9ky7p6GLurgWMOlybuRh9qtbcDLFMOjJEbdlkw3LY2HDLcWQuge4dVjTbFi+4oHqEq0f/SJCCRTia2ZTv5kYf9v3IsMPM2AXOocolOD/SmMobRx97P4GeCp5Pk59S8MZiBF85skJsD4MmruYcbmi7v6q43Se/xOctuqysOmPAVb7uFD7oMpnDtSsUVimuuvIImQFGJKKngPN9MA9+f1xWE8NAsaEAoVah50EHv553T120YEIsoQ2XFlv90BNwB4u3goguv6YMg10kjkM/MqNOvBfXlWszH0njFAzAIjbZz1vywnBadkyEixfRZajAwoeveqrLGKtbLyZoBVGTYSOpGRuwjJRlCmXeUaG83mRSMZ1Bb9btcc321hkdLJpiUGIvgpyPthZwn0EBE2jiLf68Sv2M2m073dw1/wJvvOAfhcVvieYQayeqHvWAlUjnCc1hTFl55tVsD8qUR+ncjfNB6oa6t0gjdxz5kQBjHgndXepWgKeLj3pXMNK0gssfFtWqDd5z36iqTgbR+V27I80P1x+NGpIDPU3WZrsDAluJS092stWM6A6UDh2AlwA8OYIesF+2+cBHyKR3mIEm2RU0UNjfZzSnNQdlVoZLEtTA2r1wyIDE3ydFcl3R23FGL8LCKUtVbaMu4IQVH5rMXb5oWXZN7fE1WmMyZ65NZsOWKkdP+8ZNTCgX5o7wibi4GpTFuXLtMObK9yM9THbFouK3jKdF0Uu6qrb/saAawaBnR35RknAsZFgeNlwv2kN9gRdE3q8A6pomTibti+uWP5j5FEuFwUPIUm01uYXEbVOhwbVA9j/RSv1Iz58/tjzkTfHEJp6Sf2e8O8GvVPHdUs0DQCGWn7ER0RuR47SXalBpiO7MD3/P9d8zrtJ7mS/l18Uck5Pz/0bITT/4jJHVSXVHY0Dgzu0PYXOax0vfhATXCNthl8ZQd2JdtybSgrWZjZh2wAJHULwrxRG8nsBsRNhqXzTyfYk5WrYnCZQtu9hHIvJR+wrhR8phsDFOsMEjS5o0rRuTAfnyt5pm37CGKNkuImHH822UA4Ezuw9TNAnENEv3AJl18iJ4gvegZoGD2gz1wnwVDJLfvVfXhtvQVVo9G9MTQ582b2M5vP6dGa3jbwk3Ko0ubQaz9eqet5866bJ/pC56fuIW6h9miPVgOqrj+jVDDO7ergIz/GjApsZj16ZuK99CRdx1QdJx1cKdeZKR1s+drgGU8zhKPpqq3N9PbypJANrlsY+0MqYrwlk+4kwbpNcq75mKx6DaO+9IZLUY7lNEt0xeQIgMCec7cfd5hwA6+PMB8PR5aeBv0vSU7pZop7tpK6iVo7h2LS7/iT61gZk4fU+zL0hnVvvDxKRifNLKbuGY3PlHJg+pekF7rDiM9lFd3rrMUeX6lzxhPdRCDwsNvgL5KTWwoSHRajErwR6aHXpyJcqmV94FdEpPKtS1GEMUTceQsDSF2A74AiVeOArmV8hI+G4WdyJhtBqDEZrPjEnDGkoxqwgaGrT40EpQ9cQ4mZnHZ1SUwedtIiojJEWYnT5SdlYu/R6NC1RgPnzXq7qdvIik8dvh7YJsAr7psyQ4kJcE8t1aRqZsYny6kC5wz/JgBxTSnI71rw4+opvNeOkw5yNqZEVrCXuVbuAsrBGHdCkY+hpS6kDRO+n+iLrxidCxeGnb8Z4RRh364B2Z33/oDPLJS2MsYIeTepAdrlxgeQOJf37EzgrZK97m9ZSzSEBr6VDmI0Y56kijqY4Vd1rfWnAHKmCLIiwo2MjL74E765o7K70LMypF8dcjO1QlSHjFHvgdELCzAyjhIQ8grotsireuU9E1UI0w0mECpALOdwNbAJYfn5pLEr9xqqnV3DQWoWf3WqhHCJ1W+7CcsSBGrgnBBTALHQwYlxltf/Q/9QyM55vUOllvUeGub95e9IDu8hpP0k8oTvGsym3nCZ1u94nGr5v0rJfeIb4UHGFnlNTusNfx10x1SfBrCjOkgVHdgZlaN3/F8p1BHcOcr8QCHHl2uVA+6H8fOpcGDPK3Eg1NtBLdaMR9Be0y9Oz8trnVMKHm29SuM7km68jawhT/aQxvf6kRFtHd8DM4TJKeRTnm+m7q5xB+kZCZOMMgsrGv9fK+3UMvXD35gpuEHNWjGPaNAGOZyLh9BcvX2+jmSXkvXdGZfhLLMWeXsOPL6xkP4gzN6Yd9QCmq4BC8Krnssph3Ip2/QV5bM3UmeWyxrIOsSQrozjKU4cODDepA7M/BOCwDkRB9EDKDr5s6TV+0+yR8sfOZbKxVbYJB84TbemU55gFVUseb4B1d6QP3JyQgsKMipqIBaA3MkCJIzDQEaNBRhi5s8XyjPd7NSKfxX1HFDPwyrAcgGHtQLcRhxO8C2j/0YpMtTTndo0JYZbWRT0kFqgWovKAZy3017plfEEc4L4hCU0BgL30ONFb5ld0LzL1c/ux00kzm+rPfUnvzMZJlPLUV4cTQ0Gkp6GRmRLCPZEzsjwKUcv1HT49D6Tpir5sDSncdbqX0BuGBR/R9PjSn2jRMUcA48Eemdsht1IUdfJQreFylBvxVhwNxRUGg7dyXzPcKWcW0WwSjVwuJKHyysMAhTFiZPGpOizEK/ofoJwylanotpk7AtiW0GxS+qzEpWl0YxeP/beH5nRTmhx4ymqJeb3dW1esUARnAHkoC/xMG/3uLs6pDa1KwuoQ/AAD3IWmguQE+ayuAGUBB72Eqr25wf3VeX6lnyJ/r3oFhpv3DnfZprGSPVLusxk+lI8KXJ2Ys0ea+hyQuP0k6PBYmUlMb0t36fcNCFfUKr7sS6NqC7HbCh/o5tMzt0k2n+cxif5qQT+S324nw1XlbZ+1SLW3tYt/O0DgZH/IDQGZAKUwwf7RiRtQCtpEGiCA+nQYO1FwfQR12Ip927ZJFqRmI5gcHXrvsFMERmJoZWxiAhzVqEGLGedj3Sz6RVMF5FWKoKpwzdqrZimtfZUdJIgLxkYe4RQexwW5n46PZDf9ep/xApGq3QvZfUr3CqvPVSQILZ7wiF4fenMe4l9hCFHwRQjh6O+1Teq3KHnLV+KYQ0f9I+oZ9yQ39mJRqJ2QZqixSxl7MsrR1IQF1L4cC8FFAdyLbgm5xSJ/SVJjZuc0he3b1uy5djpBBOuMh+PJ9n6QKQvV2SQ8MYjzvcCL5tQZJjE8NqXcZvDgMd4b7hTAtpPOOou2cgtcNK1ZID2YmrJ2BAN+r2l544MOrU7cmecSSE1ZlyiSF6AgYW6yU8qeBcCpVkj4PnAJBj5wHKEuVgUdvM517uhcNEyp3G2qJDLnNOka2AS1erqQfvF72V1+AxsHfkdvNN+hCPrGiHplsNI/OwlGYfUtHuq6bb8iicfmCOG8qKhuX49YsaRcUqQ9tB/GUHQVwtc3sqaW8ecbh4qU9JLK/8vG1JNhEOV7KeAIPuR/FOBgMkuKzVWB2EPJ7t1TtoNfhu/TqC+4TfwhvZ9XNcHdM5szxW/0OXrEVqQQ4XcKrrONTrXDTYi2g2vjMB7FhEIMaUW+hQFStFnVTXrKjnqx0pHiO6CDtsE28EjLAKUMDDqRgFnU7xW/TZIX5vD1SKObkQYwJdQyZLfNQu8nxA9tnoSu3yk3JaIRHoHclCNOP2Zf73TNfxiJPTCsjx+4td98TiGkI0GeDt4blfOIc7w7/wX99mouUmPruZMzqWAAaB1quMov8U5J+fnzBm/+o4Gk3U2fQtcQW0fHm4rEFuqBr1gl2tc9x4l4ENg03h5Q8TleTc4lStPU4srPwTg0deIyFT3aV5n7xld8ZaQ+LV69GxfCmbMZXoMQeoPZ3i7JukyALfueY0g8E6QZO4gaZxdaN5/o6p20uIPu401RO8Iq+AXou4Dis3J5Fw5Br7XYNkHJg6CrMyWY7n/a0MECYbWuTGRDrPN2nPv1w04ldkJmWjiDvwFfbbSZLyzr8816ZleSaHJzT7el2zmC8sZ0ExiZe9aZ3ZUdx/sF+6oV1iS6/W/peFg1tGryC6YxAu/CCcA0SiAwr8bRh/wS3LQX+FcswxQdLgL1tv94x7kV5ZGO2fRTVrIacDa6fnmRQNILRGDQFap7iQx/StJ7a1vifrGweXpYm5OCyH2ADKXLpkSRlSsnN1SvQTGE8T7AkVubSMsZZkIW1TckKp1nYlMn/2L9ms5SNRnjAe+Zv/oexZkPdKE4KSjvrDvlkvI7/KwEtJt6X/ChLFKVqTGVo87RKsGUdcjaRkarzFY+dX4tE4rMSxkXyn2HNHmepRdlmPO7n3ppDYa5XMnqB2nfIeNmOgMfSIif9lnXZHalsM1cnlI33wrmcztyDjuOAs1kA5/g1bdgps7O4Qi30vkFkpmVxP2oUs1Yf5nd9Evs9ZprpeC0Mj1gOsUgf/SELqOX9o0QbCBt/d8AGs/+slz7xkaWmsObrNf54sj5lKbFXESjABkHJwbg3I7Jk77KIGV0+HW3zG8mc7i2ZJt4tjZaQLX7owSQ55jjrflUMGggXdLjOVKPCIucQrW0bqwxXkdXCAdTy4ipb8QFr2p175icDv759ai7WKEDWcEAH/mBQlIFc/oH83Yrp5nFKnL9hztHSWaYpldzqApeYeQV4mNcfbAsV70E6LCBKZLGY1wT7i71Z/S5h/gqZbA+OnsgchweoPkaybxO0YPRulAw3V+f7U4UQoqGgAM3q4f8VO1pgWNDqmcmv230u8cPQT7zXpegeSkoxmU2Z0uljPq2e1TEm0/VFs555i0KCksLSq8+zYE5DaoD79x5zpwTnSK9YNMM5fA6wem65GceeB0RfqZor2GlQ1FdA1nZ+2gk33t5FmbP9J/pLct2we9mG94kUtnwdSS153FXd7PTiLAS3nInLd1hjfnwAehOa9Vzc5+lmAH9rWQo0T7nt6P2xK9O1Bdy3Hy6/j19ueJiIkvXOMq1cOUHfxNeB8dH7yDuai/aFDvD6op6JJVumpLhPGNF/RtADUJSNh//RPywlgTHvLT5B1XDYJ8mkLctk3/515fzkuK7ByTsp6EzcAc0zl4bf29YvXliC/MgMjNh8wawRMRm4Drz5lPfbgdAAo1Kuf+/9cmShu35PPeTqlcECfYlFMyRwOqyp4ij47X0TF1TUKL5NhPTpeKbruOzi8R0CJ4VKYThh+f/bNviOZlOXfhV8PHwaBN6HcYKb/GdMm4y5Rg09QC45xNV6ipFhrOo+PPuqFKIwKZXJ1abYJEi0Es9Wy6emU2gVrnJgXHOnI9Wiw+oQUy9e/uvJ+TRFIgHgPH7EAcK4Dp8Nlj/KJYOelMFMt9Ht2IDvY+BcxVUvxbuYc6IJoNKKSv8f0sUEV08bWG5CPA+PQARzNzMPAzBuNEWb58vrUqSKJl3I7FVFrJUEayJhOd3RtJtKhcVi8XT/jgBaIiBZhbM3Kv5Zhj2VQu1mLzdZRtg7XivrwgYta5co/Ni/JSJEiDCVO6IxojpyZLfzO/Ffs17Uq7iMgnFDdc3Us4vYRioBtJrjLEAljYKPj4doMpQK9jj08JiMGiXOn1kT89J+fbVV7ZZdKUo+JH15grLtZ8Z3OHW76d7fr5IdOFbG8sNaTQ+sWCTHluEqQ9Fu7fpMnnZEmE42cluqljsZ4ihp+flRbDKT7lEonryEWjDSS0/f1MEvLnVX9AqhUO+3AGf3OdYggmhNcupObkPEA6/hwq6E5GLOUBZvGJTMGEAeV8DdxfWuAL75SNm7uXfCcX4ZKDRExc+5V1KBVo1mn+p7aSt54rgcbJqlUhAzO2fTT1qshcECsFPM8gJ1iz881rLDDN+R7yNO4QcvgQeXdJt9Fv84KTIpL6MFeU6b2wKidbW9OIXpQL7NswfTgVgNLHOymGu8nlugJdSbrdfkA6lPzTCl01FBWBhhZH7yp/7fJq8HYx9F1y1G5bnqwG6UfuocXXxl81ffGS/quo8lHuLVsZZoCIEMgGNhg4TtVZkVv/bLlWIisg5JW6JLCF9LrBqlGI5GhneT8hvgmswOZLSxU8nnieR+vDj0llZMh6+mvbz8Uroj7Vm5saAqmj/A/PAAFaxa1Wh6TAsPRF92DVsIzFYJ1QS5PDJAnK9OPFa+Txbx7phKz6CMFfGKGXpYV4ZEEwm57nP9pC3O6HGP48iANlD/mHSj98V6TWQJ8b8lVfEbUh+fjEH6WLc1qcPy/9dbjr7uxAApJzJt4WAyL4KLw9srghCIbqHUgjqjE0yhmrZDmkU4eapdeRBjQGJIsT71Moem5Q/rmAGn77/xV+s/kcfMa+lnehoCfZ5CRF4wkZ7w2QpvvyErp+Iuwaa40TpEYuvwvj+QDw8ptchxCo4pC1ahAVspZ5cIVx1vGScI2EvtNLbTEYKrkgdHG2Uwh4NZerNWjwtkNazECtZrYDg70BWoeif1ZP9XVcWa1vEGKgubo3yznPNI0NPLpYjJ9tcr/080OAKVgoG6OWNUgJozo7OkSXkRoQM8km1ycHd8bVhZsGI7+HpAIhqYiZ0vodzHd1AqixqaSshJUaOYejgscO6hwDM/g//oR3BLVSX/ZYE0bWAkZtPpUA6WXmN2rjTo7wkGa2U9jQfclD7Dv+y8NeG+XIeK507jMry8rdYRHtJsmgT7xx8NzetKNHf/BmtG0lsFbq+1E0IrZXJjIhYzi1V9L7i2x7+D/J8dOANrGKfzPB0uEdN4vNAPC5y0+VE7Dhjm+sY9j5ZZ/ek4RvNB0woK8Q0duV96ZntMl1CWSI0+vBlo3mGr8HwkwEBBERFx0OzN/i8tkJVsEz1ZvvOR6x1UKBLUVc6IsJIx/viTcu6bbwFZZ+jkIlIiryRGIiD6laoQHeM4vlCGRc98+d16jaOigMQN7gFsHRYD2V+bRIhZuZE5EfGaQio9LeDLcpcPJ6DRgrf4We9LQRDDW7vNyLiyyKiC3zKp4IYh2/zI4Jxz/lJz/KCG8NDTZKojasLwfosXaTP3buvHLA/xPKNTyxQ+y66CYcdVuFvhyA6mFWZy6XYCbSteTLnGA4ztKcJBFibHsCPDKUutGFOAPYiQ77BCckCxV0yiA+k4tND2bI9VY24pJHsnzE5mKMPpiSe0gtxx/LjmTAyWcDORQMjtB2pc/scpkJ12p7m3i3YuHevqZDCNOdGqnDnhsKo0uXjhFp6o4+qbR90MwcnGO4JqJVC+DWoLbpJ3WhATpeLJAOd5BQyhGvDJgVJdquA1HEwECHOPQJ4j7NWnDFCO7FcTrLX2a9GWY/RQz3UXSJYeddXJRGjxuQjk5VmrW66E72UrWV9NPUJNktoBaGFo64sxzSG70E48nM/0VkzDw+MOkI8cXJeVp5t2j58ZyDWSFQFTHs8JNIBnLYAy7Sm4orZNUY8W4bBEVCjwbiDWRauA/cvNerM1DBn4ju6qhWkFjB68EMGKVMGEMtCGlg9Ey/lVSplQP0GcyMW7HMTuERhKZTji2A25pW8RZrcbZh9MAocmyQ7hL7h+ZBwf+BqxsdzMugNi2hwtDAmRZrWLVBqRTT2fPfWJh+1iIzGJrbrh8zDnyykEsEuRS6Cd1fDOO61Rk+k9Sz2iI8IUONtjPk+GQ6J6As+dpywQ2fb1chKc9abIdOgtdpzD5nkGa1l+h0rr6peiztzaSL97UqlmkyzFofBYB+nnjLbukZ7bJ5DzFTBIErDIDVH6Jn5oN0sCWER8w6ebGrNV4HJ1UyT2UdG/VV0LGa2HAzAml8zdFq9mqpLExaHzEj1cSHuPWv3LfjbqAzeXV9hhSXc9RDeM2TlDM/Vx4cXeU8i+watPCqdCTTgHyjcj/oLiQ8te5ZO2zayAMJEzKd05MUCN3wCMV9OD53fg4A8ReqeQ2kPKluQdMaP3/0K1A7WsL8e2yinoZ6GBov0NKAFr7b8f1aYQyzsq7vGBq/EMyt/KmcKozMxsoS3CkBvvOUh2eB5kTZ+GAXHEDlRNsvtcvCH0i4AavKN/ygvtMfPEqN6y+5fj5JQHpvxy4MBg05/0xsbXgsxuRIyjt+8ZFNFx6ynyKRFEb+AxPGrYBQ2E8Y6lc+VJaGexc2ULaf7mhqKVOVGmOQszsCybrfFyLkPvDdoTZxy9RJW96XZfXSwUQRYXiqoir+ka+oVyX+V8/TjNCjlCT3vPWLRaqjyW+3npfgqcXPb2uX4uu+78kFMnXqHMNrLiJgkammEKnqZ276duET025yprm243w5nKNOa/ES3V2d+F8KfcrAaWQOEsEbZY6vsTL7pQ8L2PgpVKQRpjtw167yJ9jVUw9EWIYmsG62/kNRkN+iICzvO5kwHsJjvpxKOR60EDAu+oCp5jvpjCUXkgU+ZXurFg75JjgWGmgYSH66oSQVP/KsK14xZDBUYPsRzFo2U8XwchSxpuUYtCXHdNnlPSGVoT+v8NamJ0zO76MYyCRB0ZcfWflC/9rAPmUkTE1GxwAlOJFJ5pF36d+QNPY/LKtEItzokYwJQBBGlUuHvusqofc9vZa/lZtkEQB60oMisEFOV/o7qCJAab9zj4vzNqTgYyTfblE7hCp8WE31cUB5fbkf86rhNkXmundoPd8QJkrorlZ4z2L855jL5JYq0/e2f/JmvGV32NVEbgTGy30iLOtg+EmQxD5pNjJFAjyEZBThi/rRwR2+cAt2zjf9SAVyTMkoxGcCSwGMGelBgj3RaYHVNeyMQ0XwBh21nb0FvKg2dy4163Gu1RoL6mAFt/Uw+DoDZi274FqEfcg3V1NEJ2PLnWy1UfB5kG83IgtJjGrLML7j+eclO439CFowfBBBQ0obL1UQn3fe2QPBZ+MhfAsNPSca7wfPDHFKJmI7LxN/etpyXAAy5deSFA12tlr8G2Q0b8qjD2Nttzv8i8qOlU/NxOejdD0vcH3fOVbLPuLLrr4PQ3rTBV9WhKsR9jlz2O79tok1XYNab/LWDx/vIXYa3W+MBLGprasZ/6VGoIwao2m/V1RazBVnRO5h7WhVsD4apkC5WPWYS/vXRMi3Sn9IbgT3bTgJiQ3z0okW8UteKsH3hcv7BMweHquCKRRXcB5eo8CUDZX9UaXAqVrsmjqAUMJmwfiEoF0YZFgj/ypGiBhVc5xVi7bbp3Xz+TQ3k2BWGSBwHdBi1ygMv/du6UfzypQKBMtT/adLbPVAm/QLhpyrO7XreIiS44KK7TfF1iOhjPru/XYJfOxaDxnTnSD1jIrF/HDXh4/7T+A03+1Rxn+6C4X3DzZNpz+dDxzFDYPkYzII7P4+Nof1WQv6M7FmtCq7Zhas1ZoJJoeatZ7oR5x4YNXpbGJ9XUq2iC/B9IuknIQIYPO2ZNRVPu2vKdboojVoXm0Y6RhmUmOTsVBlxMXaJ4lcRr4b/dSHEQ3HmVFdzeWEB50EH8vHlm+5cHIH5XvMbe11I0IDnW0fNNe5FhM9lB4qlKW7yyfWOAft/1/Cqf+A1bIj1gL66KR6hb/mkM2UyJizftjMfO77ZBxF9nft4nQI70H0Yc0Uct53ELsAEx0CN9smMMfBtSxj/kIBhYLQWi9eP3EcqYFwa7GgvZ0okCsof2Wx3p6Nd5m7Bhfj9C6T1YHLatc8CLbXFBu7HaAQCWQwf5CBSBaa/nFlrnAtca1nxobX6Uin+7v+eobQTT/3+MAruzGCYobCqA653YbqkochDbVcm668HAx2SCJywv/YNZCJskI3xk51GKJukjw5hEU7NqzlQMvoVzfSXBf7BQzP4PVrKEvHLMNLHiKaCAkuDqSUmg93txaY0rwkSj+xm8d36fGZpiyq9Xbq/OPlXogbYSxGp1ooWhs9hr4Qv5G0Jq+RU2bMKEg85NuKs68pgA8+kRNgHg++i3VmS7TyU2XZHZk5EUWLp+qNBl7PZWki58FAckbZwjV3Z3lUgntRGdtBAxYjNulgo+zniurUftmkRdc2vXo5xXe7esuFNPEBtfNnvJSO9D6HFpzY5l14hGN5UE7sNSbRkYXz+bzfLfntQg0PYVKWqAklpH4Hrc8nbBOp9AQs0+Icuf6pblBXRIbylWtL4d+yjOwZq+oDDJRrOzfJS+f6EhLwX46W6ps4lVUgyIm5YV/VOOexNvB7XCMDP6g7GMBEPsxYaJ4biO8QAJH4/Ndp17HYP3MKz3a26diTtZORBXlOrQaqYEbKY5o34wq+OZwb0TqMnMFHwWtHMs1ctLK9wlXY5QKpvxGOR5jnIIpUVG9YEanZLDKTWOGrd+M8syfj278sjh8Q+EPZUKLx79zY5TpCD19uwlSKnBeLKQ0BZsrSMHganlVKFmfSEGgUmH5AE8oQy4nNeTTXO53+zp9Z2wYmgxFxYA7SzK22uVDA8f77shVpaT7Gvmdxg5AH+T8EBam3GcoUnPK4eBBEV+Frs1t4sAybXfYRbhURg2UByOQqvx76yommUzPBR9Vdn+hIBcdvx79skOyIidcBNu0jmcAyf1rsnJiH53EDpzcspIzKgcKreZt/iKfLAdD6NqzWhtK89x2ayKsX8/49GfKTiFWT2Qu3ggPmboE+nQq3ljs/0JvK9kFi8O/6vTkg3Llu6zrKGIvdaxOt025am10/l8Fr6QPtuOy8bitRgiQ0hqeLfsDSwAREV79tIWTsZ7aDgMXjIZDLvdQUM1TqpTMw88P5QRzmO/dVyN9lXwtyoJqBvk/vdB/Hiue8i/HOpe/kGVPZ7PDBD0aycR/7LryFdR+ALSAki2zpu7u+KKGmUVbjACfQ16a/icvYTQj24v/ORcAuW7GDJpvhFYswTbaxe99t8LGA02UzUQ9m+wRFLpYRQXVuEGvuu+Rk6d0AfHOlikl/6RndU6mtwGQVMurfiMD1OtBTff3gknMrsAHkQ2wGT+JvG7POPPHMz1JhoLc883GKVfAtONXmgnw8fVTKN2O5WXddnvYxwSGR4MbDSglG2jPOuejoQ3OZI0jmWoBfTO9lr08HNRMK5GuekiZtHj0K4icx336i+UjOviQxDjM2uyE4XPvBlbUzDqe4TAzLYHCNjgr9/75+3r5A881tyksWyE5icF+L/QgBI3hUUZmAe8MZ5zi5G/0zp7n9ffjG3SBNbmRDLtbYjNr5V7G18BkTU64WVogaN1wURKQvscUwfIVAkIVlqUDXf3DU2yT7oW6uSGb+9TRGgFzkoc+pl9x4lvlKF/a6kVFP/voFAoHVNbPV5BoHjTxK5mCehiMngXUELdkyUhHGjtoF1TV4Ng/mOneOWwxXmabkij6hr4mkydP0HIj3kJwB7LoYOmrXLxHV5bJZrTYfGYuYFIk/pPIxGPbPr2piT3N2j4Gog5b3Es6bPJMPziXhWatZH9tSIm9k+CJCVuLi8sUR1bfbeG+mjeCKsNpHD6PhLBusIXppQLMDd4sGE6A48ou1yv+A4420nX7R0xLGgMuSGmdjW8R02qMFxSZQ4reVUcTnP3peUVtrFN/gXM6TlUQsIIrfNw2qP+lPy2QfP2Ya5vgljF3QuU4gtQz/+sa5YY7gHhgI24dNKEfiKCcp4QMrDPcVa7M+As6LRBetN5ghLqcd0l4vsx/vM2ldX7Mi+CVg7M/9HouTzKiGgR6zF9iebqs9GNby77aV1DEicSbrvl+k27qpw9ji2PcCjSaPScZ9XGbQycvjOiHgeMkAwKqFOg78d23FdrByByUr3qdcQ8kSCI3huEEz02ZUheRwjtA9b78UvDyzTJm0nC/y4/BoA9fdy5GjuxI+rpAzSYGikNBAIhFdh52WTOR1JrGDzNxLdlPzRv+EzuL+hlp4vYimxmtrcV6oohg9GetHdlwoLc8lpRIgA2CRWLOpGUOfcRuhHKUMF2h2XfBNwtrJ/XyjCmYtfwfq4gFLd9OaDJ4W2raQSXgGju2dtq8RQW7OR2YBWQAN4xGd4tHHrmaI4Pmtjlf2AxsyKjB6ULgX5BiEBzT77gv6JF01GYbp1IGZsdkJorKrqPezQ1SqW57vYuV5IX1YYXIVfPfChf2qh6uZB0KS205921rIPZCsg5AZTpYW2NHGFHHwn+Yy8nv2c1kM0Pg15lZ7gMEhVhxa4FRGoFPxhjLWX0wQeXCRN0b8skaorJuK8LTiETVvmzgDhDPoaF+81Pcl7m8QLOxmqdnh/gK8DFpVANHy3tR83uClyrp6eYuXi8vVITNhw3qi75/e3tcvIcJehZuYYma+NJBSRE24U3gSTjl2YLrQkisiemVJvu/VyuzSjKEDCc+Up+o255MH7q9MbRQ2NCD7Yy6RXLx6HwurgGl7IbX7wFpVlZVeWMH4/aYLk9zzCZxOGHqKSZl/oduofuUuRZf5Lk8WdDUuudDWApGPYShIsDVoG1OcD1Dz2CPQlTDZiJMwGKwdU9H/V/p7CNs6p14dTAVsJuJEdN6mmlv+7Wu0UZUy8DdloFJiYCFUfdUc7jVi3OpHKAIgmW7bQTjKDaVzR5b0b0OOeKyYz2sfE//OyHh8jI5mKY/fcwXxETLkxYUPBgXaMj4KUnPh99zEz63gvO2Eo641ImFpEQgnXp8oPm9cveXL7UdqXpBb9pNkC0GIUXor5ghDFJcVHwTMBBz7rGPbVOhF9Jwdl4q0C6i/i1QKLrZAlveuQTxoWtjsCfsoEJplTB8vt0EFrZWMpaayhE2/ucbPoNwdQ2jCNrVmkpnyOg3wZBQXXVi3uEHdUJWJiyXE8NTW7WEkDWqlezHnnQ9+KLXW1QuLkJUTR1sMRjflmdydX2OW8LPXyzmNCAP8YAcHLktJSxaPECUjNQpG1DpFvlRPbqdnGN+0TYIu/bUDXffRwJTvAaD5GK59qCd//pVfCW9bty7UIZfhQi1ucGN0VvDN2jirl31BMAeqkn+HfrAMZNTMFvEC2tuJ/VJlB6TpcSiVl7Ls+GPFJdRzFVTcwwkXvKd3eN3PAucJsDMYp2xlFXiW4n3jmS5P4ePKss8bzWHW+LWdU10qNBipkK5kKFNRSl5G90peVvc6sH+42zw+U/8Fmwk7Yn7I2xoevhnRvoYYO3Sho5Sn71E8+evvGxNpqcyVjVL20LRNiHiCIFOqgMfPg5z6b5TzCjp5EG+gNMBdhaxgUfKy0Y2DvehJJWXIPTDEX6dJil3xPC+uX+xF99AxNiHrWlfEToDDEOLgkFNQeBvg2e0iJq9xMXL0ErCQtkGyWtjrLz1VpCyIuzW6sfHCybZakI/7hQNskQJU82uwLB1DxQB1Q3Ac2pD1ZKTrnvxgEn26jWwQCHDRN96BY9s3FwPCyIkCo7takakGJ/k6Mpn21Zxs3qAJNVG+2CHFfij+KUuLPE8fZP4F/vDUhXTWdIPTDGV4tN10HgcHPFGb/FgNHQVk1c5rlCPj06G1kEKYMKN8mAgexWWc/qNCN1qWReRtY2qIbJU0vszKzsjTptKXEbsp+/KhmyLah5tR3+MS96Uq3PYHgDJ0pHdG6k0dxcEgkELjAGhekpbQt41xkpJqixmSHNJ/IKjE2YLceS4lGN3mIVfuuGbTpvf6RBfJR91Ze4a8jXlkgght08EL75HWmSdtIMNActxL0JG0rEF+vio4d0vf5eheTxJBmT9zCL3kaThHXXY15sKlEybsC0cj7Ir+PXD8oFUo2gNWJbUuIYf9oixjXpa7hEfcKuG0aqL2DP9e2R9DVWrAFawAzFI4AjNsPC4/wFqaWyYzgg9ar5TQWfkLs7i+YpO1UV5T8ONPvTHsEFT1NgUlwWOdMc9JeX63pUUDJJM7sw+0DorXfbLCsKTCcTzwR9AMagbSfNAoMLdfMlPTfMGAcfaILxOS3jrf34GxsrOaR5NGaWuNgc6YNbaN3+O9A/EvxBoGtLycJb7X/0YZdKuL5HZyRUN2DkqcPV872YS6nwuAYHablk8ljpZxK6GhdGYAJunBJa2t1dWhLdOPqjtFKDoglDErvMyikwvBCuQn7BSHfG3NBa7YhVzLjHqYCGyNMvSd29qkWHNJpz1VN6Ev9J/MJEEXp3VrJ2ZsUdd1cinLrRNYSMvex4dSJeRBgyCY5zQhni54GgN7MuK9nIUz9mWnoNg1TUHp42jGZOguUzCfLQ+1y2hqR5CV76+Sv9fODTxUgWlckXG145c/Yh2zX5xeGxuGqgHoHUBt/1rYmgyJyGZ00ROSiVRpoFhuBxohEVUqRT/vktQ+VSn4fr/1r1NtBecHCLrp0hZaUDilO7I0EfSDv++YXjfmw0Sv3LEh/EEmepmg8SxPf3VwSnc2mnV0igPKOOHclNR/3KW+7BNwjSka+u4+BxUgW+raVqRldrzRPlpsK7b6GTlHxPp3LDFEuELsA6J8JQfEO4w8KWBTHMcgVkJfjmAKoxBTQd2rbcULehEztfu0gR2SIjQCPf50EjWyOW/tHamyicuv5IIljIbXVll2zD0MhUodd+c5MmVF+PLYZNgikpdpsbQ4pFny9dYPL41AhDKyPYgmTEFl6FEv2PXVk0IoqwxhyFpoJfLsAJ0FymiS4xu79VbhmYtDeLSnJOSbBcXBNqFqrJtf05Kdw8nUNttM64IMFNzEAqysyKGzF5lkmX1Nh61W1oUdY2wbIKqnF/S1UldlN51OdUiNLYYelvbJOn2jXlsNPqT5O0r6OrlCCIJZD4kRbFxD19dK5FDGq8w5/PC6UiqF1F6ig0+haBodROm30YcloPB+siMR1mxFB/qYSSPXkMHWPS6d1WBorwBKXDm5c/O6KbyQSI2CQ29FoyGHYeVLzGC4L7hr14Yj3iuSGZb/gVcPR6JoxF67C027yCvLR4TvKrkbQwyTlhwXcOcRjBFtPjAwWO7E/sT4Apsbnv2vwPbH9FZsdT+/vJw7fvh/M2k5G2VGzd5HV6sC5JpMTSN4wjPKpjrkgZq1qZbkDTkdwY9pxLQE/xcDHo6zz2HgDizViZKU5BTf+7g97sQlcAZ26JoLLyM4OXk213O3AEGxD/L0xCS4/Wfr3bUejQi3We1bSqjJoQNPllGtJuSV2fkd6PN8c9AzcK4huCn5SXYQcYtVcgFaSMeMfZbesYakhtgEBWH6PN8sXOAXD+fy3L0khs1JIc46yeVGYXWF8Dl5uwb024PJG4gj1I/n3d2SGRY2acUbP03WOuXG2r0A0oCay2nLXiuB2hUJxhoA7nOFgvUoRp3rErgQlynv2RTwVwYn+s51ppLlkHxNOF8pCZu5ah8U2EygtAu19S/L4zs/tSS1ZPacarP9VbslegDIGoAOdEOd4eqIcZfa2khuB046Bv1ikH+c8gSi5YuOv3BMSRejy7BtBbiRhkQi/wR0nJp5dODZewETzRE3C2bECW/y9/UoQ4KwCzkMv5rmGaIXPVSW9oHk325o68R3kzgXHHv0fT7+WSbyk1HgHlXsPqcS4MdirApi1kGBiIl4l9d5vA1w70b/WlgS9xQuQ8XF64+OyQYWcKPhJRI9H5Fjxx2c07FEfGSMpU09LDMrZ0Rxpqpfc+9RM/BkVsV9sh1vBNsTI3vucMbIqc0Ck7w/tOkyC02Q8u9ArgZJT4GcFXh/CId3+gdGuUHFqkefW7nfyqoaswDmhgRThqreq1k3pQ8WBoS/YAVS7QEhUllz6oFDzKI61Ykp0yrs9xG896wwqt/T7PEg4JOQm2cMsHUybnEdub6OuHKrY9ta4Tu4hPn8bMmyNm7DLohJosuVJ3AeYl5Zyc6GHqNTwlxqS87uh5WccvW8d4OBGGrHjfBc4cyLE/kG9n1WFF/G2K5QN0SyE7jKoQfxeC2CwkkHO8lzf/RzfQB/P+G0Wy0SdU+Db0knwkfEEUIh1YU3pF47XStJkveRx1Ppyb2IU0tVLYSwZukQgGMkztv96OhexAGxfRGmYnxnYjyUf/FlTokEEICx36Nq7EImQdKabXvz22fBdtee5mTPgznvpztxxgnCu63CCrJDSKffMrjjuvtsm6BSO4SoCqvg/nyj21ypWBK9wR39DPMqHkiM68KC3i4O8MvuNZsRMNWmFlaXAaLrvcJUZNnFAO1GZ3eo/8irUhQR8NkgKzeCG3/uMVvGPfcSM6Z3MoUUBXf5J/Bm1EdqqZiS8RqTikElpQKbAjvN3WBwsB/uAzD5RkzNFNHMHhITR2CBMp49OV5eGVylOrWIUa6weh0H4nqDtu3l1dmssSv+d+Y12xWQ++hC1DmHiNKIQVpCltntpo9UKbSCn+vTGYy/l3alWT7ppQDNjdmf1PzIswxhDqZyfjQtzbnA8M42U7JkbX4VKHzVKbYcbUp3nt6ZeYz45cPjNw3qmUTRSBatwBPMjw4JduVhQfgFt3sW9CcP8mpFgHHiq8j6S38RevBAkKCMODXsrPPs9Py9syF14Oz031OIqov2aeutOiR8s56/amt074PMr5BWNp6D+CwoJMQlrblyCyMXejU2aVW6g4otV2yIuLUc48TPFJ77nAkk8cYKe9jkZ21TSM1AcmkFjlB+627JU8ThxyDzMa1+xw+ALI2zrsS5tCqJjsMN653JoC1miv+yBeIOsBobwnMpaSEvSPPSMFjYhUa9NluLEVkT7nTKKSCF3VPoH2UgdwEkkgloxQOrQtvKS7NWntx25CQNkABbCdkyjK7DpVVh6+Oq1dafFs9FFTUbSpg6/RA700EOtVyTy+kB3BTzgImDFQpUAzeQD7OJMGjTEpc+Mc63/bdiynImoYNrUdA2nKksw88dInw2qbCU3zAHb7jmK7lpZNI/tbEnAqKXJFzyGdVQ3ZVUEnh4nZCt4SrN2OGwf1+YHpaPJxpBGgdTV7wAu9/vfIkllFHRbvtXTHExCccof5FSUgAWVqkWCsa8t3UUxjMFqLdalcv4jd9hbbz4AmzTZs/P2MupFB1v7fgEqY8ZqKNcSSLf89kUO+WuCKVfgdpKjT5ZJS1zPbIU44HKumYZoNCWvSQzGp+hZWw/MxFlbElWr2aZ7t5MgZFEkAf5n6+X/4Lf4kBUKLbw8YZxNEjpe009LRBQN52fI0AWq55LCkjyuy5L6M1xxCC9l9AcJfrP4yhmw8W8vNJ8A5bQd3i9F758c91IVDdxNccCVgDGjOuk9rcYJlVH8fF0gWs+/x9qR1B+ftIx9XsT3lb8pa3jATbsrXZyhFc4mnXi2OUEcxb4yuiwYjlSEMshVBwI1PnWVESCLLjRePteyf61CRFDk8r9bC1uTCVZxyxZ4immS8P86tvvjKKf5NPtDtKjFMV8E4ocnDE2EVX4c+LPl2vWIL/ehAbD2nKhkidSmqSoKH5PMkZKbM1R0k5FIvSE96PX6vJdQbvHo2pq/n+2g5SM/lz2cLKolwCktwFKHJM1qHbPewNbDbbdsFu/bZ83mUkT1IhJLTQcNYmvo/uDscCmwe81aXVs/2lH3w0KPONTs+JlEi8GyTeR61NCQhS0JqMrvIEO7ji3OvnB4et5N0xBoVwmQ+mHEvIwySWi01P8/ddiReuyOU12Mvy4Epx9ABev4/9wC7gnPgEl55s7Sx8oz5j6tZKlIuLKNVMSGBrcx6g0mhE75+1jpAXojz99u+z8nmmkPYZ4fKvywfXFzbIOFf2xH00ZF3WSGI03IoYlCFb9Qe0nYH0/V1nTvMVGerqEhnWvPm8iGPZLXOKyxdZ9TbxhGIFlFjNveviKNjtHYqeE7G/4iwmYFw+9u8sMXKvUlthUfE/qyl5wl3gLgoorqiNRoh28PDYxr6RjTWsucI478QQFM7wMoepj5AzaNQBEmGElfu7DeSe1Fu/c9Hi3G4Jd1GEJa2rtfNvs+p7PIt+8NupHVO+zA/bObdaJkIOZCzD0qyH27lVNTVCFYF8Ttgasnr0LYN0P884GvcJraTC/dv7tmAMr5xX+GmgRIHQYeNQZb1AiB92dsc8MB+dm9LQUTpGNuMxMUb2dcgiE6tyLxWWh2KrKMMU00YKGwNuh7pyXWZbkwoXNThDJysz9ZtduPTIoEQA/5SyxJIA5OelDRzWQoeLtO9bNtXbwos6SnN0ge/agiLl+wO84zceTOKKsReY+92AKrWE5MAbCkWrb7zL7lNIyGnKAs4HJWhT7c9VnDap02fGsitoiyguMI7oOYMuVyDx3jYQqBvk3+BaUKRqBJQ4y1I6+ahwssbnxANI/JPLKO1geW7BeCrQsK737UugDpAEhzesJa0y6NzOZkDTJOYw+PQaCM90gLRsY9IX2WgdAeRFLHygrwSV7s8Gp74shiHBJ1OA9eETLOI4CRKEUQ1QFYLQ+OpU0WGopCY6Dky+iqlP8m5N/HEAbMvhEbHSWY65/2JcfB1QNqbddCUZuInXlukOGVcD7imm4hLEeTvPGE0TaGnrvFatjyrQg6kXiqFPxuZT/pfeDMn/zJwahfiH6GDor4ZbIGgJcL8zvYCQg5i6zJXJz9qJQMLivbah3FvsMiaqoXEI4rfl5Nmc3fjUnL0KRYSChuKqCs/TROxCeYPnbkmu5Pxk6dT8fANWp7iN9qRzdVGbXjs8Kxx+uImiEa4Muyb0l+LogSPjMwGTNpNkCZGezaaWpR2w+UuNzeruOOHQKc7sIy9oyEs18HWOWwEC4pJdSlR/fa5NyFmJPX+cKNS47up7dziZ/MaQjn53ypM5HA04dMAgUNOr2ohs5zFnOgmcOWDvSl4Rzo4p9MowmdfjYgCUnkla6yhMOytrcfi+wv/9BWyPr9j5OZ+ZAi7HJLy1O+xGgw6Rx0vUyqjKnW6bLB7byQ/vP9Djn4cv8B9Qv1KLZ7i7blP7LNSS00IGpyeOz6ny5lsKz998a3wnBK3EU9nKiOP4sDJjv6sopYDX0NQMqOdtfpi5hyB397mDX5L8jurRpJxCTFuWswzKaZfJmKvOn7D4f97mJKLAy1swB3YGSrdC2T4m2JMaVHTdSMwcazpaN4o8QuZRZVypjRbRpGUa6GGFqTKEq2fgANmPQVYsLlqfR/4FZ6ln+3peaHBh0H7xIgRb4z4gh6jvoJLefpMNcbGlk7fPa+EPgZcGXzfUZhbSoLsZkyEDSSVKwQtCsArIufzY+RXrDnlCMrpSMrnScp9Bs8cMw1W7gB79x6Nq4RbcUVm3lCYo3MclgXKuXSntWIAemNxG/3eUYsrtbf9KgBJcmSC/TYKLFxM/qanQB6XV5DUX1tPwNZsUbuNnczdt30oCCu/QhvejntNQzW0yxBOyRlqpwkVAzpWkpcskmaKmtMTh9vIZ1vgpZxSSonoVRQc9/gQ7hjcXsw84U10H3O43pUgQowTSy3DuPAg72PWtIsGCCHTk679zpCoOcJi7gMGDGBBk5FncKqK3J2Z7ZwAbW+yJKYka2jFZukGrn8/ImEnE1/CTaqZv+7prcBTfbo6gAmWt7BQjHVt9J7e06v0KPex+9cyS1USzOZEEgFAVqVigw23mdLcqAsfHXQgBK4vc1W4WQRzKQHUbHSHkdvg33DA7Ya83pHgHfWoa5x7Z+Esydh1hO1tlJFjzgtBYxeh/O7/xB2+YgH5yRylUDzpitTffbZgWCD3B3nm580jVc6QXw4EPAx1/o5jNMQzh386BQys8/qCKYMqlooBDG1rV20xs8wawNZowMtebTZX2G+GS4AqxiIcRBbQM+RG3uGP+w8xxbWyGss4xhaLPEF/KZbdgdr61ZMX2Q+NKWYr4m2M69NkvuiDBV9f7s0E4EGbBi03VETCp2rjQGnivpXuielqqjtEAZjrqOAorzkQYIRGQpP7Y1ckj9tCXaf+8ePJO8qTY3jGs160c0bnA4l/RmDoeQXi52dQkq7BgzNEdPiuEJlhzk9wtDVJDPa6EQFphuAcbtCs3cmIUxzCmOMi2Ie91rB06JHWEWj7ifavTvV7HZsvCCbl6bRORluRNUpy+R7qQhyhHkskB4OTfCvaAND2MjIKsHXQ9CdikM6o9B/9+YR3//sa6Hjew+1mFgU4peXszyirwWeabRFdXZrpl+96waUjBDSVFQEmIoaVDbE7p6WtIT1AH5Lotd58oM1aK0VIRgZlnGrJtf78Fz+3BuiV7e9xXhiTMEa8Oe8iUr7c/M/JmEfnOwT8nCXhxUcJ9wVwNlYFIYRUBdeMNMbdCLOxR4ISZw+NwXWBH+1jGJ8OJmt02xIZ6K90ekkFMlm6PMcDdc9MnrMHBQNvXU3dg75WhNeKLBIzruOHfW/E9wZEoxCOwC+5EAYUgyWN90Ory750p2wJIyPLaSRlhNA5mflf3i5BHK6hgp2+SXwP5tNaadLyoc9xhUQ+BjgYbvctQ/1zrXEIbiiZUt9kLRWPLcnwQ3Sm7wW9QOLa9XqU2MdXzzwvYBOu/dZVTz2ZUjT+q2GZCGUmqfPj7wq0gDSf/qV9XPkM+TAfzbq3JW4ozDYnH7bLgcKzIxvaJkba9S10YCdTQWUQXJVK7QW2gYa5CKg3dxU4EU7hV5Fyl84e32yMx7ZTsCZCh/x7DaYkRrterRfJK+N+8ue3NyDDZcmMXhDFZyDnN4cpGH4CCQOZFZEAHioL1uHqq7vQu5cgNJmyLHReCnKsGoRFG2sj9QQCTR+C8xnGYtWlJswf8HUbO53O98A2C9Dl0p0pKXVUKKYUeQD4jEiEz78+8hxOZfBKga8oB9BJMsyDk7Sf6AtMzL5t5KEOL92lfGzpQxb2+HfGPf68zUySUv7VVpRtKj7+Qu/yplznDiihrFOqFFe44FKEFiE8S28ZNqlo3BY5lXit1hmz+GQWVPIaNpS79CfQcR82NuLnHxp7kps2b5NFwvM5EPIyUq+1JvxqXiLGzaAqc+3m/8SrqtWpVL/gZH3lmnnnjG/Um8LSH0X/qGwKG1X0LfZufyO7dm9uKZQ0fn4nKkGPiB60w88bh4agIoihsa6vrWGCKbj8bZqXi1mew9r3MhRL6gV2mb63bQC0GbOxrt8ND2akx6NW4xXJa4F8ew37aANCX8CKEQRlF5lXeKSXA1ARQqIqgkCVE9PuAcy3oifHS/Zw4sLCsKRHahI9bTQhln/MKisZ6LwV4bp6V1hyMB/Q7vE1hUtIFwzyzrVI021CyzMGp+GWKyunnmJOK3pQ+T5BWuGR3ipJOR/CEBBWygXpEeiYx64B/CK355La1LUDMT/rEO/VcZBl8LJ/HYP3QoyL0C3cj+XeNV5mb83h67AE4qtYbDFB49jgXiuK0RF6XJSQwAYkg+Y960FcmOcu92QJRPaGwBRLjhUbK8drw2E9leAVTzbuqXaTSCJCQhGNNdkuzA+fG7Fy4Tix3yPGLI9ukx0udWb18G0Y7b4UF/tfgGlskvrN0+xUyGEK4F+cVJp/DrO/hMAswOtRyAzMR8mRZDTBAW5uUkYAVNGonv5LJZiXyFDCLxiu5vkhjOKsLt2nChGN1M5538xwr8Ooq5x1eKF2do7CUM3OyjAqk3HWjx/hYzElTsCS3TFdthqNRHaaKnMgq1LWvSpWSZjcVEybZusspKR2NXbp4iapc5S/IWRaSXdblUsDwFreM2DzuT/iqn5wlIdDol555yraCkWBoeXsER2ZybOeHSSEamwhFNiuvB/RiSom8mOEVit3bqVfptq7BdKkpfDATTDfRtk8ru6XHpL8yYxH+ay8UFmupZsMMlgxWHkLqfVfKRkJMWg0O7DZcwKDT254eMBcqNA811YKkEwHlrzSmYWrE0y76HHX+h8JnX1gSTfyeXumEiuwW/G2xXRrhoDQtaH7gEZxN0vNECiCojj37AXY40YHI2jZziJ6Iu+xDMXpsqbzqrcFP97Lv1aeBAc9VkmWRnW0stX7SKxPhq/br2Axmx3iKto1sjmQIJUTqF6qOa9Bi6F5E/2t+Dmcj3u9cTHnAb7k+gM1dNVqSTwCWYcqGh2BwZT8x5Ou9Fs1oBgLwjQ3PIPg86djjt2nScNEeOpslKjZJWMSJN8VzzRzvduttPiHBUZ8qqlZii/+VzkjL7d4d+EJQ/ItexfTg+KDTHVa2hnomWTLo39gLgFVJvkufhiPp0G9tROPbVjRjKdv9cxAi3/jpL02B1fpHFnUdeW/QXrVpkxI5x6ZpoDSO57IbHvicmruKB6Wp7jrLFvyBtVz1Ov/6y4Kd3vdnxFOmnUSGWmDe3w86u92OTl9PgllHzBsWfC4el8cPmuBB4QieE3WSD7MLo7G88W/CPEyHVS16guBe5ZyPMMyX5S17e+7xQGHQZ5/AbRf3yukk+14I32OFHi/eoRbwjU9TDSXxizD2q/ZTh8LmadtS/DjoRuTcWYeQXvohxdj/XInuUiEOujQUImxEMx7z2zMHOOh+bSOxI3W/UiTr+7J1UpPZO4t/Y1tAY6MYInOUXFSq7zUxdjxIznLeD1iOR5eiawVrGPUZBle6afMVUTBMF2CruGgp/P3Ph7/q5fokOlTTKv+h0MFeSw9fsJgUvCqztYJQUtJOW7Xma2f0LVxS9m97F9vHw0f8gYONa+BYMhnDcd3fktp76YBdyhlQQ4dPDzk6A5L+wKSG7Je/XVOc9E8Lg0ajkDAscpJDZCGFXmdHAzw6JGAuyOTjX6+k+9zxJSKFlehQQzhuoyN6j2ooLZfiuQbigQniZ26ZCsVyWIAFYSbeWMcQm2+xZ5vT54IcxfLlSRX6Xl6IwKTgkA2Ndi4JTH80W0P1D01NBShmxCtJ440Kt+XzHLADB6J3LGMbovt9gcMzXu98OrFVsaRe7pT4Gyte2gdNUCMFiLTQwT82afr32AGlMIrANSv+vFqlRHv5DnyRVwgG2PeOadz0Ujr3o/gYG8zxl1UlSc5m2oGAHYTnp1OQvkRRLBMeZp/y8f4tAj8vd921mLidDW75MYplpwcvG8OCLReT8PBNaqjbbto7cWiv/oWmioOMUNNwgT90LyUhUgPG4hTPAMPQeigFcYrbjsBQ0QCQ2BVP8cK4jrxmKYNIwWDz59AFAaRSJIVt4vETQSXejUlPPyzVlxdJDiR1vmgKB2cUYLlraVSVUmX7HcGb+S0fvu8as7zTHNUS5NU8xaO9Z9coaO7p2Y/UsDavG59e031OvZri9LyxaE/oxUKfbr9LVpUbW7n/DaeZSZNVWBcwGLhYYx2eLm8BYpg/Gh/AI8zh030RAqGKITVnYuk7EipIwVTAeXt2Ox7UoW23vl0nyWkbYnyWzlFnFY5Lzt0g3jzur+TzFjp9Xh4D207gVHckymLj702mnQCMNMTIWZNuQZkFiblhw1ggnMhEORYRoqldz8fUN51nr8l17nVi6iBGdoEMSVWON9BBedVlwuL15vr98J3B6slsGDczyg7Xc0j6dIoNkjObn7Lf3HD8V+oqG5KNR/ApbVU7ahJNxf5EuEjMHcjMcA7qqFjMi7fSFPhJjiswBw1PUEcQj6Dmv63riqz2mmXmgCgtMkfhRPqv9zfDCOYgGkZi5obVxFeZudWbH1qH19aeolbtGRIqojIGr1HvfUBwI6Ih6HN5H6upF7k1cjXnxDvFnDz1UhzOgAMYJE88ReVwP+OAOeDTR9GRkGW3EIom+X2ZLpnjmsmkpnwFKtx3WMQVQSkj6VwBILOi/pOdA7abWPSS6HNejkzOIZuuHEr2+Nk1CUTgJKHo6/Qs1d77haCh85Mqsc+jHE/YDnPD99I2xJmCwXzCkBNmkqgWsn77Ao1yOAI1BRavdgheEgsgJ6iMMqIu59ufMe/Occx2D7UYWHGD3jobvA9ZtbFGAUWwBSUHudXKa16iY8WMXf8BYuZkM4sc8yUE4UmTvTEvGa/bbCqEFnaIJi1l7MkRLGp+Iwx3UfjDFu70VThqja8eg08hiFF3r2teB0XVF2Erlv7B5ClP4EH8ottB5uTilRSZyemJM8Gq+fjuw0bF4MVaZU2Xkal49KTnUoOF+BmHbWcCzRtlLwWFdnPH4CeJYXRMfaSKB/fWZzKcpJrDIrNmx9YipEKQPouwxBA/QdvL1j/lOSjpWN//2OApoZT6AqGOHgxHiAv6LFSusyHIZXXeZ5IiJIBsLUiwlIcscS/jUibHI2VJyNC7EtHnEXtgovYsRWZlEZ4VhHnXGdAwaRxNIEnAlzb4yTjAW9bOUNJoM30s1D1Bp9i0EfcgR192DXnHGZ/DjLxxrScjgNQyiRihIjqOMCJNqr8WdBh1WP4OI9ck1M9FHtcKHbmNPzuSHAqictyhUgvfGyZMKsapED5yx5krjhmlPAP1RGvgKoKpobNsfgMW6KbcEawQGoRQcgUCioaBSK/zVQzOXJbntRjZI2RcXmHMqnHyUxK00RILSODvEG0O2MTDho7g0wUOQ2InJAZTbpcF3GhTEVRHdm2WWyvdlYhKoxansv0H1O4GhOK4DzTECtL/4jp9HhuH/c6rg5wO36ZoC1k+pT/WnyFObbkhvvIqqWlf+XmWpIoG+dTrM5Y1+iYfWJ+r0vqjnEa5c6TeIywd2wXE3et4aMzttujde36i3AzclqPaxqMGWXC0uuUhprqEs/lLt6z3RjYyapUrL/jlcZn6tO+9bzOI55EcnXOJLbRB1mt51Y40FG7m8hUKuIW4yhuam2TlJ8XCUvUcabUKY6IHOjKvon4nrxlsONQ007oxnfrMTa9uSIJAFHlzz6GSr7Y7RgbYDMOXHzpbXLojDImObZ3fGyiod1Vz1pqPrIGjHDfeyOlcbDUHnUcDJH+Y33CkG5ci52tjMA86tO4CfqoGi697EBHXp41rgI9TsA3rLBxpEJG/pxlMThM+43W/MFHFvZB5HNS8GggiofrRUE2AQHHHErrTbzypOTw3AIJfJ5OOPptf77uunN5KJx/6MTrs2sDsuTJSeOJBDaxjvMqiEQuwlC2bFNv+cQrTXVvDNgwYkjD3/zTWh6oeSBU8vS0lzAhCYjBqjY/H4JgrMlYLWaLD8+SfiiTDv0RRztFgRPgUqHGe4LQpBz8sr7d6Pg/JFdWVkBzmfdq1viJksiQozILYPZEhy/wW3ihKO3NPeYVsQZvk+FPk3HVLGwLMCc3hdr/gi1ZzDs9we42KmhlP3UuR+e7greYlrOMTgjiuB80Nbo2htO2u8uXF32MW+qXJvbing+J4o2koevm3jB7emfS2FSvyTjiKqDrTaveui+N/ml312suo7FLl9FH4FdKfu0G2JzSrn24lWX8m9WS6WwKyUxiykdEDcgkNEGMwui6KkZDowSb7WZ0GZjYW6IZemZZjKfBGR7edw6jUEZJR8tg2Nm9FYLQB8IuWO4UCGsP+ClgNv+YKKt8hY3PTqejir+lRFn3Jqk2DcmKapuIcyy8zURSqjfqCbveSu8NuHyRvp1t65IUWNLydFdWWZMXJnxlFK9pRmLKsr3GGyGIN6LgHLKc2CWKekiSaiewDJDNViFL7zZ8D/9YZ99oPUHusfELZE3grExQo1EnjtwcljABX78MEouJM0O9O8eGiT49xIIDgq50JzObWoJDAF1D1yNy5dBPsbYBmS1mplIIKscwgFNGnzzXWuFWB3NL350Yfch2frfev9Bf4DSG8x8adLoQ2twOuySpSWcsZJ/6Ft5QiqlVTF22EsWAoL4vUPho1U4+d7xfmP1JWaLnfXsfpmxL9SLJnz1RAmdxmYJw3ElULzXVLklRWoD5icLZdQWGOXCgse5flpvKJz8ieg16gLJ91BY1f15mcnXDfpocpFoEdSy8hUXrqXc8d/+XgITGLzT1DqAGdIeCejKIleXfaLPKG6sFmdWcjtsDhkv96BzxC2Ec9JSicley4Mprv+DBU9K5JRJVTbjR/60z90WXDSCSwxCtdLQGBoVsTp5JiiC4olaIEVFToXZwnXXTjezoOepsBcQeFfPOKRNZpQAOEXXbAbXaWOcDCWMghIwNvNIE4o3WKbJQHl0T23BTLINqTYhTdLqtA1WFo0aXLUf315oXiiENDqmXh455Zx34wldnaGd1qRmbKsvh54KJsVUkRX0itNfJFx1cJw/x+Tll7d6qEOahwwxSfU6aSGMmFxq1Z5k21A2Yx1pBzOcubjeksxFvaBcp/Sl068OIqr1WUhRGIg6QWQBIO3tyQ4ShwMQRmkMQNv0aTL5Y9m4apyNN5DV5MFRijN/24Q4PHnaNMr8Uzt1eze68wWYb5wZJ+8CeQywO2qmdo++Tg5avqg6nH39yhxTI0QcAWBm1xtHl9he2yafUmq7dFC7PL93UkL28nF/GkwgX4uAGoeplChFQ+sB5X6O+OB5whduSzlq7oiQL24my0wZAuswkLhx+qDYA6OTMN+84t85ZCrR4sCx0hY8jgBeNq/NdkzP9GtDf2IJZJGvsAhkQ+wFWpTR4tnVipns4o+6cvO+esdu1VzEDhtvrHGc0UMYPVAaQCNxJgquJucCTA4lmrQzPwyuy19Q79LVqJDh9LmyXqA/E+5UQwgq4e/WBP7MDdS2BVWAOlgKpVcwL3Mz3qeNVmUxamjX09GVIIAPAEfMEdlgR4TC7GqCXwJMWxvg3VZV9rodn8bz8cCgHeWpGz8z3EPHrvxUSoplzE+Nn66ss06E+6JjYf38SxLaEJJoiJf0IjcZFfHM2VomuY1/jClz0ntPpR91/QNXBE1LXoHNgcFctgiO7RqmVP+0FYchoomoMvNcIYY2zohMp4TyuKqtb21QbhC5TYp4/Q1708qsHANwoun2qgOom3fs7IiH6KC52IAHT/uC4K7fMGwG7nst6wKr8SZgf5z1enlcI+Y0OKGu9nfcjUfyaPi/muM6/UexoHuy0Ri50itU4UgTfAzxWiZm/ZfPmKkrrw3zHJtMPAHtVkWLFpwEzbX24cKkg+U1quzJosagzEGiloCBxeKKovmjy3DI975WRrF6NePLFY94IV441TJjFCUNCfCyf5ZsnQB3B5Shvq5kaQ3/qVjMk1ZnoJDQoR5zapWfR70U4PWafuqeL9ie/IYV8akaKHIKM2I1uRCCIvpZu4baGvnfoiXDKE5ZsVpQWVoENo5WFuqemTvz1WKCuj1IYjZXBCWF7uL+//C/ddJm2jFNLMpndAWZ139BVzqlYijgx/sEL8h1mOKmQLhN6VeJH7QW7TELQ0BU0mFUWUJAnyVWHCdOg06J4ugh9Y267C/PfQxMVZeR7orv+c6ro7YHlRkKR/7JrzvQ1GCiDzzv48P4cq4dq7JuEjhzy4G6ZhqOxXbvzt1aoqUnOyU0dWnCAIYxXgWvgoEnMjZoVZ0Oo2gvF6uycxqsQ/LRnwgYNqmmPQ1fuQFXsK94+/GsdlPgExezey0LL1kbQM75F6Rr3Vn++HO6y+Fhz/DvUwuad8BIN3ocNpf8TOzsWaFxtGHQaKN3jf9Zv7VyKwlt03ApDfsaplg4Wqv3dB5wlkrsB08SjZ1xpCQQIJUKOuqkRL4hbkwceLbzNwxPjAUJu4jX1SunFz1QXw1WtTj1jqPeJx0HLoh1ZfmW6dazuacYG60sEjTs5h4XCBjtsIPEzaIHBkKdOncdra9d9J5NgbolLIvbxACVuNvl6avQfVFIY8bWPiYY0Ani+bvahbHdvqkgZCBIim4rHURk/DvoAqcCgckPYxn1F12W4VDZVsotknbA7wxUVdn1gz1DQgEKUWe2m3WYoHMJweBgINBAjXzhLN7bYXiQFwO+iQk+Dt4Vrf/yWAGWj5lV/WPsDH7s6rZIFYfBRz57XpCfVUj91YbwWPrbfBFziXSGkkAgdykp0NeFN62kZnoY8gv78J5MlX/4N/Iezx0APdsy+2XxHHUSidDXiMlQu510v639j7vT2mqXXZEl4rEBaIh6iKTKwdyqPGvLSxUsIe+IZxFQh0HT5356wn/ApMdThFaSvU8qew0muesgczttJM1rpjeKZ1CllRKfwURbfjyERKSw9WsFIUo49ap5hOtwB0KOED/hQNlh5JCtbTSZnFo+qyqBfZK6Sngb4SYy/FfLuPZ3Q7PpG9mMO44VitCrev6iUBCXo+WnjFTP7jyI0rtDr4eejsS8wlvwZnjabVYn0YZdMOlFi2QhCrvbdg35c11oWWZCen1zUyvx8B7qbN5UEpfrWM/THzxMx2xDW3hpe22XjRv+GdEQnq+FpvmuUCfofyQIcrUO+h1eIMmSDWtAgbMAoBaMnsTYlZ86P/GkT4nZYBptXB3icOM50EK+zIcKFchxrnw56eJZi+wD56Aj7nIm+kLKleEfd3cA7Ctp7QAU14UCnLnDQnsRvmlaFZh9W1Fo4KfI2" />
+
+
+<script src="/ScriptResource.axd?d=x6wALODbMJK5e0eRC_p1LdIxBJXt0U_WW5GWfJqHAqo6frgCmGRfEywglicTersO2OKrFhK1gAIp0Wk2al2YrpdR3uWqH6f4nfjBsCyRUfTUUVmb0&amp;t=ffffffffecf8d3f2" type="text/javascript"></script>
+<script src="/PressReleasePage.aspx?_TSM_HiddenField_=sc_HiddenField&amp;_TSM_CombinedScripts_=%3b%3bAjaxControlToolkit%2c+Version%3d3.5.7.123%2c+Culture%3dneutral%2c+PublicKeyToken%3d28f01b0e84b6d53e%3aen-US%3a5a4df314-b4a2-4da2-a207-9284f1b1e96c%3ade1feab2%3af2c8e708%3a8613aea7%3af9cec9bc%3a3202a5a2%3aab09e3fe%3a87104b7c%3a720a52bf%3a589eaa30%3aa67c2700%3abe6fb298" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="59B53027" />
+<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="FMBsdj1IFJzXQuRzYEKGjW4LA6GGzBegUg69XChwNUK+CjdwFXph3s9C+ynZgQ98L2ZL/4Ba9RoK8Z6S9dNB2hXeTgPspkNBV2GGQ1dKKQ55T3uaeDkD1aacn9PLH7EldtcxmcAg+H9BaPfX+GyfMN8HCHcJ0w0De1akHDa/+ixwh/wHZq1MeFnE6oOO2rZgdalqFZ3C/Sm9Zeez+759ItM8+8slSy4u0nc180wTuXPKS7GntI54RWvIjsGhfeIO3PQUSwopHJ6eOt5clnwZc3nOdqw=" />
+                              
+            <div id="templateCss"></div>
+            
+            <input type="hidden" name="hfGridHtml" id="hfGridHtml" />
+            <div class="container" style='margin-bottom: 50px;'>
+                  <div id="accessories">
+
+                        
+                        <div class="pull-right" style="display: flex">
+                              <div id="voll"></div>
+                              <div id="vollDT"></div>
+                              
+                              
+
+<span class="print-icons">
+<input type="image" name="Print1$print" id="Print1_print" aria-label="Print" src="images/printer_icon.png" alt="print page button" style="padding: 5px 10px 5px 10px;" />
+</span>
+                        </div>
+                  </div>
+                  <input type="hidden" name="hydpermid" id="hydpermid" value="2303587" />
+                  
+
+
+
+                  <div class="innner-page-main-about-us-content-right-part">
+
+                        <div id="MinistryName" class="MinistryNameSubhead text-center">
+                              Ministry of Consumer Affairs, Food & Public Distribution
+                        </div>
+                        
+                        <div id="lg_g"><div class='log_oo'>  <img src='https://static.pib.gov.in/WriteReadData/specificdocs/photo/2026/sep/ph_9768_20260902_10000501.png' alt='azadi ka amrit mahotsav' /> </div></div>
+
+
+
+
+
+                        <div class="text-center event-heading-background">
+                              
+                              <h1 id="Titleh2">
+                                    Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures
+                              </h1>
+                              <h3 id="Subtitleh3">
+                                    <span id="ltrSubtitle"><br/>First Kanda Express carrying onions leaves Nashik for New Delhi<br/><br/>Hybrid transportation model through railway rakes and road transport to supply major consumption centres<br/><br/>Onions will be sold at ₹35 per kg through NCCF, NAFED, Kendriya Bhandar and other retail outlets</span>
+                              </h3>
+                        </div>
+
+                        <div id="PrDateTime" class="ReleaseDateSubHeaddateTime text-center pt20">
+                              Posted On:
+                26 AUG 2026 8:49PM by PIB Delhi
+                        </div>
+                        
+                        <div class='pt20'>
+                        </div>
+                        <input type="hidden" name="hydphotoUrl" id="hydphotoUrl" />
+                        
+                        <p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Government has commenced <strong>calibrated and targeted release of onions from the buffer stock</strong> to ensure adequate availability and moderate seasonal price pressures in the coming months. The intervention is being undertaken through a <strong>hybrid model of transportation comprising railway rakes and road transport</strong>, with supplies being directed to major consumption centres based on prevailing market conditions and price trends.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Adequate Onion Availability and Robust Production</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Onion availability is comfortable to meet domestic demand in the coming months, supported by estimated production of <strong>307.37 LMT in 2025-26</strong>, broadly in line with the previous year&#39;s production of <strong>307.67 LMT</strong>. Robust production, availability of buffer stocks and proactive market interventions are expected to ensure adequate supplies and moderate seasonal price pressures in the coming months. In view of the comfortable production outlook, the Government fixed a procurement target of <strong>2.00 LMT of Rabi onion</strong> for the Price Stabilization Fund (PSF) buffer during 2026-27. The procurement operation commenced on <strong>15 May 2026</strong>, through NAFED and NCCF. Around <strong>1.21 LMT of onions have been procured</strong> for the buffer.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">To strengthen storage management and operational efficiency, the <strong>Central Warehousing Corporation (CWC)</strong> has been engaged for the first time as the storage agency for the PSF onion buffer during 2026-27. With the onset of the festive season, including <strong>Onam, Ganesh Chaturthi, Durga Puja, Dussehra, Diwali and the wedding season</strong>, onion prices typically witness a seasonal uptick owing to higher demand and supply-chain factors.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Calibrated and Targeted Release of Buffer Onions</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">To ensure adequate availability and prevent undue price volatility, the Government has commenced <strong>calibrated and targeted release of onions from the buffer stock</strong>. The release of onions will take place through a <strong>hybrid model of transportation comprising railway rakes and road transport</strong>, enabling movement of onions to major consumption centres. The quantity, coverage and channels for release of onions will be further widened based on prevailing market conditions and price trends.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Onions to be Sold at ₹35 per kg</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Retail sale of onions at <strong>₹35 per kg</strong> is to be launched through mobile vans and retail outlets of <strong>NCCF and NAFED</strong>, as well as through <strong>Safal and Kendriya Bhandar outlets</strong>. The retail sales will be carried out through:</span></span></span></p>
+
+<ul style="margin-left:40px">
+	<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">NCCF:</span></strong><span style="color:black"> 9 outlets and 40 mobile vans </span></span></span></li>
+	<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">NAFED:</span></strong><span style="color:black"> 13 outlets and 50 mobile vans </span></span></span></li>
+	<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Kendriya Bhandar:</span></strong><span style="color:black"> About 100 outlets </span></span></span></li>
+</ul>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The targeted retail intervention is aimed at ensuring availability of onions to consumers at an affordable price.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Kanda Express Strengthens Movement of Buffer Onions</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The <strong>Kanda Express initiative has emerged as an effective logistics intervention for moving buffer onions from producing regions to consumption centres</strong>. During 2024-25, onion buffer stocks were transported through <strong>14 railway rakes carrying nearly 12,000 MT of onions to five cities</strong>. Operations during 2025-26 expanded substantially, with <strong>86 railway rakes transporting around 88,000 MT of onions to 16 cities across the country</strong>.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">In the current financial year, transportation of onion consignments has begun through <strong>Kanda Express from Nashik to New Delhi</strong>. The first Kanda Express has left Nashik and is expected to reach Delhi NCR. Simultaneously, supplies are being moved through road transport to other major consumption centres, namely <strong>Chennai, Kolkata, Ernakulam, Guwahati, Varanasi, Lucknow, Patna, Chandigarh, Jammu and Amritsar</strong>. The hybrid transportation model will facilitate timely movement of buffer onions to consumption centres based on prevailing market requirements.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black"><img id="Picture_x0020_2" src="https://static.pib.gov.in/WriteReadData/userfiles/image/2026/aug/image001_20260826205156_d6d7af.jpg" style="height:501px; width:401px" /> </span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Onion Exports Continue to Remain Robust</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Onion exports continue to remain robust. During <strong>April-June 2026, exports stood at approximately 3.82 LMT</strong>, with major destinations including <strong>Malaysia, Sri Lanka, UAE and Nepal</strong>, reflecting comfortable domestic availability.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Daily Monitoring Across 579 Centres</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Department of Consumer Affairs monitors the daily prices of <strong>41 essential commodities, including onion, across 579 centres nationwide</strong>. These market trends, along with arrivals and demand conditions, serve as key inputs for decisions on the scale and destinations of buffer stock releases. The Government is closely monitoring onion prices, arrivals and availability across States and will undertake further interventions, wherever necessary, to ensure adequate supplies and prevent unwarranted price increases.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Prices of Key Essential Commodities Remain Stable and Range Bound</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The prices of key pulses including <strong>Tur, Gram, Masur, Urad and Moong</strong>, as well as essential vegetables such as <strong>Tomato and Potato</strong>, are currently stable and range bound.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The<strong> </strong></span><strong>All-India average monthly retail prices as on 26.08.2026</strong></span></span><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black"> are as follows:</span></span></span></p>
+
+<div>
+<table border="1" bordercolor="#ccc" cellpadding="5" cellspacing="0" class="MsoTableGrid" style="border-collapse:collapse">
+	<tbody>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Commodity</span></strong></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><strong><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">All-India Average Monthly Retail Price</span></span></strong></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Tomato</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹38.33/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Potato</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹22.63/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Chana Dal</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹86.71/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Atta</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹40.48/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Tur Dal</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹123.30/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Milk</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹60.82/litre</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Onion</span></strong></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">₹37.87/kg</span></strong></span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify">&nbsp;</p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Notably, <strong>Tomato, Potato and Chana Dal prices are lower than a year ago</strong>.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Continuous Monitoring to Safeguard Consumer Interests</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Government remains committed to <strong>protecting consumer interests while ensuring remunerative returns to farmers through a balanced and evidence-based price stabilisation approach</strong>. The Government will continue to monitor onion prices, arrivals, availability and demand conditions closely. The scale, coverage and channels of buffer stock releases will be calibrated according to prevailing market conditions to ensure adequate supplies and moderate seasonal price pressures.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">*********</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">RT/SB/ARC</span></strong></span></span></p>
+
+
+                        
+                        <div id="reel_pic">
+                        </div>
+
+
+
+                        
+                        <br />
+                        <span id="ReleaseId">(Release ID: 2303587)</span>
+                        <span id="lblViews">Visitor Counter : 2231</span>
+                        <div>
+                              
+                        </div>
+                        
+
+                        <span id="lblRefPhoto"></span>
+
+                        <div class="BackgroundRelease">
+                              
+                        </div>
+                        <div>
+                              
+                        </div>
+                        <div class="ReleaseLang">Read this release in: 
+                        
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303672' target="_blank">
+                                          Urdu </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303606' target="_blank">
+                                          Marathi </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303622' target="_blank">
+                                          हिन्दी </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303657' target="_blank">
+                                          Assamese </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303679' target="_blank">
+                                          Bengali </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2304885' target="_blank">
+                                          Bengali-TR </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303742' target="_blank">
+                                          Punjabi </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303610' target="_blank">
+                                          Odia </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303662' target="_blank">
+                                          Telugu </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303607' target="_blank">
+                                          Kannada </a>
+                              
+                                    ,
+                              
+                                    
+                                    <a href='https://pib.gov.in/PressReleasePage.aspx?PRID=2303632' target="_blank">
+                                          Malayalam </a>
+                              
+                        </div>
+
+                        <div class="RelTag">
+                              <ul>
+                                    
+                              </ul>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        
+                        <div class="pr-share pr-share--footer" role="group" aria-label="Share this press release">
+                              <span class="pr-share__label" aria-hidden="true">Share</span>
+                              <ul class="pr-share__list">
+                                    <li><a class="pr-share__btn pr-share__btn--facebook"
+                                           href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2303587"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on Facebook">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-facebook" xlink:href="#icon-facebook"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--twitter"
+                                           href="https://twitter.com/intent/tweet?url=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2303587"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on X">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-twitter" xlink:href="#icon-twitter"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--whatsapp"
+                                           href="https://api.whatsapp.com/send?text=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2303587"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on WhatsApp">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-whatsapp" xlink:href="#icon-whatsapp"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--linkedin"
+                                           href="https://www.linkedin.com/sharing/share-offsite/?url=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2303587"
+                                           target="_blank" rel="noopener noreferrer"
+                                           aria-label="Share on LinkedIn">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-linkedin" xlink:href="#icon-linkedin"></use></svg>
+                                    </a></li>
+                                    <li><a class="pr-share__btn pr-share__btn--mail"
+                                           href="mailto:?subject=Press+release+from+PIB&amp;body=https%3a%2f%2fpib.gov.in%2fPressReleasePage.aspx%3fPRID%3d2303587"
+                                           aria-label="Share by email">
+                                        <svg class="dbim-icon dbim-icon-24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-mail" xlink:href="#icon-mail"></use></svg>
+                                    </a></li>
+                              </ul>
+                        </div>
+                        <div id="RelLink" class="RelLink">
+                              <ul>
+                                    
+                                    
+                              </ul>
+                        </div>
+                        <center>
+                              
+                        </center>
+                  </div>
+
+                  <div id="update12">
+	
+                              
+                              <input type="hidden" name="Hidden" id="Hidden" />
+                              <div id="P_CategoryManagement" class="ModalWindow" style="display: none">
+		
+                                    <div>
+                                          <input type="image" name="btnClose" id="btnClose" src="images/close_flat_icon.png" />
+                                    </div>
+                                    <div id="description">
+                                    </div>
+                                    <div class="text-center">
+                                          <h2>
+                                                
+                                                <br>
+                                                
+                                          </h2>
+                                    </div>
+                                    <br />
+                                    <div class="clear">
+                                    </div>
+                                    
+                              
+	</div>
+                        
+</div>
+            </div>
+            
+            <div id="PdfDiv" style="display: none;">
+                  <table width="100%">
+                        <tr>
+                              <td style="font-weight: 200; text-align: center">
+                                    Ministry of Consumer Affairs, Food & Public Distribution
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: center; font-size: 30px;">
+                                          Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: center; font-size: 30px;">
+                                          <div style='height:30px;width:100%;'></div>First Kanda Express carrying onions leaves Nashik for New Delhi<div style='height:30px;width:100%;'></div><div style='height:30px;width:100%;'></div>Hybrid transportation model through railway rakes and road transport to supply major consumption centres<div style='height:30px;width:100%;'></div><div style='height:30px;width:100%;'></div>Onions will be sold at ₹35 per kg through NCCF, NAFED, Kendriya Bhandar and other retail outlets
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="text-align: center; font-size: 14px;">
+                                          Posted On:
+                        26 AUG 2026 8:49PM by PIB Delhi
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 200; text-align: left; font-size: 16px;">
+                                          <p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Government has commenced <strong>calibrated and targeted release of onions from the buffer stock</strong> to ensure adequate availability and moderate seasonal price pressures in the coming months. The intervention is being undertaken through a <strong>hybrid model of transportation comprising railway rakes and road transport</strong>, with supplies being directed to major consumption centres based on prevailing market conditions and price trends.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Adequate Onion Availability and Robust Production</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Onion availability is comfortable to meet domestic demand in the coming months, supported by estimated production of <strong>307.37 LMT in 2025-26</strong>, broadly in line with the previous year&#39;s production of <strong>307.67 LMT</strong>. Robust production, availability of buffer stocks and proactive market interventions are expected to ensure adequate supplies and moderate seasonal price pressures in the coming months. In view of the comfortable production outlook, the Government fixed a procurement target of <strong>2.00 LMT of Rabi onion</strong> for the Price Stabilization Fund (PSF) buffer during 2026-27. The procurement operation commenced on <strong>15 May 2026</strong>, through NAFED and NCCF. Around <strong>1.21 LMT of onions have been procured</strong> for the buffer.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">To strengthen storage management and operational efficiency, the <strong>Central Warehousing Corporation (CWC)</strong> has been engaged for the first time as the storage agency for the PSF onion buffer during 2026-27. With the onset of the festive season, including <strong>Onam, Ganesh Chaturthi, Durga Puja, Dussehra, Diwali and the wedding season</strong>, onion prices typically witness a seasonal uptick owing to higher demand and supply-chain factors.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Calibrated and Targeted Release of Buffer Onions</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">To ensure adequate availability and prevent undue price volatility, the Government has commenced <strong>calibrated and targeted release of onions from the buffer stock</strong>. The release of onions will take place through a <strong>hybrid model of transportation comprising railway rakes and road transport</strong>, enabling movement of onions to major consumption centres. The quantity, coverage and channels for release of onions will be further widened based on prevailing market conditions and price trends.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Onions to be Sold at ₹35 per kg</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Retail sale of onions at <strong>₹35 per kg</strong> is to be launched through mobile vans and retail outlets of <strong>NCCF and NAFED</strong>, as well as through <strong>Safal and Kendriya Bhandar outlets</strong>. The retail sales will be carried out through:</span></span></span></p>
+
+<ul style="margin-left:40px">
+	<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">NCCF:</span></strong><span style="color:black"> 9 outlets and 40 mobile vans </span></span></span></li>
+	<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">NAFED:</span></strong><span style="color:black"> 13 outlets and 50 mobile vans </span></span></span></li>
+	<li style="text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Kendriya Bhandar:</span></strong><span style="color:black"> About 100 outlets </span></span></span></li>
+</ul>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The targeted retail intervention is aimed at ensuring availability of onions to consumers at an affordable price.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Kanda Express Strengthens Movement of Buffer Onions</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The <strong>Kanda Express initiative has emerged as an effective logistics intervention for moving buffer onions from producing regions to consumption centres</strong>. During 2024-25, onion buffer stocks were transported through <strong>14 railway rakes carrying nearly 12,000 MT of onions to five cities</strong>. Operations during 2025-26 expanded substantially, with <strong>86 railway rakes transporting around 88,000 MT of onions to 16 cities across the country</strong>.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">In the current financial year, transportation of onion consignments has begun through <strong>Kanda Express from Nashik to New Delhi</strong>. The first Kanda Express has left Nashik and is expected to reach Delhi NCR. Simultaneously, supplies are being moved through road transport to other major consumption centres, namely <strong>Chennai, Kolkata, Ernakulam, Guwahati, Varanasi, Lucknow, Patna, Chandigarh, Jammu and Amritsar</strong>. The hybrid transportation model will facilitate timely movement of buffer onions to consumption centres based on prevailing market requirements.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black"><img id="Picture_x0020_2" src="https://static.pib.gov.in/WriteReadData/userfiles/image/2026/aug/image001_20260826205156_d6d7af.jpg" style="height:501px; width:401px" /> </span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Onion Exports Continue to Remain Robust</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Onion exports continue to remain robust. During <strong>April-June 2026, exports stood at approximately 3.82 LMT</strong>, with major destinations including <strong>Malaysia, Sri Lanka, UAE and Nepal</strong>, reflecting comfortable domestic availability.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Daily Monitoring Across 579 Centres</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Department of Consumer Affairs monitors the daily prices of <strong>41 essential commodities, including onion, across 579 centres nationwide</strong>. These market trends, along with arrivals and demand conditions, serve as key inputs for decisions on the scale and destinations of buffer stock releases. The Government is closely monitoring onion prices, arrivals and availability across States and will undertake further interventions, wherever necessary, to ensure adequate supplies and prevent unwarranted price increases.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Prices of Key Essential Commodities Remain Stable and Range Bound</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The prices of key pulses including <strong>Tur, Gram, Masur, Urad and Moong</strong>, as well as essential vegetables such as <strong>Tomato and Potato</strong>, are currently stable and range bound.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The<strong> </strong></span><strong>All-India average monthly retail prices as on 26.08.2026</strong></span></span><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black"> are as follows:</span></span></span></p>
+
+<div>
+<table border="1" bordercolor="#ccc" cellpadding="5" cellspacing="0" class="MsoTableGrid" style="border-collapse:collapse">
+	<tbody>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Commodity</span></strong></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><strong><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px">All-India Average Monthly Retail Price</span></span></strong></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Tomato</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹38.33/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Potato</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹22.63/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Chana Dal</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹86.71/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Atta</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹40.48/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Tur Dal</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹123.30/kg</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Milk</span></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">₹60.82/litre</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Onion</span></strong></span></span></p>
+			</td>
+			<td>
+			<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">₹37.87/kg</span></strong></span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify">&nbsp;</p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">Notably, <strong>Tomato, Potato and Chana Dal prices are lower than a year ago</strong>.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">Continuous Monitoring to Safeguard Consumer Interests</span></strong></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">The Government remains committed to <strong>protecting consumer interests while ensuring remunerative returns to farmers through a balanced and evidence-based price stabilisation approach</strong>. The Government will continue to monitor onion prices, arrivals, availability and demand conditions closely. The scale, coverage and channels of buffer stock releases will be calibrated according to prevailing market conditions to ensure adequate supplies and moderate seasonal price pressures.</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:center"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><span style="color:black">*********</span></span></span></p>
+
+<p style="margin-left:0cm; margin-right:1.4pt; text-align:justify"><span style="font-family:Times New Roman,Times,serif"><span style="font-size:16px"><strong><span style="color:black">RT/SB/ARC</span></strong></span></span></p>
+
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                                    <div style="font-weight: 100; text-align: left; font-size: 16px;">
+                                          (Release ID: 2303587)
+                                    </div>
+                                    <div style="height: 30px; width: 100%;">
+                                    </div>
+                              </td>
+                        </tr>
+                        <tr>
+                              <td style="font-weight: 200; text-align: center; font-size: 24px;"></td>
+                        </tr>
+                  </table>
+            </div>
+            <div class="clearfix">
+            </div>
+
+            
+
+            <div class="section1">
+                  <div id="frst_t">
+                        <div id="arr_rm"><div class='sticky-social_mb'><ul class='social_mb'><a href='http://www.facebook.com/share.php?u=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587' target='_blank'><li class='fb_b'   ></li></a><a href='https://twitter.com/intent/tweet?url=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587&text=Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures' target='_blank'><li class='twitter_r'  > </li></a><a href='https://api.whatsapp.com/send?text=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587' target='_blank'><li class='whatsapp_r'  ></li></a><a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures&body=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587&ui=2&tf=1&pli=1' title='Share by Email' target='_blank'><li class='fa-envelope_r' ></li></a><a href='https://www.linkedin.com/shareArticle?mini=true&url=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587&title=Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures&summary=My%20favorite%20developer%20program&source=LinkedIn' target='_blank'><li class='fa-linkedin_r'  ></li></a></ul></div></div>
+                  </div>
+                  <div id="second_t">
+                        <div id="sndr_rm"><div class='sticky-social'><ul class='social'><a href='http://www.facebook.com/share.php?u=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587' target='_blank'><li class='fb_b'   ></li></a><a href='https://twitter.com/intent/tweet?url=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587&text=Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures' target='_blank'><li class='twitter_r'  > </li></a><a href='https://api.whatsapp.com/send?text=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587' target='_blank'><li class='whatsapp_r'  ></li></a><a href='https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures&body=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587&ui=2&tf=1&pli=1' title='Share by Email' target='_blank'><li class='fa-envelope_r' ></li></a><a href='https://www.linkedin.com/shareArticle?mini=true&url=https://pib.gov.in/PressReleasePage.aspx?PRID=2303587&title=Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures&summary=My%20favorite%20developer%20program&source=LinkedIn' target='_blank'><li class='fa-linkedin_r'  ></li></a></ul></div></div>
+                  </div>
+            </div>
+            <input type="hidden" name="ltrTitlee" id="ltrTitlee" value="Adequate Onion Availability; Government Undertakes Calibrated and Targeted Release of Buffer Stocks to Moderate Seasonal Price Pressures" />
+            <input type="hidden" name="ltrSubtitlee" id="ltrSubtitlee" value="&lt;br/>First Kanda Express carrying onions leaves Nashik for New Delhi&lt;br/>&lt;br/>Hybrid transportation model through railway rakes and road transport to supply major consumption centres&lt;br/>&lt;br/>Onions will be sold at ₹35 per kg through NCCF, NAFED, Kendriya Bhandar and other retail outlets" />
+            <input type="hidden" name="ltrDescriptionn" id="ltrDescriptionn" value="&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The Government has commenced &lt;strong>calibrated and targeted release of onions from the buffer stock&lt;/strong> to ensure adequate availability and moderate seasonal price pressures in the coming months. The intervention is being undertaken through a &lt;strong>hybrid model of transportation comprising railway rakes and road transport&lt;/strong>, with supplies being directed to major consumption centres based on prevailing market conditions and price trends.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Adequate Onion Availability and Robust Production&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Onion availability is comfortable to meet domestic demand in the coming months, supported by estimated production of &lt;strong>307.37 LMT in 2025-26&lt;/strong>, broadly in line with the previous year&amp;#39;s production of &lt;strong>307.67 LMT&lt;/strong>. Robust production, availability of buffer stocks and proactive market interventions are expected to ensure adequate supplies and moderate seasonal price pressures in the coming months. In view of the comfortable production outlook, the Government fixed a procurement target of &lt;strong>2.00 LMT of Rabi onion&lt;/strong> for the Price Stabilization Fund (PSF) buffer during 2026-27. The procurement operation commenced on &lt;strong>15 May 2026&lt;/strong>, through NAFED and NCCF. Around &lt;strong>1.21 LMT of onions have been procured&lt;/strong> for the buffer.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>To strengthen storage management and operational efficiency, the &lt;strong>Central Warehousing Corporation (CWC)&lt;/strong> has been engaged for the first time as the storage agency for the PSF onion buffer during 2026-27. With the onset of the festive season, including &lt;strong>Onam, Ganesh Chaturthi, Durga Puja, Dussehra, Diwali and the wedding season&lt;/strong>, onion prices typically witness a seasonal uptick owing to higher demand and supply-chain factors.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Calibrated and Targeted Release of Buffer Onions&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>To ensure adequate availability and prevent undue price volatility, the Government has commenced &lt;strong>calibrated and targeted release of onions from the buffer stock&lt;/strong>. The release of onions will take place through a &lt;strong>hybrid model of transportation comprising railway rakes and road transport&lt;/strong>, enabling movement of onions to major consumption centres. The quantity, coverage and channels for release of onions will be further widened based on prevailing market conditions and price trends.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Onions to be Sold at ₹35 per kg&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Retail sale of onions at &lt;strong>₹35 per kg&lt;/strong> is to be launched through mobile vans and retail outlets of &lt;strong>NCCF and NAFED&lt;/strong>, as well as through &lt;strong>Safal and Kendriya Bhandar outlets&lt;/strong>. The retail sales will be carried out through:&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;ul style=&quot;margin-left:40px&quot;>
+	&lt;li style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>NCCF:&lt;/span>&lt;/strong>&lt;span style=&quot;color:black&quot;> 9 outlets and 40 mobile vans &lt;/span>&lt;/span>&lt;/span>&lt;/li>
+	&lt;li style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>NAFED:&lt;/span>&lt;/strong>&lt;span style=&quot;color:black&quot;> 13 outlets and 50 mobile vans &lt;/span>&lt;/span>&lt;/span>&lt;/li>
+	&lt;li style=&quot;text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Kendriya Bhandar:&lt;/span>&lt;/strong>&lt;span style=&quot;color:black&quot;> About 100 outlets &lt;/span>&lt;/span>&lt;/span>&lt;/li>
+&lt;/ul>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The targeted retail intervention is aimed at ensuring availability of onions to consumers at an affordable price.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Kanda Express Strengthens Movement of Buffer Onions&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The &lt;strong>Kanda Express initiative has emerged as an effective logistics intervention for moving buffer onions from producing regions to consumption centres&lt;/strong>. During 2024-25, onion buffer stocks were transported through &lt;strong>14 railway rakes carrying nearly 12,000 MT of onions to five cities&lt;/strong>. Operations during 2025-26 expanded substantially, with &lt;strong>86 railway rakes transporting around 88,000 MT of onions to 16 cities across the country&lt;/strong>.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>In the current financial year, transportation of onion consignments has begun through &lt;strong>Kanda Express from Nashik to New Delhi&lt;/strong>. The first Kanda Express has left Nashik and is expected to reach Delhi NCR. Simultaneously, supplies are being moved through road transport to other major consumption centres, namely &lt;strong>Chennai, Kolkata, Ernakulam, Guwahati, Varanasi, Lucknow, Patna, Chandigarh, Jammu and Amritsar&lt;/strong>. The hybrid transportation model will facilitate timely movement of buffer onions to consumption centres based on prevailing market requirements.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:center&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>&lt;img id=&quot;Picture_x0020_2&quot; src=&quot;https://static.pib.gov.in/WriteReadData/userfiles/image/2026/aug/image001_20260826205156_d6d7af.jpg&quot; style=&quot;height:501px; width:401px&quot; /> &lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Onion Exports Continue to Remain Robust&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Onion exports continue to remain robust. During &lt;strong>April-June 2026, exports stood at approximately 3.82 LMT&lt;/strong>, with major destinations including &lt;strong>Malaysia, Sri Lanka, UAE and Nepal&lt;/strong>, reflecting comfortable domestic availability.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Daily Monitoring Across 579 Centres&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The Department of Consumer Affairs monitors the daily prices of &lt;strong>41 essential commodities, including onion, across 579 centres nationwide&lt;/strong>. These market trends, along with arrivals and demand conditions, serve as key inputs for decisions on the scale and destinations of buffer stock releases. The Government is closely monitoring onion prices, arrivals and availability across States and will undertake further interventions, wherever necessary, to ensure adequate supplies and prevent unwarranted price increases.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Prices of Key Essential Commodities Remain Stable and Range Bound&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The prices of key pulses including &lt;strong>Tur, Gram, Masur, Urad and Moong&lt;/strong>, as well as essential vegetables such as &lt;strong>Tomato and Potato&lt;/strong>, are currently stable and range bound.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The&lt;strong> &lt;/strong>&lt;/span>&lt;strong>All-India average monthly retail prices as on 26.08.2026&lt;/strong>&lt;/span>&lt;/span>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;> are as follows:&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;div>
+&lt;table border=&quot;1&quot; bordercolor=&quot;#ccc&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot; class=&quot;MsoTableGrid&quot; style=&quot;border-collapse:collapse&quot;>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Commodity&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;strong>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>All-India Average Monthly Retail Price&lt;/span>&lt;/span>&lt;/strong>&lt;/p>
+			&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Tomato&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>₹38.33/kg&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Potato&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>₹22.63/kg&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Chana Dal&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>₹86.71/kg&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Atta&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>₹40.48/kg&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Tur Dal&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>₹123.30/kg&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Milk&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>₹60.82/litre&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Onion&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+			&lt;td>
+			&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>₹37.87/kg&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+			&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table>
+&lt;/div>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&amp;nbsp;&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>Notably, &lt;strong>Tomato, Potato and Chana Dal prices are lower than a year ago&lt;/strong>.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>Continuous Monitoring to Safeguard Consumer Interests&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>The Government remains committed to &lt;strong>protecting consumer interests while ensuring remunerative returns to farmers through a balanced and evidence-based price stabilisation approach&lt;/strong>. The Government will continue to monitor onion prices, arrivals, availability and demand conditions closely. The scale, coverage and channels of buffer stock releases will be calibrated according to prevailing market conditions to ensure adequate supplies and moderate seasonal price pressures.&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:center&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;span style=&quot;color:black&quot;>*********&lt;/span>&lt;/span>&lt;/span>&lt;/p>
+
+&lt;p style=&quot;margin-left:0cm; margin-right:1.4pt; text-align:justify&quot;>&lt;span style=&quot;font-family:Times New Roman,Times,serif&quot;>&lt;span style=&quot;font-size:16px&quot;>&lt;strong>&lt;span style=&quot;color:black&quot;>RT/SB/ARC&lt;/span>&lt;/strong>&lt;/span>&lt;/span>&lt;/p>
+" />
+            <script type="text/javascript">
+                  var mPlayer = document.getElementById("background_music");
+                  var mPlayAction = document.getElementById("playbutton");
+
+                  var isPlaying = false;
+
+                  function playAudio() {
+                        mPlayer.play();
+                        isPlaying = true;
+                        document.getElementById('stopA').style.display = "block";
+                        document.getElementById('playA').style.display = "none";
+                  }
+
+                  function pauseAudio() {
+                        mPlayer.pause();
+                        isPlaying = false;
+                        document.getElementById('playA').style.display = "block";
+                        document.getElementById('stopA').style.display = "none";
+                  }
+                  //function HandleAudio() {
+                  //    if (isPlaying == true) {
+                  //        //Playing already Pause it
+                  //        pauseAudio();
+                  //    } else {
+                  //        //Play the music
+                  //        playAudio();
+                  //    }
+                  //}
+            </script>
+            <script type="text/javascript">
+                  var synth = window.speechSynthesis;
+
+            
+                  function CleanHtml(html) {
+
+                        html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+
+                        return html;
+                  }
+                  function stripHtml(html) {
+                        let tmp = document.createElement("DIV");
+                        tmp.innerHTML = CleanHtml(html);
+                        return tmp.textContent || tmp.innerText || "";
+                  }
+            </script>
+            <script type="text/javascript">
+                  $(document).ready(function () {
+                        //for responsive tables
+                        $("table").each(function () {
+                              if (!$(this).closest(".table-responsive").length) {
+                                    $(this).wrap("<div class='table-responsive'></div>");
+                              }
+                        });
+
+                        var width = $(window).width();
+                        if (width < 768) {
+
+                              // Extra Small Device
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+
+                        } else if (width < 991) {
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+                              // Small Device
+
+                        } else if (width < 1199) {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Medium Device
+
+                        } else {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Large Device
+
+                        }
+                  });
+            </script>
+            <script type="text/javascript">
+                  $(document).ready(function () {
+                        var width = $(window).width();
+                        if (width < 768) {
+
+                              // Extra Small Device
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+
+                        } else if (width < 991) {
+                              document.getElementById('frst_t').style.display = "block";
+                              document.getElementById('second_t').style.display = "none";
+                              // Small Device
+
+                        } else if (width < 1199) {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Medium Device
+
+                        } else {
+                              document.getElementById('frst_t').style.display = "none";
+                              document.getElementById('second_t').style.display = "block";
+                              // Large Device
+
+                        }
+                  });
+            </script>
+            
+            <style type="text/css">
+                  @media print {
+                        .sticky-social, .sticky-social_mb, .pull-right, #printPDF {
+                              display: none !important;
+                        }
+                  }
+
+                  .f_vl {
+                        padding-right: 30px;
+                        font-size: 17px;
+                        cursor: pointer;
+                  }
+
+                  .log_oo {
+                        // width: 20%;
+                        display: flex;
+                        justify-content: space-between;
+                  }
+
+                        .log_oo img {
+                              width: 150px;
+                              /*width: 100%;
+                    height: auto;*/
+                        }
+
+                  .sticky-social_mb {
+                        position: fixed;
+                        bottom: 0px;
+                        padding: 0px;
+                        margin: 0px;
+                        width: 100%;
+                  }
+
+                  .social_mb {
+                        list-style: none;
+                        display: flex;
+                        width: 100%;
+                        margin-bottom: -8px;
+                  }
+
+                        .social_mb a {
+                              padding: 8px 0px;
+                              font-size: 30px;
+                              transition: all 0.8s ease-in-out;
+                              width: 20% !important;
+                              text-align: center;
+                        }
+            </style>
+            <style type="text/css">
+                  .section1 {
+                        position: relative;
+                        padding: 10px 0px;
+                        width: 100%;
+                  }
+
+
+
+                  .sticky-social {
+                        position: fixed;
+                        top: 20px;
+                        left: 0px;
+                        padding: 0px;
+                        margin: 0px;
+                  }
+
+                  .social {
+                        list-style: none;
+                  }
+
+                        .social a li {
+                              padding: 8px 12px;
+                              font-size: 25px;
+                              transition: all 0.8s ease-in-out;
+                        }
+
+                              .social a li:hover {
+                                    margin-right: -30px;
+                                    box-shadow: 2px 5px 10px grey;
+                              }
+
+                                    .social a li:hover .fa {
+                                          margin-left: 20px;
+                                    }
+
+                  .fb_b {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .twitter_r {
+                        /* background-color: rgb(29, 161, 242);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .whatsapp_r {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .fa-envelope_r {
+                        /* background-color: var(--dbim-key, #0F5757);*/
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+
+                  .fa-linkedin_r {
+                        background-color: var(--dbim-key, #0F5757);
+                  }
+            </style>
+            <style type="text/css">
+                  @media only screen and (max-device-width: 767px) {
+                        p span img {
+                              max-width: 90% !important;
+                              height: auto !important;
+                        }
+
+                        p img {
+                              max-width: 90% !important;
+                              height: auto !important;
+                        }
+
+                        h2 {
+                              font-size: var(--dbim-h2, 20px);   /* was 20px !important - the !important blocked A+/A- */
+                              font-weight: 600 !important;
+                        }
+
+                        h3 {
+                              font-size: var(--dbim-h3, 16px);   /* was 16px !important */
+                              font-weight: 600 !important;
+                        }
+                  }
+            </style>
+            <style type="text/css">
+                  /* === Film Roll Badge Styling(IFFI2025 countdown) === */
+                  .film-roll-badge {
+                        position: absolute;
+                        top:82%;
+                        right: 20px;
+                        width: 230px;
+                        height: 70px;
+                        background: repeating-linear-gradient( to right, var(--dbim-green-key, #0F5757) 0px, var(--dbim-green-key, #0F5757) 18px, var(--dbim-text, #150202) 18px, var(--dbim-text, #150202) 36px );
+                        border-top: 8px solid var(--dbim-green-key, #0F5757);
+                        border-bottom: 8px solid var(--dbim-green-key, #0F5757);
+                        border-radius: 8px;
+                        overflow: hidden;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+                        animation: moveFilm 8s linear infinite;
+                        z-index: 10;
+                  }
+
+                        /* film sprocket holes */
+                        .film-roll-badge::before,
+                        .film-roll-badge::after {
+                              content: "";
+                              position: absolute;
+                              width: 100%;
+                              height: 10px;
+                              background: repeating-linear-gradient( to right, var(--dbim-green-key, #0F5757) 0px, var(--dbim-green-key, #0F5757) 10px, #fff 10px, #fff 20px );
+                              left: 0;
+                              z-index: 2;
+                        }
+
+                        .film-roll-badge::before {
+                              top: -4px;
+                        }
+
+                        .film-roll-badge::after {
+                              bottom: -4px;
+                        }
+
+                  .film-roll-inner {
+                        position: relative;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        animation: flicker 2s infinite ease-in-out;
+                  }
+
+                  .countdown-text {
+                        font-size: 1.3rem;
+                        font-weight: 700;
+                        color: #fff;
+                        text-shadow: 0 0 6px rgba(255, 255, 255, 0.4), 0 0 10px #000;
+                        white-space: nowrap;
+                  }
+
+                  /* === Animations === */
+                  @keyframes moveFilm {
+                        0% {
+                              background-position: 0 0;
+                        }
+
+                        100% {
+                              background-position: 120px 0;
+                        }
+                  }
+
+                  @keyframes flicker {
+                        0%, 100% {
+                              opacity: 1;
+                        }
+
+                        50% {
+                              opacity: 0.9;
+                        }
+
+                        25% {
+                              opacity: 0.95;
+                        }
+
+                        75% {
+                              opacity: 0.85;
+                        }
+                  }
+
+                  /* === Responsive Adjustments === */
+                  @media (max-width: 1500px) {
+                        .film-roll-badge {
+                              top: 68%;
+                              right: 18px;
+                              /* width: 220px; */
+                              height: 65px;
+                              font-size: 0.85rem;
+                        }
+
+                        .press-section {
+                              margin-top: 35px;
+                        }
+                  }
+
+                  @media (max-width: 992px) {
+                        .film-roll-badge {
+                              top: 52%;
+                              right: 10px;
+                               width: 200px; 
+                              height: 60px;
+                        }
+                  }
+
+                  @media (max-width: 768px) {
+                        .film-roll-badge {
+                              top: 56%;
+                              right: 10px;
+                               width: 124px; 
+                              height: 55px;
+                        }
+
+                        .countdown-text {
+                              font-size: 0.9rem;
+                        }
+                  }
+
+                  @media (max-width: 576px) {
+                        .film-roll-badge {
+                              top: 59%;
+                              right: 5px;
+                              /* width: 160px; */
+                              height: 50px;
+                        }
+
+                        .countdown-text {
+                              font-size: 0.85rem;
+                        }
+                  }
+            </style>
+          <script type="text/javascript">
+                const festivalStart = new Date("2025-11-20T00:00:00").getTime();
+                const festivalEnd = new Date("2025-11-28T23:59:59").getTime();
+
+                const countdownElement = document.getElementById("countdown");
+
+                const interval = setInterval(() => {
+                      const now = new Date().getTime();
+
+                      // BEFORE FESTIVAL — show days + hours left
+                      if (now < festivalStart) {
+                            const diff = festivalStart - now;
+                            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+                            countdownElement.innerHTML = `
+              ${days} Day${days !== 1 ? 's' : ''} 
+              ${hours} Hour${hours !== 1 ? 's' : ''} to go
+          `;
+
+                      }
+
+                      // DURING FESTIVAL — show 56th IFFI - Day X
+                      else if (now >= festivalStart && now <= festivalEnd) {
+                            const dayNumber = Math.floor((now - festivalStart) / (1000 * 60 * 60 * 24)) + 1;
+                            countdownElement.innerHTML = `56th IFFI - Day ${dayNumber}`;
+                      }
+
+                      // AFTER FESTIVAL — new message
+                      else {
+                            countdownElement.innerHTML = `✨ IFFI closes but never ends…`;
+
+                            // Width change logic
+                            const elements = document.querySelectorAll('.film-roll-badge');
+                            elements.forEach(el => el.style.width = "350px");
+
+                            clearInterval(interval);
+                      }
+
+                }, 1000);
+          </script>
+ <script type="text/javascript">
+
+               const miffStart = new Date("2026-06-15T00:00:00").getTime();
+               const miffEnd = new Date("2026-06-15T23:59:59").getTime();
+
+               const miffElement = document.getElementById("miff");
+
+               if (miffElement) {
+
+                   const miffInterval = setInterval(() => {
+
+                       const now = new Date().getTime();
+
+                       // Before MIFF
+                       if (now < miffStart) {
+
+                           const diff = miffStart - now;
+                           const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                           const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+        
+
+                   /*  miffElement.innerHTML = `${days} Day${days !== 1 ? 's' : ''} ${hours} Hour${hours !== 1 ? 's' : ''} to MIFF`;*/
+                           miffElement.innerHTML = `${days} Day${days === 1 ? '' : 's'} to MIFF ...`;
+
+
+                     }
+
+                       // During MIFF
+                       else if (now >= miffStart && now <= miffEnd) {
+
+                           const dayNumber =
+                               Math.floor((now - miffStart) / (1000 * 60 * 60 * 24)) + 1;
+
+                           miffElement.innerHTML = `19th MIFF - Day ${dayNumber}`;
+                       }
+
+                       // After MIFF
+                       else {
+
+                           miffElement.innerHTML = `✨ MIFF concludes, cinema lives on...`;
+
+                           document.querySelectorAll('.film-roll-badge')
+                               .forEach(el => el.style.width = "350px");
+
+                           clearInterval(miffInterval);
+                       }
+
+                   }, 1000);
+               }
+
+</script>
+
+      
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("sc_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","PopupControlID":"P_CategoryManagement","dynamicServicePath":"/PressReleasePage.aspx","id":"mpe"}, null, null, $get("Hidden"));
+});
+//]]>
+</script>
+</form>
+      
+      
+
+<script type="application/json" id="pibConsentConfig">{"ga4Id":"G-Q414Y0X6EE,G-QJJ6LZ8LHV","policyUrl":"/CookiePolicy.aspx","text":{"bannerLabel":"Cookie consent","title":"Cookies on this website","body":"We use essential cookies to make this website work. We also set analytics cookies when you arrive, so we can see how the site is used and improve it - you can switch these off below or at any time from the Cookie Policy page. Cookies from embedded social media content are set only if you allow them.","policyLink":"Read our Cookie Policy","accept":"Accept all","reject":"Reject optional","customize":"Customise","prefsTitle":"Cookie preferences","prefsIntro":"Choose which cookies this website may set. Essential cookies cannot be switched off because the site does not work without them. Analytics cookies are on unless you turn them off. Social media cookies stay off until you allow them. You can change these choices at any time from the Cookie Policy page.","essentialName":"Essential cookies","essentialDesc":"Needed for the site to function. These remember your session, your language and region, your text size and colour theme, and verify the security check on forms. They are always on.","analyticsName":"Analytics cookies","analyticsDesc":"Help us understand how visitors use the site - which pages are read and how long people stay - so it can be improved. The information is collected in a form that does not directly identify you. These are on when you arrive; switching them off here stops them and deletes the ones already set.","socialName":"Social media cookies","socialDesc":"Set by content embedded from X, Facebook and YouTube, such as timelines and videos. These platforms may use them to track you across websites. They stay off until you allow them.","save":"Save preferences","cancel":"Cancel"}}</script>
+<script type="text/javascript" src='/js/consent.js?v=10'></script>
+
+<script type="text/javascript" src='/js/consent-embeds.js?v=10'></script>
+
+    
+
+<script type="text/javascript">
+    (function () {
+        try {
+            if (window.self === window.top) { return; }
+        } catch (e) { return; }
+        var s = document.createElement("style");
+        s.textContent =
+            ".sticky-social, .sticky-social_mb { display: none !important; }";
+        (document.head || document.documentElement).appendChild(s);
+    }());
+</script>
+</body>
+</html>
+

@@ -1,0 +1,87 @@
+{
+  "source_rows": 21864,
+  "eligible_rows": 21851,
+  "quarantined_rows": 13,
+  "inserted": 21864,
+  "skipped": 0,
+  "duplicates": 0,
+  "conflicts": 0,
+  "dry_run": false,
+  "file_summary": {
+    "2021.csv": {
+      "sha256": "32709b6652f18b4e86c0de1a8523a640c3b7fef8a0954c1d7a972a3a3f492c35",
+      "bytes": 348738783,
+      "rows": 3827438,
+      "eligible_rows": 4675,
+      "quarantined_rows": 0,
+      "eligible_date_range": [
+        "2021-01-01",
+        "2021-12-31"
+      ],
+      "file_date_range": [
+        "2021-01-01",
+        "2021-12-31"
+      ]
+    },
+    "2022.csv": {
+      "sha256": "bca75203f780a71d0cf06cf8ea1b36c774ecc75a914c49dd00d5815f6c172126",
+      "bytes": 409171893,
+      "rows": 4476890,
+      "eligible_rows": 4260,
+      "quarantined_rows": 0,
+      "eligible_date_range": [
+        "2022-01-01",
+        "2022-12-31"
+      ],
+      "file_date_range": [
+        "2022-01-01",
+        "2022-12-31"
+      ]
+    },
+    "2023.csv": {
+      "sha256": "7f5a6ee607afe9731de0412862bd6e6dfe30079eacba3928432e2580136b95e1",
+      "bytes": 403215327,
+      "rows": 4415690,
+      "eligible_rows": 4573,
+      "quarantined_rows": 0,
+      "eligible_date_range": [
+        "2023-01-02",
+        "2023-12-30"
+      ],
+      "file_date_range": [
+        "2023-01-01",
+        "2023-12-31"
+      ]
+    },
+    "2024.csv": {
+      "sha256": "59794b7a4dad2fa5e3f1a116851b584368ca99ce44a9fe90b2638e8a5faf7a60",
+      "bytes": 532414234,
+      "rows": 5544500,
+      "eligible_rows": 4420,
+      "quarantined_rows": 0,
+      "eligible_date_range": [
+        "2024-01-01",
+        "2024-12-31"
+      ],
+      "file_date_range": [
+        "2024-01-01",
+        "2024-12-31"
+      ]
+    },
+    "2025.csv": {
+      "sha256": "0070d5c0fd8f95a2268420eaa3f9b712f74bbb179e8c09025c4f32d4999bb45a",
+      "bytes": 573676886,
+      "rows": 5819482,
+      "eligible_rows": 3923,
+      "quarantined_rows": 13,
+      "eligible_date_range": [
+        "2025-01-01",
+        "2025-12-29"
+      ],
+      "file_date_range": [
+        "2025-01-01",
+        "2025-12-30"
+      ]
+    }
+  }
+}
