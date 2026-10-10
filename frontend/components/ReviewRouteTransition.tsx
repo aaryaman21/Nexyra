@@ -80,7 +80,7 @@ export function ReviewRouteTransition() {
       timingsRef.current = reducedRef.current ? { crack: 0.2, shatter: 0.6 } : { crack: 0.3, shatter: 0.92 };
       setCurrentPhase("crack");
       document.getElementById("agri-dashboard")?.classList.add("nexyra-dashboard-shatter");
-      await new Promise<void>(resolve => window.requestAnimationFrame(() => resolve()));
+      await new Promise<void>(resolve => window.requestAnimationFrame(() => window.requestAnimationFrame(() => resolve())));
       const snapshotPromise = captureScreen();
       const navigateToReview = () => {
         phaseRef.current = "waiting";
